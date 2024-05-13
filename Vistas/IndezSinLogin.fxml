@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Line endX="731.3585205078125" layoutX="138.0" layoutY="74.0" startX="-99.13207244873047" />
@@ -27,5 +26,14 @@
       </TableView>
       <Button layoutX="463.0" layoutY="103.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" text="Button" />
       <ImageView fitHeight="150.0" fitWidth="281.0" layoutX="590.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true" />
+      <Line endX="-100.0" endY="-492.5" layoutX="667.0" layoutY="579.0" startX="-100.0" />
+      <TableView layoutX="590.0" layoutY="261.0" prefHeight="268.0" prefWidth="281.0">
+        <columns>
+          <TableColumn prefWidth="139.2000732421875" text="C2" />
+          <TableColumn prefWidth="141.599853515625" text="C1" />
+        </columns>
+      </TableView>
+      <Button layoutX="789.0" layoutY="542.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" text="Comprar" />
+      <TextArea layoutX="123.0" layoutY="19.0" prefHeight="36.0" prefWidth="184.0" />
    </children>
 </Pane>
