@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="900.0" style="-fx-background-color: #376bb5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="54.0" prefWidth="900.0" style="-fx-background-color: #376bb5;">
+         <children>
+            <Button fx:id="butonHelp" layoutX="38.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Imporatr Butacas">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Button>
+            <Label ellipsisString="" prefHeight="23.0" prefWidth="135.0" style="-fx-text-fill: #ffffff;" text="Butacas" textFill="WHITE" textOverrun="CLIP">
+               <HBox.margin>
+                  <Insets left="200.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Georgia Pro Black" size="30.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </HBox>
+      <SplitPane dividerPositions="0.7453376749350179" prefHeight="531.0" prefWidth="900.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="517.0" prefWidth="660.0" style="-fx-background-color: #376bb5;">
+               <children>
+                  <GridPane layoutX="33.0" layoutY="-6.0" prefHeight="471.0" prefWidth="629.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints fx:id="ButacaA1" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <ImageView fx:id="butacaA1" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="butacaA2" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+                        <ImageView fx:id="butacaA3" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                        <ImageView fx:id="butacaA4" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
+                        <ImageView fx:id="butacaA5" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" />
+                        <ImageView fx:id="butacaA36" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" />
+                        <ImageView fx:id="butacaA7" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" />
+                        <ImageView fx:id="butacaB1" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+                        <ImageView fx:id="butacaB2" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ImageView fx:id="butacaB3" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <ImageView fx:id="butacaB4" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <ImageView fx:id="butacaB5" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <ImageView fx:id="butacaB6" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                        <ImageView fx:id="butacaB7" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                        <ImageView fx:id="butacaC1" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
+                        <ImageView fx:id="butacaC2" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ImageView fx:id="butacaB73" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <ImageView fx:id="butacaC3" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <ImageView fx:id="butacaC4" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <ImageView fx:id="butacaB76" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                        <ImageView fx:id="butacaC5" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                        <ImageView fx:id="butacaC6" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                        <ImageView fx:id="butacaC7" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                        <ImageView fx:id="butacaD1" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
+                        <ImageView fx:id="butacaD2" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <ImageView fx:id="butacaD3" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <ImageView fx:id="butacaD4" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <ImageView fx:id="butacaD5" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                        <ImageView fx:id="butacaD6" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                        <ImageView fx:id="butacaD7" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                        <ImageView fx:id="butacaE1" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4" />
+                        <ImageView fx:id="butacaE2" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <ImageView fx:id="butacaE3" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <ImageView fx:id="butacaE4" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                        <ImageView fx:id="butacaE5" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                        <ImageView fx:id="butacaE6" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                        <ImageView fx:id="butacaE7" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+                     </children>
+                  </GridPane>
+                  <Label layoutX="10.0" layoutY="28.0" style="-fx-text-fill: #ffffff;" text="A">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="125.0" style="-fx-text-fill: #ffffff;" text="B">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="8.0" layoutY="217.0" style="-fx-text-fill: #ffffff;" text="C">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="9.0" layoutY="310.0" style="-fx-text-fill: #ffffff;" text="D">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="11.0" layoutY="409.0" style="-fx-text-fill: #ffffff;" text="E">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="77.0" layoutY="458.0" style="-fx-text-fill: #ffffff;" text="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="164.0" layoutY="459.0" style="-fx-text-fill: #ffffff;" text="2">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="260.0" layoutY="457.0" style="-fx-text-fill: #ffffff;" text="3">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="343.0" layoutY="457.0" style="-fx-text-fill: #ffffff;" text="4">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="433.0" layoutY="458.0" style="-fx-text-fill: #ffffff;" text="5">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="527.0" layoutY="457.0" style="-fx-text-fill: #ffffff;" text="6">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="618.0" layoutY="458.0" style="-fx-text-fill: #ffffff;" text="7">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="530.0" prefWidth="209.0" style="-fx-background-color: #376bb5;">
+               <children>
+                  <GridPane layoutX="15.0" layoutY="163.0" prefHeight="149.0" prefWidth="201.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.77355552882486" minWidth="10.0" prefWidth="96.52831627101236" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.41510557322036" minWidth="10.0" prefWidth="45.811311780876025" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="83.99998519207597" minWidth="10.0" prefWidth="62.26414534832597" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label prefHeight="18.0" prefWidth="62.0" style="-fx-text-fill: #ffffff;" text="VIP" textFill="WHITE" />
+                        <ImageView fitHeight="40.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                           <image>
+                              <Image url="@../Proyecto/Cine/imagenes/vip.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="42.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../../../../Downloads/game-icons--screwdriver%20(3).png" />
+                           </image>
+                        </ImageView>
+                        <Label style="-fx-text-fill: #ffffff;" text="Mantenimiento" textFill="WHITE" GridPane.rowIndex="1" />
+                        <Label style="-fx-text-fill: #ffffff;" text="Ocupado" textFill="WHITE" GridPane.rowIndex="2" />
+                        <ImageView fitHeight="41.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../../../../Downloads/flat-color-icons--vip.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="39.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <image>
+                              <Image url="@../../../../Downloads/flat-color-icons--vip%20(2).png" />
+                           </image>
+                        </ImageView>
+                        <Label style="-fx-text-fill: #ffffff;" text="Libre" GridPane.rowIndex="3" />
+                        <RadioButton fx:id="radiosButacaEstadoVip" mnemonicParsing="false" GridPane.columnIndex="2">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="radiosButacaEstado" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="radiosButacaEstadoMantenimiento" mnemonicParsing="false" toggleGroup="$radiosButacaEstado" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <RadioButton fx:id="radiosButacaEstadoOcupado" mnemonicParsing="false" toggleGroup="$radiosButacaEstado" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <RadioButton fx:id="radiosButacaEstadoLibre" mnemonicParsing="false" toggleGroup="$radiosButacaEstado" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                     </children>
+                  </GridPane>
+                  <Label layoutX="60.0" layoutY="7.0" prefHeight="33.0" prefWidth="104.0" style="-fx-text-fill: #ffffff;" text="Editar " textFill="WHITE">
+                     <font>
+                        <Font name="Georgia Pro Black" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="117.0" layoutY="142.0" style="-fx-text-fill: #ffffff;" text="Logo">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="16.0" layoutY="142.0" style="-fx-text-fill: #ffffff;" text="Categoria">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="167.0" layoutY="142.0" style="-fx-text-fill: #ffffff;" text="Estado">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="butonEditarProductos" layoutX="101.0" layoutY="485.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="EditarProductos" />
+                  <Button fx:id="butonAtrasButacas" layoutX="14.0" layoutY="485.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Atras" />
+                  <Label layoutX="16.0" layoutY="115.0" style="-fx-text-fill: #ffffff;" text="Estado de la butaca:" />
+                  <Label layoutX="14.0" layoutY="78.0" style="-fx-text-fill: #ffffff;" text="Coordenada" />
+                  <TextField fx:id="textNombreCoordenada" layoutX="94.0" layoutY="74.0" prefHeight="25.0" prefWidth="110.0" />
+                  <Button fx:id="butonEditarButaca" layoutX="14.0" layoutY="446.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Editar" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</VBox>
