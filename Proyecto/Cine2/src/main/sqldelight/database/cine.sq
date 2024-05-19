@@ -1,0 +1,40 @@
+-- Crear tabla de Peliculas
+CREATE TABLE IF NOT EXISTS PeliculaEntity (
+    id           INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre       TEXT    NOT NULL,
+    duracion     TEXT    NOT NULL,
+    fechaEstreno TEXT    NOT NULL,
+    descripcion  TEXT    NOT NULL,
+    categoria    TEXT    NOT NULL,
+    created_at   TEXT    NOT NULL,
+    updated_at   TEXT    NOT NULL
+);
+
+-- Datos de prueba
+INSERT INTO PeliculaEntity (nombre, duracion, fechaEstreno, descripcion, categoria, created_at, updated_at)
+VALUES ('Pelicula 1', '120 min', '2023-12-01', 'Descripción 1', 'TERROR', '2024-04-26T18:54:47.097563500', '2024-04-26T18:54:47.097563500'),
+       ('Pelicula 2', '90 min', '2024-01-15', 'Descripción 2', 'ANIMADA', '2024-04-26T18:54:47.097563500', '2024-04-26T18:54:47.097563500'),
+       ('Pelicula 3', '110 min', '2024-03-20', 'Descripción 3', 'FANTASIA', '2024-04-26T18:54:47.097563500', '2024-04-26T18:54:47.097563500');
+
+-- Consultas SQL
+deleteAll:
+DELETE FROM PeliculaEntity;
+
+selectAll:
+SELECT * FROM PeliculaEntity ORDER BY nombre ASC;
+
+selectById:
+SELECT * FROM PeliculaEntity WHERE id = ?;
+
+selectLastInserted:
+SELECT * FROM PeliculaEntity WHERE id = last_insert_rowid();
+
+insert:
+INSERT INTO PeliculaEntity (nombre, duracion, fechaEstreno, descripcion, categoria, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?);
+
+update:
+UPDATE PeliculaEntity SET nombre = ?, duracion = ?, fechaEstreno = ?, descripcion = ?, categoria = ?, updated_at = ? WHERE id = ?;
+
+delete:
+DELETE FROM PeliculaEntity WHERE id = ?;
+-----------------------------------------------------------------Productos-----------------------------------------------------------------
