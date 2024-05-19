@@ -8,4 +8,6 @@ sealed class ProductoError(val message: String) {
     class SaveImage(message: String) : ProductoError(message)
     class deleteImage(message: String) : ProductoError(message)
     class deletebyId(message: String) : ProductoError(message)
+    class ExportZip(message: String) : ProductoError(message)
+    class ImportZip(message: String) : ProductoError(message)
 }
