@@ -3,7 +3,7 @@ package org.example.cine2.database
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
 import database.CineQueries
 import dev.cine2.database.AppDatabase
-import dev.joseluisgs.expedientesacademicos.config.AppConfig
+import org.example.cine2.config.AppConfig
 import org.lighthousegames.logging.logging
 import java.io.File
 import java.nio.file.Files
