@@ -26,7 +26,7 @@
             <TableColumn fx:id="tableColumnCategoria" prefWidth="125.39999389648438" text="Categoría" />
          </columns>
       </TableView>
-      <ImageView fitHeight="150.0" fitWidth="281.0" layoutX="590.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imagenProductos" fitHeight="150.0" fitWidth="281.0" layoutX="590.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true" />
       <Line endX="-100.0" endY="-492.5" layoutX="667.0" layoutY="579.0" startX="-100.0" />
       <Button fx:id="butonEditarProducto" layoutX="690.0" layoutY="496.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="81.0" style="-fx-background-radius: 10;" text="Editar" />
       <GridPane layoutX="590.0" layoutY="265.0" prefHeight="136.0" prefWidth="281.0">

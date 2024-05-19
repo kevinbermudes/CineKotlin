@@ -15,7 +15,7 @@
    <children>
       <ImageView fx:id="imagenProductoAnadir" fitHeight="120.0" fitWidth="126.0" layoutX="120.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Downloads/buscar-imagen.png" />
+            <Image url="@../Proyecto/Cine/imagenes/buscar-imagen.png" />
          </image></ImageView>
       <GridPane layoutX="35.0" layoutY="201.0" prefHeight="136.0" prefWidth="281.0">
          <columnConstraints>
