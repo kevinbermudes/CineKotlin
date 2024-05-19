@@ -77,7 +77,7 @@ jlinkZip {
 // Configuración del plugin de SqlDeLight
 sqldelight {
     databases {
-        // Nombre de la base de datos
+        // Nombre de la base de
         create("AppDatabase") {
             // Paquete donde se generan las clases
             packageName.set("dev.joseluisgs.database")
