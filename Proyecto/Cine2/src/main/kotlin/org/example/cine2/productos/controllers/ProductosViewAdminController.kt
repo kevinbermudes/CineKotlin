@@ -2,70 +2,87 @@ package org.example.cine2.productos.controllers
 
 import javafx.fxml.FXML
 import javafx.scene.control.*
+import javafx.scene.control.cell.PropertyValueFactory
 import javafx.scene.image.ImageView
-
+import org.example.cine2.productos.models.Categoria
+import org.example.cine2.productos.models.Producto
 
 class ProductosViewAdminController {
     @FXML
-    private val butonFile: Button? = null
+    private lateinit var butonFile: Button
 
     @FXML
-    private val butonCerrarSesion: Button? = null
+    private lateinit var butonCerrarSesion: Button
 
     @FXML
-    private val tableProductos: TableView<*>? = null
+    private lateinit var tableProductos: TableView<Producto>
 
     @FXML
-    private val tableColumnIdProducto: TableColumn<*, *>? = null
+    private lateinit var tableColumnIdProducto: TableColumn<Producto, Long>
 
     @FXML
-    private val tableColumnNombreProducto: TableColumn<*, *>? = null
+    private lateinit var tableColumnNombreProducto: TableColumn<Producto, String>
 
     @FXML
-    private val tableColumnPrecio: TableColumn<*, *>? = null
+    private lateinit var tableColumnPrecio: TableColumn<Producto, Double>
 
     @FXML
-    private val tableColumnCategoria: TableColumn<*, *>? = null
+    private lateinit var tableColumnCategoria: TableColumn<Producto, Enum<Categoria>>
 
     @FXML
-    private val imagenProductos: ImageView? = null
+    private lateinit var imagenProductos: ImageView
 
     @FXML
-    private val butonEditarProducto: Button? = null
+    private lateinit var butonEditarProducto: Button
 
     @FXML
-    private val textoNombreProducto: TextField? = null
+    private lateinit var textoNombreProducto: TextField
 
     @FXML
-    private val textoCategoriaProducto: TextField? = null
+    private lateinit var textoCategoriaProducto: TextField
 
     @FXML
-    private val textoPrecioProducto: TextField? = null
+    private lateinit var textoPrecioProducto: TextField
 
     @FXML
-    private val textEstadoLogin: Label? = null
+    private lateinit var textEstadoLogin: Label
 
     @FXML
-    private val textBuscadorProductos: TextField? = null
+    private lateinit var textBuscadorProductos: TextField
 
     @FXML
-    private val butonAnadirProductosAdmin: Button? = null
+    private lateinit var butonAnadirProductosAdmin: Button
 
     @FXML
-    private val butonAtras: Button? = null
+    private lateinit var butonAtras: Button
 
     @FXML
-    private val butonBorrarProductos: Button? = null
+    private lateinit var butonBorrarProductos: Button
 
     @FXML
-    private val butonHelp: Button? = null
+    private lateinit var butonHelp: Button
 
     // Inicialización del controlador
     @FXML
     private fun initialize() {
-        // Aquí puedes agregar código para inicializar el controlador, si es necesario
+        initBindings()
+        initEventos()
     }
 
+    private fun initBindings() {
+        //Tablas
+        // tableProductos.items= viewModel.productos
+        //Celdas
+        //tableColumnIdProducto.cellValueFactory= PropertyValueFactory("id")
+        //tableColumnNombreProducto.cellValueFactory= PropertyValueFactory("nombre")
+        //tableColumnPrecio.cellValueFactory= PropertyValueFactory("precio")
+        // tableColumnCategoria.cellValueFactory= PropertyValueFactory("categoria")
+
+    }
+
+    private fun initEventos() {
+        // Código para inicializar los eventos
+    }
     // Métodos de manejo de eventos
     @FXML
     private fun handleFileButtonAction() {
