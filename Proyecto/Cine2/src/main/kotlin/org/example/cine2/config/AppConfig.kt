@@ -1,4 +1,4 @@
-package dev.joseluisgs.expedientesacademicos.config
+package org.example.cine2.config
 
 import org.lighthousegames.logging.logging
 import java.io.File
