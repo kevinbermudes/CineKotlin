@@ -29,9 +29,9 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <TextField layoutX="438.0" layoutY="297.0" style="-fx-background-radius: 10;" />
-      <TextField layoutX="438.0" layoutY="354.0" style="-fx-background-radius: 10;" />
-      <Button layoutX="269.0" layoutY="475.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="No Inicar Sesión" />
-      <Button layoutX="509.0" layoutY="475.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Inicar Sesión" />
+      <TextField fx:id="textoNombreUsuario" layoutX="438.0" layoutY="297.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="textoContrasena" layoutX="438.0" layoutY="354.0" style="-fx-background-radius: 10;" />
+      <Button fx:id="buttonNoIniciarSesion" layoutX="269.0" layoutY="475.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="No Inicar Sesión" />
+      <Button fx:id="buttonInicarSesion" layoutX="509.0" layoutY="475.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Inicar Sesión" />
    </children>
 </Pane>
