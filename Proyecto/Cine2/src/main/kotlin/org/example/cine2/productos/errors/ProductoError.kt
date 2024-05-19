@@ -10,4 +10,5 @@ sealed class ProductoError(val message: String) {
     class deletebyId(message: String) : ProductoError(message)
     class ExportZip(message: String) : ProductoError(message)
     class ImportZip(message: String) : ProductoError(message)
+    class ValidationProblem(message: String) : ProductoError(message)
 }
