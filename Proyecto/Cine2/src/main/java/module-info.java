@@ -6,6 +6,8 @@ module org.example.cine2 {
     requires logging.jvm;
     requires kotlinx.serialization.core;
     requires kotlin.result.jvm;
+    requires runtime.jvm;
+    requires sqlite.driver;
 
 
     opens org.example.cine2 to javafx.fxml;

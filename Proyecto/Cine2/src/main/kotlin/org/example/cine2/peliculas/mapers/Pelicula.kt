@@ -1,7 +1,7 @@
 package org.example.cine2.peliculas.mapers
 
+import database.PeliculaEntity
 import org.example.cine2.peliculas.dto.PeliculaDto
-import org.example.cine2.peliculas.dto.PeliculaEntity
 import org.example.cine2.peliculas.models.Pelicula
 import java.time.LocalDate
 import java.time.LocalDateTime
