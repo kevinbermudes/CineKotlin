@@ -80,7 +80,7 @@ sqldelight {
         // Nombre de la base de
         create("AppDatabase") {
             // Paquete donde se generan las clases
-            packageName.set("dev.joseluisgs.database")
+            packageName.set("dev.cine2.database")
         }
     }
 }
