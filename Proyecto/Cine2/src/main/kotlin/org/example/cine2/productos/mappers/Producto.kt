@@ -2,10 +2,8 @@ package org.example.cine2.productos.mappers
 
 
 import database.ProductoEntity
-import org.example.cine2.peliculas.models.Pelicula
 import org.example.cine2.productos.dto.json.ProductoDto
 import org.example.cine2.productos.models.Producto
-import org.koin.core.component.getScopeName
 import java.time.LocalDateTime
 
 fun ProductoDto.toModel(): Producto {
@@ -50,4 +48,7 @@ fun ProductoEntity.toModel(): Producto {
         createdAt = LocalDateTime.parse(created_at),
         updatedAt = LocalDateTime.parse(updated_at)
     )
+}
+fun List<ProductoEntity>.toModel(): List<Producto> {
+    return map { it.toModel() }
 }
