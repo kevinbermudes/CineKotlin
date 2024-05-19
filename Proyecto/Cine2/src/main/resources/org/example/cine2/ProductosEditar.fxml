@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="350.0" style="-fx-background-color: #376bb5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="imagenProductoEditar" fitHeight="120.0" fitWidth="126.0" layoutX="120.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Proyecto/Cine/imagenes/buscar-imagen.png" />
+         </image>
+      </ImageView>
+      <GridPane layoutX="35.0" layoutY="201.0" prefHeight="136.0" prefWidth="281.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.47176041947705" minWidth="10.0" prefWidth="132.13216081010205" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.49058577801347" minWidth="10.0" prefWidth="148.43388709465205" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="90.0" minHeight="0.0" prefHeight="25.415080824540016" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="143.094358037485" minHeight="0.0" prefHeight="25.358469467733485" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="153.90561311802608" minHeight="9.49057280614143" prefHeight="28.07545194697154" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label prefHeight="18.0" prefWidth="74.0" style="-fx-text-fill: #ffffff;" text="Nombre" />
+            <Label prefHeight="18.0" prefWidth="69.0" style="-fx-text-fill: #ffffff;" text="Categoría" GridPane.rowIndex="1" />
+            <Label style="-fx-text-fill: #ffffff;" text="Precio:" GridPane.rowIndex="2" />
+            <TextField fx:id="textoNombreProducto" GridPane.columnIndex="1" />
+            <TextField fx:id="textoCategoriaProducto" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="textoPrecioProducto" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+      <Button fx:id="butonGuardarEdicionProducto" layoutX="255.0" layoutY="356.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="81.0" style="-fx-background-radius: 10;" text="Guardar" />
+      <Button fx:id="butonLimpiarProductos" layoutX="165.0" layoutY="356.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="81.0" style="-fx-background-radius: 10;" text="Limpiar" />
+      <Label layoutX="64.0" layoutY="20.0" prefHeight="45.0" prefWidth="223.0" style="-fx-text-fill: #ffffff;" text="Editar Producto">
+         <font>
+            <Font name="Georgia Pro Black" size="30.0" />
+         </font>
+      </Label>
+      <Button fx:id="butonCancelarProductos1" layoutX="73.0" layoutY="356.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="81.0" style="-fx-background-radius: 10;" text="Cancelar" />
+   </children>
+</Pane>
