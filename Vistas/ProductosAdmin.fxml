@@ -18,7 +18,7 @@
       <Line endX="731.3585205078125" layoutX="138.0" layoutY="74.0" startX="-99.13207244873047" />
       <Button fx:id="butonFile" layoutX="38.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="File" />
       <Button fx:id="butonCerrarSesion" layoutX="786.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Cerrar Sesión" />
-      <TableView layoutX="38.0" layoutY="151.0" prefHeight="416.0" prefWidth="511.0">
+      <TableView fx:id="tableProductos" layoutX="38.0" layoutY="151.0" prefHeight="416.0" prefWidth="511.0">
          <columns>
             <TableColumn fx:id="tableColumnIdProducto" prefWidth="36.2264404296875" text="ID" />
             <TableColumn fx:id="tableColumnNombreProducto" prefWidth="225.50948333740234" text="Nombre" />
@@ -49,7 +49,7 @@
          </children>
       </GridPane>
       <Label fx:id="textEstadoLogin" layoutX="690.0" layoutY="27.0" prefHeight="30.0" prefWidth="81.0" style="-fx-text-fill: #ffffff;" text="Estado" />
-      <TextField layoutX="153.0" layoutY="109.0" prefHeight="25.0" prefWidth="396.0" style="-fx-background-color: #ffffff;" />
+      <TextField fx:id="textBuscadorProductos" layoutX="153.0" layoutY="109.0" prefHeight="25.0" prefWidth="396.0" style="-fx-background-color: #ffffff;" />
       <Label layoutX="38.0" layoutY="113.0" style="-fx-text-fill: #ffffff;" text="Nombre producto" />
       <Button fx:id="butonAnadirProductosAdmin" layoutX="789.0" layoutY="496.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="81.0" style="-fx-background-radius: 10;" text="Añadir" />
       <Button fx:id="butonAtras" layoutX="590.0" layoutY="537.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="81.0" style="-fx-background-radius: 10;" text="Atrás" />
@@ -58,7 +58,7 @@
             <Font name="Georgia Pro Black" size="30.0" />
          </font>
       </Label>
-      <Button fx:id="butonBorrar" layoutX="590.0" layoutY="496.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="81.0" style="-fx-background-radius: 10;" text="Borrar" />
+      <Button fx:id="butonBorrarProductos" layoutX="590.0" layoutY="496.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="81.0" style="-fx-background-radius: 10;" text="Borrar" />
       <Button fx:id="butonHelp" layoutX="86.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Help" />
    </children>
 </Pane>
