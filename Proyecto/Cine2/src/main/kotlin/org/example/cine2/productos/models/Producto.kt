@@ -1,6 +1,5 @@
 package org.example.cine2.productos.models
 
-import org.example.cine2.productos.dto.json.Categoria
 import java.time.LocalDateTime
 import java.text.NumberFormat
 import java.util.Locale
@@ -9,11 +8,15 @@ data class Producto(
     val id: Long = NEW_PRODUCTO,
     val nombre: String,
     val precio: Double,
-    val categoria: Enum<Categoria>,
+    val categoria: Categoria,
     val imagen: String,
     val createdAt: LocalDateTime = LocalDateTime.now(),
     val updatedAt: LocalDateTime = LocalDateTime.now()
 ) {
+    enum class Categoria {
+        BOTANA, BEBIDA, BEBIDAS, FRUTOS_SECOS
+    }
+
     companion object {
         const val NEW_PRODUCTO = -1L
     }
@@ -31,6 +34,3 @@ data class Producto(
     }
 }
 
-enum class Categoria {
-    BOTANA, BEBIDA, BEBIDAS, FRUTOS_SECOS
-}

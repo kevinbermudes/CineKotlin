@@ -1,6 +1,7 @@
 package org.example.cine2.productos.mappers
 
 
+import database.ProductoEntity
 import org.example.cine2.productos.dto.json.ProductoDto
 import org.example.cine2.productos.models.Producto
 import java.time.LocalDateTime
@@ -10,10 +11,10 @@ fun ProductoDto.toModel(): Producto {
         id = id,
         nombre = nombre,
         precio = precio,
-        categoria = categoria,
+        categoria = Producto.Categoria.valueOf(categoria.toUpperCase()),
         imagen = imagen,
-        createdAt = LocalDateTime.now(),
-        updatedAt = LocalDateTime.now()
+        createdAt = LocalDateTime.parse(createdAt),
+        updatedAt = LocalDateTime.parse(updatedAt)
     )
 }
 
@@ -26,13 +27,28 @@ fun Producto.toDto(): ProductoDto {
         id = id,
         nombre = nombre,
         precio = precio,
-        categoria = categoria,
+        categoria = categoria.name,
         imagen = imagen,
-        createdAt = createdAt,
-        updatedAt = updatedAt
+        createdAt = createdAt.toString(),
+        updatedAt = updatedAt.toString()
     )
 }
 
 fun List<Producto>.toDto(): List<ProductoDto> {
     return this.map { it.toDto() }
+}
+
+fun ProductoEntity.toModel(): Producto {
+    return Producto(
+        id = id,
+        nombre = nombre,
+        precio = precio,
+        categoria = Producto.Categoria.valueOf(categoria.toUpperCase()),
+        imagen = imagen,
+        createdAt = LocalDateTime.parse(created_at),
+        updatedAt = LocalDateTime.parse(updated_at)
+    )
+}
+fun List<ProductoEntity>.toModel(): List<Producto> {
+    return map { it.toModel() }
 }

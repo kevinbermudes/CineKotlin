@@ -2,6 +2,7 @@ package org.example.cine2.database
 
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
 import database.CineQueries
+import database.ProdutosQueries
 import dev.cine2.database.AppDatabase
 import org.example.cine2.config.AppConfig
 import org.lighthousegames.logging.logging
@@ -21,6 +22,16 @@ class SqlDeLightClient(
             AppDatabase(driver)
         }.cineQueries
     }
+    val pruductodbQueries: ProdutosQueries by lazy {
+        JdbcSqliteDriver(appConfig.databaseUrl).let { driver ->
+            // Creamos la base de datos
+            logger.debug { "SqlDeLightClient.init() - Create Schemas" }
+            AppDatabase.Schema.create(driver)
+            AppDatabase(driver)
+        }.produtosQueries
+    }
+
+
 
     init {
         logger.debug { "Inicializando el gestor de Bases de Datos" }
@@ -39,6 +50,10 @@ class SqlDeLightClient(
         logger.debug { "Borrando datos de la base de datos" }
         dbQueries.transaction {
             dbQueries.deleteAll()
+        }
+
+        pruductodbQueries.transaction {
+            pruductodbQueries.deleteAll()
         }
     }
 }

@@ -6,12 +6,8 @@ data class ProductoDto(
     val id: Long,
     val nombre: String,
     val precio: Double,
-    val categoria: Enum<Categoria>,
+    val categoria: String,
     val imagen: String,
-    val createdAt: LocalDateTime,
-    val updatedAt: LocalDateTime
+    val createdAt: String,
+    val updatedAt: String
 )
-
-enum class Categoria {
-    BOTANA, BEBIDA, BEBIDAS, FRUTOS_SECOS
-}
