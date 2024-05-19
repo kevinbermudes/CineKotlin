@@ -3,10 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,7 +14,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="900.0" style="-fx-background-color: #376bb5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -187,32 +184,28 @@
                               <Image url="@../Proyecto/Cine/imagenes/vip.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="42.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <image>
-                              <Image url="@../../../../Downloads/game-icons--screwdriver%20(3).png" />
+                              <Image url="@../Proyecto/Cine/imagenes/Mantenimiento.png" />
                            </image>
                         </ImageView>
                         <Label style="-fx-text-fill: #ffffff;" text="Mantenimiento" textFill="WHITE" GridPane.rowIndex="1" />
                         <Label style="-fx-text-fill: #ffffff;" text="Ocupado" textFill="WHITE" GridPane.rowIndex="2" />
-                        <ImageView fitHeight="41.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <ImageView fitHeight="41.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <image>
-                              <Image url="@../../../../Downloads/flat-color-icons--vip.png" />
+                              <Image url="@../Proyecto/Cine/imagenes/ocupado.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="39.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <ImageView fitHeight="39.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <image>
-                              <Image url="@../../../../Downloads/flat-color-icons--vip%20(2).png" />
+                              <Image url="@../Proyecto/Cine/imagenes/libre.png" />
                            </image>
                         </ImageView>
                         <Label style="-fx-text-fill: #ffffff;" text="Libre" GridPane.rowIndex="3" />
-                        <RadioButton fx:id="radiosButacaEstadoVip" mnemonicParsing="false" GridPane.columnIndex="2">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="radiosButacaEstado" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <RadioButton fx:id="radiosButacaEstadoMantenimiento" mnemonicParsing="false" toggleGroup="$radiosButacaEstado" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <RadioButton fx:id="radiosButacaEstadoOcupado" mnemonicParsing="false" toggleGroup="$radiosButacaEstado" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <RadioButton fx:id="radiosButacaEstadoLibre" mnemonicParsing="false" toggleGroup="$radiosButacaEstado" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <TextField fx:id="cantidadButacasVip" GridPane.columnIndex="2" />
+                        <TextField fx:id="cantidadButacasMantenimiento" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <TextField fx:id="cantidadButacasOcupado" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <TextField fx:id="cantidadButacasLibre" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                   <Label layoutX="60.0" layoutY="7.0" prefHeight="33.0" prefWidth="104.0" style="-fx-text-fill: #ffffff;" text="Editar " textFill="WHITE">
@@ -230,14 +223,14 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="167.0" layoutY="142.0" style="-fx-text-fill: #ffffff;" text="Estado">
+                  <Label layoutX="167.0" layoutY="142.0" style="-fx-text-fill: #ffffff;" text="Total">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
                   <Button fx:id="butonEditarProductos" layoutX="101.0" layoutY="485.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="EditarProductos" />
                   <Button fx:id="butonAtrasButacas" layoutX="14.0" layoutY="485.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Atras" />
-                  <Label layoutX="16.0" layoutY="115.0" style="-fx-text-fill: #ffffff;" text="Estado de la butaca:" />
+                  <Label layoutX="16.0" layoutY="115.0" style="-fx-text-fill: #ffffff;" text="Estado de la butacas:" />
                   <Label layoutX="14.0" layoutY="78.0" style="-fx-text-fill: #ffffff;" text="Coordenada" />
                   <TextField fx:id="textNombreCoordenada" layoutX="94.0" layoutY="74.0" prefHeight="25.0" prefWidth="110.0" />
                   <Button fx:id="butonEditarButaca" layoutX="14.0" layoutY="446.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Editar" />

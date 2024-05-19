@@ -15,7 +15,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="900.0" style="-fx-background-color: #376bb5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="54.0" prefWidth="900.0" style="-fx-background-color: #376bb5;">
@@ -187,19 +186,19 @@
                         </ImageView>
                         <ImageView fitHeight="42.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <image>
-                              <Image url="@../../../../Downloads/game-icons--screwdriver%20(3).png" />
+                              <Image url="@../Proyecto/Cine/imagenes/Mantenimiento.png" />
                            </image>
                         </ImageView>
                         <Label style="-fx-text-fill: #ffffff;" text="Mantenimiento" textFill="WHITE" GridPane.rowIndex="1" />
                         <Label style="-fx-text-fill: #ffffff;" text="Ocupado" textFill="WHITE" GridPane.rowIndex="2" />
                         <ImageView fitHeight="41.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <image>
-                              <Image url="@../../../../Downloads/flat-color-icons--vip.png" />
+                              <Image url="@../Proyecto/Cine/imagenes/ocupado.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="39.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <image>
-                              <Image url="@../../../../Downloads/flat-color-icons--vip%20(2).png" />
+                              <Image url="@../Proyecto/Cine/imagenes/libre.png" />
                            </image>
                         </ImageView>
                         <Label style="-fx-text-fill: #ffffff;" text="Libre" GridPane.rowIndex="3" />
