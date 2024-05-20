@@ -125,6 +125,7 @@ class ProductosViewUsuariosController {
         viewModel.updateProductoSeleccionado(new)
     }
 
+    //Faltan los eventos para los botones, añadir en ProductosViewModel
     private fun onAtrasAction() {
         logger.debug { "onAtrasAction" }
     }
