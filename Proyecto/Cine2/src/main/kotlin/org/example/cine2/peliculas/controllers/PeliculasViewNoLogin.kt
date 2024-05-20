@@ -4,6 +4,7 @@ import javafx.fxml.FXML
 import javafx.scene.control.*
 import javafx.scene.image.ImageView
 import javafx.scene.layout.GridPane
+import org.example.cine2.peliculas.models.Pelicula
 import org.koin.core.component.KoinComponent
 import org.lighthousegames.logging.logging
 
@@ -39,19 +40,19 @@ class PeliculasViewNoLogin : KoinComponent {
 
     // Tabla
     @FXML
-    private lateinit var TablaPeliculas: TableView<Any>  // Reemplaza 'Any' con tu modelo de datos
+    private lateinit var TablaPeliculas: TableView<Pelicula>  // Reemplaza 'Any' con tu modelo de datos
 
     @FXML
-    private lateinit var tableColumnId: TableColumn<Any, String>
+    private lateinit var tableColumnId: TableColumn<Pelicula, String>
 
     @FXML
-    private lateinit var tableColumnNombre: TableColumn<Any, String>
+    private lateinit var tableColumnNombre: TableColumn<Pelicula, String>
 
     @FXML
-    private lateinit var tableColumnDuracion: TableColumn<Any, String>
+    private lateinit var tableColumnDuracion: TableColumn<Pelicula, String>
 
     @FXML
-    private lateinit var tableColumnFecha: TableColumn<Any, String>
+    private lateinit var tableColumnFecha: TableColumn<Pelicula, String>
 
     // Imagen
     @FXML

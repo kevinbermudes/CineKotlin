@@ -10,6 +10,7 @@ data class PeliculaDto(
     val fechaEstreno: String,
     val descripcion: String,
     val categoria: String,
+    val image: String,
     val createdAt: String,
     val updatedAt: String
 )
