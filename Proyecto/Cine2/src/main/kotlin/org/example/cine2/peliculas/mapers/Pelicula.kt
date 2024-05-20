@@ -10,14 +10,15 @@ import java.time.LocalDateTime
 
 fun PeliculaDto.toModel(): Pelicula {
     return Pelicula(
-        id = id,
-        nombre = nombre,
-        duracion = duracion,
-        fechaEstreno = LocalDate.parse(fechaEstreno),
-        descripcion = descripcion,
-        categoria = Pelicula.Categoria.valueOf(categoria.toUpperCase()),
-        createdAt = LocalDateTime.parse(createdAt),
-        updatedAt = LocalDateTime.parse(updatedAt)
+        id,
+        nombre,
+       duracion,
+       LocalDate.parse(fechaEstreno),
+        descripcion,
+        Pelicula.Categoria.valueOf(categoria.toUpperCase()),
+        image,
+        LocalDateTime.parse(createdAt),
+       LocalDateTime.parse(updatedAt)
     )
 }
 
@@ -34,6 +35,7 @@ fun Pelicula.toDto(): PeliculaDto {
         fechaEstreno = fechaEstreno.toString(),
         descripcion = descripcion,
         categoria = categoria.name,
+        image = imagen,
         createdAt = createdAt.toString(),
         updatedAt = updatedAt.toString()
     )
@@ -52,6 +54,7 @@ fun PeliculaEntity.toModel(): Pelicula {
         fechaEstreno = LocalDate.parse(fechaEstreno),
         descripcion = descripcion,
         categoria = Pelicula.Categoria.valueOf(categoria.toUpperCase()),
+        imagen = "sin-imagen.png",
         createdAt = LocalDateTime.parse(created_at),
         updatedAt = LocalDateTime.parse(updated_at)
     )
@@ -66,6 +69,7 @@ fun Pelicula.toEntity(): PeliculaEntity {
         fechaEstreno = fechaEstreno.toString(),
         descripcion = descripcion,
         categoria = categoria.name,
+        image = imagen,
         created_at = createdAt.toString(),
         updated_at = updatedAt.toString()
     )

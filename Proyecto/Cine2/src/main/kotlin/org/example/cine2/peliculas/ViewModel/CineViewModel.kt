@@ -11,6 +11,7 @@ import java.io.File
 import com.github.michaelbull.result.*
 import javafx.scene.image.Image
 import org.example.cine2.peliculas.mapers.toModel
+import org.example.cine2.peliculas.validadores.validate
 import org.example.cine2.route.RoutesManager
 import java.time.LocalDate
 
@@ -121,6 +122,9 @@ class CineViewModel(
             }
         }
     }
+    enum class TipoImagen(val value: String) {
+        SIN_IMAGEN("sin-imagen.png"), EMPTY("")
+    }
 
     // Edita una película en el estado y repositorio
     fun editarPelicula(): Result<Pelicula, PeliculaError> {
@@ -129,7 +133,7 @@ class CineViewModel(
         var updatedPelicula = state.value.pelicula.toModel()
         return updatedPelicula.validate().andThen {
             updatedPeliculaTemp.fileImage?.let { newFileImage ->
-                if (updatedPelicula.imagen == Pelicula.SIN_IMAGEN || updatedPelicula.imagen == Pelicula.EMPTY_IMAGEN) {
+                if (updatedPelicula.imagen == TipoImagen.SIN_IMAGEN.value || updatedPelicula.imagen == TipoImagen.EMPTY.value) {
                     storage.saveImage(newFileImage).onSuccess {
                         updatedPelicula = updatedPelicula.copy(imagen = it.name)
                     }
@@ -155,7 +159,7 @@ class CineViewModel(
         val myId = pelicula.id.toLong()
 
         pelicula.fileImage?.let {
-            if (it.name != Pelicula.SIN_IMAGEN) {
+            if (it.name != TipoImagen.SIN_IMAGEN.value) {
                 storage.deleteImage(it)
             }
         }
