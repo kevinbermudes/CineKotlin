@@ -7,9 +7,9 @@ import org.lighthousegames.logging.logging
 private val logger = logging()
 class ProductosViewModel( private val service:ProductosService, private val storage:ProductosStorage) {
    //Creamos el estado del viewmodel
-   private val state = ProductosState()
+//   private val state = ProductosState()
 }
 
-data class ProductosState {
-val
-}
+//data class ProductosState {
+//val
+//}
