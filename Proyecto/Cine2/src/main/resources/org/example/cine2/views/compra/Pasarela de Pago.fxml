@@ -16,7 +16,7 @@
    <children>
       <ImageView fitHeight="150.0" fitWidth="193.0" layoutX="541.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Proyecto/Cine/imagenes/vista.png" />
+            <Image url="@../../../imagenes/vista.png" />
          </image>
       </ImageView>
       <Line endX="-100.00003051757812" endY="-555.7999877929688" layoutX="438.0" layoutY="579.0" startX="-100.0" />
