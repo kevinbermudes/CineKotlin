@@ -1,6 +1,7 @@
 package org.example.cine2.peliculas.mapers
 
 import database.PeliculaEntity
+import org.example.cine2.peliculas.ViewModel.CineViewModel.PeliculaFormState
 import org.example.cine2.peliculas.dto.PeliculaDto
 import org.example.cine2.peliculas.models.Pelicula
 import java.time.LocalDate
@@ -76,4 +77,18 @@ fun List<PeliculaEntity>.toModel(): List<Pelicula> {
 
 fun List<Pelicula>.toEntity(): List<PeliculaEntity> {
     return map { it.toEntity() }
+}
+
+fun PeliculaFormState.toModel(): Pelicula {
+    return Pelicula(
+        id = if (id.trim().isBlank()) Pelicula.NEW_PELICULA else id.toLong(),
+        nombre = nombre.trim(),
+        duracion = duracion.trim(),
+        fechaEstreno = fechaEstreno,
+        descripcion = descripcion.trim(),
+        categoria = categoria,
+        imagen = fileImage?.name ?: "sin-imagen.png",
+        createdAt = LocalDate.now().atStartOfDay(),
+        updatedAt = LocalDate.now().atStartOfDay()
+    )
 }
