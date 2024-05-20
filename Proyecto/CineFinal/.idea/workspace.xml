@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="eeb798d3-31d5-4c2d-8290-587982720eac" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Cine2/src/main/kotlin/org/example/cine2/di/AppModule.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/database/cine.sq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/database/produtos.sq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/CineApplication.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/config/AppConfig.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/database/SqlDeLightClient.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/di/AppModule.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/peliculas/ViewModel/CineViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/peliculas/controllers/PeliculasViewNoLogin.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/peliculas/controllers/hola" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/peliculas/dto/PeliculaDto.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/peliculas/errors/PeliculaError.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/peliculas/errors/hola2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/peliculas/mapers/Pelicula.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/peliculas/models/Pelicula.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/peliculas/repositories/PeliculasRepository.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/peliculas/repositories/PeliculasRepositoryImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/peliculas/service/cache/PeliculasCache.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/peliculas/service/cache/PeliculasCacheImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/peliculas/service/database/PeliculasService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/peliculas/service/database/PeliculasServiceImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/peliculas/service/storage/PeliculaStorageImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/peliculas/service/storage/PeliculaStorageZipImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/peliculas/service/storage/PeliculasStorage.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/peliculas/service/storage/PeliculasStorageImages.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/peliculas/service/storage/PeliculasStorageJson.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/peliculas/service/storage/PeliculasStorageZip.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/peliculas/validadores/PeliculasValidator.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/controllers/ProductosDetallesViewController.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/controllers/ProductosViewAdminController.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/controllers/ProductosViewUsuariosController.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/dto/json/data.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/errors/ProductoError.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/hola.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/mappers/Producto.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/models/Producto.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/repositories/ProductosRepository.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/repositories/ProductosRepositoryImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/services/cache/ProductosCache.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/services/cache/ProductosCacheImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/services/database/ProductosService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/services/database/ProductosServiceImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/services/storage/ProductosStorage.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/services/storage/ProductosStorageImages.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/services/storage/ProductosStorageImagesImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/services/storage/ProductosStorageImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/services/storage/ProductosStorageJson.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/services/storage/ProductosStorageJsonImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/services/storage/ProductosStorageZip.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/services/storage/ProductosStorageZipImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/productos/validators/ProductosValidator.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/cinefinal/route/RoutesManager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cinefinal/ButacasAdmin.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cinefinal/Butas_Usuario.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cinefinal/CineApplication.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cinefinal/CrearPelicula.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cinefinal/EditPelicula.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cinefinal/IndezLogin.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cinefinal/IndezLoginAdmin.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cinefinal/IndezSinLogin.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cinefinal/Login.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cinefinal/Pasarela de Pago.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cinefinal/ProductosAdmin.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cinefinal/ProductosEditar.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cinefinal/ProductosNuevo.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cinefinal/ProductosUsuarios.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cinefinal/RecaudacionCine.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cinefinal/Ticket de Compra.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cinefinal/VentanaEditButaca.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cinefinal/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cinefinal/butaca.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cine2/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Cine2/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cine2/.idea/sonarlint/issuestore/a/9/a90b3d048b0cb766e0302d06905d070e174a85c1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cine2/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../Cine2/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cine2/.idea/sonarlint/securityhotspotstore/a/9/a90b3d048b0cb766e0302d06905d070e174a85c1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cine2/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../Cine2/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cine2/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Cine2/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cine2/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Cine2/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cine2/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cine2/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cine2/src/main/kotlin/org/example/cine2/HelloApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Cine2/src/main/kotlin/org/example/cine2/CineApplication.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cine2/src/main/kotlin/org/example/cine2/peliculas/controllers/PeliculasViewNoLogin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Cine2/src/main/kotlin/org/example/cine2/peliculas/controllers/PeliculasViewNoLogin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cine2/src/main/kotlin/org/example/cine2/peliculas/mapers/Pelicula.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Cine2/src/main/kotlin/org/example/cine2/peliculas/mapers/Pelicula.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cine2/src/main/kotlin/org/example/cine2/peliculas/repositories/PeliculasRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Cine2/src/main/kotlin/org/example/cine2/peliculas/repositories/PeliculasRepositoryImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cine2/src/main/kotlin/org/example/cine2/productos/mappers/Producto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Cine2/src/main/kotlin/org/example/cine2/productos/mappers/Producto.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cine2/src/main/kotlin/org/example/cine2/productos/repositories/ProductosRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Cine2/src/main/kotlin/org/example/cine2/productos/repositories/ProductosRepositoryImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cine2/src/main/kotlin/org/example/cine2/productos/services/storage/ProductosStorageJsonImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Cine2/src/main/kotlin/org/example/cine2/productos/services/storage/ProductosStorageJsonImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cine2/src/main/sqldelight/database/cine.sq" beforeDir="false" afterPath="$PROJECT_DIR$/../Cine2/src/main/sqldelight/database/cine.sq" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\Program Files\php-8.3.2-nts-Win32-vs16-x64\php.exe" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2gkPMHjXFoaJvuhVKzuaRbFKTbi" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.laravel-idea.search-composer-json": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "develop",
+    "last_opened_file_path": "C:/Users/kevin/Desktop/Trabajo_Kotlin/TrabajoKotlin/Proyecto/CineFinal/src/main/kotlin/com/example/cinefinal",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "rearrange.code.on.save": "true",
+    "settings.editor.selected.configurable": "actions.on.save",
+    "stored_options": "{\"dialectConnections\":{\"app.cash.sqldelight.dialects.sqlite_3_18.SqliteDialect\":{\"orderedOptions\":[],\"serializedProperties\":{}}}}",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kevin\Desktop\Trabajo_Kotlin\TrabajoKotlin\Proyecto\CineFinal\src\main\kotlin\com\example\cinefinal" />
+      <recent name="C:\Users\kevin\Desktop\Trabajo_Kotlin\TrabajoKotlin\Proyecto\CineFinal\src\main\resources\com\example\cinefinal" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="CineFinal [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.CineFinal [build]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eeb798d3-31d5-4c2d-8290-587982720eac" name="Changes" comment="" />
+      <created>1716238560013</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716238560013</updated>
+      <workItem from="1716238561612" duration="1567000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
