@@ -2,16 +2,30 @@ package org.example.cine2.productos.controllers
 
 import javafx.fxml.FXML
 import javafx.scene.control.*
+import javafx.scene.control.cell.PropertyValueFactory
 import javafx.scene.image.ImageView
 import org.example.cine2.productos.models.Producto
+import org.example.cine2.productos.viewmodels.ProductosViewModel
+import org.lighthousegames.logging.logging
 
+private val logger = logging()
 
 class ProductosViewUsuariosController {
+    //Inyectamos nuestro ViewModel
+    val viewModel: ProductosViewModel by inject()
+    //Botones
     @FXML
     private lateinit var butonHelp: Button
-
+    @FXML
+    private lateinit var butonAnadirProductos: Button
+    @FXML
+    private lateinit var butonAtras: Button
+    @FXML
+    private lateinit var butonComprarProductosLogin: Button
     @FXML
     private lateinit var butonCerrarSesion: Button
+
+    //Tablas
 
     @FXML
     private lateinit var tableProductos: TableView<Producto>
@@ -28,11 +42,9 @@ class ProductosViewUsuariosController {
     @FXML
     private lateinit var tableColumnCategoria: TableColumn<Producto, Producto.Categoria>
 
+    //Formularios
     @FXML
     private lateinit var imagenProductos: ImageView
-
-    @FXML
-    private lateinit var butonComprarProductosLogin: Button
 
     @FXML
     private lateinit var textoNombreProducto: TextField
@@ -42,73 +54,95 @@ class ProductosViewUsuariosController {
 
     @FXML
     private lateinit var textoPrecioProducto: TextField
+    //Estado si logeado o no
     @FXML
     private lateinit var textEstadoLogin: Label
-
+    //Buscador
     @FXML
     private lateinit var textBuscadorProductos: TextField
 
-    @FXML
-    private lateinit var butonAnadirProductos: Button
 
-    @FXML
-    private lateinit var butonAtras: Button
 
     // Inicialización del controlador
     @FXML
     private fun initialize() {
-        // Aquí puedes agregar código para inicializar el controlador, si es necesario
+       logger.debug { "Inicializando ProductosViewModel" }
+
+        //Iniciamos los datos de los productos
+        loadBindings()
+
+        //Iniciamos los eventos
+        loadEventos()
     }
 
-    // Métodos de manejo de eventos
-    @FXML
-    private fun handleHelpButtonAction() {
-        // Código para manejar la acción del botón Help
+    private fun loadBindings() {
+        logger.debug { "Cargando bindings/datos" }
+
+        //Tablas
+        tableProductos.items= viewModel.state.productos
+        //Celdas
+        tableColumnIdProducto.cellValueFactory= PropertyValueFactory("id")
+        tableColumnNombreProducto.cellValueFactory= PropertyValueFactory("nombre")
+        tableColumnPrecio.cellValueFactory= PropertyValueFactory("precio")
+        tableColumnCategoria.cellValueFactory= PropertyValueFactory("categoria")
+
+        //Formularios
+        imagenProductos.imageProperty().bind(viewModel.state.productoSeleccionado.imagen)
+        textoNombreProducto.textProperty().bind(viewModel.state.productoSeleccionado.nombre)
+        textoCategoriaProducto.textProperty().bind(viewModel.state.productoSeleccionado.categoria)
+        textoPrecioProducto.textProperty().bind(viewModel.state.productoSeleccionado.precio)
     }
 
-    @FXML
-    private fun handleCerrarSesionButtonAction() {
-        // Código para manejar la acción del botón Cerrar Sesión
+    private fun loadEventos() {
+        logger.debug { "Cargando eventos" }
+        //Botones
+        butonAnadirProductos.setOnAction { onNuevoAction () }
+        butonAtras.setOnAction { onAtrasAction () }
+        butonComprarProductosLogin.setOnAction { onComprarAction () }
+        butonHelp.setOnAction { onHelpAction () }
+        butonCerrarSesion.setOnAction { onCerrarSesionAction () }
+
+        //Tablas
+        tableProductos.selectionModel.selectedItemProperty().addListener { _, _, newValue ->
+            newValue?.let { onTablaSeleccionado(it) }
+        }
+        //Buscador
+        textBuscadorProductos.setOnKeyReleased { newValue ->
+            newValue?.let { onBuscaadorSeleccionado() }
+        }
+    }  private fun onBuscaadorSeleccionado() {
+        logger.debug { "onBuscaadorSeleccionado" }
+        filterDataTable()
+    }
+    private fun filterDataTable() {
+        logger.debug { "filterDataTable" }
+        // filtramos por el tipo seleccionado en la tabla
+        tableProductos.items = viewModel.productosFilteredList(textBuscadorProductos.text.trim())
     }
 
-    @FXML
-    private fun handleComprarProductosLoginButtonAction() {
-        // Código para manejar la acción del botón Comprar
+    private fun onTablaSeleccionado(new: Producto) {
+        logger.debug { "onTablaSeleccionado" }
+        viewModel.updateProductoSeleccionado(new)
     }
 
-    @FXML
-    private fun handleAnadirProductosButtonAction() {
-        // Código para manejar la acción del botón Añadir
+    private fun onAtrasAction() {
+        logger.debug { "onAtrasAction" }
     }
 
-    @FXML
-    private fun handleAtrasButtonAction() {
-        // Código para manejar la acción del botón Atrás
+    private fun onComprarAction() {
+        logger.debug { "onComprarAction" }
     }
 
-    // Otros métodos que podrías necesitar
-    @FXML
-    private fun handleTableProductosSelection() {
-        // Código para manejar la selección de productos en la tabla
+    private fun onHelpAction() {
+        logger.debug { "onHelpAction" }
     }
 
-    @FXML
-    private fun handleTextBuscadorProductosAction() {
-        // Código para manejar la acción del campo de texto de búsqueda
+    private fun onNuevoAction() {
+        logger.debug { "onNuevoAction" }
     }
 
-    @FXML
-    private fun handleTextNombreProductoChange() {
-        // Código para manejar cambios en el campo de texto Nombre Producto
+    private fun onCerrarSesionAction() {
+        logger.debug { "onCerrarSesionAction" }
     }
 
-    @FXML
-    private fun handleTextCategoriaProductoChange() {
-        // Código para manejar cambios en el campo de texto Categoría Producto
-    }
-
-    @FXML
-    private fun handleTextPrecioProductoChange() {
-        // Código para manejar cambios en el campo de texto Precio Producto
-    }
 }
