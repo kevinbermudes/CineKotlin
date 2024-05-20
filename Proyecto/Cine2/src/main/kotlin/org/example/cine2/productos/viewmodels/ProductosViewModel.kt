@@ -267,7 +267,7 @@ class ProductosViewModel(
                 id = id.value.toLong(),
                 nombre = nombre.value,
                 precio = precio.value.toDouble(),
-                categoria = Producto.Categoria.valueOf(categoria.value.toUpperCase()),
+                categoria = Producto.Categoria.valueOf(categoria.value.uppercase()),
                 imagen = imagen.value.url,
                 createdAt = LocalDateTime.parse(createdAt.value),
                 updatedAt = LocalDateTime.parse(updatedAt.value)

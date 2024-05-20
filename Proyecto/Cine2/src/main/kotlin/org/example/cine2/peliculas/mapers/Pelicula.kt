@@ -7,22 +7,22 @@ import org.example.cine2.peliculas.models.Pelicula
 import java.time.LocalDate
 import java.time.LocalDateTime
 
-
+// Extension functions to convert DTO to Model
 fun PeliculaDto.toModel(): Pelicula {
     return Pelicula(
         id,
         nombre,
-       duracion,
-       LocalDate.parse(fechaEstreno),
+        duracion,
+        LocalDate.parse(fechaEstreno),
         descripcion,
-        Pelicula.Categoria.valueOf(categoria.toUpperCase()),
+        Pelicula.Categoria.valueOf(categoria.uppercase()),
         image,
         LocalDateTime.parse(createdAt),
-       LocalDateTime.parse(updatedAt)
+        LocalDateTime.parse(updatedAt)
     )
 }
 
-fun List<PeliculaDto>.toModel(): List<Pelicula> {
+fun List<PeliculaDto>.toModelFromDtoList(): List<Pelicula> {
     return map { it.toModel() }
 }
 
@@ -41,7 +41,7 @@ fun Pelicula.toDto(): PeliculaDto {
     )
 }
 
-fun List<Pelicula>.toDto(): List<PeliculaDto> {
+fun List<Pelicula>.toDtoList(): List<PeliculaDto> {
     return map { it.toDto() }
 }
 
@@ -53,11 +53,15 @@ fun PeliculaEntity.toModel(): Pelicula {
         duracion = duracion,
         fechaEstreno = LocalDate.parse(fechaEstreno),
         descripcion = descripcion,
-        categoria = Pelicula.Categoria.valueOf(categoria.toUpperCase()),
+        categoria = Pelicula.Categoria.valueOf(categoria.uppercase()),
         imagen = "sin-imagen.png",
         createdAt = LocalDateTime.parse(created_at),
         updatedAt = LocalDateTime.parse(updated_at)
     )
+}
+
+fun List<PeliculaEntity>.toModelFromEntityList(): List<Pelicula> {
+    return map { it.toModel() }
 }
 
 // Extension functions to convert Model to Entity
@@ -75,11 +79,7 @@ fun Pelicula.toEntity(): PeliculaEntity {
     )
 }
 
-fun List<PeliculaEntity>.toModel(): List<Pelicula> {
-    return map { it.toModel() }
-}
-
-fun List<Pelicula>.toEntity(): List<PeliculaEntity> {
+fun List<Pelicula>.toEntityList(): List<PeliculaEntity> {
     return map { it.toEntity() }
 }
 
