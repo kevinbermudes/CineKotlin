@@ -4,7 +4,6 @@ import javafx.fxml.FXML
 import javafx.scene.control.*
 import javafx.scene.control.cell.PropertyValueFactory
 import javafx.scene.image.ImageView
-import org.example.cine2.productos.models.Categoria
 import org.example.cine2.productos.models.Producto
 
 class ProductosViewAdminController {
@@ -27,7 +26,7 @@ class ProductosViewAdminController {
     private lateinit var tableColumnPrecio: TableColumn<Producto, Double>
 
     @FXML
-    private lateinit var tableColumnCategoria: TableColumn<Producto, Enum<Categoria>>
+    private lateinit var tableColumnCategoria: TableColumn<Producto, String>
 
     @FXML
     private lateinit var imagenProductos: ImageView

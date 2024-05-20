@@ -10,20 +10,18 @@ import java.nio.file.Files
 import java.nio.file.Paths
 private val logger = logging()
 class ProductosStorageImpl(
-    private val appConfig: AppConfig,
+        private val appConfig: AppConfig,
     private val storageJson: ProductosStorageJson,
     private val storageZip: ProductosStorageZip,
-    private val storageImage: ProductosStorageImages){
+    private val storageImage: ProductosStorageImages): ProductosStorage{
     init {
-        // Creamos el directorio de imagenes si no existe
         logger.debug { "Creando directorio de imagenes si no existe" }
         Files.createDirectories(Paths.get(appConfig.imagesDirectory))
     }
 
-    override fun storeDataJson(file: File, data: List<Producto>): Result<Long, ProductoError> {
+   override fun storeDataJson(file: File, data: List<Producto>): Result<Long, ProductoError> {
         logger.debug { "Guardando datos en fichero $file" }
         return storageJson.storeDataJson(file, data)
-
     }
 
     override fun loadDataJson(file: File): Result<List<Producto>, ProductoError> {

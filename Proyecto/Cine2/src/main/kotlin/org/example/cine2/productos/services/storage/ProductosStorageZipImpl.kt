@@ -42,7 +42,7 @@ class ProductosStorageZipImpl (private val appConfig: AppConfig, private val sto
             // Listamos por consola el contenido del directorio temporal
             Files.walk(tempDir).forEach { logger.debug { it } }
             // Eliminamos el directorio temporal al terminar
-            // comprimimos
+            //Y comprimimos el directorio temporal en un fichero .zip
             val archivos = Files.walk(tempDir)
                 .filter { Files.isRegularFile(it) }
                 .toList()
@@ -81,7 +81,8 @@ class ProductosStorageZipImpl (private val appConfig: AppConfig, private val sto
             }
             // Listamos por consola el contenido del directorio temporal
             Files.walk(tempDir).forEach {
-                // copiamos todas las imagenes, es decir, todo lo que no es .json al directorio de imagenes
+                // Y copiamos las imagenes al directorio de imagenes
+                logger.debug { it }
                 if (!it.toString().endsWith(".json") && Files.isRegularFile(it)) {
                     Files.copy(
                         it,
