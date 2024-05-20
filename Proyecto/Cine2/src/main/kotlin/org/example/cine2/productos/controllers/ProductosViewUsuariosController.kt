@@ -3,56 +3,56 @@ package org.example.cine2.productos.controllers
 import javafx.fxml.FXML
 import javafx.scene.control.*
 import javafx.scene.image.ImageView
+import org.example.cine2.productos.models.Producto
 
 
 class ProductosViewUsuariosController {
     @FXML
-    private val butonHelp: Button? = null
+    private lateinit var butonHelp: Button
 
     @FXML
-    private val butonCerrarSesion: Button? = null
+    private lateinit var butonCerrarSesion: Button
 
     @FXML
-    private val tableProductos: TableView<*>? = null
+    private lateinit var tableProductos: TableView<Producto>
 
     @FXML
-    private val tableColumnIdProducto: TableColumn<*, *>? = null
+    private lateinit var tableColumnIdProducto: TableColumn<Producto, Long>
 
     @FXML
-    private val tableColumnNombreProducto: TableColumn<*, *>? = null
+    private lateinit var tableColumnNombreProducto: TableColumn<Producto, String>
 
     @FXML
-    private val tableColumnPrecio: TableColumn<*, *>? = null
+    private lateinit var tableColumnPrecio: TableColumn<Producto, Double>
 
     @FXML
-    private val tableColumnCategoria: TableColumn<*, *>? = null
+    private lateinit var tableColumnCategoria: TableColumn<Producto, Producto.Categoria>
 
     @FXML
-    private val imagenProductos: ImageView? = null
+    private lateinit var imagenProductos: ImageView
 
     @FXML
-    private val butonComprarProductosLogin: Button? = null
+    private lateinit var butonComprarProductosLogin: Button
 
     @FXML
-    private val textoNombreProducto: TextField? = null
+    private lateinit var textoNombreProducto: TextField
 
     @FXML
-    private val textoCategoriaProducto: TextField? = null
+    private lateinit var textoCategoriaProducto: TextField
 
     @FXML
-    private val textoPrecioProducto: TextField? = null
+    private lateinit var textoPrecioProducto: TextField
+    @FXML
+    private lateinit var textEstadoLogin: Label
 
     @FXML
-    private val textEstadoLogin: Label? = null
+    private lateinit var textBuscadorProductos: TextField
 
     @FXML
-    private val textBuscadorProductos: TextField? = null
+    private lateinit var butonAnadirProductos: Button
 
     @FXML
-    private val butonAnadirProductos: Button? = null
-
-    @FXML
-    private val butonAtras: Button? = null
+    private lateinit var butonAtras: Button
 
     // Inicialización del controlador
     @FXML

@@ -26,7 +26,7 @@ class ProductosViewAdminController {
     private lateinit var tableColumnPrecio: TableColumn<Producto, Double>
 
     @FXML
-    private lateinit var tableColumnCategoria: TableColumn<Producto, String>
+    private lateinit var tableColumnCategoria: TableColumn<Producto, Producto.Categoria>
 
     @FXML
     private lateinit var imagenProductos: ImageView

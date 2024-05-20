@@ -1,67 +1,153 @@
 package org.example.cine2.productos.controllers
-
+import com.github.michaelbull.result.*
 import javafx.fxml.FXML
+import javafx.scene.control.Alert
+import javafx.scene.control.Alert.AlertType
+import org.example.cine2.productos.viewmodels.ProductosViewModel.TipoOperacion.NUEVO
+import org.example.cine2.productos.viewmodels.ProductosViewModel.TipoOperacion.EDITAR
 import javafx.scene.control.Button
 import javafx.scene.control.TextField
 import javafx.scene.image.ImageView
+import javafx.stage.FileChooser
+import org.example.cine2.productos.errors.ProductoError
+import org.example.cine2.productos.viewmodels.ProductosViewModel
+import org.example.cine2.route.RoutesManager
+import org.koin.core.component.inject
+import org.lighthousegames.logging.logging
 
+private val logger = logging()
 
 class ProductosDetallesViewController {
+    val viewModel : ProductosViewModel by inject()
+
+    //Imagenes
     @FXML
-    private val imagenProductoEditar: ImageView? = null
+    private lateinit var imagenProductoEditar: ImageView
+    //Formulario/Textos
+    @FXML
+    private lateinit var textoNombreProducto: TextField
 
     @FXML
-    private val textoNombreProducto: TextField? = null
+    private lateinit var textoCategoriaProducto: TextField
 
     @FXML
-    private val textoCategoriaProducto: TextField? = null
+    private lateinit var textoPrecioProducto: TextField
+
+    //Botones
 
     @FXML
-    private val textoPrecioProducto: TextField? = null
+    private lateinit var butonGuardarEdicionProducto: Button
 
     @FXML
-    private val butonGuardarEdicionProducto: Button? = null
+    private lateinit var butonLimpiarProductos: Button
 
     @FXML
-    private val butonLimpiarProductos: Button? = null
-
-    @FXML
-    private val butonCancelarProductos1: Button? = null
+    private lateinit var butonCancelarProductos1: Button
 
     // Inicialización del controlador
     @FXML
     private fun initialize() {
-        // Aquí puedes agregar código para inicializar el controlador, si es necesario
+       logger.debug { "Iniciando el controlador DetalleProductos" }
+        //Iniciamos los bindings
+        initBindings()
+        //Iniciamos los eventos
+        initEvents()
+    }
+    private fun initEvents() {
+      butonGuardarEdicionProducto.setOnAction {
+          onGuardarAction()
+      }
+        butonLimpiarProductos.setOnAction {
+            onLimpiarAction()
+        }
+        butonCancelarProductos1.setOnAction {
+            onCancelarAction()
+        }
+        imagenProductoEditar.setOnMouseClicked {
+            onImagenClick()
+        }
     }
 
-    // Métodos de manejo de eventos
-    @FXML
-    private fun handleGuardarEdicionProductoButtonAction() {
-        // Código para manejar la acción del botón Guardar
+    private fun onImagenClick() {
+        logger.debug { "onImagenClick" }
+        FileChooser().run {
+            title = "Elige una imagen para el producto"
+            extensionFilters.addAll(FileChooser.ExtensionFilter("Imagenes", "*.png", "*.jpg", "*.jpeg"))
+            showOpenDialog(RoutesManager.activeStage)
+        }?.let {
+            viewModel.updateImageProductoOperacion(it)
+        }
+    }
+    private fun initBindings() {
+       //Formulario/Textos
+       textoNombreProducto.textProperty().bindBidirectional(viewModel.state.productoOperacion.nombre)
+       textoCategoriaProducto.textProperty().bindBidirectional(viewModel.state.productoOperacion.categoria)
+        imagenProductoEditar.imageProperty().bindBidirectional(viewModel.state.productoOperacion.imagen)
+       textoPrecioProducto.textProperty().bindBidirectional(viewModel.state.productoOperacion.precio)
     }
 
-    @FXML
-    private fun handleLimpiarProductosButtonAction() {
-        // Código para manejar la acción del botón Limpiar
+    private fun onGuardarAction(){
+        logger.debug { "onGuardarActionProductos" }
+        validateForm().andThen {
+            when (viewModel.state.productoOperacion){
+                NUEVO -> {
+                    viewModel.crearProducto()
+                }
+                EDITAR -> {
+                    viewModel.editarProducto()
+                }
+            }
+        }.onSuccess {
+            logger.debug { "Producto guardado" }
+            showAlertOperacion(
+                AlertType.INFORMATION,
+                "Operación exitosa",
+                "Producto guardado correctamente"
+            )
+            cerrarVentana()
+        }.onFailure {
+            logger.error { "Error al guardar el producto: ${it.message}" }
+            showAlertOperacion(
+                AlertType.ERROR,
+                "Operación fallida",
+                "Error al guardar el producto:\n ${it.message}"
+            )
+        }
+    }
+    private fun cerrarVentana() {
+        butonCancelarProductos1.scene.window.hide()
+    }
+    private fun onCancelarAction() {
+        logger.debug { "onCancelarAction" }
+        viewModel.state.productoOperacion.limpiar()
+        cerrarVentana()
     }
 
-    @FXML
-    private fun handleCancelarProductos1ButtonAction() {
-        // Código para manejar la acción del botón Cancelar
+    private fun onLimpiarAction() {
+        logger.debug { "onLimpiarAction" }
+        // Limpiamos el estado actual
+        viewModel.state.productoOperacion.limpiar()
     }
 
-    @FXML
-    private fun handleTextNombreProductoChange() {
-        // Código para manejar cambios en el campo de texto Nombre Producto
-    }
+    private fun validateForm(): Result<ProductosDetallesViewController, ProductoError.ValidationProblem> {
+        logger.debug { "Validando formulario" }
 
-    @FXML
-    private fun handleTextCategoriaProductoChange() {
-        // Código para manejar cambios en el campo de texto Categoría Producto
+        if (textoNombreProducto.text.isNullOrEmpty()) {
+            return Err(ProductoError.ValidationProblem("El nombre no puede estar vacío"))
+        }
+        if (textoPrecioProducto.text.isNullOrEmpty().or(textoPrecioProducto.text == "0.0")) {
+            return Err(ProductoError.ValidationProblem("El precio no puede ser negativo ni vacio"))
+        }
+        return Ok(this)
     }
-
-    @FXML
-    private fun handleTextPrecioProductoChange() {
-        // Código para manejar cambios en el campo de texto Precio Producto
+    private fun showAlertOperacion(
+        alerta: AlertType = AlertType.CONFIRMATION,
+        title: String = "",
+        mensaje: String = ""
+    ) {
+        val alert = Alert(alerta)
+        alert.title = title
+        alert.contentText = mensaje
+        alert.showAndWait()
     }
 }
