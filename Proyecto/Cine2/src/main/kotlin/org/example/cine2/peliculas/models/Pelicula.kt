@@ -10,6 +10,7 @@ data class Pelicula(
     val fechaEstreno: LocalDate,
     val descripcion: String,
     val categoria: Categoria,
+    val imagen: String,
     val createdAt: LocalDateTime = LocalDateTime.now(),
     val updatedAt: LocalDateTime = LocalDateTime.now()
 ) {
