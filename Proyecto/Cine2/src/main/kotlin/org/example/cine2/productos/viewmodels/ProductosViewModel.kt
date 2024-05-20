@@ -1,47 +1,53 @@
 package org.example.cine2.productos.viewmodels
 
-import com.github.michaelbull.result.Err
-import com.github.michaelbull.result.Ok
-import com.github.michaelbull.result.Result
-import com.github.michaelbull.result.onSuccess
-import javafx.beans.property.SimpleBooleanProperty
+
+import com.github.michaelbull.result.*
 import javafx.beans.property.SimpleObjectProperty
 import javafx.beans.property.SimpleStringProperty
 import javafx.collections.FXCollections
 import javafx.collections.ObservableList
 import javafx.collections.transformation.FilteredList
 import javafx.scene.image.Image
+import org.example.cine2.productos.errors.ProductoError
+import org.example.cine2.productos.models.Producto
+import org.example.cine2.productos.models.Producto.Categoria
 import org.example.cine2.productos.services.database.ProductosService
 import org.example.cine2.productos.services.storage.ProductosStorage
+import org.example.cine2.productos.validators.validate
 import org.example.cine2.route.RoutesManager
 import org.lighthousegames.logging.logging
 import java.io.File
-import java.time.LocalDate
+import java.time.LocalDateTime
 import kotlin.properties.Delegates
 
 private val logger = logging()
-class ProductosViewModel( private val service:ProductosService, private val storage:ProductosStorage) {
-   //Creamos el estado del viewmodel
-   val state = ProductosState()
+
+class ProductosViewModel(
+    private val service: ProductosService,
+    private val storage: ProductosStorage
+) {
+
+    // Estado del ViewModel
+    val state = ProductoState()
 
     init {
-        logger.debug { "Inicializando ExpedientesViewModel" }
-        loadAllProductos() // Cargamos los datos del alumnado
-        loadTypes() // Cargamos los tipos de repetidor
+        logger.debug { "Inicializando ProductosViewModel" }
+        loadAllProductos() // Cargamos los datos de los productos
+        loadCategorias() // Cargamos las categorías de productos
     }
 
-    private fun loadTypes() {
-        logger.debug { "Cargando tipos de repetidor" }
-        state.typesRepetidor.clear()
-        state.typesRepetidor.addAll(Categoria.BOTANA.value, Categoria.BEBIDAS.value, Categoria.FRUTOS_SECOS.value)
+    private fun loadCategorias() {
+        logger.debug { "Cargando categorías de productos" }
+        state.categorias.clear()
+        state.categorias.addAll(Categoria.values().map { it.name })
     }
 
     private fun loadAllProductos() {
-        logger.debug { "Cargando alumnos del repositorio" }
+        logger.debug { "Cargando productos del repositorio" }
         service.findAll().onSuccess {
-            logger.debug { "Cargando alumnos del repositorio: ${state.alumnos.size}" }
-            state.alumnos.clear()
-            state.alumnos.addAll(it)
+            logger.debug { "Cargando productos del repositorio: ${state.productos.size}" }
+            state.productos.clear()
+            state.productos.addAll(it)
             updateActualState()
         }
     }
@@ -49,175 +55,144 @@ class ProductosViewModel( private val service:ProductosService, private val stor
     // Actualiza el estado de la aplicación con los datos de ese instante en el estado
     private fun updateActualState() {
         logger.debug { "Actualizando estado de Aplicacion" }
-        state.numAprobados.set(state.alumnos.count { it.isAprobado }.toString())
-        val media = state.alumnos.map { it.calificacion }.average()
-        state.notaMedia.set(if (media.isNaN()) "0.00" else media.round(2).toLocalNumber())
-        state.alumnoSeleccionado.limpiar()
-        state.alumnoOperacion.limpiar()
+        state.productoSeleccionado.limpiar()
+        state.productoOperacion.limpiar()
     }
-    // Filtra la lista de alumnnos en el estado en función del tipo y el nombre completo
-    fun alumnosFilteredList(tipo: String, nombreCompleto: String): FilteredList<Alumno> {
-        logger.debug { "Filtrando lista de Alumnos: $tipo, $nombreCompleto" }
 
-        return state.alumnos
-            .filtered { alumno ->
-                when (tipo) {
-                    Categoria.BOTANA.value -> true
-                    Categoria.BEBIDAS.value -> alumno.repetidor
-                    Categoria.FRUTOS_SECOS.value -> !alumno.repetidor
-                    else -> true
-                }
-            }.filtered { alumno ->
-                alumno.nombreCompleto.contains(nombreCompleto, true)
+    // Filtra la lista de productos en el estado en función de la categoría y el nombre
+    fun productosFilteredList(categoria: String, nombre: String): FilteredList<Producto> {
+        logger.debug { "Filtrando lista de Productos: $categoria, $nombre" }
+
+        return state.productos
+            .filtered { producto ->
+                categoria == "TODAS" || producto.categoria.name == categoria
             }
-
+            .filtered { producto ->
+                producto.nombre.contains(nombre, true)
+            }
     }
 
-    fun saveAlumnadoToJson(file: File): Result<Long, AlumnoError> {
-        logger.debug { "Guardando Alumnado en JSON" }
-        return storage.storeDataJson(file, state.alumnos)
+    fun saveProductosToJson(file: File): Result<Long, ProductoError> {
+        logger.debug { "Guardando Productos en JSON" }
+        return storage.storeDataJson(file, state.productos)
     }
 
-    fun loadAlumnadoFromJson(file: File, withImages: Boolean = false): Result<List<Alumno>, AlumnoError> {
-        logger.debug { "Cargando Alumnado en JSON" }
-        // Borramos todas las imagenes e iniciamos el proceso
+    fun loadProductosFromJson(file: File, withImages: Boolean = false): Result<List<Producto>, ProductoError> {
+        logger.debug { "Cargando Productos en JSON" }
         return storage.deleteAllImages().andThen {
             storage.loadDataJson(file).onSuccess {
                 service.deleteAll() // Borramos todos los datos de la BD
-                // Guardamos los nuevos, pero hay que quitarle el ID, porque trabajamos con el NEW!!
-                service.saveAll(
-                    if (withImages)
-                        it
-                    else
-                        it.map { a -> a.copy(id = Alumno.NEW_ALUMNO, imagen = TipoImagen.SIN_IMAGEN.value) }
-                )
+                service.saveAll(it.map { p -> p.copy(id = Producto.NEW_PRODUCTO, imagen = if (withImages) p.imagen else "") })
                 loadAllProductos() // Actualizamos la lista
             }
         }
     }
 
-    // carga en el estado el alumno seleccionado
-    fun updateAlumnoSeleccionado(alumno: Alumno) {
-        logger.debug { "Actualizando estado de Alumno: $alumno" }
+    // carga en el estado el producto seleccionado
+    fun updateProductoSeleccionado(producto: Producto) {
+        logger.debug { "Actualizando estado de Producto: $producto" }
 
-        state.alumnoSeleccionado.apply {
-            numero.value = alumno.id.toString()
-            apellidos.value = alumno.apellidos
-            nombre.value = alumno.nombre
-            email.value = alumno.email
-            fechaNacimiento.value = alumno.fechaNacimiento
-            calificacion.value = alumno.calificacion.round(2).toLocalNumber()
-            repetidor.value = alumno.repetidor
-            storage.loadImage(alumno.imagen).onSuccess {
+        state.productoSeleccionado.apply {
+            id.value = producto.id.toString()
+            nombre.value = producto.nombre
+            precio.value = producto.precio.toString()
+            categoria.value = producto.categoria.name
+            createdAt.value = producto.createdAt.toString()
+            updatedAt.value = producto.updatedAt.toString()
+            storage.loadImage(producto.imagen).onSuccess {
                 imagen.value = Image(it.absoluteFile.toURI().toString())
                 fileImage = it
             }.onFailure {
                 imagen.value = Image(RoutesManager.getResourceAsStream("images/sin-imagen.png"))
                 fileImage = File(RoutesManager.getResource("images/sin-imagen.png").toURI())
             }
-
         }
     }
 
-    // Crea un nuevo alumno en el estado y repositorio
-    fun crearAlumno(): Result<Alumno, AlumnoError> {
-        logger.debug { "Creando Alumno" }
-        // creamos el alumno
-        val newAlumnoTemp = state.alumnoOperacion.copy()
-        var newAlumno = newAlumnoTemp.toModel().copy(id = Alumno.NEW_ALUMNO)
-        return newAlumno.validate().andThen {
-            // Copiamos la imagen si no es nula
-            newAlumnoTemp.fileImage?.let { newFileImage ->
+    // Crea un nuevo producto en el estado y repositorio
+    fun crearProducto(): Result<Producto, ProductoError> {
+        logger.debug { "Creando Producto" }
+        val newProductoTemp = state.productoOperacion.copy()
+        var newProducto = newProductoTemp.toModel().copy(id = Producto.NEW_PRODUCTO)
+        return newProducto.validate().andThen {
+            newProductoTemp.fileImage?.let { newFileImage ->
                 storage.saveImage(newFileImage).onSuccess {
-                    newAlumno = newAlumno.copy(imagen = it.name)
+                    newProducto = newProducto.copy(imagen = it.name)
                 }
             }
-            // Guardamos el alumno en el repositorio
-            service.save(newAlumno).andThen {
-                state.alumnos.add(it)
+            service.save(newProducto).andThen {
+                state.productos.add(it)
                 updateActualState()
                 Ok(it)
             }
         }
     }
 
-    // Edita un alumno en el estado y repositorio
-    fun editarAlumno(): Result<Alumno, AlumnoError> {
-        logger.debug { "Editando Alumno" }
-        // creamos el alumno
-        val updatedAlumnoTemp = state.alumnoOperacion.copy()
-        val fileNameTemp = state.alumnoSeleccionado.fileImage!!.name // Nombre de la imagen que tiene
-        var updatedAlumno = state.alumnoOperacion.toModel().copy(imagen = fileNameTemp)
-        return updatedAlumno.validate().andThen {
-            // Tenemos dos opciones, que no tuviese imagen o que si la tuviese
-            updatedAlumnoTemp.fileImage?.let { newFileImage ->
-                if (updatedAlumno.imagen == TipoImagen.SIN_IMAGEN.value || updatedAlumno.imagen == TipoImagen.EMPTY.value) {
+    // Edita un producto en el estado y repositorio
+    fun editarProducto(): Result<Producto, ProductoError> {
+        logger.debug { "Editando Producto" }
+        val updatedProductoTemp = state.productoOperacion.copy()
+        val fileNameTemp = state.productoSeleccionado.fileImage!!.name
+        var updatedProducto = state.productoOperacion.toModel().copy(imagen = fileNameTemp)
+        return updatedProducto.validate().andThen {
+            updatedProductoTemp.fileImage?.let { newFileImage ->
+                if (updatedProducto.imagen.isEmpty()) {
                     storage.saveImage(newFileImage).onSuccess {
-                        updatedAlumno = updatedAlumno.copy(imagen = it.name)
+                        updatedProducto = updatedProducto.copy(imagen = it.name)
                     }
                 } else {
                     storage.updateImage(fileNameTemp, newFileImage)
                 }
             }
-            service.save(updatedAlumno).onSuccess {
-                // El alumno ya está en la lista,saber su posición
-                val index = state.alumnos.indexOfFirst { a -> a.id == it.id }
-                UnidirectionalUnidirectional
+            service.save(updatedProducto).onSuccess {
+                val index = state.productos.indexOfFirst { p -> p.id == it.id }
+                if (index != -1) state.productos[index] = it
                 updateActualState()
                 Ok(it)
             }
         }
     }
 
-    // Elimina un alumno en el estado y repositorio
-    fun eliminarAlumno(): Result<Unit, AlumnoError> {
-        logger.debug { "Eliminando Alumno" }
-        // Hay que eliminar su imagen
-        val alumno = state.alumnoSeleccionado.copy()
-        // Para evitar que cambien en la selección!!!
-        val myId = alumno.numero.value.toLong()
+    // Elimina un producto en el estado y repositorio
+    fun eliminarProducto(): Result<Unit, ProductoError> {
+        logger.debug { "Eliminando Producto" }
+        val producto = state.productoSeleccionado.copy()
+        val myId = producto.id.value.toLong()
 
-        alumno.fileImage?.let {
-            if (it.name != TipoImagen.SIN_IMAGEN.value) {
+        producto.fileImage?.let {
+            if (it.name != "sin-imagen.png") {
                 storage.deleteImage(it)
             }
         }
 
-        // Borramos del repositorio
         service.deleteById(myId)
-        // Actualizamos la lista
-        state.alumnos.removeIf { it.id == myId }
+        state.productos.removeIf { it.id == myId }
         updateActualState()
         return Ok(Unit)
     }
 
-    // Actualiza la imagen del alumno en el estado
-    fun updateImageAlumnoOperacion(fileImage: File) {
+    // Actualiza la imagen del producto en el estado
+    fun updateImageProductoOperacion(fileImage: File) {
         logger.debug { "Actualizando imagen: $fileImage" }
-        // Actualizamos la imagen
-        state.alumnoOperacion.imagen.value = Image(fileImage.toURI().toString())
-        // Actualizamos el fichero
-        state.alumnoOperacion.fileImage = fileImage
+        state.productoOperacion.imagen.value = Image(fileImage.toURI().toString())
+        state.productoOperacion.fileImage = fileImage
     }
 
-    fun exportToZip(fileToZip: File): Result<Unit, AlumnoError> {
+    fun exportToZip(fileToZip: File): Result<File, ProductoError> {
         logger.debug { "Exportando a ZIP: $fileToZip" }
-        // recogemos los alumnos del repositorio
-        service.findAll().andThen {
+        return service.findAll().andThen {
             storage.exportToZip(fileToZip, it)
         }.onFailure {
             logger.error { "Error al exportar a ZIP: ${it.message}" }
-            return Err(it)
+            Err(it)
         }
-        return Ok(Unit)
     }
 
-    fun loadAlumnadoFromZip(fileToUnzip: File): Result<List<Alumno>, AlumnoError> {
+    fun loadProductosFromZip(fileToUnzip: File): Result<List<Producto>, ProductoError> {
         logger.debug { "Importando de ZIP: $fileToUnzip" }
-        // recogemos los alumnos del repositorio
         return storage.loadFromZip(fileToUnzip).onSuccess { lista ->
             service.deleteAll().andThen {
-                service.saveAll(lista.map { a -> a.copy(id = Alumno.NEW_ALUMNO) })
+                service.saveAll(lista.map { p -> p.copy(id = Producto.NEW_PRODUCTO) })
             }.onSuccess {
                 loadAllProductos()
             }
@@ -226,78 +201,77 @@ class ProductosViewModel( private val service:ProductosService, private val stor
 
     // Mi estado
     // Enums
-    enum class Categoria(val value: String) {
-        BOTANA("BOTANA"), BEBIDAS("BEBIDAS"), FRUTOS_SECOS("FRUTOS_SECOS")
+    enum class TipoFiltro(val value: String) {
+        TODAS("Todas"), BOTANA("Botana"), BEBIDA("Bebida"), BEBIDAS("Bebidas"), FRUTOS_SECOS("Frutos Secos")
     }
-
     enum class TipoOperacion(val value: String) {
         NUEVO("Nuevo"), EDITAR("Editar")
     }
 
-    enum class TipoImagen(val value: String) {
-        SIN_IMAGEN("sin-imagen.png"), EMPTY("")
-    }
-
     // Clases que representan el estado
-    // Estado del ViewModel y caso de uso de Gestión de Expedientes
-    data class ProductosState(
-        // Los contenedores de colecciones deben ser ObservableList
-        val typesRepetidor: ObservableList<String> = FXCollections.observableArrayList<String>(),
-        val alumnos: ObservableList<Alumno> = FXCollections.observableArrayList<Alumno>(),
+    // Estado del ViewModel y caso de uso de Gestión de Productos
+    data class ProductoState(
+        val categorias: ObservableList<String> = FXCollections.observableArrayList<String>(),
+        val productos: ObservableList<Producto> = FXCollections.observableArrayList<Producto>(),
 
-        // Para las estadisticas
-        val numAprobados: SimpleStringProperty = SimpleStringProperty("0"),
-        val notaMedia: SimpleStringProperty = SimpleStringProperty("0.0"),
-
-        // siempre que cambia el tipo de operacion, se actualiza el alumno
-        val alumnoSeleccionado: AlumnoState = AlumnoState(), // Alumno seleccionado en tabla
-        val alumnoOperacion: AlumnoState = AlumnoState(), // Alumno para operaciones (nuevo y editar)
+        // Estado para estadísticas o detalles
+        val productoSeleccionado: ProductoDetalleState = ProductoDetalleState(),
+        val productoOperacion: ProductoDetalleState = ProductoDetalleState(),
     ) {
-        // Y aquí un observable para la operacion
-        // de esta forma, cuando cambie el tipo de operacion, se actualiza el alumno automaticamente
         var tipoOperacion: TipoOperacion by Delegates.observable(TipoOperacion.NUEVO) { _, _, newValue ->
-            //println("Tipo de Operacion: $newValue")
             if (newValue == TipoOperacion.EDITAR) {
-                logger.debug { "Copiando estado de Alumno Seleccionado a Operacion" }
-
-                alumnoOperacion.numero.value = alumnoSeleccionado.numero.value
-                alumnoOperacion.apellidos.value = alumnoSeleccionado.apellidos.value
-                alumnoOperacion.nombre.value = alumnoSeleccionado.nombre.value
-                alumnoOperacion.email.value = alumnoSeleccionado.email.value
-                alumnoOperacion.fechaNacimiento.value = alumnoSeleccionado.fechaNacimiento.value
-                alumnoOperacion.calificacion.value = alumnoSeleccionado.calificacion.value
-                alumnoOperacion.repetidor.value = alumnoSeleccionado.repetidor.value
-                alumnoOperacion.imagen.value = alumnoSeleccionado.imagen.value
+                logger.debug { "Copiando estado de Producto Seleccionado a Operacion" }
+                productoOperacion.copyFrom(productoSeleccionado)
             } else {
-                logger.debug { "Limpiando estado de Alumno Operacion" }
-                alumnoOperacion.limpiar()
+                logger.debug { "Limpiando estado de Producto Operacion" }
+                productoOperacion.limpiar()
             }
         }
     }
 
-    // Estado para formularios de Alumno (seleccionado y de operaciones)
-    data class AlumnoState(
-        val numero: SimpleStringProperty = SimpleStringProperty(""),
-        val apellidos: SimpleStringProperty = SimpleStringProperty(""),
+    // Estado para formularios de Producto (seleccionado y de operaciones)
+    data class ProductoDetalleState(
+        val id: SimpleStringProperty = SimpleStringProperty(""),
         val nombre: SimpleStringProperty = SimpleStringProperty(""),
-        val email: SimpleStringProperty = SimpleStringProperty(""),
-        val fechaNacimiento: SimpleObjectProperty<LocalDate> = SimpleObjectProperty(LocalDate.now()),
-        val calificacion: SimpleStringProperty = SimpleStringProperty(""),
-        val repetidor: SimpleBooleanProperty = SimpleBooleanProperty(false),
+        val precio: SimpleStringProperty = SimpleStringProperty(""),
+        val categoria: SimpleStringProperty = SimpleStringProperty(""),
+        val createdAt: SimpleStringProperty = SimpleStringProperty(LocalDateTime.now().toString()),
+        val updatedAt: SimpleStringProperty = SimpleStringProperty(LocalDateTime.now().toString()),
         val imagen: SimpleObjectProperty<Image> = SimpleObjectProperty(Image(RoutesManager.getResourceAsStream("images/sin-imagen.png"))),
         var fileImage: File? = null
     ) {
         fun limpiar() {
-            numero.value = ""
-            apellidos.value = ""
+            id.value = ""
             nombre.value = ""
-            email.value = ""
-            fechaNacimiento.value = LocalDate.now()
-            calificacion.value = ""
-            repetidor.value = false
+            precio.value = ""
+            categoria.value = ""
+            createdAt.value = LocalDateTime.now().toString()
+            updatedAt.value = LocalDateTime.now().toString()
             imagen.value = Image(RoutesManager.getResourceAsStream("images/sin-imagen.png"))
             fileImage = null
         }
-    }
 
+        fun copyFrom(other: ProductoDetalleState) {
+            id.value = other.id.value
+            nombre.value = other.nombre.value
+            precio.value = other.precio.value
+            categoria.value = other.categoria.value
+            createdAt.value = other.createdAt.value
+            updatedAt.value = other.updatedAt.value
+            imagen.value = other.imagen.value
+            fileImage = other.fileImage
+        }
+
+        fun toModel():Producto{
+            return Producto(
+                id = id.value.toLong(),
+                nombre = nombre.value,
+                precio = precio.value.toDouble(),
+                categoria = Producto.Categoria.valueOf(categoria.value.toUpperCase()),
+                imagen = imagen.value.url,
+                createdAt = LocalDateTime.parse(createdAt.value),
+                updatedAt = LocalDateTime.parse(updatedAt.value)
+            )
+        }
+    }
 }
