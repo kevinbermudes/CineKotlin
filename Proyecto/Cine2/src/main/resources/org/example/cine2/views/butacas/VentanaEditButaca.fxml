@@ -46,22 +46,22 @@
             <Label style="-fx-text-fill: #ffffff;" text="Libre" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <ImageView fitHeight="62.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <image>
-                  <Image url="@../Proyecto/Cine/imagenes/vip.png" />
+                  <Image url="@../../../imagenes/vip.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="62.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <image>
-                  <Image url="@../Proyecto/Cine/imagenes/Mantenimiento.png" />
+                  <Image url="@../../../imagenes/Mantenimiento.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="60.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <image>
-                  <Image url="@../Proyecto/Cine/imagenes/ocupado.png" />
+                  <Image url="@../../../imagenes/ocupado.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="63.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <image>
-                  <Image url="@../Proyecto/Cine/imagenes/libre.png" />
+                  <Image url="@../../../imagenes/libre.png" />
                </image>
             </ImageView>
             <RadioButton fx:id="radiusEditVip" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="1">

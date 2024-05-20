@@ -33,8 +33,8 @@ object RoutesManager {
 
     // Definimos las rutas de las vistas que tengamos
     enum class View(val fxml: String) {
-        MAIN("org/example/cine2/IndezSinLogin.fxml"),
-        DETAIL("org/example/cine2/EditPelicula.fxml"),
+        MAIN("org/example/cine2/views/peliculas/IndezSinLogin.fxml"),
+        DETAIL("org/example/cine2/views/peliculas/EditPelicula.fxml"),
         ACERCA_DE("org/example/cine2/AcercaDe.fxml"),
 
     }

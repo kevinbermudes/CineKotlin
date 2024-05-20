@@ -14,7 +14,7 @@ data class Producto(
     val updatedAt: LocalDateTime = LocalDateTime.now()
 ) {
     enum class Categoria {
-        BOTANA, BEBIDA, BEBIDAS, FRUTOS_SECOS
+        BOTANA, BEBIDAS, FRUTOS_SECOS
     }
 
     companion object {

@@ -17,7 +17,7 @@
       </Text>
       <ImageView fitHeight="165.0" fitWidth="183.0" layoutX="349.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 50;">
          <image>
-            <Image url="@../Proyecto/Cine/imagenes/Cine.png" />
+            <Image url="@../../../imagenes/Cine.png" />
          </image></ImageView>
       <Text layoutX="275.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #ffffff;" text="Nombre de Usuario:">
          <font>

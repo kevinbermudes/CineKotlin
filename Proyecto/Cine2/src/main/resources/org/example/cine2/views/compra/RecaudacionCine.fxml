@@ -29,7 +29,7 @@
             <Insets left="80.0" />
          </VBox.margin>
          <image>
-            <Image url="@../Proyecto/Cine/imagenes/Cine.png" />
+            <Image url="@../../../imagenes/Cine.png" />
          </image>
       </ImageView>
       <GridPane prefHeight="38.0" prefWidth="331.0">
