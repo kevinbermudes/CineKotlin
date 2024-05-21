@@ -2,6 +2,7 @@ package org.example.cine.di
 
 import org.example.cine.config.AppConfig
 import org.example.cine.database.SqlDeLightClient
+import org.example.cine.peliculas.ViewModel.CineViewModel
 import org.example.cine.peliculas.repositories.PeliculasRepository
 import org.example.cine.peliculas.repositories.PeliculasRepositoryImpl
 import org.example.cine.peliculas.service.cache.PeliculasCache
@@ -22,17 +23,17 @@ val appModule = module {
         bind<PeliculasRepository>()
     }
 
-//    singleOf(::PeliculasStorageJsonImpl) {
-//        bind<PeliculasStorageJson>()
-//    }
+    singleOf(::PeliculasStorageJsonImpl) {
+        bind<PeliculasStorageJson>()
+    }
 
     singleOf(::PeliculasStorageZipImpl) {
         bind<PeliculasStorageZip>()
     }
 
-//    singleOf(::PeliculasStorageImagesImpl) {
-//        bind<PeliculasStorageImages>()
-//    }
+    singleOf(::PeliculasStorageImagesImpl) {
+        bind<PeliculasStorageImages>()
+    }
 
     singleOf(::PeliculasStorageImpl) {
         bind<PeliculasStorage>()
@@ -46,5 +47,7 @@ val appModule = module {
         bind<PeliculasService>()
     }
 
-    //singleOf(::CineViewModel)
+    singleOf(::CineViewModel) {
+        bind<CineViewModel>()
+    }
 }

@@ -34,9 +34,12 @@ class CineViewModel(
     private fun loadAllPeliculas() {
         logger.debug { "Cargando películas del repositorio" }
         service.findAll().onSuccess {
-            logger.debug { "Cargando películas del repositorio: ${it.size}" }
+            logger.debug { "Películas recuperadas: ${it.size}" }
+            it.forEach { pelicula -> logger.debug { "Pelicula: $pelicula" } }
             state.value = state.value.copy(peliculas = it)
             updateActualState()
+        }.onFailure {
+            logger.error { "Error cargando películas: ${it.message}" }
         }
     }
 

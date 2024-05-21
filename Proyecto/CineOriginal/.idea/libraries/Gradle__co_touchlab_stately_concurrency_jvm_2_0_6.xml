@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: co.touchlab:stately-concurrency-jvm:2.0.6" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="co.touchlab" artifactId="stately-concurrency-jvm" version="2.0.6" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/co.touchlab/stately-concurrency-jvm/2.0.6/14dcbce3fc3d80a5a07f9df33dd2dc54e437e8d0/stately-concurrency-jvm-2.0.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/co.touchlab/stately-concurrency-jvm/2.0.6/82b34a58a9de0828950f8923595e09fa7eb43c2b/stately-concurrency-jvm-2.0.6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.vaadin:open:8.5.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="com.vaadin" artifactId="open" version="8.5.0" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.vaadin/open/8.5.0/a39e2f7314ffd92b7ee3db8aa3c871c7b3b2615b/open-8.5.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.vaadin/open/8.5.0/de78cda747a0f2310804cbe833ad6683de40d86c/open-8.5.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

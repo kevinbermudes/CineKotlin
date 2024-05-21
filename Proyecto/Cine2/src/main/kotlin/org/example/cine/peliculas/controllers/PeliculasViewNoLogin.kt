@@ -12,9 +12,8 @@ import org.koin.core.component.KoinComponent
 import org.lighthousegames.logging.logging
 import org.koin.core.component.inject
 
-
-
 private val logger = logging()
+
 class PeliculasViewNoLogin : KoinComponent {
 
     // Inyectamos nuestro ViewModel
@@ -26,26 +25,14 @@ class PeliculasViewNoLogin : KoinComponent {
     private lateinit var butonHelp: Button
 
     @FXML
-    private lateinit var butonCerrarSecion: Button
+    private lateinit var butonLogin: Button
 
     @FXML
-    private lateinit var butonGestionProductos: Button
-
-    @FXML
-    private lateinit var ButonEditPelicula: Button
-
-    @FXML
-    private lateinit var ButonBorrarPelicula: Button
-
-    @FXML
-    private lateinit var ButonCrearPelicula: Button
-
-    @FXML
-    private lateinit var butonGestionButacas: Button
+    private lateinit var butonComprarNoLogin: Button
 
     // Tabla
     @FXML
-    private lateinit var TablaPeliculas: TableView<Pelicula>  // Reemplaza 'Any' con tu modelo de datos
+    private lateinit var TablaPeliculas: TableView<Pelicula>
 
     @FXML
     private lateinit var tableColumnId: TableColumn<Pelicula, String>
@@ -77,13 +64,13 @@ class PeliculasViewNoLogin : KoinComponent {
     @FXML
     private lateinit var textEstadoLogin: Label
 
-    //Buscadores
+    // Buscadores
     @FXML
     private lateinit var TextBuscadorPeliculas: TextField
 
     // DatePicker
     @FXML
-    private lateinit var datePickerFecha: DatePicker
+    private lateinit var dataFechaDeEstreno: DatePicker
 
     // GridPane
     @FXML
@@ -92,35 +79,35 @@ class PeliculasViewNoLogin : KoinComponent {
     // Método para inicializar
     @FXML
     fun initialize() {
-        // Inicializa valores por defecto y enlaces
         initDefaultValues()
         initBindings()
         initEventos()
     }
 
     private fun initDefaultValues() {
-        // Inicializa los valores por defecto
-//        comboTipo.items = FXCollections.observableArrayList(/* lista de valores predeterminados */)
-//        comboTipo.selectionModel.selectFirst()
-
         // Configuración de la tabla
         tableColumnId.cellValueFactory = PropertyValueFactory("id")
         tableColumnNombre.cellValueFactory = PropertyValueFactory("nombre")
         tableColumnDuracion.cellValueFactory = PropertyValueFactory("duracion")
-        tableColumnFecha.cellValueFactory = PropertyValueFactory("fecha")
+        tableColumnFecha.cellValueFactory = PropertyValueFactory("fechaEstreno")
     }
 
     private fun initBindings() {
-        // Enlaces para actualizar la interfaz en función del estado del modelo de vista
+        logger.debug { "Inicializando bindings" }
+
+        // Asociamos el observer del estado
         viewModel.state.addListener { _, _, newValue ->
-            // Actualiza los elementos de la interfaz
-            TablaPeliculas.items = FXCollections.observableArrayList(newValue.peliculas)
-          //  textEstadoLogin.text = newValue.estadoLogin
+            logger.debug { "Actualizando datos de la vista" }
+
+            // Actualizamos la tabla
+            if (TablaPeliculas.items != newValue.peliculas) {
+                TablaPeliculas.items = FXCollections.observableArrayList(newValue.peliculas)
+            }
 
             // Formulario
             textNombrePelicula.text = newValue.pelicula.nombre
             TextDuracionPelicula.text = newValue.pelicula.duracion
-            datePickerFecha.value = newValue.pelicula.fechaEstreno
+            dataFechaDeEstreno.value = newValue.pelicula.fechaEstreno
             textSinopsisPelicula.text = newValue.pelicula.descripcion
             imagenPelicula.image = newValue.pelicula.imagen
         }
@@ -129,12 +116,8 @@ class PeliculasViewNoLogin : KoinComponent {
     private fun initEventos() {
         // Configuración de eventos para los elementos de la interfaz
         butonHelp.setOnAction { onHelpAction() }
-        butonCerrarSecion.setOnAction { onCerrarSecionAction() }
-        ButonCrearPelicula.setOnAction { onCrearPeliculaAction() }
-        ButonEditPelicula.setOnAction { onEditPeliculaAction() }
-        ButonBorrarPelicula.setOnAction { onBorrarPeliculaAction() }
-        butonGestionProductos.setOnAction { onGestionProductosAction() }
-        butonGestionButacas.setOnAction { onGestionButacasAction() }
+        butonLogin.setOnAction { onLoginAction() }
+        butonComprarNoLogin.setOnAction { onComprarNoLoginAction() }
 
         // Eventos de la tabla
         TablaPeliculas.selectionModel.selectedItemProperty().addListener { _, _, newValue ->
@@ -145,36 +128,19 @@ class PeliculasViewNoLogin : KoinComponent {
         TextBuscadorPeliculas.setOnKeyReleased { onBuscadorKeyReleased() }
     }
 
-    // Métodos de evento
     private fun onHelpAction() {
         // Lógica para el botón Help
     }
 
-    private fun onCerrarSecionAction() {
-        // Lógica para el botón Cerrar Sesión
+    private fun onLoginAction() {
+        // Lógica para el botón Login
     }
 
-    private fun onCrearPeliculaAction() {
-        // Lógica para crear una nueva película
+    private fun onComprarNoLoginAction() {
+        // Lógica para el botón Comprar
     }
 
-    private fun onEditPeliculaAction() {
-        // Lógica para editar una película
-    }
-
-    private fun onBorrarPeliculaAction() {
-        // Lógica para borrar una película
-    }
-
-    private fun onGestionProductosAction() {
-        // Lógica para gestionar productos
-    }
-
-    private fun onGestionButacasAction() {
-        // Lógica para gestionar butacas
-    }
-
-    private fun onTablaPeliculasSelected(pelicula: Any) {
+    private fun onTablaPeliculasSelected(pelicula: Pelicula) {
         // Lógica para manejar la selección de una película en la tabla
     }
 

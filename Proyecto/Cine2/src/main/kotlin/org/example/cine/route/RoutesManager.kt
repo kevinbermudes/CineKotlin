@@ -34,10 +34,9 @@ object RoutesManager {
 
     // Definimos las rutas de las vistas que tengamos
     enum class View(val fxml: String) {
-        MAIN("org/example/cine/views/peliculas/IndezSinLogin.fxml"),
-        DETAIL("org/example/cine/views/peliculas/EditPelicula.fxml"),
-        ACERCA_DE("org/example/cine/AcercaDe.fxml"),
-
+        MAIN("/org/example/cine/views/peliculas/IndezSinLogin.fxml"),
+        DETAIL("/org/example/cine/views/peliculas/EditPelicula.fxml"),
+        ACERCA_DE("/org/example/cine/views/AcercaDe.fxml"),
     }
 
     init {
@@ -53,9 +52,9 @@ object RoutesManager {
         val fxmlLoader = FXMLLoader(getResource(View.MAIN.fxml))
         val parentRoot = fxmlLoader.load<Pane>()
         val scene = Scene(parentRoot, 900.0, 600.0)
-        stage.title = "Cine2 - Índice sin Login"
+        stage.title = "Cine - Índice sin Login"
         stage.isResizable = false
-        stage.icons.add(Image(getResourceAsStream("icons/app-icon.png")))
+        stage.icons.add(Image(getResourceAsStream("/org/example/cine/icons/app-icon.png")))
         stage.setOnCloseRequest { onAppExit(event = it) }
         stage.scene = scene
         mainStage = stage

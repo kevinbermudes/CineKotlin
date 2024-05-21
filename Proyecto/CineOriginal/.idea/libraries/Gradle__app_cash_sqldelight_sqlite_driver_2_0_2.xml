@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: app.cash.sqldelight:sqlite-driver:2.0.2" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="app.cash.sqldelight" artifactId="sqlite-driver" version="2.0.2" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/app.cash.sqldelight/sqlite-driver/2.0.2/5b378d7ffc90e13f5348aa59a958b08bc45aaaed/sqlite-driver-2.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/app.cash.sqldelight/sqlite-driver/2.0.2/61bcd7393ad2b187f4d9fc2fffb99eacba456ab0/sqlite-driver-2.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
