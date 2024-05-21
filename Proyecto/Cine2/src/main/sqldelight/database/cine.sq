@@ -30,8 +30,8 @@ SELECT * FROM PeliculaEntity WHERE id = ?;
 selectLastInserted:
 SELECT * FROM PeliculaEntity WHERE id = last_insert_rowid();
 
--- insert:
--- INSERT INTO PeliculaEntity (nombre, duracion, fechaEstreno, descripcion, categoria, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?);
+insert:
+INSERT INTO PeliculaEntity (nombre, duracion, fechaEstreno, descripcion, categoria,image, created_at, updated_at) VALUES (?, ?, ?, ?, ?,?, ?, ?);
 
 update:
 UPDATE PeliculaEntity SET nombre = ?, duracion = ?, fechaEstreno = ?, descripcion = ?, categoria = ?, updated_at = ? WHERE id = ?;

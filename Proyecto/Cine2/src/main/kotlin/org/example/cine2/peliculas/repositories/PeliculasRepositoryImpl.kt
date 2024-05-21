@@ -42,6 +42,7 @@ class PeliculasRepositoryImpl(
                 fechaEstreno = pelicula.fechaEstreno.toString(),
                 descripcion = pelicula.descripcion,
                 categoria = pelicula.categoria.name,
+                image = pelicula.imagen,
                 created_at = timeStamp,
                 updated_at = timeStamp
             )

@@ -1,4 +1,4 @@
-module org.example.cine2 {
+module org.example.cine {
     requires javafx.controls;
     requires javafx.fxml;
     requires kotlin.stdlib;

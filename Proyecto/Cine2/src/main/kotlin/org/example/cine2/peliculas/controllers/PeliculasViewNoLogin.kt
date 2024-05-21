@@ -1,19 +1,24 @@
 package org.example.cine2.peliculas.controllers
 
+import javafx.collections.FXCollections
 import javafx.fxml.FXML
 import javafx.scene.control.*
+import javafx.scene.control.cell.PropertyValueFactory
 import javafx.scene.image.ImageView
 import javafx.scene.layout.GridPane
+import org.example.cine2.peliculas.ViewModel.CineViewModel
 import org.example.cine2.peliculas.models.Pelicula
 import org.koin.core.component.KoinComponent
 import org.lighthousegames.logging.logging
+import org.koin.core.component.inject
+
 
 
 private val logger = logging()
 class PeliculasViewNoLogin : KoinComponent {
 
     // Inyectamos nuestro ViewModel
-    private val viewModel: PeliculasViewModel by inject()
+    private val viewModel: CineViewModel by inject()
 
     // Define las propiedades enlazadas a los elementos del FXML
     // Botones
@@ -95,8 +100,8 @@ class PeliculasViewNoLogin : KoinComponent {
 
     private fun initDefaultValues() {
         // Inicializa los valores por defecto
-        comboTipo.items = FXCollections.observableArrayList(/* lista de valores predeterminados */)
-        comboTipo.selectionModel.selectFirst()
+//        comboTipo.items = FXCollections.observableArrayList(/* lista de valores predeterminados */)
+//        comboTipo.selectionModel.selectFirst()
 
         // Configuración de la tabla
         tableColumnId.cellValueFactory = PropertyValueFactory("id")
@@ -109,14 +114,14 @@ class PeliculasViewNoLogin : KoinComponent {
         // Enlaces para actualizar la interfaz en función del estado del modelo de vista
         viewModel.state.addListener { _, _, newValue ->
             // Actualiza los elementos de la interfaz
-            tablePeliculas.items = FXCollections.observableArrayList(newValue.peliculas)
-            textEstadoLogin.text = newValue.estadoLogin
+            TablaPeliculas.items = FXCollections.observableArrayList(newValue.peliculas)
+          //  textEstadoLogin.text = newValue.estadoLogin
 
             // Formulario
             textNombrePelicula.text = newValue.pelicula.nombre
             TextDuracionPelicula.text = newValue.pelicula.duracion
-            datePickerFecha.value = newValue.pelicula.fecha
-            textSinopsisPelicula.text = newValue.pelicula.sinopsis
+            datePickerFecha.value = newValue.pelicula.fechaEstreno
+            textSinopsisPelicula.text = newValue.pelicula.descripcion
             imagenPelicula.image = newValue.pelicula.imagen
         }
     }
