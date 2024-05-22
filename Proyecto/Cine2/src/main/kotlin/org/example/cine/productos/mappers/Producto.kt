@@ -5,7 +5,7 @@ import org.example.cine.productos.dto.json.ProductoDto
 import org.example.cine.productos.models.Producto
 import java.time.LocalDateTime
 
-// Extension functions to convert DTO to Model
+// Funcion para convertir de DTO a Model
 fun ProductoDto.toModel(): Producto {
     return Producto(
         id = id,
@@ -22,7 +22,7 @@ fun List<ProductoDto>.toModelFromDtoList(): List<Producto> {
     return this.map { it.toModel() }
 }
 
-// Extension functions to convert Model to DTO
+// Funcion para convertir de Model a DTO
 fun Producto.toDto(): ProductoDto {
     return ProductoDto(
         id = id,
@@ -39,7 +39,7 @@ fun List<Producto>.toDtoList(): List<ProductoDto> {
     return this.map { it.toDto() }
 }
 
-// Extension functions to convert Entity to Model
+// Funcion para convertir de Entity a Model
 fun ProductoEntity.toModel(): Producto {
     return Producto(
         id = id,
@@ -56,7 +56,7 @@ fun List<ProductoEntity>.toModelFromEntityList(): List<Producto> {
     return map { it.toModel() }
 }
 
-// Extension functions to convert Model to Entity
+//Funcion para convertir de DTO a Entity
 fun Producto.toEntity(): ProductoEntity {
     return ProductoEntity(
         id = id,

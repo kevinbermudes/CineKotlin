@@ -199,7 +199,6 @@ class ProductosViewModel(
         }
     }
 
-    // Mi estado
     // Enums
     enum class TipoFiltro(val value: String) {
         TODAS("Todas"), BOTANA("Botana"), BEBIDA("Bebida"), BEBIDAS("Bebidas"), FRUTOS_SECOS("Frutos Secos")

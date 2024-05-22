@@ -35,7 +35,7 @@ class ProductosAnadirViewController {
 
     @FXML
     private fun initialize() {
-        // Configurar acciones de los botones
+        // Configurar acciones de los botones, falta.
         butonGuardarProductos.setOnAction { guardarProducto() }
         butonCancelarProductos.setOnAction { cancelar() }
         imagenProductoAnadir.setOnMouseClicked { seleccionarImagen() }
