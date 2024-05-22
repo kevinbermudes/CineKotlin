@@ -108,23 +108,15 @@ class ProductosViewAdminController {
     }
 
     private fun onAnadirProducto() {
-        val nombre = textoNombreProducto.text
-        val categoria = textoCategoriaProducto.text
-        val precio = textoPrecioProducto.text.toDoubleOrNull()
-
-        if (nombre.isNotBlank() && categoria.isNotBlank() && precio != null) {
-            val producto = Producto(nombre, categoria, precio)
-            tableProductos.items.add(producto)
-            clearForm()
-        } else {
-            showAlert("Error", "Por favor, completa todos los campos correctamente.")
-        }
+        val stage = butonAnadirProductosAdmin.scene.window as Stage
+        stage.close()
+        RoutesManager.initAnadirViewController()
     }
 
     private fun onAtras() {
         val stage = butonAtras.scene.window as Stage
         stage.close()
-        RoutesManager.intiUsuarioIndex() // O la vista que desees cargar
+        RoutesManager.intiUsuarioIndex()
     }
 
     private fun onBorrarProducto() {

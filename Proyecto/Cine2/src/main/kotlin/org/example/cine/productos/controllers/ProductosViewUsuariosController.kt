@@ -104,7 +104,7 @@ class ProductosViewUsuariosController {
     private fun onAtras() {
         val stage = butonAtras.scene.window as Stage
         stage.close()
-        RoutesManager.intiUsuarioIndex() // O la vista que desees cargar
+        RoutesManager.intiUsuarioIndex()
     }
 
     private fun clearForm() {
