@@ -53,3 +53,5 @@ u
 Esrc/main/kotlin/org/example/cine/peliculas/ViewModel/CineViewModel.kt,8\0\8023b1931a00791d57178afa059d598df8481a8d
 T
 $src/main/sqldelight/database/cine.sq,c\7\c7bef44f9f24ebdd14edcb3671dbd6f6cda3ce3f
+d
+4src/main/kotlin/org/example/cine/config/AppConfig.kt,4\b\4b6d7f827ec225fd32b1f95f707950037167cf31
