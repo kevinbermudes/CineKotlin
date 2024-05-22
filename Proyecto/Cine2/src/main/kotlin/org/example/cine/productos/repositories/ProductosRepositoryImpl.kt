@@ -12,7 +12,7 @@ class ProductosRepositoryImpl(
     private val databaseClient: SqlDeLightClient
 ) : ProductosRepository {
 
-    val db = databaseClient.pruductodbQueries
+    val db = databaseClient.productQueries
 
     override fun findAll(): List<Producto> {
         logger.debug { "findAll" }

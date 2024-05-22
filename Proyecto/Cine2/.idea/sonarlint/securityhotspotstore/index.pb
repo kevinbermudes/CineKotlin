@@ -55,3 +55,17 @@ T
 $src/main/sqldelight/database/cine.sq,c\7\c7bef44f9f24ebdd14edcb3671dbd6f6cda3ce3f
 d
 4src/main/kotlin/org/example/cine/config/AppConfig.kt,4\b\4b6d7f827ec225fd32b1f95f707950037167cf31
+Ç
+Rsrc/main/kotlin/org/example/cine/productos/repositories/ProductosRepositoryImpl.kt,4\1\41ed240888ee7ab70af5cc72bed23110f87003a2
+~
+Nsrc/main/kotlin/org/example/cine/peliculas/repositories/PeliculasRepository.kt,8\a\8a1e4eec6a15cbd33472754f526b0483a453d323
+y
+Isrc/main/kotlin/org/example/cine/peliculas/controllers/LoginController.kt,f\4\f47c4492c41f4c9e8383b0016673421d46a29413
+
+Osrc/main/kotlin/org/example/cine/peliculas/controllers/login/LoginController.kt,4\5\45177299e0170aa5df76532d4111db5602d4c3bf
+Å
+Qsrc/main/kotlin/org/example/cine/peliculas/controllers/User/PeliculasViewLogin.kt,f\2\f2d8051bee42d7a19bc0a2ce01e2b2d76689958b
+Ü
+Vsrc/main/kotlin/org/example/cine/peliculas/controllers/User/PeliculasViewLoginAdmin.kt,b\a\ba0589ae5d35631aef50b69d5d6dd43174e8149f
+{
+Ksrc/main/kotlin/org/example/cine/productos/viewmodels/ProductosViewModel.kt,e\0\e0ab715ddc82298edbb7bccc711e2123833f6226

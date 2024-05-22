@@ -59,6 +59,12 @@ module org.example.cine {
     opens org.example.cine.productos.models to javafx.fxml;
     exports org.example.cine.productos.models;
 
+    opens org.example.cine.peliculas.controllers.login to javafx.fxml;
+    exports org.example.cine.peliculas.controllers.login;
+
+    opens org.example.cine.peliculas.controllers.User to javafx.fxml;
+    exports org.example.cine.peliculas.controllers.User;
+
 
 
 

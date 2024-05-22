@@ -1,15 +1,11 @@
-package org.example.cine.peliculas.controllers
+package org.example.cine.peliculas.controllers.User
 
 import javafx.collections.FXCollections
 import javafx.fxml.FXML
-import javafx.fxml.FXMLLoader
-import javafx.scene.Scene
 import javafx.scene.control.*
 import javafx.scene.control.cell.PropertyValueFactory
 import javafx.scene.image.ImageView
 import javafx.scene.layout.GridPane
-import javafx.scene.layout.Pane
-import javafx.stage.Stage
 import org.example.cine.peliculas.ViewModel.CineViewModel
 import org.example.cine.peliculas.models.Pelicula
 import org.example.cine.route.RoutesManager
@@ -19,7 +15,7 @@ import org.koin.core.component.inject
 
 private val logger = logging()
 
-class PeliculasViewNoLogin : KoinComponent {
+class PeliculasViewLogin : KoinComponent {
 
     // Inyectamos nuestro ViewModel
     private val viewModel: CineViewModel by inject()
@@ -30,17 +26,17 @@ class PeliculasViewNoLogin : KoinComponent {
     private lateinit var butonHelp: Button
 
     @FXML
-    private lateinit var butonLogin: Button
+    private lateinit var butonCerrarSecion: Button
 
     @FXML
-    private lateinit var butonComprarNoLogin: Button
+    private lateinit var butonComprarLogin: Button
 
     // Tabla
     @FXML
     private lateinit var TablaPeliculas: TableView<Pelicula>
 
     @FXML
-    private lateinit var tableColumnId: TableColumn<Pelicula, Long>
+    private lateinit var tableColumnId: TableColumn<Pelicula, String>
 
     @FXML
     private lateinit var tableColumnNombre: TableColumn<Pelicula, String>
@@ -90,7 +86,6 @@ class PeliculasViewNoLogin : KoinComponent {
     }
 
     private fun initDefaultValues() {
-        logger.debug { "Inicializando valores por defecto de la tabla" }
         // Configuración de la tabla
         tableColumnId.cellValueFactory = PropertyValueFactory("id")
         tableColumnNombre.cellValueFactory = PropertyValueFactory("nombre")
@@ -101,14 +96,13 @@ class PeliculasViewNoLogin : KoinComponent {
     private fun initBindings() {
         logger.debug { "Inicializando bindings" }
 
+        // Asociamos el observer del estado
         viewModel.state.addListener { _, _, newValue ->
             logger.debug { "Actualizando datos de la vista" }
-
             // Actualizamos la tabla
             if (TablaPeliculas.items != newValue.peliculas) {
                 TablaPeliculas.items = FXCollections.observableArrayList(newValue.peliculas)
             }
-
             // Formulario
             textNombrePelicula.text = newValue.pelicula.nombre
             TextDuracionPelicula.text = newValue.pelicula.duracion
@@ -121,8 +115,8 @@ class PeliculasViewNoLogin : KoinComponent {
     private fun initEventos() {
         // Configuración de eventos para los elementos de la interfaz
         butonHelp.setOnAction { onHelpAction() }
-        butonLogin.setOnAction { onLoginAction() }
-        butonComprarNoLogin.setOnAction { onComprarNoLoginAction() }
+        butonCerrarSecion.setOnAction { onCerrarSecionAction() }
+        butonComprarLogin.setOnAction { onComprarLoginAction() }
 
         // Eventos de la tabla
         TablaPeliculas.selectionModel.selectedItemProperty().addListener { _, _, newValue ->
@@ -137,25 +131,26 @@ class PeliculasViewNoLogin : KoinComponent {
         // Lógica para el botón Help
     }
 
-    private fun onLoginAction() {
-       logger.debug { "Iniciando sesión" }
-        // Lógica para el botón Login
-RoutesManager.initLoginStage()
+    private fun onCerrarSecionAction() {
+        // Lógica para el botón Cerrar Sesión
     }
-    private fun onComprarNoLoginAction() {
-        // Lógica para el botón Comprar No Login
-        val alert = Alert(Alert.AlertType.INFORMATION)
-        alert.title = "Información"
-        alert.headerText = "Acción no permitida"
-        alert.contentText = "Necesitas estar logado para poder comprar una entrada."
-        alert.showAndWait()
+
+    private fun onComprarLoginAction() {
+        logger.debug { "Comprar película -> rediriguiendo a ecena produtos " }
+        RoutesManager.initProductosUsuarios()
+
     }
 
     private fun onTablaPeliculasSelected(pelicula: Pelicula) {
         // Lógica para manejar la selección de una película en la tabla
+        viewModel.updatePeliculaSeleccionada(pelicula)
     }
 
     private fun onBuscadorKeyReleased() {
         // Lógica para manejar la búsqueda de películas
+        val filteredList = viewModel.peliculasFilteredList(TextBuscadorPeliculas.text)
+        TablaPeliculas.items = FXCollections.observableArrayList(filteredList)
     }
+
+
 }

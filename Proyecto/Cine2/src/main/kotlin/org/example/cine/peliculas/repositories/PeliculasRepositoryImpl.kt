@@ -1,4 +1,5 @@
 package org.example.cine.peliculas.repositories
+
 import org.example.cine.database.SqlDeLightClient
 import org.example.cine.peliculas.mapers.toModel
 import org.example.cine.peliculas.models.Pelicula
@@ -11,7 +12,7 @@ class PeliculasRepositoryImpl(
     private val databaseClient: SqlDeLightClient
 ) : PeliculasRepository {
 
-    val db = databaseClient.dbQueries
+    private val db = databaseClient.dbQueries
 
     override fun findAll(): List<Pelicula> {
         logger.debug { "findAll" }
@@ -54,25 +55,25 @@ class PeliculasRepositoryImpl(
         logger.debug { "update: $pelicula" }
         val timeStamp = LocalDateTime.now().toString()
         db.update(
-            id = pelicula.id,
             nombre = pelicula.nombre,
             duracion = pelicula.duracion,
             fechaEstreno = pelicula.fechaEstreno.toString(),
             descripcion = pelicula.descripcion,
             categoria = pelicula.categoria.name,
-            updated_at = timeStamp
+            updated_at = timeStamp,
+            id = pelicula.id
         )
         return pelicula
     }
 
     override fun deleteById(id: Long) {
         logger.debug { "deleteById: $id" }
-        return db.delete(id)
+        db.delete(id)
     }
 
     override fun deleteAll() {
         logger.debug { "deleteAll" }
-        return db.deleteAll()
+        db.deleteAll()
     }
 
     override fun saveAll(peliculas: List<Pelicula>): List<Pelicula> {

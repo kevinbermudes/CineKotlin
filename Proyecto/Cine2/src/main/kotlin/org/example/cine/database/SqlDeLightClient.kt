@@ -14,32 +14,19 @@ private val logger = logging()
 class SqlDeLightClient(
     private val appConfig: AppConfig
 ) {
-    val dbQueries: CineQueries by lazy {
-        JdbcSqliteDriver(appConfig.databaseUrl).let { driver ->
-            // Creamos la base de datos
-            logger.debug { "SqlDeLightClient.init() - Create Schemas" }
-            AppDatabase.Schema.create(driver)
-            AppDatabase(driver)
-        }.cineQueries
-    }
-    val pruductodbQueries: ProdutosQueries by lazy {
-        JdbcSqliteDriver(appConfig.databaseUrl).let { driver ->
-            // Creamos la base de datos
-            logger.debug { "SqlDeLightClient.init() - Create Schemas" }
-            AppDatabase.Schema.create(driver)
-            AppDatabase(driver)
-        }.produtosQueries
-    }
-
-
-
-    init {
-        logger.debug { "Inicializando el gestor de Bases de Datos" }
-        // Borramos la base de datos
+    private val driver: JdbcSqliteDriver = JdbcSqliteDriver(appConfig.databaseUrl).also {
         if (appConfig.databaseInit) {
             logger.debug { "Borrando la base de datos" }
             Files.deleteIfExists(File(appConfig.databaseUrl.removePrefix("jdbc:sqlite:")).toPath())
+            AppDatabase.Schema.create(it)
         }
+    }
+
+    val dbQueries: CineQueries = AppDatabase(driver).cineQueries
+    val productQueries: ProdutosQueries = AppDatabase(driver).produtosQueries
+
+    init {
+        logger.debug { "Inicializando el gestor de Bases de Datos" }
 
         if (appConfig.databaseRemoveData) {
             clearData()
@@ -51,9 +38,8 @@ class SqlDeLightClient(
         dbQueries.transaction {
             dbQueries.deleteAll()
         }
-
-        pruductodbQueries.transaction {
-            pruductodbQueries.deleteAll()
+        productQueries.transaction {
+            productQueries.deleteAll()
         }
     }
 }

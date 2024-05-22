@@ -20,15 +20,16 @@
       <Line endX="731.3585205078125" layoutX="138.0" layoutY="74.0" startX="-99.13207244873047" />
       <Button fx:id="butonHelp" layoutX="38.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Help" />
       <Button fx:id="butonLogin" layoutX="807.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Login" />
-      <TableView fx:id="TablaPeliculas" layoutX="38.0" layoutY="151.0" prefHeight="416.0" prefWidth="511.0">
-        <columns>
-          <TableColumn fx:id="tableColumnId" prefWidth="36.2264404296875" text="ID" />
-          <TableColumn fx:id="tableColumnNombre" prefWidth="225.50948333740234" text="Nombre" />
-            <TableColumn fx:id="tableColumnDuracion" prefWidth="122.26409912109375" text="Duración" />
-            <TableColumn fx:id="tableColumnFecha" prefWidth="121.35855102539062" text="Fecha" />
-        </columns>
-      </TableView>
-      <ImageView fx:id="imagenPelicula" fitHeight="150.0" fitWidth="281.0" layoutX="590.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true" />
+       <TableView fx:id="TablaPeliculas" layoutX="38.0" layoutY="151.0" prefHeight="416.0" prefWidth="511.0">
+           <columns>
+               <TableColumn fx:id="tableColumnId" prefWidth="36.2264404296875" text="ID" />
+               <TableColumn fx:id="tableColumnNombre" prefWidth="225.50948333740234" text="Nombre" />
+               <TableColumn fx:id="tableColumnDuracion" prefWidth="122.26409912109375" text="Duración" />
+               <TableColumn fx:id="tableColumnFecha" prefWidth="121.35855102539062" text="Fecha" />
+           </columns>
+       </TableView>
+
+       <ImageView fx:id="imagenPelicula" fitHeight="150.0" fitWidth="281.0" layoutX="590.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true" />
       <Line endX="-100.0" endY="-492.5" layoutX="667.0" layoutY="579.0" startX="-100.0" />
       <Button fx:id="butonComprarNoLogin" layoutX="789.0" layoutY="537.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="81.0" style="-fx-background-radius: 10;" text="Comprar" />
       <GridPane layoutX="590.0" layoutY="262.0" prefHeight="202.0" prefWidth="281.0">

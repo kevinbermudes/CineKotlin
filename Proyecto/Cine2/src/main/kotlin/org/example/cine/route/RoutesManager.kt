@@ -27,21 +27,30 @@ object RoutesManager {
     private lateinit var _activeStage: Stage // La ventana actual
     val activeStage: Stage
         get() = _activeStage
-    lateinit var app: Application // La aplicación
+    lateinit var app: Application
 
-    // Podemos tener una cache de escenas cargadas
     private var scenesMap: HashMap<String, Pane> = HashMap()
 
-    // Definimos las rutas de las vistas que tengamos
+    // Todas las vistas
     enum class View(val fxml: String) {
+        //vista principal sin login simepre cargamos esta
         MAIN("/org/example/cine/views/peliculas/IndezSinLogin.fxml"),
-        DETAIL("/org/example/cine/views/peliculas/EditPelicula.fxml"),
-        ACERCA_DE("/org/example/cine/views/AcercaDe.fxml"),
+        //vista Login
+        LOGIN("/org/example/cine/views/login/Login.fxml"),
+        //vista de usuario
+        USUARIOINDEX("/org/example/cine/views/peliculas/IndezLogin.fxml"),
+        //vista de administrador
+        ADMININDEX("/org/example/cine/views/peliculas/IndezLoginAdmin.fxml"),
+
+  //  ************************************Productos*********************
+        //VISTA de produtos con login usuario
+        PRODUCTOSUSUARIOS("/org/example/cine/views/produtos/ProductosUsuarios.fxml"),
+        //Vista de produtos con login admin
+        PRODUCTOSADMIN("/org/example/cine/views/produtos/ProductosAdmin.fxml"),
     }
 
     init {
         logger.debug { "Inicializando RoutesManager" }
-        // Podemos configurar el idioma de la aplicación aquí
         Locale.setDefault(Locale.forLanguageTag("es-ES"))
     }
 
@@ -62,38 +71,106 @@ object RoutesManager {
         mainStage.show()
     }
 
-    // Abrimos una nueva ventana para "Acerca De"
-    fun initAcercaDeStage() {
-        logger.debug { "Inicializando AcercaDeStage" }
 
-        val fxmlLoader = FXMLLoader(getResource(View.ACERCA_DE.fxml))
+    // Abrimos una nueva ventana para "Acerca De"
+    fun initLoginStage() {
+        logger.debug { "Inicializando Login" }
+
+        val fxmlLoader = FXMLLoader(getResource(View.LOGIN.fxml))
         val parentRoot = fxmlLoader.load<Pane>()
-        val scene = Scene(parentRoot, 395.0, 155.0)
+        val scene = Scene(parentRoot, 900.0, 600.0)
         val stage = Stage()
-        stage.title = "Acerca De Cine2"
+        stage.icons.add(Image(getResourceAsStream("/org/example/cine/icons/app-icon.png")))
+        stage.setOnCloseRequest { onAppExit(event = it) }
+        stage.title = "Login"
         stage.scene = scene
         stage.initOwner(mainStage)
         stage.initModality(Modality.WINDOW_MODAL)
         stage.isResizable = false
+        closeActiveStage()
+        _activeStage = stage
+        stage.show()
+    }
+    fun intiUsuarioIndex(){
+        logger.debug { "Inicializando UsuarioIndex" }
 
+        val fxmlLoader = FXMLLoader(getResource(View.USUARIOINDEX.fxml))
+        val parentRoot = fxmlLoader.load<Pane>()
+        val scene = Scene(parentRoot, 900.0, 600.0)
+        val stage = Stage()
+        stage.icons.add(Image(getResourceAsStream("/org/example/cine/icons/app-icon.png")))
+        stage.setOnCloseRequest { onAppExit(event = it) }
+        stage.title = "Cine - Índice Login"
+        stage.scene = scene
+        stage.initOwner(mainStage)
+        stage.initModality(Modality.WINDOW_MODAL)
+        stage.isResizable = false
+        closeActiveStage()
+        _activeStage = stage
+        stage.show()
+    }
+    fun initIndezLoginAdminStage(){
+        logger.debug { "Inicializando AdminIndex" }
+
+        val fxmlLoader = FXMLLoader(getResource(View.ADMININDEX.fxml))
+        val parentRoot = fxmlLoader.load<Pane>()
+        val scene = Scene(parentRoot, 900.0, 600.0)
+        val stage = Stage()
+        stage.icons.add(Image(getResourceAsStream("/org/example/cine/icons/app-icon.png")))
+        stage.setOnCloseRequest { onAppExit(event = it) }
+        stage.title = "Cine - Índice Admin"
+        stage.scene = scene
+        stage.initOwner(mainStage)
+        stage.initModality(Modality.WINDOW_MODAL)
+        stage.isResizable = false
+        closeActiveStage()
+        _activeStage = stage
+        stage.show()
+    }
+    //***********************************PRODUTOS***************************************
+    //index con user
+    fun initProductosUsuarios(){
+        logger.debug { "Inicializando ProductosUsuarios" }
+
+        val fxmlLoader = FXMLLoader(getResource(View.PRODUCTOSUSUARIOS.fxml))
+        val parentRoot = fxmlLoader.load<Pane>()
+        val scene = Scene(parentRoot, 900.0, 600.0)
+        val stage = Stage()
+        stage.icons.add(Image(getResourceAsStream("/org/example/cine/icons/app-icon.png")))
+        stage.setOnCloseRequest { onAppExit(event = it) }
+        stage.title = "Cine - Productos Usuarios"
+        stage.scene = scene
+        stage.initOwner(mainStage)
+        stage.initModality(Modality.WINDOW_MODAL)
+        stage.isResizable = false
+        closeActiveStage()
+        _activeStage = stage
+        stage.show()
+    }
+    //index con admin
+    fun initProductosAdmin(){
+        logger.debug { "Inicializando ProductosAdmin" }
+
+        val fxmlLoader = FXMLLoader(getResource(View.PRODUCTOSADMIN.fxml))
+        val parentRoot = fxmlLoader.load<Pane>()
+        val scene = Scene(parentRoot, 900.0, 600.0)
+        val stage = Stage()
+        stage.icons.add(Image(getResourceAsStream("/org/example/cine/icons/app-icon.png")))
+        stage.setOnCloseRequest { onAppExit(event = it) }
+        stage.title = "Cine - Productos Admin"
+        stage.scene = scene
+        stage.initOwner(mainStage)
+        stage.initModality(Modality.WINDOW_MODAL)
+        stage.isResizable = false
+        closeActiveStage()
+        _activeStage = stage
         stage.show()
     }
 
-    // Abrimos una nueva ventana para "Detalle"
-    fun initDetalle() {
-        logger.debug { "Inicializando Detalle" }
-
-        val fxmlLoader = FXMLLoader(getResource(View.DETAIL.fxml))
-        val parentRoot = fxmlLoader.load<Pane>()
-        val scene = Scene(parentRoot, 350.0, 400.0)
-        val stage = Stage()
-        stage.title = "Detalle de Película"
-        stage.scene = scene
-        stage.initOwner(mainStage)
-        stage.initModality(Modality.WINDOW_MODAL)
-        stage.isResizable = false
-
-        stage.show()
+    private fun closeActiveStage() {
+        if (::mainStage.isInitialized && _activeStage != mainStage) {
+            _activeStage.close()
+        }
     }
 
     // O podemos hacer uno genérico, añade las opciones que necesites
