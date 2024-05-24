@@ -140,7 +140,8 @@ class PeliculasViewNoLogin : KoinComponent {
     private fun onLoginAction() {
        logger.debug { "Iniciando sesión" }
         // Lógica para el botón Login
-RoutesManager.initLoginStage()
+//RoutesManager.initLoginStage()
+        RoutesManager.changeScene(view =RoutesManager.View.LOGIN)
     }
     private fun onComprarNoLoginAction() {
         // Lógica para el botón Comprar No Login

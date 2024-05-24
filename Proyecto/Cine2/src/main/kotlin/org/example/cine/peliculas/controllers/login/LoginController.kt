@@ -41,12 +41,12 @@ class LoginController {
         if (usuario == "admin" && contrasena == "admin") {
             // Cargar vista de administrador
             logger.debug { "Accediendo como admin" }
-            RoutesManager.initIndezLoginAdminStage()
+            RoutesManager.changeScene(view= RoutesManager.View.ADMININDEX)
 
         } else if (usuario == "user" && contrasena == "user") {
             // Cargar vista de usuario
             logger.debug { "Accediendo como usuario" }
-            RoutesManager.intiUsuarioIndex()
+            RoutesManager.changeScene(view= RoutesManager.View.USUARIOINDEX)
         } else {
             // Mostrar alerta de error
             showAlert("Credenciales incorrectas", "Por favor, inténtalo de nuevo.")

@@ -30,6 +30,8 @@ object RoutesManager {
     lateinit var app: Application
 
     private var scenesMap: HashMap<String, Pane> = HashMap()
+    private var acualStyle: Style = Style.DEFAULT
+
 
     // Todas las vistas
     enum class View(val fxml: String) {
@@ -50,6 +52,22 @@ object RoutesManager {
         //Vista de productos para añadir productos
         PRODUCTOSADMINANADIR("/org/example/cine/views/produtos/ProductosNuevo.fxml")
     }
+    fun changeScene(
+        myStage: Stage = activeStage,
+        view: View,
+        width: Double = 900.0,
+        height: Double = 600.0,
+        style: Style = Style.DEFAULT
+    ) {
+        val parentRoot = FXMLLoader.load<Pane>(this.getResource(view.fxml))
+        val scene = Scene(parentRoot, width, height)
+        scene.stylesheets.add(this.getResource(style.css).toExternalForm())
+        myStage.scene = scene
+    }
+    enum class Style(val css: String) {
+        DEFAULT("styles/pelicula.css")
+    }
+
 
     init {
         logger.debug { "Inicializando RoutesManager" }
