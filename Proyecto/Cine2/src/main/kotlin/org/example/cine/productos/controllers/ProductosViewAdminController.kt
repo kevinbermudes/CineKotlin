@@ -95,14 +95,9 @@ class ProductosViewAdminController {
     }
 
     private fun onEditarProducto() {
-        val productoSeleccionado = tableProductos.selectionModel.selectedItem
-        if (productoSeleccionado != null) {
-            textoNombreProducto.text = productoSeleccionado.nombre
-            textoCategoriaProducto.text = productoSeleccionado.categoria
-            textoPrecioProducto.text = productoSeleccionado.precio.toString()
-        } else {
-            showAlert("Error", "Selecciona un producto para editar.")
-        }
+        logger.debug { "Editando Pelicula" }
+        val stage = butonEditarProducto.scene.window as Stage
+        RoutesManager.initEditarViewController()
     }
 
     private fun onAnadirProducto() {
