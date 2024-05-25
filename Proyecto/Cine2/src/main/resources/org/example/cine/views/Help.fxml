@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="272.0" prefWidth="730.0" style="-fx-background-color: #376bb5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.cine.productos.controllers.ProductosAnadirViewController">
+   <children>
+      <Button fx:id="butonAceptarHelp" layoutX="625.0" layoutY="228.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="81.0" style="-fx-background-radius: 10;" text="Aceptar" />
+      <Label layoutX="430.0" layoutY="23.0" prefHeight="45.0" prefWidth="81.0" style="-fx-text-fill: #ffffff;" text="Magic">
+         <font>
+            <Font name="Georgia Pro Black" size="30.0" />
+         </font>
+      </Label>
+      <Line endX="100.0" layoutX="595.0" layoutY="68.0" startX="-350.0" startY="-1.1444091796875E-5" />
+      <Label layoutX="368.0" layoutY="94.0" prefHeight="45.0" prefWidth="177.0" style="-fx-text-fill: #ffffff;" text="El mejor cine,">
+         <font>
+            <Font name="Georgia Pro Black" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="368.0" layoutY="134.0" prefHeight="45.0" prefWidth="205.0" style="-fx-text-fill: #ffffff;" text="Al mejor precio">
+         <font>
+            <Font name="Georgia Pro Black" size="30.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="56.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Cine.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
