@@ -9,8 +9,11 @@ import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.stage.FileChooser
 import javafx.stage.Stage
+import org.example.cine.route.RoutesManager
+import org.lighthousegames.logging.logging
 import java.io.File
 
+private val logger = logging()
 class ProductosAnadirViewController {
 
     @FXML
@@ -80,8 +83,8 @@ class ProductosAnadirViewController {
     }
 
     private fun cancelar() {
-        val stage = butonCancelarProductos.scene.window as Stage
-        stage.close()
+       logger.debug { "Cancelando..." }
+        RoutesManager.changeScene(view = RoutesManager.View.PRODUCTOSADMIN)
     }
 
     private fun mostrarAlerta(titulo: String, mensaje: String) {
