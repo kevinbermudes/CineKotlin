@@ -50,7 +50,9 @@ object RoutesManager {
         //Vista de produtos con login admin
         PRODUCTOSADMIN("/org/example/cine/views/produtos/ProductosAdmin.fxml"),
         //Vista de productos para añadir productos
-        PRODUCTOSADMINANADIR("/org/example/cine/views/produtos/ProductosNuevo.fxml")
+        PRODUCTOSADMINANADIR("/org/example/cine/views/produtos/ProductosNuevo.fxml"),
+        //Vista de productos para editar
+        PRODUCTOSEDITAR("/org/example/cine/views/produtos/ProductosEditar.fxml")
     }
     fun changeScene(
         myStage: Stage = activeStage,
@@ -198,6 +200,25 @@ object RoutesManager {
         stage.icons.add(Image(getResourceAsStream("/org/example/cine/icons/app-icon.png")))
         stage.setOnCloseRequest { onAppExit(event = it) }
         stage.title = "Cine - Anadir"
+        stage.scene = scene
+        stage.initOwner(mainStage)
+        stage.initModality(Modality.WINDOW_MODAL)
+        stage.isResizable = false
+        closeActiveStage()
+        _activeStage = stage
+        stage.show()
+    }
+
+    fun initEditarViewController() {
+        logger.debug { "icializando EditarViewController" }
+
+        val fxmlLoader = FXMLLoader(getResource(View.PRODUCTOSEDITAR.fxml))
+        val parentRoot = fxmlLoader.load<Pane>()
+        val scene = Scene(parentRoot, 350.0, 400.0)
+        val stage = Stage()
+        stage.icons.add(Image(getResourceAsStream("/org/example/cine/icons/app-icon.png")))
+        stage.setOnCloseRequest { onAppExit(event = it) }
+        stage.title = "Cine - Editar"
         stage.scene = scene
         stage.initOwner(mainStage)
         stage.initModality(Modality.WINDOW_MODAL)

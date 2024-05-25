@@ -91,32 +91,24 @@ class ProductosViewAdminController {
 
     private fun onCerrarSesion() {
         logger.debug { "Cerrando sesión" }
-        val stage = butonCerrarSesion.scene.window as Stage
-        stage.close()
-        RoutesManager.initMainStage(Stage())
+        RoutesManager.changeScene(view = RoutesManager.View.MAIN)
     }
 
     private fun onEditarProducto() {
-        val productoSeleccionado = tableProductos.selectionModel.selectedItem
-        if (productoSeleccionado != null) {
-            textoNombreProducto.text = productoSeleccionado.nombre
-            textoCategoriaProducto.text = productoSeleccionado.categoria
-            textoPrecioProducto.text = productoSeleccionado.precio.toString()
-        } else {
-            showAlert("Error", "Selecciona un producto para editar.")
-        }
+        logger.debug { "Editando Pelicula" }
+        val stage = butonEditarProducto.scene.window as Stage
+        RoutesManager.initEditarViewController()
     }
 
     private fun onAnadirProducto() {
+        logger.debug { "Anadiendo Pelicula" }
         val stage = butonAnadirProductosAdmin.scene.window as Stage
-        stage.close()
         RoutesManager.initAnadirViewController()
     }
 
     private fun onAtras() {
-        val stage = butonAtras.scene.window as Stage
-        stage.close()
-        RoutesManager.intiUsuarioIndex()
+        logger.debug { "Volviendo a pelicula" }
+        RoutesManager.changeScene(view = RoutesManager.View.ADMININDEX)
     }
 
     private fun onBorrarProducto() {
