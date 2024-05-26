@@ -1,15 +1,23 @@
 package org.example.cine.productos.controllers
 
+import com.github.michaelbull.result.onFailure
+import com.github.michaelbull.result.onSuccess
+import javafx.collections.FXCollections
 import javafx.fxml.FXML
 import javafx.scene.control.*
+import javafx.scene.control.cell.PropertyValueFactory
 import javafx.scene.image.ImageView
-import javafx.stage.Stage
+import org.example.cine.productos.models.Producto
+import org.example.cine.productos.viewmodels.ProductosViewModel
 import org.example.cine.route.RoutesManager
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import org.lighthousegames.logging.logging
 
 private val logger = logging()
 
-class ProductosViewAdminController {
+class ProductosViewAdminController : KoinComponent {
+    private val viewModel: ProductosViewModel by inject()
 
     @FXML
     private lateinit var butonFile: Button
@@ -68,6 +76,9 @@ class ProductosViewAdminController {
     @FXML
     fun initialize() {
         initEventos()
+        initDefaultValues()
+        initBindings()
+        loadData()
     }
 
     private fun initEventos() {
@@ -78,10 +89,42 @@ class ProductosViewAdminController {
         butonAnadirProductosAdmin.setOnAction { onAnadirProducto() }
         butonAtras.setOnAction { onAtras() }
         butonBorrarProductos.setOnAction { onBorrarProducto() }
+
+        tableProductos.selectionModel.selectedItemProperty().addListener { _, _, newValue ->
+            newValue?.let { onTableProductosSelected(it) }
+        }
+
+        textBuscadorProductos.setOnKeyReleased { onBuscadorKeyReleased() }
+    }
+
+    private fun initDefaultValues() {
+        tableColumnIdProducto.cellValueFactory = PropertyValueFactory("id")
+        tableColumnNombreProducto.cellValueFactory = PropertyValueFactory("nombre")
+        tableColumnPrecio.cellValueFactory = PropertyValueFactory("precio")
+        tableColumnCategoria.cellValueFactory = PropertyValueFactory("categoria")
+    }
+
+    private fun initBindings() {
+        viewModel.state.addListener { _, _, newValue ->
+            logger.debug { "Actualizando bindings productos" }
+            tableProductos.items = FXCollections.observableArrayList(newValue.productos)
+            textEstadoLogin.text = "Productos cargados: ${newValue.numProductos}"
+
+            // Actualizar formulario
+            val producto = newValue.producto
+            textoNombreProducto.text = producto.nombre
+            textoCategoriaProducto.text = producto.categoria.name
+            textoPrecioProducto.text = producto.precio
+            imagenProductos.image = producto.imagen
+        }
+    }
+
+    private fun loadData() {
+        logger.debug { "Cargando datos iniciales de productos" }
+        viewModel.loadAllProductos()
     }
 
     private fun onFile() {
-        // Implementar funcionalidad para el botón "File"
         showAlert("File", "Funcionalidad para el botón File.")
     }
 
@@ -95,29 +138,51 @@ class ProductosViewAdminController {
     }
 
     private fun onEditarProducto() {
-        logger.debug { "Editando Pelicula" }
-        val stage = butonEditarProducto.scene.window as Stage
-        RoutesManager.initEditarViewController()
+        val productoSeleccionado = tableProductos.selectionModel.selectedItem
+        if (productoSeleccionado != null) {
+            logger.debug { "Editando Producto" }
+            viewModel.updateProductoSeleccionado(productoSeleccionado)
+            RoutesManager.initEditarViewController()
+        } else {
+            showAlert("Error", "Selecciona un producto para editar.")
+        }
     }
 
     private fun onAnadirProducto() {
-        logger.debug { "Anadiendo Pelicula" }
-        val stage = butonAnadirProductosAdmin.scene.window as Stage
-        RoutesManager.initAnadirViewController()
+        val nombre = textoNombreProducto.text
+        val categoria = textoCategoriaProducto.text
+        val precio = textoPrecioProducto.text.toDoubleOrNull()
+
+        if (nombre.isNotBlank() && categoria.isNotBlank() && precio != null) {
+            viewModel.crearProducto(nombre, precio.toString(), Producto.Categoria.valueOf(categoria.toUpperCase())).onSuccess {
+                viewModel.loadAllProductos()
+                clearForm()
+            }.onFailure {
+                showAlert("Error", "No se pudo añadir el producto: ${it.message}")
+            }
+        } else {
+            showAlert("Error", "Por favor, completa todos los campos correctamente.")
+        }
     }
 
     private fun onAtras() {
-        logger.debug { "Volviendo a pelicula" }
+        logger.debug { "Volviendo al índice de administrador" }
         RoutesManager.changeScene(view = RoutesManager.View.ADMININDEX)
     }
 
     private fun onBorrarProducto() {
-        val productoSeleccionado = tableProductos.selectionModel.selectedItem
-        if (productoSeleccionado != null) {
-            tableProductos.items.remove(productoSeleccionado)
-        } else {
+
             showAlert("Error", "Selecciona un producto para borrar.")
-        }
+
+    }
+
+    private fun onTableProductosSelected(producto: Producto) {
+        viewModel.updateProductoSeleccionado(producto)
+    }
+
+    private fun onBuscadorKeyReleased() {
+        val filteredList = viewModel.productosFilteredList("TODAS", textBuscadorProductos.text)
+        tableProductos.items = FXCollections.observableArrayList(filteredList)
     }
 
     private fun clearForm() {
@@ -134,4 +199,3 @@ class ProductosViewAdminController {
         alert.showAndWait()
     }
 }
-

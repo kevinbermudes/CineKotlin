@@ -10,6 +10,14 @@ import org.example.cine.peliculas.service.cache.PeliculasCacheImpl
 import org.example.cine.peliculas.service.database.PeliculasService
 import org.example.cine.peliculas.service.database.PeliculasServiceImpl
 import org.example.cine.peliculas.service.storage.*
+import org.example.cine.productos.repositories.ProductosRepository
+import org.example.cine.productos.repositories.ProductosRepositoryImpl
+import org.example.cine.productos.services.cache.ProductosCache
+import org.example.cine.productos.services.cache.ProductosCacheImpl
+import org.example.cine.productos.services.database.ProductosService
+import org.example.cine.productos.services.database.ProductosServiceImpl
+import org.example.cine.productos.services.storage.*
+import org.example.cine.productos.viewmodels.ProductosViewModel
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
@@ -19,6 +27,7 @@ val appModule = module {
 
     singleOf(::SqlDeLightClient)
 
+    // Películas
     singleOf(::PeliculasRepositoryImpl) {
         bind<PeliculasRepository>()
     }
@@ -49,5 +58,38 @@ val appModule = module {
 
     singleOf(::CineViewModel) {
         bind<CineViewModel>()
+    }
+
+    // Productos
+    singleOf(::ProductosRepositoryImpl) {
+        bind<ProductosRepository>()
+    }
+
+    singleOf(::ProductosStorageJsonImpl) {
+        bind<ProductosStorageJson>()
+    }
+
+    singleOf(::ProductosStorageZipImpl) {
+        bind<ProductosStorageZip>()
+    }
+
+    singleOf(::ProductosStorageImagesImpl) {
+        bind<ProductosStorageImages>()
+    }
+
+    singleOf(::ProductosStorageImpl) {
+        bind<ProductosStorage>()
+    }
+
+    singleOf(::ProductosCacheImpl) {
+        bind<ProductosCache>()
+    }
+
+    singleOf(::ProductosServiceImpl) {
+        bind<ProductosService>()
+    }
+
+    singleOf(::ProductosViewModel) {
+        bind<ProductosViewModel>()
     }
 }
