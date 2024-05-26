@@ -3,7 +3,6 @@ package org.example.cine.productos.controllers
 import javafx.fxml.FXML
 import javafx.scene.control.*
 import javafx.scene.image.ImageView
-import javafx.stage.Stage
 import org.example.cine.route.RoutesManager
 import org.lighthousegames.logging.logging
 
@@ -78,13 +77,11 @@ class ProductosViewUsuariosController {
 
     private fun onCerrarSesion() {
         logger.debug { "Cerrando sesión" }
-        val stage = butonCerrarSesion.scene.window as Stage
-        stage.close()
-        RoutesManager.initMainStage(Stage())
+        RoutesManager.changeScene(view = RoutesManager.View.MAIN)
     }
 
     private fun onComprarProductosLogin() {
-        showAlert("Compra", "Necesitas estar logado para comprar productos.")
+        showAlert("Compra", "Esto te redigira a la vista de compra.")
     }
 
     private fun onAnadirProductos() {
@@ -102,9 +99,8 @@ class ProductosViewUsuariosController {
     }
 
     private fun onAtras() {
-        val stage = butonAtras.scene.window as Stage
-        stage.close()
-        RoutesManager.intiUsuarioIndex()
+        logger.debug { "Volviendo a la vista de peliculas admin..." }
+        RoutesManager.changeScene(view = RoutesManager.View.ADMININDEX)
     }
 
     private fun clearForm() {
