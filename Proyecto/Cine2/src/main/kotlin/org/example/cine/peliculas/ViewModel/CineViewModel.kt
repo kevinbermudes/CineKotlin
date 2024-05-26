@@ -31,7 +31,7 @@ class CineViewModel(
         loadAllPeliculas() // Cargamos los datos de las películas
     }
 
-    private fun loadAllPeliculas() {
+     fun loadAllPeliculas() {
         logger.debug { "Cargando películas del repositorio" }
         service.findAll().onSuccess {
             logger.debug { "Películas recuperadas: ${it.size}" }

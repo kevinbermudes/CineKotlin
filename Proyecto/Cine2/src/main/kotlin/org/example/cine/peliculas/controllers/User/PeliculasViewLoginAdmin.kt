@@ -86,6 +86,12 @@ class PeliculasViewLoginAdmin : KoinComponent {
         initDefaultValues()
         initBindings()
         initEventos()
+        loadData()
+    }
+
+    private fun loadData() {
+     logger.debug { "Cargando datos iniciales" }
+        viewModel.loadAllPeliculas()
     }
 
     private fun initDefaultValues() {
@@ -144,12 +150,14 @@ class PeliculasViewLoginAdmin : KoinComponent {
     private fun onGestionProductosAction() {
         // Lógica para gestionar productos
         logger.debug { "Gestionando productos -> redirigiendo a vista de productos como admin" }
-        RoutesManager.initProductosAdmin()
+        RoutesManager.changeScene(view = RoutesManager.View.PRODUCTOSADMIN)
     }
 
     private fun onGestionButacasAction() {
         // Lógica para gestionar butacas
         showAlert("Gestionar Butacas", "Aquí puedes gestionar las butacas.")
+        RoutesManager.changeScene(view = RoutesManager.View.BUTACASADMIN)
+
     }
 
     private fun onCrearPeliculaAction() {

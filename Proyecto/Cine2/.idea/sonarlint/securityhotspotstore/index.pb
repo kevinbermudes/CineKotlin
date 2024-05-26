@@ -61,3 +61,17 @@ Psrc/main/kotlin/org/example/cine/peliculas/controllers/User/ButacasController.k
 Wsrc/main/kotlin/org/example/cine/productos/controllers/ProductosAnadirViewController.kt,f\c\fca7c04201cc19ad8f3daeae90eb3674ddb28585
 ‡
 Wsrc/main/kotlin/org/example/cine/productos/controllers/ProductosEditarViewController.kt,5\7\57059d908504495596e92f6477685ed9449297b0
+ƒ
+Ssrc/main/kotlin/org/example/cine/productos/services/storage/ProductosStorageJson.kt,4\5\45a77edbf9f2c7374fd8ee4a7cf1114c65f81e8b
+ƒ
+Ssrc/main/kotlin/org/example/cine/productos/services/storage/ProductosStorageImpl.kt,f\f\ffec17609a82a9f4eba3d11628ad0918402d6122
+‰
+Ysrc/main/kotlin/org/example/cine/productos/services/storage/ProductosStorageImagesImpl.kt,0\3\03bba921e29c116d544cd003865b9ec3f7613489
+€
+Psrc/main/kotlin/org/example/cine/productos/services/database/ProductosService.kt,4\f\4f7ebbd28fb0b2782b25a417cac1108484babe2a
+{
+Ksrc/main/kotlin/org/example/cine/productos/services/cache/ProductosCache.kt,5\f\5ff7172875b0f99fb41b4615eb37b4323af5e063
+
+Osrc/main/kotlin/org/example/cine/productos/services/cache/ProductosCacheImpl.kt,a\8\a847582ee08c20322d23b58cfe317963a2119824
+…
+Usrc/main/kotlin/org/example/cine/peliculas/controllers/User/ButacasAdminController.kt,2\f\2fce1196480f04753569507b04af7b5dee9c85d0

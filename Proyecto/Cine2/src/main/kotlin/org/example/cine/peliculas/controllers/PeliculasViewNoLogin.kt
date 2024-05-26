@@ -87,6 +87,7 @@ class PeliculasViewNoLogin : KoinComponent {
         initDefaultValues()
         initBindings()
         initEventos()
+        loadData()
     }
 
     private fun initDefaultValues() {
@@ -97,6 +98,11 @@ class PeliculasViewNoLogin : KoinComponent {
         tableColumnDuracion.cellValueFactory = PropertyValueFactory("duracion")
         tableColumnFecha.cellValueFactory = PropertyValueFactory("fechaEstreno")
     }
+    private fun loadData() {
+        logger.debug { "Cargando datos iniciales" }
+        viewModel.loadAllPeliculas()
+    }
+
 
     private fun initBindings() {
         logger.debug { "Inicializando bindings" }
@@ -154,9 +160,13 @@ class PeliculasViewNoLogin : KoinComponent {
 
     private fun onTablaPeliculasSelected(pelicula: Pelicula) {
         // Lógica para manejar la selección de una película en la tabla
+        viewModel.updatePeliculaSeleccionada(pelicula)
+
     }
 
     private fun onBuscadorKeyReleased() {
         // Lógica para manejar la búsqueda de películas
+        val filteredList = viewModel.peliculasFilteredList(TextBuscadorPeliculas.text)
+        TablaPeliculas.items = FXCollections.observableArrayList(filteredList)
     }
 }

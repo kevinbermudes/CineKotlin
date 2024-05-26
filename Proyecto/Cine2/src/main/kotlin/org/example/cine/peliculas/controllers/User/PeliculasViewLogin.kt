@@ -83,7 +83,13 @@ class PeliculasViewLogin : KoinComponent {
         initDefaultValues()
         initBindings()
         initEventos()
+        loadData()
     }
+    private fun loadData() {
+        logger.debug { "Cargando datos iniciales" }
+        viewModel.loadAllPeliculas()
+    }
+
 
     private fun initDefaultValues() {
         // Configuración de la tabla
