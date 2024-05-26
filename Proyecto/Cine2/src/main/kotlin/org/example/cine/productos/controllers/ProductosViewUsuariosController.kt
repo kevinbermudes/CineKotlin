@@ -3,7 +3,6 @@ package org.example.cine.productos.controllers
 import javafx.fxml.FXML
 import javafx.scene.control.*
 import javafx.scene.image.ImageView
-import org.example.cine.peliculas.ViewModel.CineViewModel
 import org.example.cine.productos.viewmodels.ProductosViewModel
 import org.example.cine.route.RoutesManager
 import org.koin.core.component.KoinComponent
@@ -113,7 +112,7 @@ class ProductosViewUsuariosController  : KoinComponent {
 
     private fun onAtras() {
         logger.debug { "Volviendo a la vista de peliculas admin..." }
-        RoutesManager.changeScene(view = RoutesManager.View.ADMININDEX)
+        RoutesManager.changeScene(view = RoutesManager.View.USUARIOINDEX)
     }
 
     private fun clearForm() {
