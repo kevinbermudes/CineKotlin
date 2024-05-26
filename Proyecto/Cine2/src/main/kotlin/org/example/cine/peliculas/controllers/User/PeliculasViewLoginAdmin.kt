@@ -13,8 +13,8 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.lighthousegames.logging.logging
 
-
 private val logger = logging()
+
 class PeliculasViewLoginAdmin : KoinComponent {
     // Inyectamos nuestro ViewModel
     private val viewModel: CineViewModel by inject()
@@ -83,6 +83,10 @@ class PeliculasViewLoginAdmin : KoinComponent {
     // Método para inicializar
     @FXML
     fun initialize() {
+        // Verificar que todas las propiedades lateinit se inicialicen correctamente
+        assert(::dataFechaDeEstreno.isInitialized) { "dataFechaDeEstreno no está inicializada" }
+        assert(::textNombrePelicula.isInitialized) { "textNombrePelicula no está inicializada" }
+
         initDefaultValues()
         initBindings()
         initEventos()
@@ -90,7 +94,7 @@ class PeliculasViewLoginAdmin : KoinComponent {
     }
 
     private fun loadData() {
-     logger.debug { "Cargando datos iniciales" }
+        logger.debug { "Cargando datos iniciales" }
         viewModel.loadAllPeliculas()
     }
 
@@ -155,9 +159,7 @@ class PeliculasViewLoginAdmin : KoinComponent {
 
     private fun onGestionButacasAction() {
         // Lógica para gestionar butacas
-        showAlert("Gestionar Butacas", "Aquí puedes gestionar las butacas.")
         RoutesManager.changeScene(view = RoutesManager.View.BUTACASADMIN)
-
     }
 
     private fun onCrearPeliculaAction() {

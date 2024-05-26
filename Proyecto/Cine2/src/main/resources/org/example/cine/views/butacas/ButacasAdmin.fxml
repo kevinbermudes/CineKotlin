@@ -67,7 +67,7 @@
                         <ImageView fx:id="butacaA3" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
                         <ImageView fx:id="butacaA4" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
                         <ImageView fx:id="butacaA5" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" />
-                        <ImageView fx:id="butacaA36" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" />
+                        <ImageView fx:id="butacaA6" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" />
                         <ImageView fx:id="butacaA7" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" />
                         <ImageView fx:id="butacaB1" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
                         <ImageView fx:id="butacaB2" fitHeight="75.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />

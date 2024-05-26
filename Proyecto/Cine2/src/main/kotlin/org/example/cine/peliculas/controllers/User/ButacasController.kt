@@ -192,8 +192,7 @@ class ButacasController {
         }
 
         butonAtrasButacas.setOnAction {
-            val stage = butonAtrasButacas.scene.window as Stage
-            stage.close()
+
             RoutesManager.changeScene(view = RoutesManager.View.USUARIOINDEX)
         }
 
