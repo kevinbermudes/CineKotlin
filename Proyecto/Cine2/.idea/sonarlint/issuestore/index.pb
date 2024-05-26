@@ -57,3 +57,7 @@ Vsrc/main/kotlin/org/example/cine/peliculas/controllers/User/PeliculasViewLoginA
 Ksrc/main/kotlin/org/example/cine/productos/viewmodels/ProductosViewModel.kt,e\0\e0ab715ddc82298edbb7bccc711e2123833f6226
 €
 Psrc/main/kotlin/org/example/cine/peliculas/controllers/User/ButacasController.kt,9\7\97fce9ff33eb9569df4690dbe10a05104a26935b
+‡
+Wsrc/main/kotlin/org/example/cine/productos/controllers/ProductosAnadirViewController.kt,f\c\fca7c04201cc19ad8f3daeae90eb3674ddb28585
+‡
+Wsrc/main/kotlin/org/example/cine/productos/controllers/ProductosEditarViewController.kt,5\7\57059d908504495596e92f6477685ed9449297b0

@@ -43,7 +43,13 @@ object RoutesManager {
         USUARIOINDEX("/org/example/cine/views/peliculas/IndezLogin.fxml"),
         //vista de administrador
         ADMININDEX("/org/example/cine/views/peliculas/IndezLoginAdmin.fxml"),
-
+    //    **********************************Butacas*****************************************
+        //vista de butacas con login admin
+        BUTACASADMIN("/org/example/cine/views/butacas/ButacasAdmin.fxml"),
+        //vista de butacas con login usuario
+        BUTACASUSUARIO("/org/example/cine/views/butacas/Butas_Usuario.fxml"),
+        //vista de butacas con login admin
+        BUTACASADMINEDITARBUTACA("/org/example/cine/views/butacas/VentanaEditButaca.fxml"),
   //  ************************************Productos*********************
         //VISTA de produtos con login usuario
         PRODUCTOSUSUARIOS("/org/example/cine/views/produtos/ProductosUsuarios.fxml"),
@@ -141,6 +147,61 @@ object RoutesManager {
         stage.icons.add(Image(getResourceAsStream("/org/example/cine/icons/app-icon.png")))
         stage.setOnCloseRequest { onAppExit(event = it) }
         stage.title = "Cine - Índice Admin"
+        stage.scene = scene
+        stage.initOwner(mainStage)
+        stage.initModality(Modality.WINDOW_MODAL)
+        stage.isResizable = false
+        closeActiveStage()
+        _activeStage = stage
+        stage.show()
+    }
+   // *************************************BUTACAS***************************************
+    fun initButasAdmin(){
+        logger.debug { "Inicializando ButacasAdmin" }
+
+        val fxmlLoader = FXMLLoader(getResource(View.BUTACASADMIN.fxml))
+        val parentRoot = fxmlLoader.load<Pane>()
+        val scene = Scene(parentRoot, 900.0, 600.0)
+        val stage = Stage()
+        stage.icons.add(Image(getResourceAsStream("/org/example/cine/icons/app-icon.png")))
+        stage.setOnCloseRequest { onAppExit(event = it) }
+        stage.title = "Cine - Butacas Admin"
+        stage.scene = scene
+        stage.initOwner(mainStage)
+        stage.initModality(Modality.WINDOW_MODAL)
+        stage.isResizable = false
+        closeActiveStage()
+        _activeStage = stage
+        stage.show()
+    }
+    fun initButasUsuario(){
+        logger.debug { "Inicializando ButacasUsuario" }
+
+        val fxmlLoader = FXMLLoader(getResource(View.BUTACASUSUARIO.fxml))
+        val parentRoot = fxmlLoader.load<Pane>()
+        val scene = Scene(parentRoot, 900.0, 600.0)
+        val stage = Stage()
+        stage.icons.add(Image(getResourceAsStream("/org/example/cine/icons/app-icon.png")))
+        stage.setOnCloseRequest { onAppExit(event = it) }
+        stage.title = "Cine - Butacas Usuario"
+        stage.scene = scene
+        stage.initOwner(mainStage)
+        stage.initModality(Modality.WINDOW_MODAL)
+        stage.isResizable = false
+        closeActiveStage()
+        _activeStage = stage
+        stage.show()
+    }
+    fun initButasAdminEditarButaca(){
+        logger.debug { "Inicializando ButacasAdminEditarButaca" }
+
+        val fxmlLoader = FXMLLoader(getResource(View.BUTACASADMINEDITARBUTACA.fxml))
+        val parentRoot = fxmlLoader.load<Pane>()
+        val scene = Scene(parentRoot, 350.0, 400.0)
+        val stage = Stage()
+        stage.icons.add(Image(getResourceAsStream("/org/example/cine/icons/app-icon.png")))
+        stage.setOnCloseRequest { onAppExit(event = it) }
+        stage.title = "Cine - Editar Butaca"
         stage.scene = scene
         stage.initOwner(mainStage)
         stage.initModality(Modality.WINDOW_MODAL)

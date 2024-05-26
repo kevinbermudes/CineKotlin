@@ -3,8 +3,7 @@ package org.example.cine.peliculas.controllers.User
 import javafx.fxml.FXML
 import javafx.scene.control.*
 import javafx.scene.image.ImageView
-import javafx.scene.layout.AnchorPane
-import javafx.scene.layout.GridPane
+import javafx.stage.Stage
 import org.example.cine.route.RoutesManager
 import org.lighthousegames.logging.logging
 
@@ -38,106 +37,72 @@ class ButacasController {
 
     @FXML
     private lateinit var butacaA1: ImageView
-
     @FXML
     private lateinit var butacaA2: ImageView
-
     @FXML
     private lateinit var butacaA3: ImageView
-
     @FXML
     private lateinit var butacaA4: ImageView
-
     @FXML
     private lateinit var butacaA5: ImageView
-
     @FXML
     private lateinit var butacaA6: ImageView
-
     @FXML
     private lateinit var butacaA7: ImageView
-
     @FXML
     private lateinit var butacaB1: ImageView
-
     @FXML
     private lateinit var butacaB2: ImageView
-
     @FXML
     private lateinit var butacaB3: ImageView
-
     @FXML
     private lateinit var butacaB4: ImageView
-
     @FXML
     private lateinit var butacaB5: ImageView
-
     @FXML
     private lateinit var butacaB6: ImageView
-
     @FXML
     private lateinit var butacaB7: ImageView
-
     @FXML
     private lateinit var butacaC1: ImageView
-
     @FXML
     private lateinit var butacaC2: ImageView
-
     @FXML
     private lateinit var butacaC3: ImageView
-
     @FXML
     private lateinit var butacaC4: ImageView
-
     @FXML
     private lateinit var butacaC5: ImageView
-
     @FXML
     private lateinit var butacaC6: ImageView
-
     @FXML
     private lateinit var butacaC7: ImageView
-
     @FXML
     private lateinit var butacaD1: ImageView
-
     @FXML
     private lateinit var butacaD2: ImageView
-
     @FXML
     private lateinit var butacaD3: ImageView
-
     @FXML
     private lateinit var butacaD4: ImageView
-
     @FXML
     private lateinit var butacaD5: ImageView
-
     @FXML
     private lateinit var butacaD6: ImageView
-
     @FXML
     private lateinit var butacaD7: ImageView
-
     @FXML
     private lateinit var butacaE1: ImageView
-
     @FXML
     private lateinit var butacaE2: ImageView
-
     @FXML
     private lateinit var butacaE3: ImageView
-
     @FXML
     private lateinit var butacaE4: ImageView
-
     @FXML
     private lateinit var butacaE5: ImageView
-
     @FXML
     private lateinit var butacaE6: ImageView
-
     @FXML
     private lateinit var butacaE7: ImageView
 
@@ -145,23 +110,21 @@ class ButacasController {
 
     @FXML
     fun initialize() {
-        // Inicializar eventos
         initEventos()
     }
 
     private fun initEventos() {
         butonHelp.setOnAction {
-            // Lógica para mostrar ayuda
             showAlert("Ayuda", "Aquí se muestra la ayuda de la aplicación.")
         }
 
         butonAtrasButacas.setOnAction {
-            // Volver a la pantalla anterior
-            RoutesManager.initMainStage(RoutesManager.mainStage)
+            val stage = butonAtrasButacas.scene.window as Stage
+            stage.close()
+            RoutesManager.changeScene(view = RoutesManager.View.USUARIOINDEX)
         }
 
         butonComprarProductos.setOnAction {
-            // Comprar productos relacionados con las butacas seleccionadas
             showAlert("Comprar", "Productos comprados para las butacas seleccionadas.")
         }
 

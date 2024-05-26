@@ -41,20 +41,24 @@ class LoginController {
         if (usuario == "admin" && contrasena == "admin") {
             // Cargar vista de administrador
             logger.debug { "Accediendo como admin" }
-            RoutesManager.changeScene(view= RoutesManager.View.ADMININDEX)
+            RoutesManager.changeScene(view = RoutesManager.View.ADMININDEX)
 
         } else if (usuario == "user" && contrasena == "user") {
             // Cargar vista de usuario
             logger.debug { "Accediendo como usuario" }
-            RoutesManager.changeScene(view= RoutesManager.View.USUARIOINDEX)
+            RoutesManager.changeScene(view = RoutesManager.View.USUARIOINDEX)
         } else {
             // Mostrar alerta de error
             showAlert("Credenciales incorrectas", "Por favor, inténtalo de nuevo.")
         }
 
-        // Cerrar la ventana de login
-        val stage = buttonInicarSesion.scene.window as Stage
-        stage.close()
+        // Cerrar la ventana de login si es posible
+        val window = buttonInicarSesion.scene?.window
+        if (window is Stage) {
+            window.close()
+        } else {
+            logger.error { "La ventana actual no es una instancia de Stage o es null" }
+        }
     }
 
     private fun onNoIniciarSesion() {

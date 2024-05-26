@@ -137,7 +137,7 @@ class PeliculasViewLogin : KoinComponent {
 
     private fun onComprarLoginAction() {
         logger.debug { "Comprar película -> rediriguiendo a ecena produtos " }
-        RoutesManager.initProductosUsuarios()
+       RoutesManager.changeScene(view = RoutesManager.View.BUTACASUSUARIO)
 
     }
 
