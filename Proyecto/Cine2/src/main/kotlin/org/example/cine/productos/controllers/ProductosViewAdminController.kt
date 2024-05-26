@@ -1,12 +1,11 @@
 package org.example.cine.productos.controllers
 
-import com.github.michaelbull.result.onFailure
-import com.github.michaelbull.result.onSuccess
 import javafx.collections.FXCollections
 import javafx.fxml.FXML
 import javafx.scene.control.*
 import javafx.scene.control.cell.PropertyValueFactory
 import javafx.scene.image.ImageView
+import javafx.stage.Stage
 import org.example.cine.productos.models.Producto
 import org.example.cine.productos.viewmodels.ProductosViewModel
 import org.example.cine.route.RoutesManager
@@ -138,31 +137,15 @@ class ProductosViewAdminController : KoinComponent {
     }
 
     private fun onEditarProducto() {
-        val productoSeleccionado = tableProductos.selectionModel.selectedItem
-        if (productoSeleccionado != null) {
-            logger.debug { "Editando Producto" }
-            viewModel.updateProductoSeleccionado(productoSeleccionado)
-            RoutesManager.initEditarViewController()
-        } else {
-            showAlert("Error", "Selecciona un producto para editar.")
-        }
+       logger.debug { "Editando producto" }
+       val stage = butonEditarProducto.scene.window as Stage
+       RoutesManager.initEditarViewController()
     }
 
     private fun onAnadirProducto() {
-        val nombre = textoNombreProducto.text
-        val categoria = textoCategoriaProducto.text
-        val precio = textoPrecioProducto.text.toDoubleOrNull()
-
-        if (nombre.isNotBlank() && categoria.isNotBlank() && precio != null) {
-            viewModel.crearProducto(nombre, precio.toString(), Producto.Categoria.valueOf(categoria.toUpperCase())).onSuccess {
-                viewModel.loadAllProductos()
-                clearForm()
-            }.onFailure {
-                showAlert("Error", "No se pudo añadir el producto: ${it.message}")
-            }
-        } else {
-            showAlert("Error", "Por favor, completa todos los campos correctamente.")
-        }
+      logger.debug { "Anadiendo nuevo producto" }
+      val stage = butonAnadirProductosAdmin.scene.window as Stage
+      RoutesManager.initAnadirViewController()
     }
 
     private fun onAtras() {
@@ -171,9 +154,8 @@ class ProductosViewAdminController : KoinComponent {
     }
 
     private fun onBorrarProducto() {
-
-            showAlert("Error", "Selecciona un producto para borrar.")
-
+        logger.debug { "Borrando..." }
+        showAlert("Error", "Selecciona un producto para borrar.")
     }
 
     private fun onTableProductosSelected(producto: Producto) {
