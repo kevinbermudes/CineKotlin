@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS ProductoEntity (
 -- Datos de prueba
 INSERT INTO ProductoEntity (nombre, precio, categoria, imagen, created_at, updated_at)
 VALUES ('Palomitas', 5.0, 'BOTANA', 'palomitas.png', '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
-       ('Refresco', 2.5, 'BEBIDA', 'refresco.png', '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
+       ('Refresco', 2.5, 'BEBIDAS', 'refresco.png', '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
        ('Agua Mineral', 1.5, 'BEBIDAS', 'agua_mineral.png', '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
        ('Frutos Secos', 3.0, 'FRUTOS_SECOS', 'frutos_secos.png', '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
        ('Chocolatina', 1.0, 'BOTANA', 'chocolatina.png', '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
