@@ -1,14 +1,4 @@
 
-Š
-Zsrc/main/kotlin/org/example/cine2/productos/controllers/ProductosDetallesViewController.kt,c\3\c3edb7ba6198590d33bde92fba9f523fb8d1f27a
-‡
-Wsrc/main/kotlin/org/example/cine2/productos/controllers/ProductosViewAdminController.kt,e\4\e4d3886357abec5c8029debaf84b32489aacb381
-Š
-Zsrc/main/kotlin/org/example/cine2/productos/controllers/ProductosViewUsuariosController.kt,9\b\9bf11db5d21e4a14256c1269460252748af28fd2
-l
-<src/main/kotlin/org/example/cine2/peliculas/controllers/hola,2\2\2218badda10e5e86067bbb9e9aa3691d6365f3b2
-m
-=src/main/kotlin/org/example/cine2/peliculas/controllers/hola2,a\9\a90b3d048b0cb766e0302d06905d070e174a85c1
 N
 src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
 g
@@ -47,8 +37,6 @@ m
 Vsrc/main/kotlin/org/example/cine/productos/controllers/ProductosViewAdminController.kt,1\f\1f35f3af4fa7524f7ae4c3e846d8a6071f741963
 ‰
 Ysrc/main/kotlin/org/example/cine/productos/controllers/ProductosViewUsuariosController.kt,c\7\c752435b75a4c056dd7b645dcbda0218209a7a37
-‰
-Ysrc/main/kotlin/org/example/cine/productos/controllers/ProductosDetallesViewController.kt,4\1\415a4958dd6338c1316f9cfe5038cd01e2853c56
 u
 Esrc/main/kotlin/org/example/cine/peliculas/ViewModel/CineViewModel.kt,8\0\8023b1931a00791d57178afa059d598df8481a8d
 T
@@ -59,8 +47,6 @@ d
 Rsrc/main/kotlin/org/example/cine/productos/repositories/ProductosRepositoryImpl.kt,4\1\41ed240888ee7ab70af5cc72bed23110f87003a2
 ~
 Nsrc/main/kotlin/org/example/cine/peliculas/repositories/PeliculasRepository.kt,8\a\8a1e4eec6a15cbd33472754f526b0483a453d323
-y
-Isrc/main/kotlin/org/example/cine/peliculas/controllers/LoginController.kt,f\4\f47c4492c41f4c9e8383b0016673421d46a29413
 
 Osrc/main/kotlin/org/example/cine/peliculas/controllers/login/LoginController.kt,4\5\45177299e0170aa5df76532d4111db5602d4c3bf
 
@@ -69,3 +55,5 @@ Qsrc/main/kotlin/org/example/cine/peliculas/controllers/User/PeliculasViewLogin.
 Vsrc/main/kotlin/org/example/cine/peliculas/controllers/User/PeliculasViewLoginAdmin.kt,b\a\ba0589ae5d35631aef50b69d5d6dd43174e8149f
 {
 Ksrc/main/kotlin/org/example/cine/productos/viewmodels/ProductosViewModel.kt,e\0\e0ab715ddc82298edbb7bccc711e2123833f6226
+€
+Psrc/main/kotlin/org/example/cine/peliculas/controllers/User/ButacasController.kt,9\7\97fce9ff33eb9569df4690dbe10a05104a26935b
