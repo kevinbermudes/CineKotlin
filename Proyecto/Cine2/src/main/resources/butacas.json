@@ -1,0 +1,179 @@
+{
+  "butacas": [
+    {
+      "id": "A1",
+      "estado": "libre",
+      "imagen": "libre.png"
+    },
+    {
+      "id": "A2",
+      "estado": "ocupado",
+      "imagen": "ocupado.png"
+    },
+    {
+      "id": "A3",
+      "estado": "mantenimiento",
+      "imagen": "Mantenimiento.png"
+    },
+    {
+      "id": "A4",
+      "estado": "vip",
+      "imagen": "vip.png"
+    },
+    {
+      "id": "A5",
+      "estado": "libre",
+      "imagen": "libre.png"
+    },
+    {
+      "id": "A6",
+      "estado": "ocupado",
+      "imagen": "ocupado.png"
+    },
+    {
+      "id": "A7",
+      "estado": "libre",
+      "imagen": "libre.png"
+    },
+    {
+      "id": "B1",
+      "estado": "libre",
+      "imagen": "libre.png"
+    },
+    {
+      "id": "B2",
+      "estado": "ocupado",
+      "imagen": "ocupado.png"
+    },
+    {
+      "id": "B3",
+      "estado": "mantenimiento",
+      "imagen": "Mantenimiento.png"
+    },
+    {
+      "id": "B4",
+      "estado": "vip",
+      "imagen": "vip.png"
+    },
+    {
+      "id": "B5",
+      "estado": "libre",
+      "imagen": "libre.png"
+    },
+    {
+      "id": "B6",
+      "estado": "ocupado",
+      "imagen": "ocupado.png"
+    },
+    {
+      "id": "B7",
+      "estado": "libre",
+      "imagen": "libre.png"
+    },
+    {
+      "id": "C1",
+      "estado": "libre",
+      "imagen": "libre.png"
+    },
+    {
+      "id": "C2",
+      "estado": "ocupado",
+      "imagen": "ocupado.png"
+    },
+    {
+      "id": "C3",
+      "estado": "mantenimiento",
+      "imagen": "Mantenimiento.png"
+    },
+    {
+      "id": "C4",
+      "estado": "vip",
+      "imagen": "vip.png"
+    },
+    {
+      "id": "C5",
+      "estado": "libre",
+      "imagen": "libre.png"
+    },
+    {
+      "id": "C6",
+      "estado": "ocupado",
+      "imagen": "ocupado.png"
+    },
+    {
+      "id": "C7",
+      "estado": "libre",
+      "imagen": "libre.png"
+    },
+    {
+      "id": "D1",
+      "estado": "libre",
+      "imagen": "libre.png"
+    },
+    {
+      "id": "D2",
+      "estado": "ocupado",
+      "imagen": "ocupado.png"
+    },
+    {
+      "id": "D3",
+      "estado": "mantenimiento",
+      "imagen": "Mantenimiento.png"
+    },
+    {
+      "id": "D4",
+      "estado": "vip",
+      "imagen": "vip.png"
+    },
+    {
+      "id": "D5",
+      "estado": "libre",
+      "imagen": "libre.png"
+    },
+    {
+      "id": "D6",
+      "estado": "ocupado",
+      "imagen": "ocupado.png"
+    },
+    {
+      "id": "D7",
+      "estado": "libre",
+      "imagen": "libre.png"
+    },
+    {
+      "id": "E1",
+      "estado": "libre",
+      "imagen": "libre.png"
+    },
+    {
+      "id": "E2",
+      "estado": "ocupado",
+      "imagen": "ocupado.png"
+    },
+    {
+      "id": "E3",
+      "estado": "mantenimiento",
+      "imagen": "Mantenimiento.png"
+    },
+    {
+      "id": "E4",
+      "estado": "vip",
+      "imagen": "vip.png"
+    },
+    {
+      "id": "E5",
+      "estado": "libre",
+      "imagen": "libre.png"
+    },
+    {
+      "id": "E6",
+      "estado": "ocupado",
+      "imagen": "ocupado.png"
+    },
+    {
+      "id": "E7",
+      "estado": "libre",
+      "imagen": "libre.png"
+    }
+  ]
+}

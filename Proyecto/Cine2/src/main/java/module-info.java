@@ -15,7 +15,6 @@ module org.example.cine {
     requires java.sql;
     requires kotlinx.serialization.json;
 
-
     opens org.example.cine to javafx.fxml;
     exports org.example.cine;
     opens org.example.cine.route to javafx.fxml;

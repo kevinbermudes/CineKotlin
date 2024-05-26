@@ -36,13 +36,13 @@ class ProductosViewModel(
         loadCategorias() // Cargamos las categorías de productos
     }
 
-    private fun loadCategorias() {
+     fun loadCategorias() {
         logger.debug { "Cargando categorías de productos" }
         state.categorias.clear()
-        state.categorias.addAll(Categoria.values().map { it.name })
+        state.categorias.addAll(Categoria.entries.map { it.name })
     }
 
-    private fun loadAllProductos() {
+     fun loadAllProductos() {
         logger.debug { "Cargando productos del repositorio" }
         service.findAll().onSuccess {
             logger.debug { "Cargando productos del repositorio: ${state.productos.size}" }

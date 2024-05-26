@@ -3,12 +3,19 @@ package org.example.cine.productos.controllers
 import javafx.fxml.FXML
 import javafx.scene.control.*
 import javafx.scene.image.ImageView
+import org.example.cine.peliculas.ViewModel.CineViewModel
+import org.example.cine.productos.viewmodels.ProductosViewModel
 import org.example.cine.route.RoutesManager
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import org.lighthousegames.logging.logging
+
 
 private val logger = logging()
 
-class ProductosViewUsuariosController {
+class ProductosViewUsuariosController  : KoinComponent {
+    private val viewModel: ProductosViewModel by inject()
+
 
     @FXML
     private lateinit var butonHelp: Button
@@ -63,12 +70,18 @@ class ProductosViewUsuariosController {
         initEventos()
     }
 
+
     private fun initEventos() {
         butonHelp.setOnAction { onHelp() }
         butonCerrarSesion.setOnAction { onCerrarSesion() }
         butonComprarProductosLogin.setOnAction { onComprarProductosLogin() }
         butonAnadirProductos.setOnAction { onAnadirProductos() }
         butonAtras.setOnAction { onAtras() }
+    }
+
+    private fun loadData() {
+        logger.debug { "Cargando datos iniciales de productos" }
+        viewModel.loadAllProductos()
     }
 
     private fun onHelp() {

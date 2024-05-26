@@ -4,8 +4,15 @@ import javafx.fxml.FXML
 import javafx.scene.control.*
 import javafx.scene.image.ImageView
 import javafx.stage.Stage
+import org.example.cine.peliculas.models.Butaca
 import org.example.cine.route.RoutesManager
 import org.lighthousegames.logging.logging
+
+import com.github.michaelbull.result.onFailure
+import com.github.michaelbull.result.onSuccess
+import javafx.scene.image.Image
+import org.example.cine.peliculas.service.storage.ButacasStorageJsonImpl
+import java.io.File
 
 private val logger = logging()
 
@@ -107,10 +114,76 @@ class ButacasController {
     private lateinit var butacaE7: ImageView
 
     private val butacasSeleccionadas = mutableListOf<ImageView>()
+    private val butacasStorage = ButacasStorageJsonImpl()
 
     @FXML
     fun initialize() {
         initEventos()
+        loadButacasFromJson()
+    }
+
+    private fun loadButacasFromJson() {
+        val butacasFile = File("src/main/resources/butacas.json")
+        if (butacasFile.exists()) {
+            val butacasResult = butacasStorage.loadDataJson(butacasFile)
+            butacasResult.onSuccess { butacas ->
+                butacas.forEach { butaca ->
+                    val imageView = getImageViewById(butaca.id)
+                    val imageUrl = javaClass.getResource("/org/example/cine/images/${butaca.imagen}")
+                    if (imageUrl != null) {
+                        imageView.image = Image(imageUrl.toString())
+                    } else {
+                        println("Error: No se pudo encontrar la imagen para ${butaca.imagen}")
+                    }
+                }
+            }.onFailure {
+                println("Error al cargar butacas: ${it.message}")
+            }
+        } else {
+            println("El archivo butacas.json no existe.")
+        }
+    }
+
+    private fun getImageViewById(id: String): ImageView {
+        return when (id) {
+            "A1" -> butacaA1
+            "A2" -> butacaA2
+            "A3" -> butacaA3
+            "A4" -> butacaA4
+            "A5" -> butacaA5
+            "A6" -> butacaA6
+            "A7" -> butacaA7
+            "B1" -> butacaB1
+            "B2" -> butacaB2
+            "B3" -> butacaB3
+            "B4" -> butacaB4
+            "B5" -> butacaB5
+            "B6" -> butacaB6
+            "B7" -> butacaB7
+            "C1" -> butacaC1
+            "C2" -> butacaC2
+            "C3" -> butacaC3
+            "C4" -> butacaC4
+            "C5" -> butacaC5
+            "C6" -> butacaC6
+            "C7" -> butacaC7
+            "D1" -> butacaD1
+            "D2" -> butacaD2
+            "D3" -> butacaD3
+            "D4" -> butacaD4
+            "D5" -> butacaD5
+            "D6" -> butacaD6
+            "D7" -> butacaD7
+            "E1" -> butacaE1
+            "E2" -> butacaE2
+            "E3" -> butacaE3
+            "E4" -> butacaE4
+            "E5" -> butacaE5
+            "E6" -> butacaE6
+            "E7" -> butacaE7
+
+            else -> throw IllegalArgumentException("Id de butaca desconocido: $id")
+        }
     }
 
     private fun initEventos() {
@@ -125,7 +198,7 @@ class ButacasController {
         }
 
         butonComprarProductos.setOnAction {
-            showAlert("Comprar", "Productos comprados para las butacas seleccionadas.")
+            RoutesManager.changeScene(view = RoutesManager.View.PRODUCTOSUSUARIOS)
         }
 
         // Inicializar eventos de selección de butacas
