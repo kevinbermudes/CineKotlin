@@ -11,7 +11,8 @@ data class ButacasContainer(
 data class Butaca(
     val id: String,
     val estado: String,
-    val imagen: String
+    val imagen: String,
+    val precio: Double
 ) {
     enum class Estado {
         libre, ocupado, mantenimiento, vip
