@@ -155,7 +155,12 @@ class ProductosViewAdminController : KoinComponent {
 
     private fun onBorrarProducto() {
         logger.debug { "Borrando..." }
-        showAlert("Error", "Selecciona un producto para borrar.")
+        val productoSeleccionado = tableProductos.selectionModel.selectedItem
+        if (productoSeleccionado != null) {
+            tableProductos.items.remove(productoSeleccionado)
+        } else {
+            showAlert("Error", "Selecciona un producto para borrar.")
+        }
     }
 
     private fun onTableProductosSelected(producto: Producto) {
