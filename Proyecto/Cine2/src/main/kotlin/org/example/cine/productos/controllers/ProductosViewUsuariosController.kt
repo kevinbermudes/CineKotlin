@@ -136,7 +136,9 @@ class ProductosViewUsuariosController : KoinComponent {
 
     private fun onAtras() {
         logger.debug { "Volviendo a la vista..." }
-        RoutesManager.changeScene(view = RoutesManager.View.USUARIOINDEX)
+        clearForm()
+        viewModel.clearState()
+        RoutesManager.changeScene(view = RoutesManager.View.BUTACASUSUARIO)
     }
 
     private fun onTableProductosSelected(producto: Producto) {

@@ -150,6 +150,8 @@ class ProductosViewAdminController : KoinComponent {
 
     private fun onAtras() {
         logger.debug { "Volviendo al índice de administrador" }
+        clearForm()
+        viewModel.clearState()
         RoutesManager.changeScene(view = RoutesManager.View.ADMININDEX)
     }
 

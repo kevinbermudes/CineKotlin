@@ -51,6 +51,11 @@ class ProductosViewModel(
             producto = ProductoFormState()
         )
     }
+    fun clearState() {
+        logger.debug { "Limpiando estado de Producto" }
+        state.set(ProductoState())
+    }
+
 
     // Filtra la lista de productos en el estado en función de la categoría y el nombre
     fun productosFilteredList(categoria: String, nombre: String): List<Producto> {
