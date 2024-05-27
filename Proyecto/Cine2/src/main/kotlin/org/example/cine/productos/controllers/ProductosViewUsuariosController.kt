@@ -1,7 +1,5 @@
 package org.example.cine.productos.controllers
 
-import com.github.michaelbull.result.onFailure
-import com.github.michaelbull.result.onSuccess
 import javafx.collections.FXCollections
 import javafx.fxml.FXML
 import javafx.scene.control.*
@@ -18,6 +16,8 @@ private val logger = logging()
 
 class ProductosViewUsuariosController : KoinComponent {
     private val viewModel: ProductosViewModel by inject()
+    @FXML
+    private lateinit var textProductosDisponibles: TextField
 
     @FXML
     private lateinit var butonHelp: Button
@@ -73,6 +73,7 @@ class ProductosViewUsuariosController : KoinComponent {
         initDefaultValues()
         initBindings()
         loadData()
+        ProductosDisponibles()
     }
 
     private fun initEventos() {
@@ -130,20 +131,7 @@ class ProductosViewUsuariosController : KoinComponent {
     }
 
     private fun onAnadirProductos() {
-        val nombre = textoNombreProducto.text
-        val categoria = textoCategoriaProducto.text
-        val precio = textoPrecioProducto.text.toDoubleOrNull()
-
-        if (nombre.isNotBlank() && categoria.isNotBlank() && precio != null) {
-            viewModel.crearProducto(nombre, precio.toString(), Producto.Categoria.valueOf(categoria.toUpperCase())).onSuccess {
-                viewModel.loadAllProductos()
-                clearForm()
-            }.onFailure {
-                showAlert("Error", "No se pudo añadir el producto: ${it.message}")
-            }
-        } else {
-            showAlert("Error", "Por favor, completa todos los campos correctamente.")
-        }
+        showAlert("Anadir", "Esto añadira un producto a la pasarela de pago.")
     }
 
     private fun onAtras() {
@@ -164,6 +152,10 @@ class ProductosViewUsuariosController : KoinComponent {
         textoNombreProducto.clear()
         textoCategoriaProducto.clear()
         textoPrecioProducto.clear()
+    }
+
+    private fun ProductosDisponibles() {
+        textProductosDisponibles.text = tableProductos.items.size.toString()
     }
 
     private fun showAlert(title: String, message: String) {
