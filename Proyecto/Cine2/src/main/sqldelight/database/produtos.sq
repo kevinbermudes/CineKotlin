@@ -9,7 +9,8 @@ CREATE TABLE IF NOT EXISTS ProductoEntity (
     created_at TEXT NOT NULL,
     updated_at TEXT NOT NULL
 );
--- Datos de prueba
+
+-- Insertar datos de prueba
 INSERT INTO ProductoEntity (nombre, precio, categoria, imagen, created_at, updated_at)
 VALUES ('Palomitas', 5.0, 'BOTANA', 'palomitas.png', '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
        ('Refresco', 2.5, 'BEBIDAS', 'refresco.png', '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
@@ -38,5 +39,3 @@ UPDATE ProductoEntity SET nombre = ?, precio = ?, categoria = ?, imagen = ?, upd
 
 delete:
 DELETE FROM ProductoEntity WHERE id = ?;
-
-

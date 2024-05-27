@@ -1,0 +1,39 @@
+-- Tabla de Pago
+CREATE TABLE IF NOT EXISTS PagoEntity (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    usuario_id INTEGER NOT NULL,
+    carrito_id INTEGER NOT NULL,
+    numero_tarjeta TEXT NOT NULL,
+    titular TEXT NOT NULL,
+    codigo_seguridad TEXT NOT NULL,
+    mes_expiracion TEXT NOT NULL,
+    ano_expiracion TEXT NOT NULL,
+    monto REAL NOT NULL,
+    estado TEXT NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES UsuarioEntity (id),
+    FOREIGN KEY (carrito_id) REFERENCES CarritoEntity (id)
+);
+
+deleteAll:
+DELETE FROM PagoEntity;
+
+selectAll:
+SELECT * FROM PagoEntity;
+
+selectById:
+SELECT * FROM PagoEntity WHERE id = ?;
+
+selectByUsuarioId:
+SELECT * FROM PagoEntity WHERE usuario_id = ?;
+
+selectByCarritoId:
+SELECT * FROM PagoEntity WHERE carrito_id = ?;
+
+insert:
+INSERT INTO PagoEntity (usuario_id, carrito_id, numero_tarjeta, titular, codigo_seguridad, mes_expiracion, ano_expiracion, monto, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+update:
+UPDATE PagoEntity SET usuario_id = ?, carrito_id = ?, numero_tarjeta = ?, titular = ?, codigo_seguridad = ?, mes_expiracion = ?, ano_expiracion = ?, monto = ?, estado = ? WHERE id = ?;
+
+delete:
+DELETE FROM PagoEntity WHERE id = ?;

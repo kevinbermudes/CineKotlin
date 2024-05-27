@@ -3,11 +3,8 @@ module org.example.cine {
     requires javafx.fxml;
     requires kotlin.stdlib;
     requires koin.core.jvm;
-
     requires logging.jvm;
     requires org.slf4j;
-
-
     requires kotlinx.serialization.core;
     requires kotlin.result.jvm;
     requires runtime.jvm;
@@ -15,6 +12,7 @@ module org.example.cine {
     requires java.sql;
     requires kotlinx.serialization.json;
 
+    // Exportaciones generales
     opens org.example.cine to javafx.fxml;
     exports org.example.cine;
     opens org.example.cine.route to javafx.fxml;
@@ -58,13 +56,15 @@ module org.example.cine {
     opens org.example.cine.productos.models to javafx.fxml;
     exports org.example.cine.productos.models;
 
+    // Controladores de Login
     opens org.example.cine.peliculas.controllers.login to javafx.fxml;
     exports org.example.cine.peliculas.controllers.login;
 
+    // Controladores de Usuario
     opens org.example.cine.peliculas.controllers.User to javafx.fxml;
     exports org.example.cine.peliculas.controllers.User;
 
-
-
-
+    // Asegúrate de añadir la exportación y apertura del paquete específico
+    opens org.example.cine.Usuario.controlador to javafx.fxml;
+    exports org.example.cine.Usuario.controlador;
 }

@@ -138,7 +138,8 @@ class PeliculasViewLogin : KoinComponent {
     }
 
     private fun onCerrarSecionAction() {
-        // Lógica para el botón Cerrar Sesión
+        logger.debug { "Cerradno secion desde la vista de peliculas como usuario " }
+        RoutesManager.changeScene(view = RoutesManager.View.MAIN)
     }
 
     private fun onComprarLoginAction() {

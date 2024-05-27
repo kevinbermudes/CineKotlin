@@ -147,8 +147,8 @@ class PeliculasViewLoginAdmin : KoinComponent {
     }
 
     private fun onCerrarSecionAction() {
-        // Lógica para el botón Cerrar Sesión
-        showAlert("Cerrar Sesión", "Sesión cerrada correctamente.")
+        logger.debug { "cerrando cesion de vista de peliculas administrador" }
+        RoutesManager.changeScene(view = RoutesManager.View.MAIN)
     }
 
     private fun onGestionProductosAction() {

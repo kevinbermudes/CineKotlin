@@ -58,7 +58,10 @@ object RoutesManager {
         //Vista de productos para añadir productos
         PRODUCTOSADMINANADIR("/org/example/cine/views/produtos/ProductosNuevo.fxml"),
         //Vista de productos para editar
-        PRODUCTOSEDITAR("/org/example/cine/views/produtos/ProductosEditar.fxml")
+        PRODUCTOSEDITAR("/org/example/cine/views/produtos/ProductosEditar.fxml"),
+        /// *****************************Usuarios********************************
+        NUEVO_USUARIO("/org/example/cine/views/login/nuevo_usuario.fxml"),
+        CAMBIAR_CONTRASENA("/org/example/cine/views/login/cambiar_contrasena.fxml"),
     }
     fun changeScene(
         myStage: Stage = activeStage,

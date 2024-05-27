@@ -1,0 +1,28 @@
+-- Tabla de Carritos
+CREATE TABLE IF NOT EXISTS CarritoEntity (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    usuario_id INTEGER NOT NULL,
+    precio_total REAL NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES UsuarioEntity (id)
+);
+
+deleteAll:
+DELETE FROM CarritoEntity;
+
+selectAll:
+SELECT * FROM CarritoEntity;
+
+selectById:
+SELECT * FROM CarritoEntity WHERE id = ?;
+
+selectByUsuarioId:
+SELECT * FROM CarritoEntity WHERE usuario_id = ?;
+
+insert:
+INSERT INTO CarritoEntity (usuario_id, precio_total) VALUES (?, ?);
+
+update:
+UPDATE CarritoEntity SET usuario_id = ?, precio_total = ? WHERE id = ?;
+
+delete:
+DELETE FROM CarritoEntity WHERE id = ?;

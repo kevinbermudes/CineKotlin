@@ -3,12 +3,13 @@ package org.example.cine.database
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
 import database.CineQueries
 import database.ProdutosQueries
+import database.UsuarioQueries
 import dev.cine2.database.AppDatabase
 import org.example.cine.config.AppConfig
-import org.lighthousegames.logging.logging
+
 import java.io.File
 import java.nio.file.Files
-
+import org.lighthousegames.logging.logging
 private val logger = logging()
 
 class SqlDeLightClient(
@@ -24,6 +25,7 @@ class SqlDeLightClient(
 
     val dbQueries: CineQueries = AppDatabase(driver).cineQueries
     val productQueries: ProdutosQueries = AppDatabase(driver).produtosQueries
+    val userQueries: UsuarioQueries = AppDatabase(driver).usuarioQueries
 
     init {
         logger.debug { "Inicializando el gestor de Bases de Datos" }
@@ -40,6 +42,9 @@ class SqlDeLightClient(
         }
         productQueries.transaction {
             productQueries.deleteAll()
+        }
+        userQueries.transaction {
+            userQueries.deleteAll()
         }
     }
 }

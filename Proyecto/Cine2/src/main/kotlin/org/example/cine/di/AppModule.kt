@@ -1,5 +1,6 @@
 package org.example.cine.di
 
+import org.example.cine.Usuario.repositories.UsuarioRepository
 import org.example.cine.config.AppConfig
 import org.example.cine.database.SqlDeLightClient
 import org.example.cine.peliculas.ViewModel.CineViewModel
@@ -18,6 +19,7 @@ import org.example.cine.productos.services.database.ProductosService
 import org.example.cine.productos.services.database.ProductosServiceImpl
 import org.example.cine.productos.services.storage.*
 import org.example.cine.productos.viewmodels.ProductosViewModel
+import org.example.cine.repositories.UsuarioRepositoryImpl
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
@@ -91,5 +93,10 @@ val appModule = module {
 
     singleOf(::ProductosViewModel) {
         bind<ProductosViewModel>()
+    }
+
+    // Usuarios
+    singleOf(::UsuarioRepositoryImpl) {
+        bind<UsuarioRepository>()
     }
 }

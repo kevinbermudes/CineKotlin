@@ -1,0 +1,38 @@
+-- Tabla de Usuarios
+CREATE TABLE IF NOT EXISTS UsuarioEntity (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT NOT NULL,
+    contrasena TEXT NOT NULL,
+    email TEXT NOT NULL,
+    rol TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+);
+
+-- Insertar datos de prueba
+INSERT INTO UsuarioEntity (nombre, contrasena, email, rol, created_at, updated_at)
+VALUES ('admin', 'admin', 'admin@example.com', 'ADMIN', '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
+       ('user', 'user', 'user@example.com', 'USER', '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500');
+
+deleteAll:
+DELETE FROM UsuarioEntity;
+
+selectAll:
+SELECT * FROM UsuarioEntity ORDER BY nombre ASC;
+
+selectById:
+SELECT * FROM UsuarioEntity WHERE id = ?;
+
+selectLastInserted:
+SELECT * FROM UsuarioEntity WHERE id = last_insert_rowid();
+
+insert:
+INSERT INTO UsuarioEntity (nombre, contrasena, email, rol, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?);
+
+update:
+UPDATE UsuarioEntity SET nombre = ?, contrasena = ?, email = ?, rol = ?, updated_at = ? WHERE id = ?;
+
+delete:
+DELETE FROM UsuarioEntity WHERE id = ?;
+selectByNombreUsuario:
+SELECT * FROM UsuarioEntity WHERE nombre = ?;
