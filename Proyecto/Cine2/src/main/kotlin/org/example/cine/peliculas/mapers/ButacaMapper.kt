@@ -16,7 +16,8 @@ fun ButacaDto.toModel(): Butaca {
     return Butaca(
         id = this.id,
         estado = this.estado,
-        imagen = this.imagen
+        imagen = this.imagen,
+        precio = 0.0
     )
 }
 

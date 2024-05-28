@@ -142,3 +142,7 @@ U
 Ssrc/main/kotlin/org/example/cine/Usuario/controlador/CambiarContrasenaController.kt,1\7\17928946bf59cdbd11f32e62cf6f917c5bfa9357
 ~
 Nsrc/main/kotlin/org/example/cine/Usuario/controlador/NuevoUsuarioController.kt,a\7\a73d4456922011e547dbb53f4df40f79dbb21085
+v
+Fsrc/main/kotlin/org/example/cine/pago/controllers/CarritoController.kt,0\2\02c870bb151171fbe39b6dd4423005c04ef6618b
+k
+;src/main/kotlin/org/example/cine/pago/models/CarritoItem.kt,9\b\9b693a4f7aaaf1a740876dae78d03ad22d590eb7

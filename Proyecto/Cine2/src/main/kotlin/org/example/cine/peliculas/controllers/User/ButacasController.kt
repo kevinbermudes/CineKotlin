@@ -1,17 +1,15 @@
 package org.example.cine.peliculas.controllers.User
 
+import com.github.michaelbull.result.onFailure
+import com.github.michaelbull.result.onSuccess
 import javafx.fxml.FXML
 import javafx.scene.control.*
 import javafx.scene.image.ImageView
-import javafx.stage.Stage
+import javafx.scene.image.Image
 import org.example.cine.peliculas.models.Butaca
+import org.example.cine.peliculas.service.storage.ButacasStorageJsonImpl
 import org.example.cine.route.RoutesManager
 import org.lighthousegames.logging.logging
-
-import com.github.michaelbull.result.onFailure
-import com.github.michaelbull.result.onSuccess
-import javafx.scene.image.Image
-import org.example.cine.peliculas.service.storage.ButacasStorageJsonImpl
 import java.io.File
 
 private val logger = logging()
@@ -113,13 +111,14 @@ class ButacasController {
     @FXML
     private lateinit var butacaE7: ImageView
 
-    private val butacasSeleccionadas = mutableListOf<ImageView>()
+    private val butacasSeleccionadas = mutableListOf<Butaca>()
     private val butacasStorage = ButacasStorageJsonImpl()
+    private val butacaImageViewMap = mutableMapOf<ImageView, Butaca>()
 
     @FXML
     fun initialize() {
-        initEventos()
         loadButacasFromJson()
+        initEventos()
     }
 
     private fun loadButacasFromJson() {
@@ -129,6 +128,7 @@ class ButacasController {
             butacasResult.onSuccess { butacas ->
                 butacas.forEach { butaca ->
                     val imageView = getImageViewById(butaca.id)
+                    butacaImageViewMap[imageView] = butaca
                     val imageUrl = javaClass.getResource("/org/example/cine/images/${butaca.imagen}")
                     if (imageUrl != null) {
                         imageView.image = Image(imageUrl.toString())
@@ -136,6 +136,7 @@ class ButacasController {
                         println("Error: No se pudo encontrar la imagen para ${butaca.imagen}")
                     }
                 }
+                actualizarContadoresTotales(butacas)
             }.onFailure {
                 println("Error al cargar butacas: ${it.message}")
             }
@@ -181,7 +182,6 @@ class ButacasController {
             "E5" -> butacaE5
             "E6" -> butacaE6
             "E7" -> butacaE7
-
             else -> throw IllegalArgumentException("Id de butaca desconocido: $id")
         }
     }
@@ -192,7 +192,6 @@ class ButacasController {
         }
 
         butonAtrasButacas.setOnAction {
-
             RoutesManager.changeScene(view = RoutesManager.View.USUARIOINDEX)
         }
 
@@ -201,32 +200,51 @@ class ButacasController {
         }
 
         // Inicializar eventos de selección de butacas
-        listOf(
-            butacaA1, butacaA2, butacaA3, butacaA4, butacaA5, butacaA6, butacaA7,
-            butacaB1, butacaB2, butacaB3, butacaB4, butacaB5, butacaB6, butacaB7,
-            butacaC1, butacaC2, butacaC3, butacaC4, butacaC5, butacaC6, butacaC7,
-            butacaD1, butacaD2, butacaD3, butacaD4, butacaD5, butacaD6, butacaD7,
-            butacaE1, butacaE2, butacaE3, butacaE4, butacaE5, butacaE6, butacaE7
-        ).forEach { butaca ->
-            butaca.setOnMouseClicked {
-                toggleSeleccionButaca(butaca)
+        butacaImageViewMap.keys.forEach { imageView ->
+            imageView.setOnMouseClicked {
+                toggleSeleccionButaca(imageView)
             }
         }
     }
 
-    private fun toggleSeleccionButaca(butaca: ImageView) {
-        if (butacasSeleccionadas.contains(butaca)) {
-            butacasSeleccionadas.remove(butaca)
-            butaca.style = ""
-        } else {
-            butacasSeleccionadas.add(butaca)
-            butaca.style = "-fx-opacity: 0.5;"
+    private fun toggleSeleccionButaca(imageView: ImageView) {
+        val butaca = butacaImageViewMap[imageView]
+        if (butaca != null) {
+            if (butacasSeleccionadas.size >= 5 && !butacasSeleccionadas.contains(butaca)) {
+                showAlert("Límite alcanzado", "Solo puedes seleccionar hasta 5 butacas.")
+                return
+            }
+
+            if (butacasSeleccionadas.contains(butaca)) {
+                butacasSeleccionadas.remove(butaca)
+                imageView.style = ""
+            } else {
+                if (butaca.estado == "ocupado" || butaca.estado == "mantenimiento") {
+                    showAlert("Butaca no disponible", "No puedes seleccionar una butaca ocupada o en mantenimiento.")
+                    return
+                }
+                butacasSeleccionadas.add(butaca)
+                imageView.style = "-fx-opacity: 0.5;"
+            }
+            actualizarButacasSeleccionadas()
         }
-        actualizarButacasSeleccionadas()
     }
 
     private fun actualizarButacasSeleccionadas() {
-        textButacasSeleccionadas.text = butacasSeleccionadas.size.toString()
+        // Actualiza el campo de texto con los IDs de las butacas seleccionadas
+        textButacasSeleccionadas.text = butacasSeleccionadas.joinToString(", ") { it.id }
+    }
+
+    private fun actualizarContadoresTotales(butacas: List<Butaca>) {
+        val butacasVip = butacas.count { it.estado == "vip" }
+        val butacasLibres = butacas.count { it.estado == "libre" }
+        val butacasOcupadas = butacas.count { it.estado == "ocupado" }
+        val butacasMantenimiento = butacas.count { it.estado == "mantenimiento" }
+
+        cantidadButacasVip.text = butacasVip.toString()
+        cantidadButacasLibre.text = butacasLibres.toString()
+        cantidadButacasOcupado.text = butacasOcupadas.toString()
+        cantidadButacasMantenimiento.text = butacasMantenimiento.toString()
     }
 
     private fun showAlert(titulo: String, mensaje: String) {

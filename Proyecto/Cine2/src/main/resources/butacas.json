@@ -3,177 +3,212 @@
     {
       "id": "A1",
       "estado": "libre",
-      "imagen": "libre.png"
+      "imagen": "libre.png",
+      "precio": 7.0
     },
     {
       "id": "A2",
       "estado": "ocupado",
-      "imagen": "ocupado.png"
+      "imagen": "ocupado.png",
+      "precio": 7.0
     },
     {
       "id": "A3",
       "estado": "mantenimiento",
-      "imagen": "Mantenimiento.png"
+      "imagen": "mantenimiento.png",
+      "precio": 7.0
     },
     {
       "id": "A4",
       "estado": "vip",
-      "imagen": "vip.png"
+      "imagen": "vip.png",
+      "precio": 15.0
     },
     {
       "id": "A5",
       "estado": "libre",
-      "imagen": "libre.png"
+      "imagen": "libre.png",
+      "precio": 7.0
     },
     {
       "id": "A6",
       "estado": "ocupado",
-      "imagen": "ocupado.png"
+      "imagen": "ocupado.png",
+      "precio": 7.0
     },
     {
       "id": "A7",
       "estado": "libre",
-      "imagen": "libre.png"
+      "imagen": "libre.png",
+      "precio": 7.0
     },
     {
       "id": "B1",
       "estado": "libre",
-      "imagen": "libre.png"
+      "imagen": "libre.png",
+      "precio": 7.0
     },
     {
       "id": "B2",
       "estado": "ocupado",
-      "imagen": "ocupado.png"
+      "imagen": "ocupado.png",
+      "precio": 7.0
     },
     {
       "id": "B3",
       "estado": "mantenimiento",
-      "imagen": "Mantenimiento.png"
+      "imagen": "mantenimiento.png",
+      "precio": 7.0
     },
     {
       "id": "B4",
       "estado": "vip",
-      "imagen": "vip.png"
+      "imagen": "vip.png",
+      "precio": 15.0
     },
     {
       "id": "B5",
       "estado": "libre",
-      "imagen": "libre.png"
+      "imagen": "libre.png",
+      "precio": 7.0
     },
     {
       "id": "B6",
       "estado": "ocupado",
-      "imagen": "ocupado.png"
+      "imagen": "ocupado.png",
+      "precio": 7.0
     },
     {
       "id": "B7",
       "estado": "libre",
-      "imagen": "libre.png"
+      "imagen": "libre.png",
+      "precio": 7.0
     },
     {
       "id": "C1",
       "estado": "libre",
-      "imagen": "libre.png"
+      "imagen": "libre.png",
+      "precio": 7.0
     },
     {
       "id": "C2",
       "estado": "ocupado",
-      "imagen": "ocupado.png"
+      "imagen": "ocupado.png",
+      "precio": 7.0
     },
     {
       "id": "C3",
       "estado": "mantenimiento",
-      "imagen": "Mantenimiento.png"
+      "imagen": "mantenimiento.png",
+      "precio": 7.0
     },
     {
       "id": "C4",
       "estado": "vip",
-      "imagen": "vip.png"
+      "imagen": "vip.png",
+      "precio": 15.0
     },
     {
       "id": "C5",
       "estado": "libre",
-      "imagen": "libre.png"
+      "imagen": "libre.png",
+      "precio": 7.0
     },
     {
       "id": "C6",
       "estado": "ocupado",
-      "imagen": "ocupado.png"
+      "imagen": "ocupado.png",
+      "precio": 7.0
     },
     {
       "id": "C7",
       "estado": "libre",
-      "imagen": "libre.png"
+      "imagen": "libre.png",
+      "precio": 7.0
     },
     {
       "id": "D1",
       "estado": "libre",
-      "imagen": "libre.png"
+      "imagen": "libre.png",
+      "precio": 7.0
     },
     {
       "id": "D2",
       "estado": "ocupado",
-      "imagen": "ocupado.png"
+      "imagen": "ocupado.png",
+      "precio": 7.0
     },
     {
       "id": "D3",
       "estado": "mantenimiento",
-      "imagen": "Mantenimiento.png"
+      "imagen": "mantenimiento.png",
+      "precio": 7.0
     },
     {
       "id": "D4",
       "estado": "vip",
-      "imagen": "vip.png"
+      "imagen": "vip.png",
+      "precio": 15.0
     },
     {
       "id": "D5",
       "estado": "libre",
-      "imagen": "libre.png"
+      "imagen": "libre.png",
+      "precio": 7.0
     },
     {
       "id": "D6",
       "estado": "ocupado",
-      "imagen": "ocupado.png"
+      "imagen": "ocupado.png",
+      "precio": 7.0
     },
     {
       "id": "D7",
       "estado": "libre",
-      "imagen": "libre.png"
+      "imagen": "libre.png",
+      "precio": 7.0
     },
     {
       "id": "E1",
       "estado": "libre",
-      "imagen": "libre.png"
+      "imagen": "libre.png",
+      "precio": 7.0
     },
     {
       "id": "E2",
       "estado": "ocupado",
-      "imagen": "ocupado.png"
+      "imagen": "ocupado.png",
+      "precio": 7.0
     },
     {
       "id": "E3",
       "estado": "mantenimiento",
-      "imagen": "Mantenimiento.png"
+      "imagen": "mantenimiento.png",
+      "precio": 7.0
     },
     {
       "id": "E4",
       "estado": "vip",
-      "imagen": "vip.png"
+      "imagen": "vip.png",
+      "precio": 15.0
     },
     {
       "id": "E5",
       "estado": "libre",
-      "imagen": "libre.png"
+      "imagen": "libre.png",
+      "precio": 7.0
     },
     {
       "id": "E6",
       "estado": "ocupado",
-      "imagen": "ocupado.png"
+      "imagen": "ocupado.png",
+      "precio": 7.0
     },
     {
       "id": "E7",
       "estado": "libre",
-      "imagen": "libre.png"
+      "imagen": "libre.png",
+      "precio": 7.0
     }
   ]
 }
