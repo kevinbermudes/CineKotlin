@@ -9,12 +9,18 @@ import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.stage.FileChooser
 import javafx.stage.Stage
+import org.example.cine.productos.viewmodels.ProductosViewModel
 import org.example.cine.route.RoutesManager
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import org.lighthousegames.logging.logging
 import java.io.File
 
 private val logger = logging()
-class ProductosAnadirViewController {
+class ProductosAnadirViewController: KoinComponent {
+    private val viewModel: ProductosViewModel by inject()
+    @FXML
+    private lateinit var textoStockProducto:TextField
 
     @FXML
     private lateinit var imagenProductoAnadir: ImageView
@@ -62,8 +68,9 @@ class ProductosAnadirViewController {
         val nombre = textoNombreProducto.text
         val categoria = textoCategoriaProducto.text
         val precio = textoPrecioProducto.text
+        val stock= textoStockProducto.text
 
-        if (nombre.isBlank() || categoria.isBlank() || precio.isBlank()) {
+        if (nombre.isBlank() || categoria.isBlank() || precio.isBlank() ||stock.isBlank()) {
             mostrarAlerta("Error", "Todos los campos deben estar llenos")
             return
         }
@@ -74,7 +81,8 @@ class ProductosAnadirViewController {
         }
 
         try {
-            val precioDouble = precio.toDouble()
+//            val precioDouble = precio.toDouble()
+//            val stockDouble= stock.toDouble()
             mostrarAlerta("Éxito", "Producto guardado exitosamente")
             limpiarCampos()
         } catch (e: NumberFormatException) {
@@ -84,6 +92,8 @@ class ProductosAnadirViewController {
 
     private fun cancelar() {
        logger.debug { "Cancelando..." }
+        limpiarCampos()
+        viewModel.clearState()
         RoutesManager.changeScene(view = RoutesManager.View.PRODUCTOSADMIN)
     }
 
@@ -98,7 +108,8 @@ class ProductosAnadirViewController {
         textoNombreProducto.clear()
         textoCategoriaProducto.clear()
         textoPrecioProducto.clear()
-        imagenProductoAnadir.image = Image("@../../images/buscar-imagen.png")
+        textoStockProducto.clear()
+        imagenProductoAnadir.image = null
         imagenSeleccionada = null
     }
 }

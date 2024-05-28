@@ -6,18 +6,19 @@ CREATE TABLE IF NOT EXISTS ProductoEntity (
     precio REAL NOT NULL,
     categoria TEXT NOT NULL,
     imagen TEXT NOT NULL,
+    stock REAL NOT NULL ,
     created_at TEXT NOT NULL,
     updated_at TEXT NOT NULL
 );
 
 -- Insertar datos de prueba
-INSERT INTO ProductoEntity (nombre, precio, categoria, imagen, created_at, updated_at)
-VALUES ('Palomitas', 5.0, 'BOTANA', 'palomitas.png', '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
-       ('Refresco', 2.5, 'BEBIDAS', 'refresco.png', '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
-       ('Agua Mineral', 1.5, 'BEBIDAS', 'agua_mineral.png', '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
-       ('Frutos Secos', 3.0, 'FRUTOS_SECOS', 'frutos_secos.png', '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
-       ('Chocolatina', 1.0, 'BOTANA', 'chocolatina.png', '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
-       ('Jugo de Naranja', 3.0, 'BEBIDAS', 'jugo_naranja.png', '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500');
+INSERT INTO ProductoEntity (nombre, precio, categoria, imagen, stock, created_at, updated_at)
+VALUES ('Palomitas', 5.0, 'BOTANA', 'palomitas.png',5, '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
+       ('Refresco', 2.5, 'BEBIDAS', 'refresco.png', 5,'2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
+       ('Agua Mineral', 1.5, 'BEBIDAS', 'agua_mineral.png', 2,'2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
+       ('Frutos Secos', 3.0, 'FRUTOS_SECOS', 'frutos_secos.png', 4,'2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
+       ('Chocolatina', 1.0, 'BOTANA', 'chocolatina.png',2, '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
+       ('Jugo de Naranja', 3.0, 'BEBIDAS', 'jugo_naranja.png',3, '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500');
 
 deleteAll:
 DELETE FROM ProductoEntity;
@@ -32,10 +33,10 @@ selectLastInserted:
 SELECT * FROM ProductoEntity WHERE id = last_insert_rowid();
 
 insert:
-INSERT INTO ProductoEntity (nombre, precio, categoria, imagen, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?);
+INSERT INTO ProductoEntity (nombre, precio, categoria, imagen, stock, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?);
 
 update:
-UPDATE ProductoEntity SET nombre = ?, precio = ?, categoria = ?, imagen = ?, updated_at = ? WHERE id = ?;
+UPDATE ProductoEntity SET nombre = ?, precio = ?, categoria = ?, imagen = ?,stock =?, updated_at = ? WHERE id = ?;
 
 delete:
 DELETE FROM ProductoEntity WHERE id = ?;

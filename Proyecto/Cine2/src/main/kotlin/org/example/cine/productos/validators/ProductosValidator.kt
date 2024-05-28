@@ -16,5 +16,8 @@ fun Producto.validate(): Result<Producto, ProductoError> {
     if (this.imagen.isEmpty() || this.imagen.isBlank()) {
         return Err(ProductoError.ValidationProblem("La imagen no puede estar vacía"))
     }
+    if (this.stock < 0) {
+        return Err(ProductoError.ValidationProblem("El stock no puede ser negativo"))
+    }
     return Ok(this)
 }

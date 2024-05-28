@@ -41,6 +41,9 @@ class ProductosViewUsuariosController : KoinComponent {
     private lateinit var tableColumnCategoria: TableColumn<Producto, String>
 
     @FXML
+    private lateinit var tableColumnStock: TableColumn<Producto, Double>
+
+    @FXML
     private lateinit var imagenProductos: ImageView
 
     @FXML
@@ -54,6 +57,9 @@ class ProductosViewUsuariosController : KoinComponent {
 
     @FXML
     private lateinit var textoPrecioProducto: TextField
+
+    @FXML
+    private lateinit var textProductosStock:TextField
 
     @FXML
     private lateinit var textEstadoLogin: Label
@@ -95,6 +101,7 @@ class ProductosViewUsuariosController : KoinComponent {
         tableColumnNombreProducto.cellValueFactory = PropertyValueFactory("nombre")
         tableColumnPrecio.cellValueFactory = PropertyValueFactory("precio")
         tableColumnCategoria.cellValueFactory = PropertyValueFactory("categoria")
+        tableColumnStock.cellValueFactory = PropertyValueFactory("stock")
     }
 
     private fun initBindings() {
@@ -109,6 +116,7 @@ class ProductosViewUsuariosController : KoinComponent {
             textoCategoriaProducto.text = producto.categoria.name
             textoPrecioProducto.text = producto.precio
             imagenProductos.image = producto.imagen
+            textProductosStock.text = producto.stock
         }
     }
 
@@ -154,6 +162,7 @@ class ProductosViewUsuariosController : KoinComponent {
         textoNombreProducto.clear()
         textoCategoriaProducto.clear()
         textoPrecioProducto.clear()
+        textProductosStock.clear()
     }
 
     private fun ProductosDisponibles() {

@@ -1,8 +1,8 @@
 package org.example.cine.productos.models
 
-import java.time.LocalDateTime
 import java.text.NumberFormat
-import java.util.Locale
+import java.time.LocalDateTime
+import java.util.*
 
 data class Producto(
     val id: Long = NEW_PRODUCTO,
@@ -11,7 +11,8 @@ data class Producto(
     val categoria: Categoria,
     val imagen: String,
     val createdAt: LocalDateTime = LocalDateTime.now(),
-    val updatedAt: LocalDateTime = LocalDateTime.now()
+    val updatedAt: LocalDateTime = LocalDateTime.now(),
+    val stock: Double
 ) {
     enum class Categoria {
         BOTANA, BEBIDAS, FRUTOS_SECOS

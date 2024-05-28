@@ -99,18 +99,20 @@ class ProductosViewModel(
                 precio = producto.precio.toString(),
                 categoria = producto.categoria,
                 imagen = imagen,
+                stock = producto.stock.toString(),
                 fileImage = fileImage
             )
         )
     }
 
     // Crea un nuevo producto en el estado y repositorio
-    fun crearProducto(nombre: String, precio: String, categoria: Producto.Categoria): Result<Producto, ProductoError> {
+    fun crearProducto(nombre: String, precio: String, categoria: Producto.Categoria, stock: String): Result<Producto, ProductoError> {
         logger.debug { "Creando Producto" }
         val newProductoTemp = ProductoFormState(
             nombre = nombre,
             precio = precio,
-            categoria = categoria
+            categoria = categoria,
+            stock = stock,
         ).copy()
         var newProducto = newProductoTemp.toModel().copy(id = Producto.NEW_PRODUCTO)
         return newProducto.validate().andThen {
@@ -229,7 +231,8 @@ class ProductosViewModel(
         nombre: String,
         precio: String,
         categoria: Producto.Categoria,
-        imagen: Image
+        imagen: Image,
+        stock: String
     ) {
         logger.debug { "Actualizando estado de Producto Operacion" }
         state.value = state.value.copy(
@@ -237,7 +240,8 @@ class ProductosViewModel(
                 nombre = nombre,
                 precio = precio,
                 categoria = categoria,
-                imagen = imagen
+                imagen = imagen,
+                stock = stock
             )
         )
     }
@@ -264,6 +268,7 @@ class ProductosViewModel(
         val precio: String = "",
         val categoria: Producto.Categoria = Producto.Categoria.BOTANA,
         val imagen: Image = Image(RoutesManager.getResourceAsStream("images/sin-imagen.png")),
+        val stock: String = "",
         val fileImage: File? = null
     ) {
         fun copy(): ProductoFormState {
@@ -273,6 +278,7 @@ class ProductosViewModel(
                 precio = this.precio,
                 categoria = this.categoria,
                 imagen = this.imagen,
+                stock =this.stock,
                 fileImage = this.fileImage
             )
         }
@@ -284,8 +290,10 @@ class ProductosViewModel(
                 precio = precio.toDouble(),
                 categoria = categoria,
                 imagen = imagen.url,
+                stock = stock.toDouble(),
                 createdAt = LocalDateTime.now(),
-                updatedAt = LocalDateTime.now()
+                updatedAt = LocalDateTime.now(),
+
             )
         }
     }

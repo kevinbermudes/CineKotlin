@@ -13,6 +13,7 @@ fun ProductoDto.toModel(): Producto {
         precio = precio,
         categoria = Producto.Categoria.valueOf(categoria.uppercase()),
         imagen = imagen,
+        stock = stock,
         createdAt = LocalDateTime.parse(createdAt),
         updatedAt = LocalDateTime.parse(updatedAt)
     )
@@ -30,6 +31,7 @@ fun Producto.toDto(): ProductoDto {
         precio = precio,
         categoria = categoria.name,
         imagen = imagen,
+        stock = stock,
         createdAt = createdAt.toString(),
         updatedAt = updatedAt.toString()
     )
@@ -47,8 +49,10 @@ fun ProductoEntity.toModel(): Producto {
         precio = precio,
         categoria = Producto.Categoria.valueOf(categoria.uppercase()),
         imagen = imagen,
+        stock = stock,
         createdAt = LocalDateTime.parse(created_at),
-        updatedAt = LocalDateTime.parse(updated_at)
+        updatedAt = LocalDateTime.parse(updated_at),
+
     )
 }
 
@@ -64,6 +68,7 @@ fun Producto.toEntity(): ProductoEntity {
         precio = precio,
         categoria = categoria.name,
         imagen = imagen,
+        stock = stock,
         created_at = createdAt.toString(),
         updated_at = updatedAt.toString()
     )

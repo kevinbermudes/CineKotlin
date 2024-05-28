@@ -1,8 +1,8 @@
 package org.example.cine.productos.repositories
 
 import org.example.cine.database.SqlDeLightClient
-import org.example.cine.productos.models.Producto
 import org.example.cine.productos.mappers.toModel
+import org.example.cine.productos.models.Producto
 import org.lighthousegames.logging.logging
 import java.time.LocalDateTime
 
@@ -40,6 +40,7 @@ class ProductosRepositoryImpl(
                 nombre = producto.nombre,
                 precio = producto.precio,
                 imagen = producto.imagen,
+                stock = producto.stock,
                 categoria = producto.categoria.name,
                 created_at = timeStamp,
                 updated_at = timeStamp
@@ -56,6 +57,7 @@ class ProductosRepositoryImpl(
             nombre = producto.nombre,
             precio = producto.precio,
             imagen = producto.imagen,
+            stock = producto.stock,
             categoria = producto.categoria.name,
             updated_at = timeStamp
         )
