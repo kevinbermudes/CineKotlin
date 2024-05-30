@@ -4,10 +4,15 @@ import org.example.cine.peliculas.models.Butaca
 import org.example.cine.productos.models.Producto
 
 
-data class Carrito(
-    val butacas: MutableList<Butaca> = mutableListOf(),
+class Carrito private constructor() {
+
     val productos: MutableList<Producto> = mutableListOf()
-) {
+    val butacas: MutableList<Butaca> = mutableListOf()
+
     val total: Double
-        get() = butacas.sumOf { it.precio } + productos.sumOf { it.precio }
+        get() = productos.sumOf { it.precio } + butacas.sumOf { it.precio }
+
+    companion object {
+        val instance: Carrito by lazy { Carrito() }
+    }
 }

@@ -181,24 +181,24 @@
                         <Label prefHeight="18.0" prefWidth="62.0" style="-fx-text-fill: #ffffff;" text="VIP" textFill="WHITE" />
                         <ImageView fitHeight="40.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                            <image>
-                              <Image url="@../../../imagenes/vip.png" />
+                              <Image url="@../../images/vip.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <image>
-                              <Image url="@../../../imagenes/Mantenimiento.png" />
+                              <Image url="@../../images/Mantenimiento.png" />
                            </image>
                         </ImageView>
                         <Label style="-fx-text-fill: #ffffff;" text="Mantenimiento" textFill="WHITE" GridPane.rowIndex="1" />
                         <Label style="-fx-text-fill: #ffffff;" text="Ocupado" textFill="WHITE" GridPane.rowIndex="2" />
                         <ImageView fitHeight="41.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <image>
-                              <Image url="@../../../imagenes/ocupado.png" />
+                              <Image url="@../../images/ocupado.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="39.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <image>
-                              <Image url="@../../../imagenes/libre.png" />
+                              <Image url="@../../images/libre.png" />
                            </image>
                         </ImageView>
                         <Label style="-fx-text-fill: #ffffff;" text="Libre" GridPane.rowIndex="3" />

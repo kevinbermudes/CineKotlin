@@ -67,4 +67,7 @@ module org.example.cine {
     // Asegúrate de añadir la exportación y apertura del paquete específico
     opens org.example.cine.Usuario.controlador to javafx.fxml;
     exports org.example.cine.Usuario.controlador;
+    // carrito de la compra
+    opens org.example.cine.pago.controllers to javafx.fxml;
+    exports org.example.cine.pago.controllers;
 }

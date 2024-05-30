@@ -1,26 +1,11 @@
 /* styles.css */
 
-.root {
-    -fx-background-color: #376bb5;
-    -fx-padding: 10;
-}
 
-.button {
-    -fx-background-color: #4CAF50;
-    -fx-text-fill: white;
-    -fx-background-radius: 10;
-    -fx-padding: 10px 20px;
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-}
 
 .button:hover {
     -fx-background-color: #45a049;
 }
 
-.button:pressed {
-    -fx-background-color: #367c39;
-}
 
 .label {
     -fx-text-fill: #ffffff;

@@ -5,6 +5,7 @@ import javafx.fxml.FXML
 import javafx.scene.control.*
 import javafx.scene.control.cell.PropertyValueFactory
 import javafx.scene.image.ImageView
+import org.example.cine.pago.models.Carrito
 import org.example.cine.productos.models.Producto
 import org.example.cine.productos.viewmodels.ProductosViewModel
 import org.example.cine.route.RoutesManager
@@ -16,6 +17,8 @@ private val logger = logging()
 
 class ProductosViewUsuariosController : KoinComponent {
     private val viewModel: ProductosViewModel by inject()
+    private val carrito: Carrito = Carrito.instance
+
     @FXML
     private lateinit var textProductosDisponibles: TextField
 
@@ -127,7 +130,9 @@ class ProductosViewUsuariosController : KoinComponent {
     }
 
     private fun onComprarProductosLogin() {
-        showAlert("Compra", "Esto te redigirá a la vista de compra.")
+        logger.debug { "redirigiendo a carrito de compra" }
+        carrito.productos.addAll(tableProductos.selectionModel.selectedItems)
+        RoutesManager.changeScene(view = RoutesManager.View.CARRITO)
     }
 
     private fun onAnadirProductos() {

@@ -3,9 +3,12 @@ package org.example.cine.peliculas.controllers.User
 import com.github.michaelbull.result.onFailure
 import com.github.michaelbull.result.onSuccess
 import javafx.fxml.FXML
-import javafx.scene.control.*
-import javafx.scene.image.ImageView
+import javafx.scene.control.Alert
+import javafx.scene.control.Button
+import javafx.scene.control.TextField
 import javafx.scene.image.Image
+import javafx.scene.image.ImageView
+import org.example.cine.pago.models.Carrito
 import org.example.cine.peliculas.models.Butaca
 import org.example.cine.peliculas.service.storage.ButacasStorageJsonImpl
 import org.example.cine.route.RoutesManager
@@ -42,78 +45,113 @@ class ButacasController {
 
     @FXML
     private lateinit var butacaA1: ImageView
+
     @FXML
     private lateinit var butacaA2: ImageView
+
     @FXML
     private lateinit var butacaA3: ImageView
+
     @FXML
     private lateinit var butacaA4: ImageView
+
     @FXML
     private lateinit var butacaA5: ImageView
+
     @FXML
     private lateinit var butacaA6: ImageView
+
     @FXML
     private lateinit var butacaA7: ImageView
+
     @FXML
     private lateinit var butacaB1: ImageView
+
     @FXML
     private lateinit var butacaB2: ImageView
+
     @FXML
     private lateinit var butacaB3: ImageView
+
     @FXML
     private lateinit var butacaB4: ImageView
+
     @FXML
     private lateinit var butacaB5: ImageView
+
     @FXML
     private lateinit var butacaB6: ImageView
+
     @FXML
     private lateinit var butacaB7: ImageView
+
     @FXML
     private lateinit var butacaC1: ImageView
+
     @FXML
     private lateinit var butacaC2: ImageView
+
     @FXML
     private lateinit var butacaC3: ImageView
+
     @FXML
     private lateinit var butacaC4: ImageView
+
     @FXML
     private lateinit var butacaC5: ImageView
+
     @FXML
     private lateinit var butacaC6: ImageView
+
     @FXML
     private lateinit var butacaC7: ImageView
+
     @FXML
     private lateinit var butacaD1: ImageView
+
     @FXML
     private lateinit var butacaD2: ImageView
+
     @FXML
     private lateinit var butacaD3: ImageView
+
     @FXML
     private lateinit var butacaD4: ImageView
+
     @FXML
     private lateinit var butacaD5: ImageView
+
     @FXML
     private lateinit var butacaD6: ImageView
+
     @FXML
     private lateinit var butacaD7: ImageView
+
     @FXML
     private lateinit var butacaE1: ImageView
+
     @FXML
     private lateinit var butacaE2: ImageView
+
     @FXML
     private lateinit var butacaE3: ImageView
+
     @FXML
     private lateinit var butacaE4: ImageView
+
     @FXML
     private lateinit var butacaE5: ImageView
+
     @FXML
     private lateinit var butacaE6: ImageView
+
     @FXML
     private lateinit var butacaE7: ImageView
 
     private val butacasSeleccionadas = mutableListOf<Butaca>()
     private val butacasStorage = ButacasStorageJsonImpl()
     private val butacaImageViewMap = mutableMapOf<ImageView, Butaca>()
+    private val carrito: Carrito = Carrito.instance
 
     @FXML
     fun initialize() {
@@ -133,15 +171,15 @@ class ButacasController {
                     if (imageUrl != null) {
                         imageView.image = Image(imageUrl.toString())
                     } else {
-                        println("Error: No se pudo encontrar la imagen para ${butaca.imagen}")
+                        logger.debug { "Error: No se pudo encontrar la imagen para ${butaca.imagen}" }
                     }
                 }
                 actualizarContadoresTotales(butacas)
             }.onFailure {
-                println("Error al cargar butacas: ${it.message}")
+                logger.debug { "Error al cargar butacas: ${it.message}" }
             }
         } else {
-            println("El archivo butacas.json no existe.")
+            logger.debug { "El archivo butacas.json no existe." }
         }
     }
 
@@ -196,6 +234,7 @@ class ButacasController {
         }
 
         butonComprarProductos.setOnAction {
+            carrito.butacas.addAll(butacasSeleccionadas)
             RoutesManager.changeScene(view = RoutesManager.View.PRODUCTOSUSUARIOS)
         }
 
