@@ -5,6 +5,7 @@ data class ProductoDto(
     val nombre: String,
     val precio: Double,
     val categoria: String,
+    val stock: Int,
     val imagen: String,
     val createdAt: String,
     val updatedAt: String

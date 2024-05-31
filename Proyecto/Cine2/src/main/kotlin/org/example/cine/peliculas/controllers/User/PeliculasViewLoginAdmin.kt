@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView
 import javafx.scene.layout.GridPane
 import org.example.cine.peliculas.ViewModel.CineViewModel
 import org.example.cine.peliculas.models.Pelicula
+import org.example.cine.peliculas.service.storage.PeliculasStorageImages
 import org.example.cine.route.RoutesManager
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -18,6 +19,7 @@ private val logger = logging()
 class PeliculasViewLoginAdmin : KoinComponent {
     // Inyectamos nuestro ViewModel
     private val viewModel: CineViewModel by inject()
+    private val peliculasStorageImages: PeliculasStorageImages by inject()
 
     // Define las propiedades enlazadas a los elementos del FXML
     @FXML
@@ -45,7 +47,7 @@ class PeliculasViewLoginAdmin : KoinComponent {
     private lateinit var TablaPeliculas: TableView<Pelicula>
 
     @FXML
-    private lateinit var tableColumnId: TableColumn<Pelicula, String>
+    private lateinit var tableColumnId: TableColumn<Pelicula, Long>
 
     @FXML
     private lateinit var tableColumnNombre: TableColumn<Pelicula, String>
@@ -108,12 +110,15 @@ class PeliculasViewLoginAdmin : KoinComponent {
 
     private fun initBindings() {
         logger.debug { "Inicializando bindings" }
+
         viewModel.state.addListener { _, _, newValue ->
             logger.debug { "Actualizando datos de la vista" }
+
             // Actualizamos la tabla
             if (TablaPeliculas.items != newValue.peliculas) {
                 TablaPeliculas.items = FXCollections.observableArrayList(newValue.peliculas)
             }
+
             // Formulario
             textNombrePelicula.text = newValue.pelicula.nombre
             TextDuracionPelicula.text = newValue.pelicula.duracion
@@ -147,7 +152,7 @@ class PeliculasViewLoginAdmin : KoinComponent {
     }
 
     private fun onCerrarSecionAction() {
-        logger.debug { "cerrando cesion de vista de peliculas administrador" }
+        logger.debug { "cerrando sesión de vista de películas administrador" }
         RoutesManager.changeScene(view = RoutesManager.View.MAIN)
     }
 
@@ -187,6 +192,7 @@ class PeliculasViewLoginAdmin : KoinComponent {
         val filteredList = viewModel.peliculasFilteredList(TextBuscadorPeliculas.text)
         TablaPeliculas.items = FXCollections.observableArrayList(filteredList)
     }
+
 
     private fun showAlert(title: String, message: String) {
         val alert = Alert(Alert.AlertType.INFORMATION)

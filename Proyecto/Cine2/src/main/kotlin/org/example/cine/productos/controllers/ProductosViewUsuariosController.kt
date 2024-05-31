@@ -1,9 +1,12 @@
 package org.example.cine.productos.controllers
 
+import javafx.beans.value.ChangeListener
 import javafx.collections.FXCollections
+import javafx.collections.ObservableList
 import javafx.fxml.FXML
 import javafx.scene.control.*
 import javafx.scene.control.cell.PropertyValueFactory
+import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import org.example.cine.pago.models.Carrito
 import org.example.cine.productos.models.Producto
@@ -18,6 +21,7 @@ private val logger = logging()
 class ProductosViewUsuariosController : KoinComponent {
     private val viewModel: ProductosViewModel by inject()
     private val carrito: Carrito = Carrito.instance
+    private val defaultImage = Image(javaClass.getResourceAsStream("/org/example/cine/images/sin-imagen.png"))
 
     @FXML
     private lateinit var textProductosDisponibles: TextField
@@ -70,6 +74,8 @@ class ProductosViewUsuariosController : KoinComponent {
     @FXML
     private lateinit var butonAtras: Button
 
+    private val productosObservableList: ObservableList<Producto> = FXCollections.observableArrayList()
+
     @FXML
     fun initialize() {
         initEventos()
@@ -86,10 +92,7 @@ class ProductosViewUsuariosController : KoinComponent {
         butonAnadirProductos.setOnAction { onAnadirProductos() }
         butonAtras.setOnAction { onAtras() }
 
-        tableProductos.selectionModel.selectedItemProperty().addListener { _, _, newValue ->
-            newValue?.let { onTableProductosSelected(it) }
-        }
-
+        tableProductos.selectionModel.selectedItemProperty().addListener(tableSelectionListener)
         textBuscadorProductos.setOnKeyReleased { onBuscadorKeyReleased() }
     }
 
@@ -98,21 +101,32 @@ class ProductosViewUsuariosController : KoinComponent {
         tableColumnNombreProducto.cellValueFactory = PropertyValueFactory("nombre")
         tableColumnPrecio.cellValueFactory = PropertyValueFactory("precio")
         tableColumnCategoria.cellValueFactory = PropertyValueFactory("categoria")
+        tableProductos.items = productosObservableList
+    }
+
+    private val stateListener = ChangeListener<ProductosViewModel.ProductoState> { _, _, newValue ->
+        logger.debug { "Actualizando datos de la vista" }
+
+        // Actualizamos la tabla
+        if (tableProductos.items != newValue.productos) {
+            tableProductos.items = FXCollections.observableArrayList(newValue.productos)
+        }
+
+        // Formulario
+        textoNombreProducto.text = newValue.producto.nombre
+        textoCategoriaProducto.text = newValue.producto.categoria.name
+        textoPrecioProducto.text = newValue.producto.precio.toString()
+        textProductosDisponibles.text = newValue.producto.stock.toString()
+        imagenProductos.image = newValue.producto.imagen
     }
 
     private fun initBindings() {
-        viewModel.state.addListener { _, _, newValue ->
-            logger.debug { "Actualizando bindings productos" }
-            tableProductos.items = FXCollections.observableArrayList(newValue.productos)
-            textEstadoLogin.text = "Productos cargados: ${newValue.numProductos}"
+        logger.debug { "Inicializando bindings" }
+        viewModel.state.addListener(stateListener)
+    }
 
-            // Actualizar formulario
-            val producto = newValue.producto
-            textoNombreProducto.text = producto.nombre
-            textoCategoriaProducto.text = producto.categoria.name
-            textoPrecioProducto.text = producto.precio
-            imagenProductos.image = producto.imagen
-        }
+    private val tableSelectionListener = ChangeListener<Producto?> { _, _, newValue ->
+        newValue?.let { onTableProductosSelected(it) }
     }
 
     private fun loadData() {
@@ -131,28 +145,53 @@ class ProductosViewUsuariosController : KoinComponent {
 
     private fun onComprarProductosLogin() {
         logger.debug { "redirigiendo a carrito de compra" }
-        carrito.productos.addAll(tableProductos.selectionModel.selectedItems)
         RoutesManager.changeScene(view = RoutesManager.View.CARRITO)
     }
 
     private fun onAnadirProductos() {
-        showAlert("Anadir", "Esto añadira un producto a la pasarela de pago.")
+        val selectedProduct = tableProductos.selectionModel.selectedItem
+        if (selectedProduct != null) {
+            if (selectedProduct.stock > 0) {
+                selectedProduct.reduceStock()
+                viewModel.saveProduct(selectedProduct)
+                carrito.productos.add(selectedProduct)
+                updateProductoDetalles(selectedProduct)
+            } else {
+                showAlert("Stock agotado", "No hay suficiente stock de este producto.")
+            }
+        } else {
+            showAlert("Selección inválida", "Por favor, selecciona un producto para añadir.")
+        }
     }
 
     private fun onAtras() {
         logger.debug { "Volviendo a la vista..." }
         clearForm()
         viewModel.clearState()
+        clearCarrito()
         RoutesManager.changeScene(view = RoutesManager.View.BUTACASUSUARIO)
     }
 
     private fun onTableProductosSelected(producto: Producto) {
-        viewModel.updateProductoSeleccionado(producto)
+        // Desactivar el listener de cambios de estado para evitar recursión infinita
+        viewModel.state.removeListener(stateListener)
+        try {
+            viewModel.updateProductoSeleccionado(producto)
+            // Actualizar los campos del formulario manualmente
+            textoNombreProducto.text = producto.nombre
+            textoCategoriaProducto.text = producto.categoria.name
+            textoPrecioProducto.text = producto.precio.toString()
+            textProductosDisponibles.text = producto.stock.toString()
+            imagenProductos.image = loadImageOrDefault(producto.imagen)
+        } finally {
+            // Volver a activar el listener después de la actualización
+            viewModel.state.addListener(stateListener)
+        }
     }
 
     private fun onBuscadorKeyReleased() {
         val filteredList = viewModel.productosFilteredList("TODAS", textBuscadorProductos.text)
-        tableProductos.items = FXCollections.observableArrayList(filteredList)
+        productosObservableList.setAll(filteredList)
     }
 
     private fun clearForm() {
@@ -162,7 +201,29 @@ class ProductosViewUsuariosController : KoinComponent {
     }
 
     private fun ProductosDisponibles() {
-        textProductosDisponibles.text = tableProductos.items.size.toString()
+        textProductosDisponibles.text = productosObservableList.size.toString()
+    }
+
+    private fun clearCarrito() {
+        carrito.butacas.clear()
+        carrito.productos.clear()
+    }
+
+    private fun loadImageOrDefault(imagePath: String?): Image {
+        return try {
+            val url = if (imagePath != null) javaClass.getResource("/org/example/cine/images/$imagePath") else null
+            if (url != null) Image(url.toString()) else defaultImage
+        } catch (e: Exception) {
+            defaultImage
+        }
+    }
+
+    private fun updateProductoDetalles(producto: Producto) {
+        textoNombreProducto.text = producto.nombre
+        textoCategoriaProducto.text = producto.categoria.name
+        textoPrecioProducto.text = producto.precio.toString()
+        textProductosDisponibles.text = producto.stock.toString()
+        imagenProductos.image = loadImageOrDefault(producto.imagen)
     }
 
     private fun showAlert(title: String, message: String) {

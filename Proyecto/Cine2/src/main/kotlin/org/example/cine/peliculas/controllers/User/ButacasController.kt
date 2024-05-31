@@ -151,7 +151,6 @@ class ButacasController {
     private val butacasSeleccionadas = mutableListOf<Butaca>()
     private val butacasStorage = ButacasStorageJsonImpl()
     private val butacaImageViewMap = mutableMapOf<ImageView, Butaca>()
-    private val carrito: Carrito = Carrito.instance
 
     @FXML
     fun initialize() {
@@ -234,7 +233,6 @@ class ButacasController {
         }
 
         butonComprarProductos.setOnAction {
-            carrito.butacas.addAll(butacasSeleccionadas)
             RoutesManager.changeScene(view = RoutesManager.View.PRODUCTOSUSUARIOS)
         }
 
@@ -255,7 +253,12 @@ class ButacasController {
             }
 
             if (butacasSeleccionadas.contains(butaca)) {
+                if (butacasSeleccionadas.size == 1) {
+                    showAlert("Selección inválida", "Debes tener al menos 1 butaca seleccionada.")
+                    return
+                }
                 butacasSeleccionadas.remove(butaca)
+                Carrito.instance.butacas.remove(butaca)
                 imageView.style = ""
             } else {
                 if (butaca.estado == "ocupado" || butaca.estado == "mantenimiento") {
@@ -263,6 +266,7 @@ class ButacasController {
                     return
                 }
                 butacasSeleccionadas.add(butaca)
+                Carrito.instance.butacas.add(butaca)
                 imageView.style = "-fx-opacity: 0.5;"
             }
             actualizarButacasSeleccionadas()

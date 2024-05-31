@@ -1,8 +1,8 @@
 package org.example.cine.productos.repositories
 
 import org.example.cine.database.SqlDeLightClient
-import org.example.cine.productos.models.Producto
 import org.example.cine.productos.mappers.toModel
+import org.example.cine.productos.models.Producto
 import org.lighthousegames.logging.logging
 import java.time.LocalDateTime
 
@@ -16,7 +16,8 @@ class ProductosRepositoryImpl(
 
     override fun findAll(): List<Producto> {
         logger.debug { "findAll" }
-        return db.selectAll().executeAsList().map { it.toModel() }}
+        return db.selectAll().executeAsList().map { it.toModel() }
+    }
 
     override fun findById(id: Long): Producto? {
         logger.debug { "findById: $id" }
@@ -41,6 +42,7 @@ class ProductosRepositoryImpl(
                 precio = producto.precio,
                 imagen = producto.imagen,
                 categoria = producto.categoria.name,
+                stock = producto.stock.toLong(), // Asegúrate de que el stock se maneje correctamente
                 created_at = timeStamp,
                 updated_at = timeStamp
             )
@@ -49,18 +51,20 @@ class ProductosRepositoryImpl(
     }
 
     private fun update(producto: Producto): Producto {
-       logger.debug { "update: $producto" }
+        logger.debug { "update: $producto" }
         val timeStamp = LocalDateTime.now().toString()
         db.update(
             id = producto.id,
             nombre = producto.nombre,
             precio = producto.precio,
             imagen = producto.imagen,
+            stock = producto.stock.toLong(), // Asegúrate de que el stock se maneje correctamente
             categoria = producto.categoria.name,
             updated_at = timeStamp
         )
         return producto
     }
+
     override fun deleteById(id: Long) {
         logger.debug { "deleteById: $id" }
         return db.delete(id)

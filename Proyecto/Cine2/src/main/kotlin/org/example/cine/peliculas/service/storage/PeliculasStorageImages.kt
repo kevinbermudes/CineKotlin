@@ -1,8 +1,8 @@
 package org.example.cine.peliculas.service.storage
 
-import java.io.File
 import com.github.michaelbull.result.Result
 import org.example.cine.peliculas.errors.PeliculaError
+import java.io.File
 
 interface PeliculasStorageImages {
     fun saveImage(fileName: File): Result<File, PeliculaError>

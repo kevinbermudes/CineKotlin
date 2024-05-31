@@ -76,6 +76,8 @@ object RoutesManager {
 
         //***************************************CARRITO********************************
         CARRITO("/org/example/cine/views/compra/Carrito.fxml"),
+        PAGO("/org/example/cine/views/compra/Pasarela_de _Pago.fxml"),
+        TICKET("/org/example/cine/views/compra/Ticket_de _Compra.fxml"),
     }
 
     fun changeScene(

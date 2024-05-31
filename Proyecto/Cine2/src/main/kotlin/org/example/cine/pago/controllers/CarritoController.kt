@@ -2,6 +2,7 @@ package org.example.cine.pago.controllers
 
 import javafx.collections.FXCollections
 import javafx.fxml.FXML
+import javafx.scene.control.Alert
 import javafx.scene.control.Button
 import javafx.scene.control.TableColumn
 import javafx.scene.control.TableView
@@ -9,40 +10,48 @@ import javafx.scene.control.cell.PropertyValueFactory
 import org.example.cine.pago.models.Carrito
 import org.example.cine.peliculas.models.Butaca
 import org.example.cine.productos.models.Producto
+import org.example.cine.productos.viewmodels.ProductosViewModel
+import org.example.cine.route.RoutesManager
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import org.lighthousegames.logging.logging
 
 private val logger = logging()
 
-class CarritoController {
+class CarritoController : KoinComponent {
 
     @FXML
-    private lateinit var tablaProductos: TableView<Producto>
+    private lateinit var tableButacas: TableView<Butaca>
 
     @FXML
-    private lateinit var columnaNombreProducto: TableColumn<Producto, String>
+    private lateinit var tableColumnIdButaca: TableColumn<Butaca, String>
 
     @FXML
-    private lateinit var columnaPrecioProducto: TableColumn<Producto, Double>
+    private lateinit var tableColumnPrecioButaca: TableColumn<Butaca, Double>
 
     @FXML
-    private lateinit var botonQuitarProducto: Button
+    private lateinit var tableProductos: TableView<Producto>
 
     @FXML
-    private lateinit var tablaButacas: TableView<Butaca>
+    private lateinit var tableColumnNombreProducto: TableColumn<Producto, String>
 
     @FXML
-    private lateinit var columnaIdButaca: TableColumn<Butaca, String>
-
-    @FXML
-    private lateinit var columnaPrecioButaca: TableColumn<Butaca, Double>
+    private lateinit var tableColumnPrecioProducto: TableColumn<Producto, Double>
 
     @FXML
     private lateinit var botonQuitarButaca: Button
 
     @FXML
+    private lateinit var botonQuitarProducto: Button
+
+    @FXML
     private lateinit var botonConfirmarCompra: Button
 
-    private val carrito = Carrito.instance
+    @FXML
+    private lateinit var butonAtrasProduto: Button
+
+    private val carrito: Carrito by inject()
+    private val viewModel: ProductosViewModel by inject()
 
     @FXML
     fun initialize() {
@@ -52,69 +61,68 @@ class CarritoController {
     }
 
     private fun initTableColumns() {
-        // Productos
-        columnaNombreProducto.cellValueFactory = PropertyValueFactory("nombre")
-        columnaPrecioProducto.cellValueFactory = PropertyValueFactory("precio")
+        tableColumnIdButaca.cellValueFactory = PropertyValueFactory("id")
+        tableColumnPrecioButaca.cellValueFactory = PropertyValueFactory("precio")
 
-        // Butacas
-        columnaIdButaca.cellValueFactory = PropertyValueFactory("id")
-        columnaPrecioButaca.cellValueFactory = PropertyValueFactory("precio")
+        tableColumnNombreProducto.cellValueFactory = PropertyValueFactory("nombre")
+        tableColumnPrecioProducto.cellValueFactory = PropertyValueFactory("precio")
     }
 
     private fun initEventHandlers() {
-        botonQuitarProducto.setOnAction { quitarProducto() }
-        botonQuitarButaca.setOnAction { quitarButaca() }
+        botonQuitarButaca.setOnAction { eliminarButaca() }
+        botonQuitarProducto.setOnAction { eliminarProducto() }
         botonConfirmarCompra.setOnAction { confirmarCompra() }
+        butonAtrasProduto.setOnAction { volverAProductos() }
     }
 
     private fun loadCarritoData() {
-        // Cargar productos en la tabla
-        tablaProductos.items = FXCollections.observableArrayList(carrito.productos)
-
-        // Cargar butacas en la tabla
-        tablaButacas.items = FXCollections.observableArrayList(carrito.butacas)
+        tableButacas.items = FXCollections.observableArrayList(Carrito.instance.butacas)
+        tableProductos.items = FXCollections.observableArrayList(Carrito.instance.productos)
     }
 
-    private fun quitarProducto() {
-        val selectedProduct = tablaProductos.selectionModel.selectedItem
-        if (selectedProduct != null) {
-            carrito.productos.remove(selectedProduct)
-            tablaProductos.items.remove(selectedProduct)
-            logger.debug { "Producto eliminado del carrito: ${selectedProduct.nombre}" }
+    private fun eliminarButaca() {
+        val selectedButaca = tableButacas.selectionModel.selectedItem
+        if (selectedButaca != null) {
+            if (Carrito.instance.butacas.size == 1) {
+                showAlert("Selección inválida", "Debes tener al menos 1 butaca en el carrito.")
+                return
+            }
+            Carrito.instance.butacas.remove(selectedButaca)
+            tableButacas.items.remove(selectedButaca)
         } else {
-            showAlert("Selección inválida", "Por favor, seleccione un producto para eliminar.")
+            showAlert("Selección inválida", "Por favor, selecciona una butaca para eliminar.")
         }
     }
 
-    private fun quitarButaca() {
-        val selectedButaca = tablaButacas.selectionModel.selectedItem
-        if (selectedButaca != null) {
-            carrito.butacas.remove(selectedButaca)
-            tablaButacas.items.remove(selectedButaca)
-            logger.debug { "Butaca eliminada del carrito: ${selectedButaca.id}" }
+    private fun eliminarProducto() {
+        val selectedProducto = tableProductos.selectionModel.selectedItem
+        if (selectedProducto != null) {
+            // Añadir el stock del producto de nuevo
+            selectedProducto.increaseStock()
+            viewModel.saveProduct(selectedProducto)
+
+            Carrito.instance.productos.remove(selectedProducto)
+            tableProductos.items.remove(selectedProducto)
         } else {
-            showAlert("Selección inválida", "Por favor, seleccione una butaca para eliminar.")
+            showAlert("Selección inválida", "Por favor, selecciona un producto para eliminar.")
         }
     }
 
     private fun confirmarCompra() {
-        if (carrito.productos.isEmpty() && carrito.butacas.isEmpty()) {
-            showAlert("Carrito vacío", "No hay productos ni butacas en el carrito para confirmar la compra.")
-        } else {
-            // Lógica para confirmar la compra
-            logger.debug { "Compra confirmada. Total: ${carrito.total}" }
-            carrito.productos.clear()
-            carrito.butacas.clear()
-            loadCarritoData()
-            showAlert("Compra exitosa", "La compra ha sido confirmada. Total: ${carrito.total}")
-        }
+        // Lógica para confirmar la compra
+        logger.debug { "redirigiendo a carrito de compra" }
+        RoutesManager.changeScene(view = RoutesManager.View.PAGO)
     }
 
-    private fun showAlert(title: String, message: String) {
-        val alert = javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION)
-        alert.title = title
+    private fun volverAProductos() {
+        RoutesManager.changeScene(view = RoutesManager.View.PRODUCTOSUSUARIOS)
+    }
+
+    private fun showAlert(titulo: String, mensaje: String) {
+        val alert = Alert(Alert.AlertType.INFORMATION)
+        alert.title = titulo
         alert.headerText = null
-        alert.contentText = message
+        alert.contentText = mensaje
         alert.showAndWait()
     }
 }

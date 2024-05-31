@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
-<Pane xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.cine.pago.controllers.CarritoController" maxHeight="-Infinity"
-      maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
-      prefWidth="900.0" style="-fx-background-color: #376bb5;" xmlns="http://javafx.com/javafx/21">
+<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #376bb5;"
+      xmlns="http://javafx.com/javafx/11.0.14-internal" fx:controller="org.example.cine.pago.controllers.CarritoController">
     <children>
         <Line endX="731.3585205078125" layoutX="138.0" layoutY="74.0" startX="-99.13207244873047"/>
         <Button fx:id="botonHelp" layoutX="38.0" layoutY="25.0" mnemonicParsing="false"
@@ -25,25 +25,24 @@
                 <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
-                <TableView fx:id="tablaProductos" prefHeight="150.0" prefWidth="350.0" GridPane.columnIndex="0"
+                <TableView fx:id="tableButacas" prefHeight="150.0" prefWidth="350.0" GridPane.columnIndex="0"
                            GridPane.rowIndex="0">
                     <columns>
-                        <TableColumn fx:id="columnaNombreProducto" prefWidth="175.0" text="Producto"/>
-                        <TableColumn fx:id="columnaPrecioProducto" prefWidth="175.0" text="Precio"/>
-                    </columns>
-                </TableView>
-                <Button fx:id="botonQuitarProducto" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0"
-                        style="-fx-background-radius: 10;" text="Quitar Producto" GridPane.columnIndex="0"
-                        GridPane.rowIndex="1"/>
-                <TableView fx:id="tablaButacas" prefHeight="150.0" prefWidth="350.0" GridPane.columnIndex="1"
-                           GridPane.rowIndex="0">
-                    <columns>
-                        <TableColumn fx:id="columnaIdButaca" prefWidth="175.0" text="Butaca"/>
-                        <TableColumn fx:id="columnaPrecioButaca" prefWidth="175.0" text="Precio"/>
+                        <TableColumn fx:id="tableColumnIdButaca" prefWidth="175.0" text="Butaca"/>
+                        <TableColumn fx:id="tableColumnPrecioButaca" prefWidth="175.0" text="Precio"/>
                     </columns>
                 </TableView>
                 <Button fx:id="botonQuitarButaca" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0"
-                        style="-fx-background-radius: 10;" text="Quitar Butaca" GridPane.columnIndex="1"
+                        style="-fx-background-radius: 10;" text="Quitar Butaca" GridPane.rowIndex="1"/>
+                <TableView fx:id="tableProductos" prefHeight="150.0" prefWidth="350.0" GridPane.columnIndex="1"
+                           GridPane.rowIndex="0">
+                    <columns>
+                        <TableColumn fx:id="tableColumnNombreProducto" prefWidth="175.0" text="Producto"/>
+                        <TableColumn fx:id="tableColumnPrecioProducto" prefWidth="175.0" text="Precio"/>
+                    </columns>
+                </TableView>
+                <Button fx:id="botonQuitarProducto" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0"
+                        style="-fx-background-radius: 10;" text="Quitar Producto" GridPane.columnIndex="1"
                         GridPane.rowIndex="1"/>
             </children>
         </GridPane>
@@ -53,5 +52,6 @@
                 <Font name="Georgia Pro Black" size="30.0"/>
             </font>
         </Label>
+        <Button fx:id="butonAtrasProduto" layoutX="701.0" layoutY="539.0" mnemonicParsing="false" text="Atras"/>
     </children>
 </Pane>
