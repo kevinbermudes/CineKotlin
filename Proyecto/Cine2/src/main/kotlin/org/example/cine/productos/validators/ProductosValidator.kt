@@ -13,8 +13,6 @@ fun Producto.validate(): Result<Producto, ProductoError> {
     if (this.precio < 0) {
         return Err(ProductoError.ValidationProblem("El precio no puede ser negativo"))
     }
-    if (this.imagen.isEmpty() || this.imagen.isBlank()) {
-        return Err(ProductoError.ValidationProblem("La imagen no puede estar vacía"))
-    }
+
     return Ok(this)
 }

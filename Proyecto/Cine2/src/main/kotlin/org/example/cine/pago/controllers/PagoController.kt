@@ -1,15 +1,19 @@
 package org.example.cine.pago.controllers
 
+import com.github.michaelbull.result.onFailure
+import com.github.michaelbull.result.onSuccess
 import javafx.fxml.FXML
 import javafx.scene.control.Alert
 import javafx.scene.control.Button
 import javafx.scene.control.TextField
 import org.example.cine.pago.models.Carrito
+import org.example.cine.peliculas.service.storage.ButacasStorageJsonImpl
 import org.example.cine.productos.viewmodels.ProductosViewModel
 import org.example.cine.route.RoutesManager
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.lighthousegames.logging.logging
+import java.io.File
 
 private val logger = logging()
 
@@ -50,6 +54,7 @@ class PagoController : KoinComponent {
 
     private val carrito: Carrito = Carrito.instance
     private val viewModel: ProductosViewModel by inject()
+    private val butacasStorage: ButacasStorageJsonImpl by inject()
 
     @FXML
     fun initialize() {
@@ -81,9 +86,8 @@ class PagoController : KoinComponent {
                 viewModel.saveProduct(producto)
             }
 
-//            // no limpiamos el carrito Limpiar el carrito
-//            carrito.butacas.clear()
-//            carrito.productos.clear()
+            // Actualizar JSON de butacas
+            actualizarButacasEnJson()
 
             showAlert("Compra realizada", "Tu compra ha sido realizada con éxito.")
             RoutesManager.changeScene(view = RoutesManager.View.TICKET)
@@ -146,5 +150,29 @@ class PagoController : KoinComponent {
         alert.headerText = null
         alert.contentText = message
         alert.showAndWait()
+    }
+
+    private fun actualizarButacasEnJson() {
+        val butacasFile = File("src/main/resources/butacas.json")
+
+        if (butacasFile.exists()) {
+            butacasStorage.loadDataJson(butacasFile).onSuccess { butacas ->
+                val butacasActualizadas = butacas.map { butaca ->
+                    if (carrito.butacas.any { it.id == butaca.id }) {
+                        butaca.copy(estado = "ocupado", imagen = "ocupado.png")
+                    } else {
+                        butaca
+                    }
+                }
+
+                butacasStorage.storeDataJson(butacasFile, butacasActualizadas).onFailure {
+                    logger.error { "Error al guardar las butacas actualizadas: ${it.message}" }
+                }
+            }.onFailure {
+                logger.error { "Error al cargar las butacas: ${it.message}" }
+            }
+        } else {
+            logger.debug { "El archivo butacas.json no existe." }
+        }
     }
 }

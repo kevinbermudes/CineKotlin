@@ -114,6 +114,7 @@ class ProductosViewAdminController : KoinComponent {
             textoNombreProducto.text = producto.nombre
             textoCategoriaProducto.text = producto.categoria.name
             textoPrecioProducto.text = producto.precio
+            // Si tienes una ImageView para la imagen del producto
             imagenProductos.image = producto.imagen
         }
     }
@@ -137,15 +138,19 @@ class ProductosViewAdminController : KoinComponent {
     }
 
     private fun onEditarProducto() {
-       logger.debug { "Editando producto" }
-       val stage = butonEditarProducto.scene.window as Stage
-       RoutesManager.initEditarViewController()
+        val producto = tableProductos.selectionModel.selectedItem
+        if (producto != null) {
+            logger.debug { "Editando producto: ${producto.nombre}" }
+            RoutesManager.editarProducto(producto)
+        } else {
+            showAlert("Error", "Por favor, selecciona un producto para editar.")
+        }
     }
 
     private fun onAnadirProducto() {
-      logger.debug { "Anadiendo nuevo producto" }
-      val stage = butonAnadirProductosAdmin.scene.window as Stage
-      RoutesManager.initAnadirViewController()
+        logger.debug { "Añadiendo nuevo producto" }
+        val stage = butonAnadirProductosAdmin.scene.window as Stage
+        RoutesManager.initAnadirViewController()
     }
 
     private fun onAtras() {

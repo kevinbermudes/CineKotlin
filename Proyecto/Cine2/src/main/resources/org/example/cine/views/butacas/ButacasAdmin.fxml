@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" fx:controller="org.example.cine.peliculas.controllers.User.ButacasAdminController" stylesheets="@../../styles/butcas.css" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="900.0" style="-fx-background-color: #376bb5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="900.0" style="-fx-background-color: #376bb5;" stylesheets="@../../styles/butcas.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.cine.peliculas.controllers.User.ButacasAdminController">
    <children>
       <HBox prefHeight="54.0" prefWidth="900.0" style="-fx-background-color: #376bb5;">
          <children>
@@ -202,10 +202,10 @@
                            </image>
                         </ImageView>
                         <Label style="-fx-text-fill: #ffffff;" text="Libre" GridPane.rowIndex="3" />
-                        <TextField fx:id="cantidadButacasVip" GridPane.columnIndex="2" />
-                        <TextField fx:id="cantidadButacasMantenimiento" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <TextField fx:id="cantidadButacasOcupado" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <TextField fx:id="cantidadButacasLibre" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <TextField fx:id="cantidadButacasVip" style="-fx-text-fill: black; -fx-alignment: center;" GridPane.columnIndex="2" />
+                        <TextField fx:id="cantidadButacasMantenimiento" style="-fx-alignment: center; -fx-text-fill: black;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <TextField fx:id="cantidadButacasOcupado" style="-fx-alignment: center; -fx-text-fill: black;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <TextField fx:id="cantidadButacasLibre" style="-fx-alignment: center; -fx-text-fill: black;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                   <Label layoutX="60.0" layoutY="7.0" prefHeight="33.0" prefWidth="104.0" style="-fx-text-fill: #ffffff;" text="Editar " textFill="WHITE">
@@ -232,7 +232,7 @@
                   <Button fx:id="butonAtrasButacas" layoutX="14.0" layoutY="485.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Atras" />
                   <Label layoutX="16.0" layoutY="115.0" style="-fx-text-fill: #ffffff;" text="Estado de la butacas:" />
                   <Label layoutX="14.0" layoutY="78.0" style="-fx-text-fill: #ffffff;" text="Coordenada" />
-                  <TextField fx:id="textNombreCoordenada" layoutX="94.0" layoutY="74.0" prefHeight="25.0" prefWidth="110.0" />
+                  <TextField fx:id="textNombreCoordenada" layoutX="94.0" layoutY="74.0" prefHeight="25.0" prefWidth="110.0" style="-fx-alignment: center; -fx-text-fill: black;" />
                   <Button fx:id="butonEditarButaca" layoutX="14.0" layoutY="446.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Editar" />
                </children>
             </AnchorPane>

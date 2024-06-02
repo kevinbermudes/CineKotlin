@@ -11,6 +11,11 @@ import javafx.scene.layout.Pane
 import javafx.stage.Modality
 import javafx.stage.Stage
 import javafx.stage.WindowEvent
+import org.example.cine.peliculas.controllers.User.CrearPeliculaController
+import org.example.cine.peliculas.controllers.User.EditarPeliculaController
+import org.example.cine.peliculas.models.Pelicula
+import org.example.cine.productos.controllers.ProductosEditarViewController
+import org.example.cine.productos.models.Producto
 import org.lighthousegames.logging.logging
 import java.io.InputStream
 import java.net.URL
@@ -31,6 +36,7 @@ object RoutesManager {
 
     private var scenesMap: HashMap<String, Pane> = HashMap()
     private var acualStyle: Style = Style.DEFAULT
+    private var selectedButacaId: String? = null
 
 
     // Todas las vistas
@@ -47,6 +53,12 @@ object RoutesManager {
         //vista de administrador
         ADMININDEX("/org/example/cine/views/peliculas/IndezLoginAdmin.fxml"),
 
+        // editar pelicula
+        EDITAR_PELICULA("/org/example/cine/views/peliculas/EditPelicula.fxml"),
+
+        //crear pelicula
+        CREAR_PELICULA("/org/example/cine/views/peliculas/CrearPelicula.fxml"),
+
         //    **********************************Butacas*****************************************
         //vista de butacas con login admin
         BUTACASADMIN("/org/example/cine/views/butacas/ButacasAdmin.fxml"),
@@ -56,6 +68,9 @@ object RoutesManager {
 
         //vista de butacas con login admin
         BUTACASADMINEDITARBUTACA("/org/example/cine/views/butacas/VentanaEditButaca.fxml"),
+
+        // vista de EDITAR_BUTACA
+        EDITAR_BUTACA("/org/example/cine/views/butacas/VentanaEditButaca.fxml"),
 
         //  ************************************Productos*********************
         //VISTA de produtos con login usuario
@@ -258,6 +273,26 @@ object RoutesManager {
         stage.show()
     }
 
+    fun editarProducto(producto: Producto) {
+        logger.debug { "Inicializando Editar Producto" }
+
+        val fxmlLoader = FXMLLoader(getResource(View.PRODUCTOSEDITAR.fxml))
+        val parentRoot = fxmlLoader.load<Pane>()
+        val editController = fxmlLoader.getController<ProductosEditarViewController>()
+        editController.setProducto(producto)
+        val scene = Scene(parentRoot, 350.0, 400.0)
+        val stage = Stage()
+        stage.icons.add(Image(getResourceAsStream("/org/example/cine/icons/app-icon.png")))
+        stage.setOnCloseRequest { event -> stage.close() }
+        stage.title = "Cine - Editar Producto"
+        stage.scene = scene
+        stage.initOwner(mainStage)
+        stage.initModality(Modality.WINDOW_MODAL)
+        stage.isResizable = false
+        stage.show()
+    }
+
+
     //index con admin
     fun initProductosAdmin() {
         logger.debug { "Inicializando ProductosAdmin" }
@@ -276,6 +311,71 @@ object RoutesManager {
         closeActiveStage()
         _activeStage = stage
         stage.show()
+    }
+
+    // editar butacas
+    fun editarButaca(butacaId: String) {
+        logger.debug { "Inicializando Editar Butaca" }
+
+        selectedButacaId = butacaId
+        val fxmlLoader = FXMLLoader(getResource(View.EDITAR_BUTACA.fxml))
+        val parentRoot = fxmlLoader.load<Pane>()
+        val scene = Scene(parentRoot, 350.0, 400.0)
+        val stage = Stage()
+        stage.icons.add(Image(getResourceAsStream("/org/example/cine/icons/app-icon.png")))
+        stage.setOnCloseRequest { event -> stage.close() } // Cambiado para solo cerrar la ventana de edición
+        stage.title = "Cine - Editar Butaca"
+        stage.scene = scene
+        stage.initOwner(mainStage)
+        stage.initModality(Modality.WINDOW_MODAL)
+        stage.isResizable = false
+        stage.show()
+    }
+    // edita pelicula
+
+    fun crearPelicula(pelicula: Pelicula, onClose: () -> Unit) {
+        logger.debug { "Inicializando Crear Pelicula" }
+
+        val fxmlLoader = FXMLLoader(getResource(View.CREAR_PELICULA.fxml))
+        val parentRoot = fxmlLoader.load<Pane>()
+        val createController = fxmlLoader.getController<CrearPeliculaController>()
+        createController.setPelicula(pelicula)
+        val scene = Scene(parentRoot, 350.0, 400.0)
+        val stage = Stage()
+        stage.icons.add(Image(getResourceAsStream("/org/example/cine/icons/app-icon.png")))
+        stage.setOnCloseRequest { event ->
+            stage.close()
+            onClose()
+        }
+        stage.title = "Cine - Crear Película"
+        stage.scene = scene
+        stage.initOwner(mainStage)
+        stage.initModality(Modality.WINDOW_MODAL)
+        stage.isResizable = false
+        stage.show()
+    }
+
+    fun editarPelicula(pelicula: Pelicula) {
+        logger.debug { "Inicializando Editar Pelicula" }
+
+        val fxmlLoader = FXMLLoader(getResource(View.EDITAR_PELICULA.fxml))
+        val parentRoot = fxmlLoader.load<Pane>()
+        val editController = fxmlLoader.getController<EditarPeliculaController>()
+        editController.setPelicula(pelicula)
+        val scene = Scene(parentRoot, 350.0, 400.0)
+        val stage = Stage()
+        stage.icons.add(Image(getResourceAsStream("/org/example/cine/icons/app-icon.png")))
+        stage.setOnCloseRequest { event -> stage.close() }
+        stage.title = "Cine - Editar Película"
+        stage.scene = scene
+        stage.initOwner(mainStage)
+        stage.initModality(Modality.WINDOW_MODAL)
+        stage.isResizable = false
+        stage.show()
+    }
+
+    fun getSelectedButacaId(): String? {
+        return selectedButacaId
     }
 
     //Vista de Productos Añadir
@@ -317,7 +417,7 @@ object RoutesManager {
         stage.show()
     }
 
-    private fun closeActiveStage() {
+    fun closeActiveStage() {
         if (::mainStage.isInitialized && _activeStage != mainStage) {
             _activeStage.close()
         }
@@ -352,5 +452,6 @@ object RoutesManager {
             }
         }
     }
+
 
 }

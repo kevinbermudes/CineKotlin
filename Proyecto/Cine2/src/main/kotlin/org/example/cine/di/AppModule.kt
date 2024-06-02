@@ -101,4 +101,9 @@ val appModule = module {
         bind<UsuarioRepository>()
     }
     single { Carrito.instance }
+
+    // Butacas
+    singleOf(::ButacasStorageJsonImpl) {
+        bind<ButacasStorageJson>()
+    }
 }

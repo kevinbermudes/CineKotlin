@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,19 +14,20 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="900.0" style="-fx-background-color: #376bb5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.cine.pago.controllers.TicketCompraController">
     <children>
-        <Button fx:id="butonInicio" layoutX="726.0" layoutY="478.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="97.0" style="-fx-background-radius: 10;" text="Volver al Inicio" />
-        <Button fx:id="buttonImprimir" layoutX="607.0" layoutY="478.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="81.0" style="-fx-background-radius: 10;" text="Imprimir" />
-        <GridPane layoutX="504.0" layoutY="129.0" prefHeight="304.0" prefWidth="319.0">
+        <Button fx:id="butonInicio" layoutX="740.0" layoutY="532.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="97.0" style="-fx-background-radius: 10;" text="Volver al Inicio" />
+        <Button fx:id="buttonImprimir" layoutX="600.0" layoutY="532.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="81.0" style="-fx-background-radius: 10;" text="Imprimir" />
+        <GridPane layoutX="504.0" layoutY="129.0" prefHeight="339.0" prefWidth="319.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="179.00001220703126" minWidth="10.0" prefWidth="130.4" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.79999389648438" minWidth="10.0" prefWidth="111.20000000000002" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints maxHeight="66.79999389648438" minHeight="10.0" prefHeight="44.8000244140625" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="59.999987792968746" minHeight="10.0" prefHeight="51.1999755859375" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="56.800018310546875" minHeight="10.0" prefHeight="56.800018310546875" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="80.79998779296875" minHeight="10.0" prefHeight="63.199981689453125" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="56.00001220703126" minHeight="0.0" prefHeight="56.00001220703126" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="66.79999389648438" minHeight="10.0" prefHeight="33.603790761228616" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="59.999987792968746" minHeight="10.0" prefHeight="32.60377124909964" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="94.18868614405923" minHeight="10.0" prefHeight="40.75469765912695" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="175.69814031919424" minHeight="10.0" prefHeight="175.69814031919424" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="56.00001220703126" minHeight="0.0" prefHeight="30.79248594431408" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="56.00001220703126" minHeight="10.0" prefHeight="25.01885534376811" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
                 <Label prefHeight="18.0" prefWidth="120.0" style="-fx-text-fill: #ffffff;" text="Nombre de la Pelicula" />
@@ -36,8 +38,10 @@
                 <TextField fx:id="textoButacas" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <Label prefHeight="18.0" prefWidth="120.0" style="-fx-text-fill: #ffffff;" text="Complementos" GridPane.rowIndex="3" />
                 <Label prefHeight="18.0" prefWidth="120.0" style="-fx-text-fill: #ffffff;" text="Precio Complementos" GridPane.rowIndex="4" />
-                <TextField fx:id="textoComplementos" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 <TextField fx:id="textoPrecioComplementos" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextArea fx:id="textoComplementos" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label prefHeight="18.0" prefWidth="104.0" style="-fx-text-fill: #ffffff;" text="total pagado" GridPane.rowIndex="5" />
+            <TextField fx:id="textTotalApagar" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             </children>
         </GridPane>
         <Label layoutX="506.0" layoutY="53.0" prefHeight="49.0" prefWidth="282.0" style="-fx-text-fill: #ffffff;" text="Ticket de Compra:">

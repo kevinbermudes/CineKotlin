@@ -103,11 +103,7 @@ class ProductosViewModel(
         var imagen = Image(RoutesManager.getResourceAsStream("images/sin-imagen.png"))
         var fileImage = File(RoutesManager.getResource("images/sin-imagen.png").toURI())
 
-        storage.loadImage(producto.imagen).onSuccess {
-            imagen = Image(it.absoluteFile.toURI().toString())
-            fileImage = it
-        }
-
+       
         // Convertir ID a Long para la comparación
         val productoId = producto.id.toString()
         if (state.value.producto.id != productoId) {
@@ -131,14 +127,14 @@ class ProductosViewModel(
         nombre: String,
         precio: String,
         categoria: Producto.Categoria,
-        stock: String
+        stock: Long
     ): Result<Producto, ProductoError> {
         logger.debug { "Creando Producto" }
         val newProductoTemp = ProductoFormState(
             nombre = nombre,
             precio = precio,
             categoria = categoria,
-            stock = stock // Añadir stock
+            stock = stock.toString()
         ).copy()
         var newProducto = newProductoTemp.toModel().copy(id = Producto.NEW_PRODUCTO)
         return newProducto.validate().andThen {
@@ -168,8 +164,6 @@ class ProductosViewModel(
                     storage.saveImage(newFileImage).onSuccess {
                         updatedProducto = updatedProducto.copy(imagen = it.name)
                     }
-                } else {
-                    storage.updateImage(updatedProducto.imagen, newFileImage)
                 }
             }
             service.save(updatedProducto).onSuccess {
@@ -258,7 +252,7 @@ class ProductosViewModel(
         precio: String,
         categoria: Producto.Categoria,
         imagen: Image,
-        stock: String // Añadir stock
+        stock: String
     ) {
         logger.debug { "Actualizando estado de Producto Operacion" }
         state.value = state.value.copy(
@@ -267,10 +261,11 @@ class ProductosViewModel(
                 precio = precio,
                 categoria = categoria,
                 imagen = imagen,
-                stock = stock // Añadir stock
+                stock = stock
             )
         )
     }
+
 
     enum class TipoImagen(val value: String) {
         SIN_IMAGEN("sin-imagen.png"), EMPTY("")
@@ -283,16 +278,16 @@ class ProductosViewModel(
     // Clases que representan el estado
     data class ProductoState(
         val productos: List<Producto> = FXCollections.observableArrayList(),
-        val numProductos: String = "0",
+        val numProductos: String = "",
         val producto: ProductoFormState = ProductoFormState(),
         val tipoOperacion: TipoOperacion = TipoOperacion.NUEVO
     )
 
     data class ProductoFormState(
-        val id: String = "",
+        val id: String = "0",
         val nombre: String = "",
-        val precio: String = "",
-        val stock: String = "", // Añadir stock
+        val precio: String = "0.0",
+        val stock: String = "0",
         val categoria: Producto.Categoria = Producto.Categoria.BOTANA,
         val imagen: Image = Image(RoutesManager.getResourceAsStream("images/sin-imagen.png")),
         val fileImage: File? = null
@@ -302,7 +297,7 @@ class ProductosViewModel(
                 id = this.id,
                 nombre = this.nombre,
                 precio = this.precio,
-                stock = this.stock, // Añadir stock
+                stock = this.stock,
                 categoria = this.categoria,
                 imagen = this.imagen,
                 fileImage = this.fileImage
@@ -311,12 +306,12 @@ class ProductosViewModel(
 
         fun toModel(): Producto {
             return Producto(
-                id = id.toLong(),
+                id = id.toLongOrNull() ?: 0,
                 nombre = nombre,
-                precio = precio.toDouble(),
+                precio = precio.toDoubleOrNull() ?: 0.0,
                 categoria = categoria,
                 imagen = imagen.url,
-                stock = stock.toInt(), // Añadir stock
+                stock = stock.toIntOrNull() ?: 0,
                 createdAt = LocalDateTime.now(),
                 updatedAt = LocalDateTime.now()
             )
