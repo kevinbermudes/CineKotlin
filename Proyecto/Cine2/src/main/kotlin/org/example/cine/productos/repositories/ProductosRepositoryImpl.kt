@@ -16,7 +16,8 @@ class ProductosRepositoryImpl(
 
     override fun findAll(): List<Producto> {
         logger.debug { "findAll" }
-        return db.selectAll().executeAsList().map { it.toModel() }}
+        return db.selectAll().executeAsList().map { it.toModel() }
+    }
 
     override fun findById(id: Long): Producto? {
         logger.debug { "findById: $id" }
@@ -42,6 +43,7 @@ class ProductosRepositoryImpl(
                 imagen = producto.imagen,
                 stock = producto.stock,
                 categoria = producto.categoria.name,
+                stock = producto.stock.toLong(), // Asegúrate de que el stock se maneje correctamente
                 created_at = timeStamp,
                 updated_at = timeStamp
             )
@@ -50,19 +52,20 @@ class ProductosRepositoryImpl(
     }
 
     private fun update(producto: Producto): Producto {
-       logger.debug { "update: $producto" }
+        logger.debug { "update: $producto" }
         val timeStamp = LocalDateTime.now().toString()
         db.update(
             id = producto.id,
             nombre = producto.nombre,
             precio = producto.precio,
             imagen = producto.imagen,
-            stock = producto.stock,
+            stock = producto.stock.toLong(), // Asegúrate de que el stock se maneje correctamente
             categoria = producto.categoria.name,
             updated_at = timeStamp
         )
         return producto
     }
+
     override fun deleteById(id: Long) {
         logger.debug { "deleteById: $id" }
         return db.delete(id)

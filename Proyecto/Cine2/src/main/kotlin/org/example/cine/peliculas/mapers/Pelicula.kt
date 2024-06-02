@@ -91,7 +91,7 @@ fun PeliculaFormState.toModel(): Pelicula {
         fechaEstreno = fechaEstreno,
         descripcion = descripcion.trim(),
         categoria = categoria,
-        imagen = fileImage?.name ?: "sin-imagen.png",
+        imagen = imagen.url ?: "sin-imagen.png",
         createdAt = LocalDate.now().atStartOfDay(),
         updatedAt = LocalDate.now().atStartOfDay()
     )

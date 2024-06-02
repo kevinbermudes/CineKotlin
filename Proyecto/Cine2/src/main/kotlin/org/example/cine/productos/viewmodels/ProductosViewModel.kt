@@ -51,6 +51,7 @@ class ProductosViewModel(
             producto = ProductoFormState()
         )
     }
+
     fun clearState() {
         logger.debug { "Limpiando estado de Producto" }
         state.set(ProductoState())
@@ -70,11 +71,26 @@ class ProductosViewModel(
         return storage.storeDataJson(file, state.value.productos)
     }
 
+
+    fun saveProduct(producto: Producto) {
+        service.save(producto).onSuccess {
+            loadAllProductos() // Recargar todos los productos para reflejar los cambios
+        }.onFailure {
+            logger.error { "Error guardando el producto: ${it.message}" }
+        }
+    }
+
+
     fun loadProductosFromJson(file: File, withImages: Boolean = false): Result<List<Producto>, ProductoError> {
         logger.debug { "Cargando Productos en JSON" }
         return storage.loadDataJson(file).onSuccess {
             service.deleteAll() // Borramos todos los datos de la BD
-            service.saveAll(it.map { p -> p.copy(id = Producto.NEW_PRODUCTO, imagen = if (withImages) p.imagen else "") })
+            service.saveAll(it.map { p ->
+                p.copy(
+                    id = Producto.NEW_PRODUCTO,
+                    imagen = if (withImages) p.imagen else ""
+                )
+            })
             loadAllProductos() // Actualizamos la lista
         }
     }
@@ -92,27 +108,37 @@ class ProductosViewModel(
             fileImage = it
         }
 
-        state.value = state.value.copy(
-            producto = ProductoFormState(
-                id = producto.id.toString(),
-                nombre = producto.nombre,
-                precio = producto.precio.toString(),
-                categoria = producto.categoria,
-                imagen = imagen,
-                stock = producto.stock.toString(),
-                fileImage = fileImage
+        // Convertir ID a Long para la comparación
+        val productoId = producto.id.toString()
+        if (state.value.producto.id != productoId) {
+            state.value = state.value.copy(
+                producto = ProductoFormState(
+                    id = producto.id.toString(),
+                    nombre = producto.nombre,
+                    precio = producto.precio.toString(),
+                    stock = producto.stock.toString(), // Añadir stock al estado
+                    categoria = producto.categoria,
+                    imagen = imagen,
+                    fileImage = fileImage
+                )
             )
-        )
+        }
     }
 
+
     // Crea un nuevo producto en el estado y repositorio
-    fun crearProducto(nombre: String, precio: String, categoria: Producto.Categoria, stock: String): Result<Producto, ProductoError> {
+    fun crearProducto(
+        nombre: String,
+        precio: String,
+        categoria: Producto.Categoria,
+        stock: String
+    ): Result<Producto, ProductoError> {
         logger.debug { "Creando Producto" }
         val newProductoTemp = ProductoFormState(
             nombre = nombre,
             precio = precio,
             categoria = categoria,
-            stock = stock,
+            stock = stock // Añadir stock
         ).copy()
         var newProducto = newProductoTemp.toModel().copy(id = Producto.NEW_PRODUCTO)
         return newProducto.validate().andThen {
@@ -232,7 +258,7 @@ class ProductosViewModel(
         precio: String,
         categoria: Producto.Categoria,
         imagen: Image,
-        stock: String
+        stock: String // Añadir stock
     ) {
         logger.debug { "Actualizando estado de Producto Operacion" }
         state.value = state.value.copy(
@@ -241,7 +267,7 @@ class ProductosViewModel(
                 precio = precio,
                 categoria = categoria,
                 imagen = imagen,
-                stock = stock
+                stock = stock // Añadir stock
             )
         )
     }
@@ -266,6 +292,7 @@ class ProductosViewModel(
         val id: String = "",
         val nombre: String = "",
         val precio: String = "",
+        val stock: String = "", // Añadir stock
         val categoria: Producto.Categoria = Producto.Categoria.BOTANA,
         val imagen: Image = Image(RoutesManager.getResourceAsStream("images/sin-imagen.png")),
         val stock: String = "",
@@ -276,6 +303,7 @@ class ProductosViewModel(
                 id = this.id,
                 nombre = this.nombre,
                 precio = this.precio,
+                stock = this.stock, // Añadir stock
                 categoria = this.categoria,
                 imagen = this.imagen,
                 stock =this.stock,
@@ -290,7 +318,7 @@ class ProductosViewModel(
                 precio = precio.toDouble(),
                 categoria = categoria,
                 imagen = imagen.url,
-                stock = stock.toDouble(),
+                stock = stock.toInt(), // Añadir stock
                 createdAt = LocalDateTime.now(),
                 updatedAt = LocalDateTime.now(),
 

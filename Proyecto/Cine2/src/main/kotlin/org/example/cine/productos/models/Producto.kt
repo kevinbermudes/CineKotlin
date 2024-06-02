@@ -10,6 +10,7 @@ data class Producto(
     val precio: Double,
     val categoria: Categoria,
     val imagen: String,
+    var stock: Int = 0, // Asegúrate de que la propiedad stock esté correctamente declarada
     val createdAt: LocalDateTime = LocalDateTime.now(),
     val updatedAt: LocalDateTime = LocalDateTime.now(),
     val stock: Double
@@ -33,5 +34,15 @@ data class Producto(
         val format: NumberFormat = NumberFormat.getCurrencyInstance(Locale("es", "ES"))
         return format.format(this)
     }
-}
 
+    fun reduceStock() {
+        if (stock > 0) {
+            stock -= 1
+        }
+    }
+
+    fun increaseStock() {
+        stock += 1
+    }
+
+}

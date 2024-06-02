@@ -3,6 +3,7 @@ package org.example.cine.di
 import org.example.cine.Usuario.repositories.UsuarioRepository
 import org.example.cine.config.AppConfig
 import org.example.cine.database.SqlDeLightClient
+import org.example.cine.pago.models.Carrito
 import org.example.cine.peliculas.ViewModel.CineViewModel
 import org.example.cine.peliculas.repositories.PeliculasRepository
 import org.example.cine.peliculas.repositories.PeliculasRepositoryImpl
@@ -99,4 +100,5 @@ val appModule = module {
     singleOf(::UsuarioRepositoryImpl) {
         bind<UsuarioRepository>()
     }
+    single { Carrito.instance }
 }

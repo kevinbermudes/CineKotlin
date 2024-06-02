@@ -2,20 +2,16 @@ package org.example.cine.peliculas.controllers
 
 import javafx.collections.FXCollections
 import javafx.fxml.FXML
-import javafx.fxml.FXMLLoader
-import javafx.scene.Scene
 import javafx.scene.control.*
 import javafx.scene.control.cell.PropertyValueFactory
 import javafx.scene.image.ImageView
 import javafx.scene.layout.GridPane
-import javafx.scene.layout.Pane
-import javafx.stage.Stage
 import org.example.cine.peliculas.ViewModel.CineViewModel
 import org.example.cine.peliculas.models.Pelicula
 import org.example.cine.route.RoutesManager
 import org.koin.core.component.KoinComponent
-import org.lighthousegames.logging.logging
 import org.koin.core.component.inject
+import org.lighthousegames.logging.logging
 
 private val logger = logging()
 
@@ -98,6 +94,7 @@ class PeliculasViewNoLogin : KoinComponent {
         tableColumnDuracion.cellValueFactory = PropertyValueFactory("duracion")
         tableColumnFecha.cellValueFactory = PropertyValueFactory("fechaEstreno")
     }
+
     private fun loadData() {
         logger.debug { "Cargando datos iniciales" }
         viewModel.loadAllPeliculas()
@@ -144,11 +141,12 @@ class PeliculasViewNoLogin : KoinComponent {
     }
 
     private fun onLoginAction() {
-       logger.debug { "Iniciando sesión" }
+        logger.debug { "Iniciando sesión" }
         // Lógica para el botón Login
 //RoutesManager.initLoginStage()
-        RoutesManager.changeScene(view =RoutesManager.View.LOGIN)
+        RoutesManager.changeScene(view = RoutesManager.View.LOGIN)
     }
+
     private fun onComprarNoLoginAction() {
         // Lógica para el botón Comprar No Login
         val alert = Alert(Alert.AlertType.INFORMATION)

@@ -37,32 +37,49 @@ object RoutesManager {
     enum class View(val fxml: String) {
         //vista principal sin login simepre cargamos esta
         MAIN("/org/example/cine/views/peliculas/IndezSinLogin.fxml"),
+
         //vista Login
         LOGIN("/org/example/cine/views/login/Login.fxml"),
+
         //vista de usuario
         USUARIOINDEX("/org/example/cine/views/peliculas/IndezLogin.fxml"),
+
         //vista de administrador
         ADMININDEX("/org/example/cine/views/peliculas/IndezLoginAdmin.fxml"),
-    //    **********************************Butacas*****************************************
+
+        //    **********************************Butacas*****************************************
         //vista de butacas con login admin
         BUTACASADMIN("/org/example/cine/views/butacas/ButacasAdmin.fxml"),
+
         //vista de butacas con login usuario
         BUTACASUSUARIO("/org/example/cine/views/butacas/Butas_Usuario.fxml"),
+
         //vista de butacas con login admin
         BUTACASADMINEDITARBUTACA("/org/example/cine/views/butacas/VentanaEditButaca.fxml"),
-  //  ************************************Productos*********************
+
+        //  ************************************Productos*********************
         //VISTA de produtos con login usuario
         PRODUCTOSUSUARIOS("/org/example/cine/views/produtos/ProductosUsuarios.fxml"),
+
         //Vista de produtos con login admin
         PRODUCTOSADMIN("/org/example/cine/views/produtos/ProductosAdmin.fxml"),
+
         //Vista de productos para añadir productos
         PRODUCTOSADMINANADIR("/org/example/cine/views/produtos/ProductosNuevo.fxml"),
+
         //Vista de productos para editar
         PRODUCTOSEDITAR("/org/example/cine/views/produtos/ProductosEditar.fxml"),
+
         /// *****************************Usuarios********************************
         NUEVO_USUARIO("/org/example/cine/views/login/nuevo_usuario.fxml"),
         CAMBIAR_CONTRASENA("/org/example/cine/views/login/cambiar_contrasena.fxml"),
+
+        //***************************************CARRITO********************************
+        CARRITO("/org/example/cine/views/compra/Carrito.fxml"),
+        PAGO("/org/example/cine/views/compra/Pasarela_de _Pago.fxml"),
+        TICKET("/org/example/cine/views/compra/Ticket_de _Compra.fxml"),
     }
+
     fun changeScene(
         myStage: Stage = activeStage,
         view: View,
@@ -75,6 +92,7 @@ object RoutesManager {
         scene.stylesheets.add(this.getResource(style.css).toExternalForm())
         myStage.scene = scene
     }
+
     enum class Style(val css: String) {
         DEFAULT("styles/pelicula.css")
     }
@@ -122,7 +140,8 @@ object RoutesManager {
         _activeStage = stage
         stage.show()
     }
-    fun intiUsuarioIndex(){
+
+    fun intiUsuarioIndex() {
         logger.debug { "Inicializando UsuarioIndex" }
 
         val fxmlLoader = FXMLLoader(getResource(View.USUARIOINDEX.fxml))
@@ -140,7 +159,8 @@ object RoutesManager {
         _activeStage = stage
         stage.show()
     }
-    fun initIndezLoginAdminStage(){
+
+    fun initIndezLoginAdminStage() {
         logger.debug { "Inicializando AdminIndex" }
 
         val fxmlLoader = FXMLLoader(getResource(View.ADMININDEX.fxml))
@@ -158,8 +178,9 @@ object RoutesManager {
         _activeStage = stage
         stage.show()
     }
-   // *************************************BUTACAS***************************************
-    fun initButasAdmin(){
+
+    // *************************************BUTACAS***************************************
+    fun initButasAdmin() {
         logger.debug { "Inicializando ButacasAdmin" }
 
         val fxmlLoader = FXMLLoader(getResource(View.BUTACASADMIN.fxml))
@@ -177,7 +198,8 @@ object RoutesManager {
         _activeStage = stage
         stage.show()
     }
-    fun initButasUsuario(){
+
+    fun initButasUsuario() {
         logger.debug { "Inicializando ButacasUsuario" }
 
         val fxmlLoader = FXMLLoader(getResource(View.BUTACASUSUARIO.fxml))
@@ -195,7 +217,8 @@ object RoutesManager {
         _activeStage = stage
         stage.show()
     }
-    fun initButasAdminEditarButaca(){
+
+    fun initButasAdminEditarButaca() {
         logger.debug { "Inicializando ButacasAdminEditarButaca" }
 
         val fxmlLoader = FXMLLoader(getResource(View.BUTACASADMINEDITARBUTACA.fxml))
@@ -213,9 +236,10 @@ object RoutesManager {
         _activeStage = stage
         stage.show()
     }
+
     //***********************************PRODUTOS***************************************
     //index con user
-    fun initProductosUsuarios(){
+    fun initProductosUsuarios() {
         logger.debug { "Inicializando ProductosUsuarios" }
 
         val fxmlLoader = FXMLLoader(getResource(View.PRODUCTOSUSUARIOS.fxml))
@@ -233,8 +257,9 @@ object RoutesManager {
         _activeStage = stage
         stage.show()
     }
+
     //index con admin
-    fun initProductosAdmin(){
+    fun initProductosAdmin() {
         logger.debug { "Inicializando ProductosAdmin" }
 
         val fxmlLoader = FXMLLoader(getResource(View.PRODUCTOSADMIN.fxml))

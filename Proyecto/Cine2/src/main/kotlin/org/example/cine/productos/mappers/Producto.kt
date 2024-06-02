@@ -13,7 +13,7 @@ fun ProductoDto.toModel(): Producto {
         precio = precio,
         categoria = Producto.Categoria.valueOf(categoria.uppercase()),
         imagen = imagen,
-        stock = stock,
+        stock = stock,  // Actualizar para incluir stock
         createdAt = LocalDateTime.parse(createdAt),
         updatedAt = LocalDateTime.parse(updatedAt)
     )
@@ -31,7 +31,7 @@ fun Producto.toDto(): ProductoDto {
         precio = precio,
         categoria = categoria.name,
         imagen = imagen,
-        stock = stock,
+        stock = stock,  // Actualizar para incluir stock
         createdAt = createdAt.toString(),
         updatedAt = updatedAt.toString()
     )
@@ -49,7 +49,7 @@ fun ProductoEntity.toModel(): Producto {
         precio = precio,
         categoria = Producto.Categoria.valueOf(categoria.uppercase()),
         imagen = imagen,
-        stock = stock,
+        stock = stock.toInt(),  // Convertir stock a Int
         createdAt = LocalDateTime.parse(created_at),
         updatedAt = LocalDateTime.parse(updated_at),
 
@@ -60,7 +60,7 @@ fun List<ProductoEntity>.toModelFromEntityList(): List<Producto> {
     return map { it.toModel() }
 }
 
-//Funcion para convertir de DTO a Entity
+// Funcion para convertir de Model a Entity
 fun Producto.toEntity(): ProductoEntity {
     return ProductoEntity(
         id = id,
@@ -68,7 +68,7 @@ fun Producto.toEntity(): ProductoEntity {
         precio = precio,
         categoria = categoria.name,
         imagen = imagen,
-        stock = stock,
+        stock = stock.toLong(),  // Convertir stock a Long
         created_at = createdAt.toString(),
         updated_at = updatedAt.toString()
     )
