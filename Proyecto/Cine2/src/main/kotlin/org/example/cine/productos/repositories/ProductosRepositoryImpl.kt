@@ -33,6 +33,8 @@ class ProductosRepositoryImpl(
         }
     }
 
+    ///proba de comit
+
     private fun create(producto: Producto): Producto {
         logger.debug { "create: $producto" }
         val timeStamp = LocalDateTime.now().toString()
@@ -41,7 +43,6 @@ class ProductosRepositoryImpl(
                 nombre = producto.nombre,
                 precio = producto.precio,
                 imagen = producto.imagen,
-                stock = producto.stock,
                 categoria = producto.categoria.name,
                 stock = producto.stock.toLong(), // Asegúrate de que el stock se maneje correctamente
                 created_at = timeStamp,

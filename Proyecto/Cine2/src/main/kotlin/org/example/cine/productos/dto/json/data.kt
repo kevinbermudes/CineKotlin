@@ -7,7 +7,6 @@ data class ProductoDto(
     val categoria: String,
     val stock: Int,
     val imagen: String,
-    val stock: Double,
     val createdAt: String,
     val updatedAt: String
 )

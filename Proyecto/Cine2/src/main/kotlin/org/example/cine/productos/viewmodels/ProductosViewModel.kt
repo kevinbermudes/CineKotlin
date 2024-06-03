@@ -103,7 +103,7 @@ class ProductosViewModel(
         var imagen = Image(RoutesManager.getResourceAsStream("images/sin-imagen.png"))
         var fileImage = File(RoutesManager.getResource("images/sin-imagen.png").toURI())
 
-       
+
         // Convertir ID a Long para la comparación
         val productoId = producto.id.toString()
         if (state.value.producto.id != productoId) {
@@ -290,7 +290,6 @@ class ProductosViewModel(
         val stock: String = "0",
         val categoria: Producto.Categoria = Producto.Categoria.BOTANA,
         val imagen: Image = Image(RoutesManager.getResourceAsStream("images/sin-imagen.png")),
-        val stock: String = "",
         val fileImage: File? = null
     ) {
         fun copy(): ProductoFormState {
@@ -301,7 +300,6 @@ class ProductosViewModel(
                 stock = this.stock,
                 categoria = this.categoria,
                 imagen = this.imagen,
-                stock =this.stock,
                 fileImage = this.fileImage
             )
         }
@@ -317,7 +315,7 @@ class ProductosViewModel(
                 createdAt = LocalDateTime.now(),
                 updatedAt = LocalDateTime.now(),
 
-            )
+                )
         }
     }
 }

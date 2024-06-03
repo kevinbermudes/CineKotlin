@@ -13,7 +13,6 @@ data class Producto(
     var stock: Int = 0, // Asegúrate de que la propiedad stock esté correctamente declarada
     val createdAt: LocalDateTime = LocalDateTime.now(),
     val updatedAt: LocalDateTime = LocalDateTime.now(),
-    val stock: Double
 ) {
     enum class Categoria {
         BOTANA, BEBIDAS, FRUTOS_SECOS
