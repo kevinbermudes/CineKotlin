@@ -49,7 +49,7 @@ fun ProductoEntity.toModel(): Producto {
         precio = precio,
         categoria = Producto.Categoria.valueOf(categoria.uppercase()),
         imagen = imagen,
-        stock = stock.toInt(),  // Convertir stock a Int
+        stock = stock.toInt(),
         createdAt = LocalDateTime.parse(created_at),
         updatedAt = LocalDateTime.parse(updated_at),
 

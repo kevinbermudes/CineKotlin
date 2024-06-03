@@ -1,26 +1,23 @@
 package org.example.cine.productos.controllers
 
+import com.github.michaelbull.result.onFailure
+import com.github.michaelbull.result.onSuccess
 import javafx.fxml.FXML
 import javafx.scene.control.Alert
-import javafx.scene.control.Alert.AlertType
 import javafx.scene.control.Button
 import javafx.scene.control.TextField
-import javafx.scene.image.Image
 import javafx.scene.image.ImageView
-import javafx.stage.FileChooser
 import javafx.stage.Stage
+import org.example.cine.productos.models.Producto
 import org.example.cine.productos.viewmodels.ProductosViewModel
-import org.example.cine.route.RoutesManager
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.lighthousegames.logging.logging
-import java.io.File
 
 private val logger = logging()
-class ProductosAnadirViewController: KoinComponent {
+
+class ProductosAnadirViewController : KoinComponent {
     private val viewModel: ProductosViewModel by inject()
-    @FXML
-    private lateinit var textoStockProducto:TextField
 
     @FXML
     private lateinit var imagenProductoAnadir: ImageView
@@ -35,81 +32,68 @@ class ProductosAnadirViewController: KoinComponent {
     private lateinit var textoPrecioProducto: TextField
 
     @FXML
+    private lateinit var textoStockProducto: TextField
+
+    @FXML
     private lateinit var butonGuardarProductos: Button
 
     @FXML
     private lateinit var butonCancelarProductos: Button
 
-    private var imagenSeleccionada: File? = null
-
     @FXML
-    private fun initialize() {
-        // Configurar acciones de los botones, falta.
-        butonGuardarProductos.setOnAction { guardarProducto() }
-        butonCancelarProductos.setOnAction { cancelar() }
-        imagenProductoAnadir.setOnMouseClicked { seleccionarImagen() }
+    fun initialize() {
+        butonGuardarProductos.setOnAction { onGuardar() }
+        butonCancelarProductos.setOnAction { onCancel() }
     }
 
-    private fun seleccionarImagen() {
-        val fileChooser = FileChooser()
-        fileChooser.title = "Seleccionar imagen de producto"
-        fileChooser.extensionFilters.addAll(
-            FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg")
-        )
-        val file = fileChooser.showOpenDialog(imagenProductoAnadir.scene.window as Stage)
-        if (file != null) {
-            imagenSeleccionada = file
-            val image = Image(file.toURI().toString())
-            imagenProductoAnadir.image = image
-        }
-    }
-
-    private fun guardarProducto() {
+    private fun onGuardar() {
         val nombre = textoNombreProducto.text
         val categoria = textoCategoriaProducto.text
-        val precio = textoPrecioProducto.text
-        val stock= textoStockProducto.text
+        val precioText = textoPrecioProducto.text
+        val stockText = textoStockProducto.text
 
-        if (nombre.isBlank() || categoria.isBlank() || precio.isBlank() ||stock.isBlank()) {
-            mostrarAlerta("Error", "Todos los campos deben estar llenos")
-            return
-        }
+        // Manejo de valores predeterminados y conversión segura
+        val precio = precioText.toDoubleOrNull() ?: 0.0
+        val stock = stockText.toIntOrNull() ?: 0
 
-        if (imagenSeleccionada == null) {
-            mostrarAlerta("Error", "Debe seleccionar una imagen")
-            return
-        }
+        val productoFormState = ProductosViewModel.ProductoFormState(
+            nombre = nombre,
+            categoria = Producto.Categoria.valueOf(categoria),
+            precio = precio.toString(),
+            stock = stock.toString()
+        )
 
-        try {
-//            val precioDouble = precio.toDouble()
-//            val stockDouble= stock.toDouble()
-            mostrarAlerta("Éxito", "Producto guardado exitosamente")
-            limpiarCampos()
-        } catch (e: NumberFormatException) {
-            mostrarAlerta("Error", "El precio debe ser un número válido")
+        viewModel.state.value = viewModel.state.value.copy(
+            producto = productoFormState
+        )
+
+        viewModel.crearProducto(
+            nombre = nombre,
+            precio = precio.toString(),
+            categoria = Producto.Categoria.valueOf(categoria),
+            stock = stock.toLong(),
+        ).onSuccess {
+            showAlert("Éxito", "Producto añadido correctamente.")
+            closeCurrentStage()
+        }.onFailure {
+            showAlert("Error", "Error al añadir producto: ${it.message}")
         }
     }
 
-    private fun cancelar() {
-       logger.debug { "Cancelando..." }
-        limpiarCampos()
-        viewModel.clearState()
-        RoutesManager.changeScene(view = RoutesManager.View.PRODUCTOSADMIN)
+    private fun onCancel() {
+        closeCurrentStage()
     }
 
-    private fun mostrarAlerta(titulo: String, mensaje: String) {
-        val alert = Alert(AlertType.INFORMATION)
-        alert.title = titulo
-        alert.contentText = mensaje
+    private fun showAlert(title: String, message: String) {
+        val alert = Alert(Alert.AlertType.INFORMATION)
+        alert.title = title
+        alert.headerText = null
+        alert.contentText = message
         alert.showAndWait()
     }
 
-    private fun limpiarCampos() {
-        textoNombreProducto.clear()
-        textoCategoriaProducto.clear()
-        textoPrecioProducto.clear()
-        textoStockProducto.clear()
-        imagenProductoAnadir.image = null
-        imagenSeleccionada = null
+    private fun closeCurrentStage() {
+        val stage = butonGuardarProductos.scene.window as Stage
+        stage.close()
     }
 }

@@ -3,6 +3,7 @@ package org.example.cine.pago.controllers
 import javafx.fxml.FXML
 import javafx.scene.control.Alert
 import javafx.scene.control.Button
+import javafx.scene.control.TextArea
 import javafx.scene.control.TextField
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
@@ -31,10 +32,13 @@ class TicketCompraController : KoinComponent {
     private lateinit var textoButacas: TextField
 
     @FXML
-    private lateinit var textoComplementos: TextField
+    private lateinit var textoComplementos: TextArea
 
     @FXML
     private lateinit var textoPrecioComplementos: TextField
+
+    @FXML
+    private lateinit var textTotalApagar: TextField
 
     @FXML
     private lateinit var imagenCine: ImageView
@@ -44,8 +48,14 @@ class TicketCompraController : KoinComponent {
     @FXML
     fun initialize() {
         initEventHandlers()
+        configureTextArea()
         loadTicketData()
         cargarImagenCine()
+    }
+
+    private fun configureTextArea() {
+        textoComplementos.isWrapText = true // Enable line wrapping
+        textoComplementos.prefHeight = 100.0 // Set preferred height
     }
 
     private fun initEventHandlers() {
@@ -56,10 +66,18 @@ class TicketCompraController : KoinComponent {
     private fun loadTicketData() {
         textNombrePelicula.text =
             "Nombre de la Película"  // Puedes actualizarlo con el nombre real si lo tienes disponible
-        textoPrecioEntrada.text = carrito.butacas.sumOf { it.precio }.toString()
+        val precioEntradas = carrito.butacas.sumOf { it.precio }
+        val precioComplementos = carrito.productos.sumOf { it.precio }
+
+        textoPrecioEntrada.text = precioEntradas.toString()
         textoButacas.text = carrito.butacas.joinToString(", ") { it.id }
-        textoComplementos.text = carrito.productos.joinToString(", ") { it.nombre }
-        textoPrecioComplementos.text = carrito.productos.sumOf { it.precio }.toString()
+        textoComplementos.text =
+            carrito.productos.joinToString("\n") { it.nombre } // Use "\n" to separate each complement with a new line
+        textoPrecioComplementos.text = precioComplementos.toString()
+
+        // Calcular el total a pagar y establecerlo en el campo correspondiente
+        val totalAPagar = precioEntradas + precioComplementos
+        textTotalApagar.text = totalAPagar.toString()
     }
 
     private fun cargarImagenCine() {

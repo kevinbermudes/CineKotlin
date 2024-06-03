@@ -233,7 +233,11 @@ class ButacasController {
         }
 
         butonComprarProductos.setOnAction {
-            RoutesManager.changeScene(view = RoutesManager.View.PRODUCTOSUSUARIOS)
+            if (butacasSeleccionadas.isEmpty()) {
+                showAlert("Selección inválida", "Debes seleccionar al menos 1 butaca para continuar.")
+            } else {
+                RoutesManager.changeScene(view = RoutesManager.View.PRODUCTOSUSUARIOS)
+            }
         }
 
         // Inicializar eventos de selección de butacas

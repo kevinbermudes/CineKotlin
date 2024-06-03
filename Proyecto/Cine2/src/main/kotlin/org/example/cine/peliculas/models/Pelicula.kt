@@ -5,10 +5,10 @@ import java.time.LocalDateTime
 
 data class Pelicula(
     val id: Long = NEW_PELICULA,
-    val nombre: String,
-    val duracion: String,
-    val fechaEstreno: LocalDate,
-    val descripcion: String,
+    var nombre: String,
+    var duracion: String,
+    var fechaEstreno: LocalDate,
+    var descripcion: String,
     val categoria: Categoria,
     val imagen: String,
     val createdAt: LocalDateTime = LocalDateTime.now(),

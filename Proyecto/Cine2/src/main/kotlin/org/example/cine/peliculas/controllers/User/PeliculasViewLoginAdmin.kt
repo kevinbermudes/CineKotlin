@@ -1,5 +1,7 @@
 package org.example.cine.peliculas.controllers.User
 
+import com.github.michaelbull.result.onFailure
+import com.github.michaelbull.result.onSuccess
 import javafx.collections.FXCollections
 import javafx.fxml.FXML
 import javafx.scene.control.*
@@ -13,15 +15,14 @@ import org.example.cine.route.RoutesManager
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.lighthousegames.logging.logging
+import java.time.LocalDate
 
 private val logger = logging()
 
 class PeliculasViewLoginAdmin : KoinComponent {
-    // Inyectamos nuestro ViewModel
     private val viewModel: CineViewModel by inject()
     private val peliculasStorageImages: PeliculasStorageImages by inject()
 
-    // Define las propiedades enlazadas a los elementos del FXML
     @FXML
     private lateinit var butonHelp: Button
 
@@ -82,10 +83,8 @@ class PeliculasViewLoginAdmin : KoinComponent {
     @FXML
     private lateinit var gridPane: GridPane
 
-    // Método para inicializar
     @FXML
     fun initialize() {
-        // Verificar que todas las propiedades lateinit se inicialicen correctamente
         assert(::dataFechaDeEstreno.isInitialized) { "dataFechaDeEstreno no está inicializada" }
         assert(::textNombrePelicula.isInitialized) { "textNombrePelicula no está inicializada" }
 
@@ -101,7 +100,6 @@ class PeliculasViewLoginAdmin : KoinComponent {
     }
 
     private fun initDefaultValues() {
-        // Configuración de la tabla
         tableColumnId.cellValueFactory = PropertyValueFactory("id")
         tableColumnNombre.cellValueFactory = PropertyValueFactory("nombre")
         tableColumnDuracion.cellValueFactory = PropertyValueFactory("duracion")
@@ -114,12 +112,10 @@ class PeliculasViewLoginAdmin : KoinComponent {
         viewModel.state.addListener { _, _, newValue ->
             logger.debug { "Actualizando datos de la vista" }
 
-            // Actualizamos la tabla
             if (TablaPeliculas.items != newValue.peliculas) {
                 TablaPeliculas.items = FXCollections.observableArrayList(newValue.peliculas)
             }
 
-            // Formulario
             textNombrePelicula.text = newValue.pelicula.nombre
             TextDuracionPelicula.text = newValue.pelicula.duracion
             dataFechaDeEstreno.value = newValue.pelicula.fechaEstreno
@@ -137,17 +133,14 @@ class PeliculasViewLoginAdmin : KoinComponent {
         ButonEditPelicula.setOnAction { onEditPeliculaAction() }
         ButonBorrarPelicula.setOnAction { onBorrarPeliculaAction() }
 
-        // Eventos de la tabla
         TablaPeliculas.selectionModel.selectedItemProperty().addListener { _, _, newValue ->
             newValue?.let { onTablaPeliculasSelected(newValue) }
         }
 
-        // Buscador
         TextBuscadorPeliculas.setOnKeyReleased { onBuscadorKeyReleased() }
     }
 
     private fun onHelpAction() {
-        // Lógica para el botón Help
         showAlert("Ayuda", "Aquí va la ayuda de la aplicación.")
     }
 
@@ -157,42 +150,69 @@ class PeliculasViewLoginAdmin : KoinComponent {
     }
 
     private fun onGestionProductosAction() {
-        // Lógica para gestionar productos
         logger.debug { "Gestionando productos -> redirigiendo a vista de productos como admin" }
         RoutesManager.changeScene(view = RoutesManager.View.PRODUCTOSADMIN)
     }
 
     private fun onGestionButacasAction() {
-        // Lógica para gestionar butacas
         RoutesManager.changeScene(view = RoutesManager.View.BUTACASADMIN)
     }
 
     private fun onCrearPeliculaAction() {
-        // Lógica para crear una nueva película
-        showAlert("Crear Película", "Función para crear una nueva película.")
+        logger.debug { "Creando nueva película" }
+        val nuevaPelicula = Pelicula(
+            id = Pelicula.NEW_PELICULA,
+            nombre = "",
+            duracion = "",
+            fechaEstreno = LocalDate.now(),
+            descripcion = "",
+            categoria = Pelicula.Categoria.TERROR,
+            imagen = "images/sin-imagen.png"
+        )
+        RoutesManager.crearPelicula(nuevaPelicula) { loadData() }
     }
 
     private fun onEditPeliculaAction() {
-        // Lógica para editar una película
-        showAlert("Editar Película", "Función para editar una película existente.")
+        val pelicula = TablaPeliculas.selectionModel.selectedItem
+        if (pelicula != null) {
+            logger.debug { "Editando película: ${pelicula.nombre}" }
+            RoutesManager.editarPelicula(pelicula)
+        } else {
+            showAlert("Error", "Por favor, selecciona una película para editar.")
+        }
     }
 
     private fun onBorrarPeliculaAction() {
-        // Lógica para borrar una película
-        showAlert("Borrar Película", "Función para borrar una película.")
+        val pelicula = TablaPeliculas.selectionModel.selectedItem
+        if (pelicula != null) {
+            val alert = Alert(Alert.AlertType.CONFIRMATION)
+            alert.title = "Confirmar eliminación"
+            alert.headerText = null
+            alert.contentText = "¿Estás seguro de que deseas eliminar la película \"${pelicula.nombre}\"?"
+            val result = alert.showAndWait()
+
+            if (result.isPresent && result.get() == ButtonType.OK) {
+                viewModel.eliminarPelicula(pelicula)
+                    .onSuccess {
+                        showAlert("Éxito", "Película eliminada correctamente.")
+                    }
+                    .onFailure {
+                        showAlert("Error", "Error al eliminar la película: ${it.message}")
+                    }
+            }
+        } else {
+            showAlert("Error", "Por favor, selecciona una película para eliminar.")
+        }
     }
 
     private fun onTablaPeliculasSelected(pelicula: Pelicula) {
-        // Lógica para manejar la selección de una película en la tabla
         viewModel.updatePeliculaSeleccionada(pelicula)
     }
 
     private fun onBuscadorKeyReleased() {
-        // Lógica para manejar la búsqueda de películas
         val filteredList = viewModel.peliculasFilteredList(TextBuscadorPeliculas.text)
         TablaPeliculas.items = FXCollections.observableArrayList(filteredList)
     }
-
 
     private fun showAlert(title: String, message: String) {
         val alert = Alert(Alert.AlertType.INFORMATION)

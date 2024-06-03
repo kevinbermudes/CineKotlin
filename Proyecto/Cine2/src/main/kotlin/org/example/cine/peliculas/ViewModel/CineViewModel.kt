@@ -1,18 +1,17 @@
 package org.example.cine.peliculas.ViewModel
 
-import com.github.michaelbull.result.onSuccess
+import com.github.michaelbull.result.*
 import javafx.beans.property.SimpleObjectProperty
+import javafx.scene.image.Image
 import org.example.cine.peliculas.errors.PeliculaError
+import org.example.cine.peliculas.mapers.toModel
 import org.example.cine.peliculas.models.Pelicula
 import org.example.cine.peliculas.service.database.PeliculasService
 import org.example.cine.peliculas.service.storage.PeliculasStorage
-import org.lighthousegames.logging.logging
-import java.io.File
-import com.github.michaelbull.result.*
-import javafx.scene.image.Image
-import org.example.cine.peliculas.mapers.toModel
 import org.example.cine.peliculas.validadores.validate
 import org.example.cine.route.RoutesManager
+import org.lighthousegames.logging.logging
+import java.io.File
 import java.time.LocalDate
 
 
@@ -31,7 +30,7 @@ class CineViewModel(
         loadAllPeliculas() // Cargamos los datos de las películas
     }
 
-     fun loadAllPeliculas() {
+    fun loadAllPeliculas() {
         logger.debug { "Cargando películas del repositorio" }
         service.findAll().onSuccess {
             logger.debug { "Películas recuperadas: ${it.size}" }
@@ -125,6 +124,7 @@ class CineViewModel(
             }
         }
     }
+
     enum class TipoImagen(val value: String) {
         SIN_IMAGEN("sin-imagen.png"), EMPTY("")
     }
@@ -156,24 +156,18 @@ class CineViewModel(
     }
 
     // Elimina una película en el estado y repositorio
-    fun eliminarPelicula(): Result<Unit, PeliculaError> {
-        logger.debug { "Eliminando Película" }
-        val pelicula = state.value.pelicula.copy()
-        val myId = pelicula.id.toLong()
-
-        pelicula.fileImage?.let {
-            if (it.name != TipoImagen.SIN_IMAGEN.value) {
-                storage.deleteImage(it)
+    fun eliminarPelicula(pelicula: Pelicula): Result<Unit, PeliculaError> {
+        logger.debug { "Eliminando Película: ${pelicula.nombre}" }
+        return service.deleteById(pelicula.id).andThen {
+            val updatedPeliculas = state.value.peliculas.toMutableList().apply {
+                removeIf { it.id == pelicula.id }
             }
+            state.value = state.value.copy(peliculas = updatedPeliculas)
+            updateActualState()
+            Ok(Unit)
         }
-
-        service.deleteById(myId)
-        state.value = state.value.copy(
-            peliculas = state.value.peliculas.toMutableList().apply { this.removeIf { it.id == myId } }
-        )
-        updateActualState()
-        return Ok(Unit)
     }
+
 
     // Actualiza la imagen de la película en el estado
     fun updateImagePelicula(fileImage: File) {

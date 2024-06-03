@@ -1,26 +1,24 @@
 package org.example.cine.productos.controllers
 
+import com.github.michaelbull.result.onFailure
+import com.github.michaelbull.result.onSuccess
 import javafx.fxml.FXML
 import javafx.scene.control.Alert
 import javafx.scene.control.Button
-import javafx.scene.control.Label
 import javafx.scene.control.TextField
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
+import javafx.stage.Stage
+import org.example.cine.productos.models.Producto
 import org.example.cine.productos.viewmodels.ProductosViewModel
-import org.example.cine.route.RoutesManager
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.lighthousegames.logging.logging
 
 private val logger = logging()
+
 class ProductosEditarViewController : KoinComponent {
     private val viewModel: ProductosViewModel by inject()
-    @FXML
-    private lateinit var textoStockProducto: TextField
-
-    @FXML
-    private lateinit var imagenProductoEditar: ImageView
 
     @FXML
     private lateinit var textoNombreProducto: TextField
@@ -32,60 +30,91 @@ class ProductosEditarViewController : KoinComponent {
     private lateinit var textoPrecioProducto: TextField
 
     @FXML
-    private lateinit var butonGuardarEdicionProducto: Button
+    private lateinit var textoStockProducto: TextField
 
     @FXML
-    private lateinit var butonLimpiarProductos: Button
+    private lateinit var imagenProductoEditar: ImageView
+
+    @FXML
+    private lateinit var butonGuardarEdicionProducto: Button
 
     @FXML
     private lateinit var butonCancelarProductos1: Button
 
-    @FXML
-    private lateinit var mensajeEstado: Label
+    private lateinit var producto: Producto
 
-    @FXML
-    private fun initialize() {
-        logger.debug { "Iniciando edición de productos..." }
-
-        butonGuardarEdicionProducto.setOnAction { guardarEdicionProducto() }
-        butonLimpiarProductos.setOnAction { limpiarCampos() }
-        butonCancelarProductos1.setOnAction { cancelarEdicion() }
+    fun setProducto(producto: Producto) {
+        this.producto = producto
+        cargarDatosProducto()
     }
 
-    @FXML
-    private fun guardarEdicionProducto() {
-        val nombre: String = textoNombreProducto.getText()
-        val categoria: String = textoCategoriaProducto.getText()
-        val precio: String = textoPrecioProducto.getText()
-        val stock: String = textoStockProducto.getText()
-        val imagen: Image = imagenProductoEditar.image
+    private fun cargarDatosProducto() {
+        textoNombreProducto.text = producto.nombre
+        textoCategoriaProducto.text = producto.categoria.name
+        textoPrecioProducto.text = producto.precio.toString()
+        textoStockProducto.text = producto.stock.toString()
 
-        if (nombre.isEmpty() || categoria.isEmpty() || precio.isEmpty() ||stock.isEmpty()) {
-            showAlert("Error", "Por favor, complete todos los campos.")
+        val imageUrl = if ((producto.imagen as String).startsWith("http")) {
+            producto.imagen as String
         } else {
-            logger.debug { "Guardando producto: Nombre=$nombre, Categoría=$categoria, Precio=$precio, Stock=$stock" }
-            showAlert("Edición guardada", "La edición se ha guardado correctamente.")
+            javaClass.getResource("/org/example/cine/images/${producto.imagen}")?.toString()
+        }
+
+        if (imageUrl != null) {
+            imagenProductoEditar.image = Image(imageUrl)
+        } else {
+            logger.error { "Error: No se pudo encontrar la imagen para ${producto.imagen}" }
+            imagenProductoEditar.image =
+                Image(javaClass.getResource("/org/example/cine/images/sin-imagen.png").toString())
         }
     }
 
     @FXML
-    private fun limpiarCampos() {
-        textoNombreProducto.clear()
-        textoCategoriaProducto.clear()
-        textoPrecioProducto.clear()
-        textoStockProducto.clear()
-
-        logger.debug { "Limpiando campos de edición de productos..." }
-        showAlert("Campos limpiados", "Los campos se han limpiado correctamente.")
-
+    private fun initialize() {
+        butonGuardarEdicionProducto.setOnAction { onConfirmar() }
+        butonCancelarProductos1.setOnAction { onCancelar() }
     }
 
-    @FXML
-    private fun cancelarEdicion() {
-        logger.debug { "Cancelando edición de productos..." }
-        clearForm()
-        viewModel.clearState()
-        RoutesManager.changeScene(view = RoutesManager.View.PRODUCTOSADMIN)
+    private fun onConfirmar() {
+        logger.debug { "Confirmando edición del producto: ${producto.nombre}" }
+
+        val nombre = textoNombreProducto.text
+        val categoria = textoCategoriaProducto.text
+        val precio = textoPrecioProducto.text
+        val stock = textoStockProducto.text
+
+        if (nombre.isBlank() || categoria.isBlank() || precio.isBlank() || stock.isBlank()) {
+            showAlert("Error", "Todos los campos son obligatorios y el precio y stock deben ser números válidos.")
+            return
+        }
+
+        val categoriaEnum = try {
+            Producto.Categoria.valueOf(categoria.uppercase())
+        } catch (e: IllegalArgumentException) {
+            showAlert("Error", "La categoría no es válida.")
+            return
+        }
+
+        viewModel.updateDataProducto(
+            nombre = nombre,
+            precio = precio,
+            categoria = categoriaEnum,
+            imagen = imagenProductoEditar.image, // Pasamos la imagen directamente
+            stock = stock
+        )
+
+        viewModel.editarProducto().onSuccess {
+            showAlert("Éxito", "Producto actualizado correctamente.")
+            val stage = butonGuardarEdicionProducto.scene.window as Stage
+            stage.close()
+        }.onFailure {
+            showAlert("Error", "Error al actualizar el producto: ${it.message}")
+        }
+    }
+
+    private fun onCancelar() {
+        val stage = butonCancelarProductos1.scene.window as Stage
+        stage.close()
     }
 
     private fun clearForm() {
