@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4953aa5c-4b54-41cc-9146-7de66e3a1646" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cine2.db" beforeDir="false" afterPath="$PROJECT_DIR$/cine2.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/productos/dto/json/data.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/productos/dto/json/data.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/productos/models/Producto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/productos/models/Producto.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/productos/repositories/ProductosRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/productos/repositories/ProductosRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/productos/viewmodels/ProductosViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/productos/viewmodels/ProductosViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/butacas.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/butacas.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,6 +92,7 @@
     "RunOnceActivity.laravel-idea.search-composer-json": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "develop",
+    "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/kevin/Desktop/Trabajo_Kotlin/TrabajoKotlin/Proyecto/Cine2/imagenes",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -146,6 +141,13 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-18.0.2-corretto-18.0.2-f644763e9732-da6bd485" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -156,6 +158,7 @@
       <updated>1716907306177</updated>
       <workItem from="1716907308727" duration="4568000" />
       <workItem from="1717101431232" duration="55424000" />
+      <workItem from="1717851404636" duration="427000" />
     </task>
     <servers />
   </component>
