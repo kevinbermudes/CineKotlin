@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4953aa5c-4b54-41cc-9146-7de66e3a1646" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/productos/controllers/ProductosViewAdminController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/productos/controllers/ProductosViewAdminController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/route/RoutesManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/route/RoutesManager.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +93,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.laravel-idea.search-composer-json": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "feature/Help",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/kevin/Desktop/Trabajo_Kotlin/TrabajoKotlin/Proyecto/Cine2/imagenes",
     "node.js.detected.package.tslint": "true",
@@ -158,7 +160,7 @@
       <updated>1716907306177</updated>
       <workItem from="1716907308727" duration="4568000" />
       <workItem from="1717101431232" duration="55424000" />
-      <workItem from="1717851404636" duration="427000" />
+      <workItem from="1717851404636" duration="1309000" />
     </task>
     <servers />
   </component>

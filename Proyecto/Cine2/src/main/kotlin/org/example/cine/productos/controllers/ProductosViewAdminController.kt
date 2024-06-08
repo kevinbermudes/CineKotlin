@@ -61,7 +61,7 @@ class ProductosViewAdminController : KoinComponent {
     private lateinit var textoPrecioProducto: TextField
 
     @FXML
-    private lateinit var textoStockProducto:TextField
+    private lateinit var textoStockProducto: TextField
 
     @FXML
     private lateinit var textEstadoLogin: Label
@@ -136,7 +136,8 @@ class ProductosViewAdminController : KoinComponent {
     }
 
     private fun onHelp() {
-        showAlert("Ayuda", "Aquí va la información de ayuda.")
+        logger.debug { "Abriendo ventana de ayuda" }
+        RoutesManager.changeScene(view = RoutesManager.View.HELP)
     }
 
     private fun onCerrarSesion() {
