@@ -63,6 +63,13 @@ dependencies {
     // https://github.com/mockito/mockito-kotlin
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.3.1")
 
+    implementation 'org.apache.pdfbox:pdfbox:2.0.24'
+    implementation 'org.openjfx:javafx-graphics:20.0.1'
+    implementation 'org.openjfx:javafx-swing:20.0.1'
+    implementation 'org.openjfx:javafx-controls:20.0.1'
+    implementation 'org.openjfx:javafx-fxml:20.0.1'
+    implementation("com.openhtmltopdf:openhtmltopdf-core:1.0.10")
+    implementation("com.openhtmltopdf:openhtmltopdf-pdfbox:1.0.10")
 }
 
 test {

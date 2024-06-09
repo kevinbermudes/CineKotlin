@@ -6,18 +6,28 @@
   <component name="ChangeListManager">
 <<<<<<< HEAD
     <list default="true" id="ac2e7ed3-677c-47d2-890f-5897eea2dabb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/7/07f9f28237d5a8b6bf74b691b15f5b56baf99704" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/7/07f9f28237d5a8b6bf74b691b15f5b56baf99704" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1f35f3af4fa7524f7ae4c3e846d8a6071f741963" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1f35f3af4fa7524f7ae4c3e846d8a6071f741963" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/f/3fc155a31f4f561f2c3f58f4fb3df183840cba08" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/7/57059d908504495596e92f6477685ed9449297b0" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/7/57059d908504495596e92f6477685ed9449297b0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/c/1c89a5491fbfda3fb050196d6a239f20200296e7" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/c/1c89a5491fbfda3fb050196d6a239f20200296e7" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/0/8023b1931a00791d57178afa059d598df8481a8d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/0/8023b1931a00791d57178afa059d598df8481a8d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/7/c752435b75a4c056dd7b645dcbda0218209a7a37" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/7/c752435b75a4c056dd7b645dcbda0218209a7a37" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/0/e0ab715ddc82298edbb7bccc711e2123833f6226" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/0/e0ab715ddc82298edbb7bccc711e2123833f6226" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/5/a5f0c0f5440fd8d57c629dae583d9b9385225581" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/5/a5f0c0f5440fd8d57c629dae583d9b9385225581" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/f/3fc155a31f4f561f2c3f58f4fb3df183840cba08" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cine2.db" beforeDir="false" afterPath="$PROJECT_DIR$/cine2.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/pago/controllers/TicketCompraController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/pago/controllers/TicketCompraController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/peliculas/ViewModel/CineViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/peliculas/ViewModel/CineViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/peliculas/controllers/PeliculasViewNoLogin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/peliculas/controllers/PeliculasViewNoLogin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/peliculas/controllers/User/PeliculasViewLogin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/peliculas/controllers/User/PeliculasViewLogin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/peliculas/controllers/User/PeliculasViewLoginAdmin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/peliculas/controllers/User/PeliculasViewLoginAdmin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/peliculas/mapers/Pelicula.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/peliculas/mapers/Pelicula.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/route/RoutesManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/route/RoutesManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/butacas.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/butacas.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/compra/Ticket_de _Compra.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/compra/Ticket_de _Compra.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/peliculas/IndezLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/peliculas/IndezLogin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/peliculas/IndezLoginAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/peliculas/IndezLoginAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/peliculas/IndezSinLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/peliculas/IndezSinLogin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/sqldelight/database/cine.sq" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/sqldelight/database/cine.sq" afterDir="false" />
     </list>
 =======
     <list default="true" id="4953aa5c-4b54-41cc-9146-7de66e3a1646" name="Changes" comment="" />
@@ -29,6 +39,11 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
   </component>
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
@@ -273,13 +288,8 @@
       <created>1717926178584</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1716907306177</updated>
-      <workItem from="1716907308727" duration="4568000" />
-      <workItem from="1717101431232" duration="55424000" />
-      <workItem from="1717851404636" duration="1632000" />
-      <workItem from="1717932773908" duration="728000" />
-      <workItem from="1717934797670" duration="2176000" />
-      <workItem from="1717948085601" duration="4352000" />
+      <updated>1717926178584</updated>
+      <workItem from="1717926181707" duration="22223000" />
     </task>
     <servers />
   </component>

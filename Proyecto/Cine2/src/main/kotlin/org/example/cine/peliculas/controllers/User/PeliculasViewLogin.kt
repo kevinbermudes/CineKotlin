@@ -137,8 +137,15 @@ class PeliculasViewLogin : KoinComponent {
     }
 
     private fun onComprarLoginAction() {
-        logger.debug { "Comprar película -> redirigiendo a escena productos" }
-        RoutesManager.changeScene(view = RoutesManager.View.BUTACASUSUARIO)
+        val selectedPelicula = TablaPeliculas.selectionModel.selectedItem
+        if (selectedPelicula != null) {
+            logger.debug { "Comprar película -> redirigiendo a escena productos" }
+            RoutesManager.selectedPelicula = selectedPelicula
+            RoutesManager.selectedImage = imagenPelicula.image
+            RoutesManager.changeScene(view = RoutesManager.View.BUTACASUSUARIO)
+        } else {
+            showAlert("Error", "Por favor, selecciona una película para comprar.")
+        }
     }
 
     private fun onTablaPeliculasSelected(pelicula: Pelicula) {
@@ -152,5 +159,12 @@ class PeliculasViewLogin : KoinComponent {
         TablaPeliculas.items = FXCollections.observableArrayList(filteredList)
     }
 
+    private fun showAlert(titulo: String, mensaje: String) {
+        val alert = Alert(Alert.AlertType.INFORMATION)
+        alert.title = titulo
+        alert.headerText = null
+        alert.contentText = mensaje
+        alert.showAndWait()
+    }
 
 }

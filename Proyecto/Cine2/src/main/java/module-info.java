@@ -11,6 +11,11 @@ module org.example.cine {
     requires sqlite.driver;
     requires java.sql;
     requires kotlinx.serialization.json;
+    requires java.desktop;
+    requires org.apache.pdfbox;
+    requires javafx.graphics;
+    requires openhtmltopdf.pdfbox;
+    //   requires javafx.swing;
 
     // Exportaciones generales
     opens org.example.cine to javafx.fxml;
@@ -67,7 +72,8 @@ module org.example.cine {
     // Asegúrate de añadir la exportación y apertura del paquete específico
     opens org.example.cine.Usuario.controlador to javafx.fxml;
     exports org.example.cine.Usuario.controlador;
-    // carrito de la compra
+
+    // Carrito de la compra
     opens org.example.cine.pago.controllers to javafx.fxml;
     exports org.example.cine.pago.controllers;
 }

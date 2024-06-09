@@ -120,6 +120,7 @@ class PeliculasViewLoginAdmin : KoinComponent {
             TextDuracionPelicula.text = newValue.pelicula.duracion
             dataFechaDeEstreno.value = newValue.pelicula.fechaEstreno
             textSinopsisPelicula.text = newValue.pelicula.descripcion
+            logger.debug { "Cargando Imagen con nombre: ${newValue.pelicula.imagen}" }
             imagenPelicula.image = newValue.pelicula.imagen
         }
     }
