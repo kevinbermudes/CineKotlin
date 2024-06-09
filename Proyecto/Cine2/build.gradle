@@ -39,19 +39,23 @@ javafx {
 }
 
 dependencies {
-
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
     // Koin
     implementation(platform("io.insert-koin:koin-bom:3.5.6"))
     implementation("io.insert-koin:koin-core") // Core
-    // Open Brwoser
+
+    // Open Browser
     implementation("com.vaadin:open:8.5.0")
+
     // Logger
     implementation("org.lighthousegames:logging:1.3.0")
     implementation("ch.qos.logback:logback-classic:1.4.14")
+
     // Kotlin Serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+
     // Result
     implementation("com.michael-bull.kotlin-result:kotlin-result:2.0.0")
 
@@ -63,6 +67,10 @@ dependencies {
     // https://github.com/mockito/mockito-kotlin
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.3.1")
 
+    // SQLite JDBC - Usa una versión conocida disponible
+    implementation 'org.xerial:sqlite-jdbc:3.36.0.3'
+
+    // PDFBox y OpenHTMLToPDF
     implementation 'org.apache.pdfbox:pdfbox:2.0.24'
     implementation 'org.openjfx:javafx-graphics:20.0.1'
     implementation 'org.openjfx:javafx-swing:20.0.1'
@@ -71,6 +79,7 @@ dependencies {
     implementation("com.openhtmltopdf:openhtmltopdf-core:1.0.10")
     implementation("com.openhtmltopdf:openhtmltopdf-pdfbox:1.0.10")
 }
+
 
 test {
     useJUnitPlatform()

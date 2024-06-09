@@ -315,7 +315,7 @@ storage.loadImage(producto.imagen).onSuccess {
                 nombre = nombre,
                 precio = precio.toDoubleOrNull() ?: 0.0,
                 categoria = categoria,
-                imagen = imagen.url,
+                imagen = imagen.url ?: "sin-imagen.png",
                 stock = stock.toIntOrNull() ?: 0,
                 createdAt = LocalDateTime.now(),
                 updatedAt = LocalDateTime.now(),

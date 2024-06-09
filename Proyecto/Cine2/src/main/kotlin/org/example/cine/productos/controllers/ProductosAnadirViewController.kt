@@ -1,18 +1,19 @@
 package org.example.cine.productos.controllers
 
-import com.github.michaelbull.result.onFailure
-import com.github.michaelbull.result.onSuccess
+import com.github.michaelbull.result.*
 import javafx.fxml.FXML
 import javafx.scene.control.Alert
 import javafx.scene.control.Button
 import javafx.scene.control.TextField
 import javafx.scene.image.ImageView
+import javafx.stage.FileChooser
 import javafx.stage.Stage
 import org.example.cine.productos.models.Producto
 import org.example.cine.productos.viewmodels.ProductosViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.lighthousegames.logging.logging
+import java.io.File
 
 private val logger = logging()
 
@@ -44,21 +45,34 @@ class ProductosAnadirViewController : KoinComponent {
     fun initialize() {
         butonGuardarProductos.setOnAction { onGuardar() }
         butonCancelarProductos.setOnAction { onCancel() }
+        imagenProductoAnadir.setOnMouseClicked { onImageAction() }
     }
 
     private fun onGuardar() {
         val nombre = textoNombreProducto.text
-        val categoria = textoCategoriaProducto.text
+        val categoriaText = textoCategoriaProducto.text
         val precioText = textoPrecioProducto.text
         val stockText = textoStockProducto.text
 
-        // Manejo de valores predeterminados y conversión segura
+        // Validar que los campos no sean nulos o vacíos
+        if (nombre.isNullOrEmpty() || categoriaText.isNullOrEmpty() || precioText.isNullOrEmpty() || stockText.isNullOrEmpty()) {
+            showAlert("Error", "Todos los campos deben ser llenados.")
+            return
+        }
+
         val precio = precioText.toDoubleOrNull() ?: 0.0
         val stock = stockText.toIntOrNull() ?: 0
 
+        val categoria = try {
+            Producto.Categoria.valueOf(categoriaText)
+        } catch (e: IllegalArgumentException) {
+            showAlert("Error", "Categoría inválida.")
+            return
+        }
+
         val productoFormState = ProductosViewModel.ProductoFormState(
             nombre = nombre,
-            categoria = Producto.Categoria.valueOf(categoria),
+            categoria = categoria,
             precio = precio.toString(),
             stock = stock.toString()
         )
@@ -70,7 +84,7 @@ class ProductosAnadirViewController : KoinComponent {
         viewModel.crearProducto(
             nombre = nombre,
             precio = precio.toString(),
-            categoria = Producto.Categoria.valueOf(categoria),
+            categoria = categoria,
             stock = stock.toLong(),
         ).onSuccess {
             showAlert("Éxito", "Producto añadido correctamente.")
@@ -82,6 +96,16 @@ class ProductosAnadirViewController : KoinComponent {
 
     private fun onCancel() {
         closeCurrentStage()
+    }
+
+    private fun onImageAction() {
+        FileChooser().run {
+            title = "Selecciona una imagen"
+            extensionFilters.addAll(FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.jpeg"))
+            showOpenDialog(null)
+        }?.let {
+            viewModel.updateImageProducto(it)
+        }
     }
 
     private fun showAlert(title: String, message: String) {

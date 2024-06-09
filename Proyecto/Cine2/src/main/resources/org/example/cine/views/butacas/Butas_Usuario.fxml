@@ -41,9 +41,9 @@
             <Insets />
          </VBox.margin>
       </HBox>
-      <SplitPane dividerPositions="0.7387642544363776" prefHeight="531.0" prefWidth="900.0">
+      <SplitPane dividerPositions="0.7109374745238212" prefHeight="531.0" prefWidth="900.0">
          <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="511.0" prefWidth="648.0" style="-fx-background-color: #376bb5;">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="530.0" prefWidth="619.0" style="-fx-background-color: #376bb5;">
                <children>
                   <GridPane layoutX="88.0" layoutY="64.0" prefHeight="343.0" prefWidth="504.0">
                      <columnConstraints>
@@ -166,7 +166,7 @@
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #376bb5;">
                <children>
-                  <GridPane layoutX="15.0" layoutY="62.0" prefHeight="206.0" prefWidth="201.0">
+                  <GridPane layoutX="15.0" layoutY="62.0" prefHeight="206.0" prefWidth="239.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.77355552882486" minWidth="10.0" prefWidth="96.52831627101236" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.41510557322036" minWidth="10.0" prefWidth="45.811311780876025" />
@@ -190,7 +190,7 @@
                               <Image url="@../../images/Mantenimiento.png" />
                            </image>
                         </ImageView>
-                        <Label style="-fx-text-fill: #ffffff;" text="Mantenimiento" textFill="WHITE" GridPane.rowIndex="1" />
+                        <Label style="-fx-text-fill: #ffffff;" text="Reparando" textFill="WHITE" GridPane.rowIndex="1" />
                         <Label style="-fx-text-fill: #ffffff;" text="Ocupado" textFill="WHITE" GridPane.rowIndex="2" />
                         <ImageView fitHeight="41.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <image>

@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:controller="org.example.cine.peliculas.controllers.User.PeliculasViewLoginAdmin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="900.0" style="-fx-background-color: #376bb5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="900.0" style="-fx-background-color: #376bb5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.cine.peliculas.controllers.User.PeliculasViewLoginAdmin">
     <children>
         <Line endX="731.3585205078125" layoutX="138.0" layoutY="74.0" startX="-99.13207244873047" />
         <Button fx:id="butonHelp" layoutX="38.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Help" />
@@ -43,7 +43,7 @@
                 <RowConstraints maxHeight="163.58487337193233" minHeight="10.0" prefHeight="124.98115733477024" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <TextArea fx:id="textSinopsisPelicula" wrapText="true" prefHeight="142.0" prefWidth="149.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextArea fx:id="textSinopsisPelicula" prefHeight="142.0" prefWidth="149.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 <Label prefHeight="18.0" prefWidth="74.0" style="-fx-text-fill: #ffffff;" text="Nombre" />
                 <Label prefHeight="18.0" prefWidth="69.0" style="-fx-text-fill: #ffffff;" text="Duracion" GridPane.rowIndex="1" />
                 <Label style="-fx-text-fill: #ffffff;" text="Fecha Estreno" GridPane.rowIndex="2" />
@@ -53,7 +53,7 @@
                 <DatePicker fx:id="dataFechaDeEstreno" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             </children>
         </GridPane>
-        <Label layoutX="201.0" layoutY="25.0" prefHeight="35.0" prefWidth="300.0" style="-fx-text-fill: #ffffff;" text="Lista de Peliculas">
+        <Label layoutX="313.0" layoutY="25.0" prefHeight="35.0" prefWidth="300.0" style="-fx-text-fill: #ffffff;" text="Lista de Peliculas">
             <font>
                 <Font name="Georgia Pro Black" size="30.0" />
             </font></Label>
@@ -65,5 +65,6 @@
         <Button fx:id="ButonCrearPelicula" layoutX="591.0" layoutY="496.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Crear" />
         <Button layoutX="102.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Importar" />
         <Button fx:id="butonGestionButacas" layoutX="737.0" layoutY="496.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="149.0" style="-fx-background-radius: 10;" text="Gestionar Butacas" />
+      <Button fx:id="butonRecaudacion" layoutX="193.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="recaudacion" />
     </children>
 </Pane>

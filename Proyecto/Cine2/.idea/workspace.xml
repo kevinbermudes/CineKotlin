@@ -6,28 +6,67 @@
   <component name="ChangeListManager">
 <<<<<<< HEAD
     <list default="true" id="ac2e7ed3-677c-47d2-890f-5897eea2dabb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/c/1c89a5491fbfda3fb050196d6a239f20200296e7" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/c/1c89a5491fbfda3fb050196d6a239f20200296e7" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/0/8023b1931a00791d57178afa059d598df8481a8d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/0/8023b1931a00791d57178afa059d598df8481a8d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/4/64d452bed20e1cefa8633218d34250b10f705ac9" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/d/6d2e5dfffc5e881a4aeb7c14b55b87214c4d1533" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/e/6e8f2ab103c92b3104b70c08d0c6381023cf82f1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/d/7d7df8cbf98182fee7c9df2b806eb2ee7bdf5328" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/3/83f706eae8c8cab123a28116ffd82dc4a495d99b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/a/8a1e4eec6a15cbd33472754f526b0483a453d323" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/5/956cd37cedf5d5c6d6936553c4c2682e391926fa" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/b/9b693a4f7aaaf1a740876dae78d03ad22d590eb7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/3/a327a9f09479df7e83e7828a144c49a8de841616" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/7/a7ee1da57a96148d5dade06aca4bafb7f4d4e0e7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/e/be7d9a1e86fef4d1bd1b5edf01aa6bbc79af6d02" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/1/d17b0ac9c76a4165fe298a323a9a49c85a4adc48" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/4/d4e85b83552e02f8121dbeb54ec4e5a5a0b69ee9" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/a/dac50c7fc797f58a38368696fb8e4a1e506e3d9f" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/4/64d452bed20e1cefa8633218d34250b10f705ac9" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/d/6d2e5dfffc5e881a4aeb7c14b55b87214c4d1533" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/e/6e8f2ab103c92b3104b70c08d0c6381023cf82f1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/d/7d7df8cbf98182fee7c9df2b806eb2ee7bdf5328" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/3/83f706eae8c8cab123a28116ffd82dc4a495d99b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/a/8a1e4eec6a15cbd33472754f526b0483a453d323" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/5/956cd37cedf5d5c6d6936553c4c2682e391926fa" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/b/9b693a4f7aaaf1a740876dae78d03ad22d590eb7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/3/a327a9f09479df7e83e7828a144c49a8de841616" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/7/a7ee1da57a96148d5dade06aca4bafb7f4d4e0e7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/e/be7d9a1e86fef4d1bd1b5edf01aa6bbc79af6d02" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/1/d17b0ac9c76a4165fe298a323a9a49c85a4adc48" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/4/d4e85b83552e02f8121dbeb54ec4e5a5a0b69ee9" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/a/dac50c7fc797f58a38368696fb8e4a1e506e3d9f" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/pago/controllers/RecaudacionViewController.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/pago/mapper/venta.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/pago/models/Venta.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/pago/repositories/VentasRepository.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/pago/repositories/VentasRepositoryImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/peliculas/ViewModel/RecaudacionViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/compra/RecaudacionView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/sqldelight/database/Ventas.sq" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/5/a5f0c0f5440fd8d57c629dae583d9b9385225581" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/5/a5f0c0f5440fd8d57c629dae583d9b9385225581" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/f/afc9d2530712b81d94b9bdac365c768a4d9e351b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/f/afc9d2530712b81d94b9bdac365c768a4d9e351b" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/0/e0ab715ddc82298edbb7bccc711e2123833f6226" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/0/e0ab715ddc82298edbb7bccc711e2123833f6226" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/c/fca7c04201cc19ad8f3daeae90eb3674ddb28585" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/c/fca7c04201cc19ad8f3daeae90eb3674ddb28585" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cine2.db" beforeDir="false" afterPath="$PROJECT_DIR$/cine2.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/database/SqlDeLightClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/database/SqlDeLightClient.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/di/AppModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/di/AppModule.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/pago/controllers/TicketCompraController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/pago/controllers/TicketCompraController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/peliculas/ViewModel/CineViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/peliculas/ViewModel/CineViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/peliculas/controllers/PeliculasViewNoLogin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/peliculas/controllers/PeliculasViewNoLogin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/peliculas/controllers/User/PeliculasViewLogin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/peliculas/controllers/User/PeliculasViewLogin.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/peliculas/controllers/User/PeliculasViewLoginAdmin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/peliculas/controllers/User/PeliculasViewLoginAdmin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/peliculas/mapers/Pelicula.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/peliculas/mapers/Pelicula.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/productos/controllers/ProductosAnadirViewController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/productos/controllers/ProductosAnadirViewController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/productos/viewmodels/ProductosViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/productos/viewmodels/ProductosViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/route/RoutesManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/example/cine/route/RoutesManager.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/butacas.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/butacas.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/butacas/ButacasAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/butacas/ButacasAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/butacas/Butas_Usuario.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/butacas/Butas_Usuario.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/butacas/Carrito.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/butacas/Carrito.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/butacas/VentanaEditButaca.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/butacas/VentanaEditButaca.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/compra/Carrito.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/compra/Carrito.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/compra/Ticket_de _Compra.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/compra/Ticket_de _Compra.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/peliculas/IndezLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/peliculas/IndezLogin.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/peliculas/IndezLoginAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/peliculas/IndezLoginAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/peliculas/IndezSinLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/cine/views/peliculas/IndezSinLogin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/sqldelight/database/cine.sq" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/sqldelight/database/cine.sq" afterDir="false" />
     </list>
 =======
     <list default="true" id="4953aa5c-4b54-41cc-9146-7de66e3a1646" name="Changes" comment="" />
@@ -60,6 +99,7 @@
       </state>
     </system>
   </component>
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
   <component name="FileTemplateManagerImpl">
@@ -67,14 +107,22 @@
       <list>
         <option value="FxmlFile" />
         <option value="Kotlin File" />
+=======
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+>>>>>>> Stashed changes
         <option value="Kotlin Class" />
       </list>
     </option>
   </component>
+<<<<<<< Updated upstream
   <component name="FormatOnSaveOptions">
     <option name="myRunOnSave" value="true" />
   </component>
 >>>>>>> feature/TestProducto
+=======
+>>>>>>> Stashed changes
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
@@ -121,6 +169,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.laravel-idea.search-composer-json": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "feature/TestProducto",
     "ignore.virus.scanning.warn.message": "true",
@@ -129,14 +178,21 @@
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "stored_options": "{\"dialectConnections\":{\"app.cash.sqldelight.dialects.sqlite_3_18.SqliteDialect\":{\"orderedOptions\":[],\"serializedProperties\":{}}}}",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\kevin\Desktop\Trabajo_Kotlin\TrabajoKotlin\Proyecto\Cine2\imagenes" />
     </key>
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
@@ -146,6 +202,36 @@
 >>>>>>> feature/TestProducto
   </component>
   <component name="RunManager" selected="Gradle.Cine2 [run]">
+=======
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="org.example.cine.pago.repositories" />
+      <recent name="org.example.cine.pago.models" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.Cine2 [run]">
+    <configuration name="Cine2 [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+>>>>>>> Stashed changes
     <configuration name="Cine2 [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -267,10 +353,14 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.Cine2 [run]" />
+<<<<<<< Updated upstream
         <item itemvalue="Gradle.ProductosStorageImplTest.storeDataJson returns Ok when data is successfully written to file" />
         <item itemvalue="Gradle.ProductosStorageImplTest" />
         <item itemvalue="Gradle.ProductosRepositoryTest" />
         <item itemvalue="Gradle.ProductosRepositoryTest.test findAll" />
+=======
+        <item itemvalue="Gradle.Cine2 [build]" />
+>>>>>>> Stashed changes
       </list>
     </recent_temporary>
   </component>
@@ -289,7 +379,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1717926178584</updated>
-      <workItem from="1717926181707" duration="22223000" />
+      <workItem from="1717926181707" duration="37044000" />
     </task>
     <servers />
   </component>

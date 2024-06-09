@@ -75,6 +75,10 @@ class PeliculasViewLoginAdmin : KoinComponent {
     private lateinit var textEstadoLogin: Label
 
     @FXML
+    private lateinit var butonRecaudacion: Button
+
+
+    @FXML
     private lateinit var TextBuscadorPeliculas: TextField
 
     @FXML
@@ -133,6 +137,7 @@ class PeliculasViewLoginAdmin : KoinComponent {
         ButonCrearPelicula.setOnAction { onCrearPeliculaAction() }
         ButonEditPelicula.setOnAction { onEditPeliculaAction() }
         ButonBorrarPelicula.setOnAction { onBorrarPeliculaAction() }
+        butonRecaudacion.setOnAction { onRecaudacionAction() }
 
         TablaPeliculas.selectionModel.selectedItemProperty().addListener { _, _, newValue ->
             newValue?.let { onTablaPeliculasSelected(newValue) }
@@ -208,6 +213,10 @@ class PeliculasViewLoginAdmin : KoinComponent {
 
     private fun onTablaPeliculasSelected(pelicula: Pelicula) {
         viewModel.updatePeliculaSeleccionada(pelicula)
+    }
+    private fun onRecaudacionAction() {
+        logger.debug { "Redirigiendo a la vista de recaudación" }
+        RoutesManager.changeScene(view = RoutesManager.View.RECAUDACION)
     }
 
     private fun onBuscadorKeyReleased() {

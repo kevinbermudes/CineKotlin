@@ -1,0 +1,43 @@
+-- Crear la tabla VentaEntity
+CREATE TABLE IF NOT EXISTS VentaEntity (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    pelicula TEXT NOT NULL,
+    precioEntrada REAL NOT NULL,
+    butacas TEXT NOT NULL,
+    complementos TEXT,
+    precioComplementos REAL,
+    total REAL NOT NULL
+);
+
+-- Insertar datos de ejemplo en VentaEntity
+INSERT INTO VentaEntity (pelicula, precioEntrada, butacas, complementos, precioComplementos, total)
+VALUES
+('Movie 1', 10.00, 'A1, A2', 'Popcorn, Soda', 5.00, 15.00),
+('Movie 2', 12.50, 'B5, B6', 'Nachos', 3.00, 15.50),
+('Movie 3', 8.00, 'C3', NULL, 0.00, 8.00),
+('Movie 4', 9.00, 'D1, D2, D3', 'Candy', 2.00, 11.00),
+('Movie 5', 11.00, 'E4, E5', 'Popcorn', 4.00, 15.00);
+
+selectAllVentas:
+SELECT * FROM VentaEntity;
+
+selectVentaById:
+SELECT * FROM VentaEntity WHERE id = ?;
+
+insertVenta:
+INSERT INTO VentaEntity (pelicula, precioEntrada, butacas, complementos, precioComplementos, total)
+VALUES (?, ?, ?, ?, ?, ?);
+
+updateVenta:
+UPDATE VentaEntity
+SET pelicula = ?, precioEntrada = ?, butacas = ?, complementos = ?, precioComplementos = ?, total = ?
+WHERE id = ?;
+
+deleteAllVentas:
+DELETE FROM VentaEntity;
+
+deleteVenta:
+DELETE FROM VentaEntity WHERE id = ?;
+
+selectLastInsertedVenta:
+SELECT * FROM VentaEntity WHERE id = last_insert_rowid();

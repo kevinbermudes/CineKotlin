@@ -76,4 +76,7 @@ module org.example.cine {
     // Carrito de la compra
     opens org.example.cine.pago.controllers to javafx.fxml;
     exports org.example.cine.pago.controllers;
+
+    opens org.example.cine.pago.models to javafx.base;
+
 }

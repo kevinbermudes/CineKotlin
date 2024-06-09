@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="577.0" prefWidth="879.0" style="-fx-background-color: #376bb5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.cine.pago.controllers.RecaudacionViewController">
+    <children>
+        <Text layoutX="329.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recaudación de Ventas" wrappingWidth="348.5282897949219">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Text>
+        <TableView fx:id="tablaVentas" layoutX="143.0" layoutY="70.0" prefHeight="300.0" prefWidth="636.0">
+            <columns>
+                <TableColumn fx:id="columnaPelicula" prefWidth="68.22641372680664" text="Película">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="pelicula" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="columnaPrecioEntrada" prefWidth="87.39620208740234" text="Precio Entrada">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="precioEntrada" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="columnaButacas" prefWidth="90.20755004882812" text="Butacas">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="butacas" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="columnaComplementos" prefWidth="168.96226501464844" text="Complementos">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="complementos" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="columnaPrecioComplementos" prefWidth="221.6981201171875" text="Precio Complementos">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="precioComplementos" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="columnaTotal" prefWidth="74.45281982421875" text="Total">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="total" />
+                    </cellValueFactory>
+                </TableColumn>
+
+            </columns>
+        </TableView>
+        <Text layoutX="143.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Recaudado:" wrappingWidth="150.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <TextField fx:id="textTotalRecaudado" editable="false" layoutX="303.0" layoutY="387.0" prefWidth="200.0" style="-fx-background-radius: 10;" />
+        <Button fx:id="botonCerrar" layoutX="621.0" layoutY="387.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="112.0" style="-fx-background-radius: 10;" text="Cerrar" />
+    </children>
+</Pane>

@@ -11,12 +11,17 @@ import javafx.scene.image.ImageView
 import javafx.scene.layout.Pane
 import javafx.stage.FileChooser
 import org.example.cine.pago.models.Carrito
+import org.example.cine.pago.models.Venta
+import org.example.cine.pago.repositories.VentasRepository
 import org.example.cine.route.RoutesManager
 import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import org.lighthousegames.logging.logging
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.nio.file.Files
+import java.time.Instant
+import java.time.LocalDateTime
 import java.util.Base64
 import javax.imageio.ImageIO
 
@@ -55,6 +60,7 @@ class TicketCompraController : KoinComponent {
     private lateinit var ticketPane: Pane
 
     private val carrito: Carrito = Carrito.instance
+    private val ventasRepository: VentasRepository by inject()
 
     @FXML
     fun initialize() {
@@ -64,13 +70,21 @@ class TicketCompraController : KoinComponent {
     }
 
     private fun configureTextArea() {
-        textoComplementos.isWrapText = true // Enable line wrapping
-        textoComplementos.prefHeight = 100.0 // Set preferred height
+        textoComplementos.isWrapText = true
+        textoComplementos.prefHeight = 100.0
     }
 
     private fun initEventHandlers() {
-        butonInicio.setOnAction { volverInicio() }
-        buttonImprimir.setOnAction { imprimirTicket() }
+        butonInicio.setOnAction {
+            val totalAPagar = textTotalApagar.text.toDouble()
+            registrarVenta(totalAPagar)
+            volverInicio()
+        }
+        buttonImprimir.setOnAction {
+            val totalAPagar = textTotalApagar.text.toDouble()
+            registrarVenta(totalAPagar)
+            imprimirTicket()
+        }
     }
 
     private fun loadTicketData() {
@@ -87,13 +101,26 @@ class TicketCompraController : KoinComponent {
         val totalAPagar = precioEntradas + precioComplementos
         textTotalApagar.text = totalAPagar.toString()
 
-        // Cargar la imagen de la película seleccionada
         val selectedImage = RoutesManager.selectedImage
         if (selectedImage != null) {
             imagenCine.image = selectedImage
         } else {
             cargarImagenCine()
         }
+    }
+
+    private fun registrarVenta(total: Double) {
+        val venta = Venta(
+           // id = 0L,
+            pelicula = textNombrePelicula.text,
+            precioEntrada = textoPrecioEntrada.text.toDouble(),
+            butacas = textoButacas.text,
+            complementos = textoComplementos.text,
+            precioComplementos = textoPrecioComplementos.text.toDouble(),
+            total = total,
+        )
+        logger.debug { "*********************************************Registrando venta: $venta" }
+        ventasRepository.save(venta)
     }
 
     private fun cargarImagenCine() {
@@ -106,7 +133,6 @@ class TicketCompraController : KoinComponent {
     }
 
     private fun imprimirTicket() {
-        // Seleccionar la ubicación donde guardar el PDF
         val fileChooser = FileChooser()
         fileChooser.extensionFilters.add(FileChooser.ExtensionFilter("PDF Files", "*.pdf"))
         val file = fileChooser.showSaveDialog(buttonImprimir.scene.window)

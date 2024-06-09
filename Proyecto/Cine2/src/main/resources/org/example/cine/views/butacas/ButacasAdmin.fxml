@@ -189,7 +189,7 @@
                               <Image url="@../../images/Mantenimiento.png" />
                            </image>
                         </ImageView>
-                        <Label style="-fx-text-fill: #ffffff;" text="Mantenimiento" textFill="WHITE" GridPane.rowIndex="1" />
+                        <Label style="-fx-text-fill: #ffffff;" text="Reparando" textFill="WHITE" GridPane.rowIndex="1" />
                         <Label style="-fx-text-fill: #ffffff;" text="Ocupado" textFill="WHITE" GridPane.rowIndex="2" />
                         <ImageView fitHeight="41.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <image>
@@ -232,7 +232,7 @@
                   <Button fx:id="butonAtrasButacas" layoutX="14.0" layoutY="485.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Atras" />
                   <Label layoutX="16.0" layoutY="115.0" style="-fx-text-fill: #ffffff;" text="Estado de la butacas:" />
                   <Label layoutX="14.0" layoutY="78.0" style="-fx-text-fill: #ffffff;" text="Coordenada" />
-                  <TextField fx:id="textNombreCoordenada" layoutX="94.0" layoutY="74.0" prefHeight="25.0" prefWidth="110.0" style="-fx-alignment: center; -fx-text-fill: black;" />
+                  <TextField fx:id="textNombreCoordenada" layoutX="113.0" layoutY="74.0" prefHeight="31.0" prefWidth="91.0" style="-fx-alignment: center; -fx-text-fill: black;" />
                   <Button fx:id="butonEditarButaca" layoutX="14.0" layoutY="446.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Editar" />
                </children>
             </AnchorPane>

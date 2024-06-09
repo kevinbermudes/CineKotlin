@@ -98,7 +98,11 @@ object RoutesManager {
         CARRITO("/org/example/cine/views/compra/Carrito.fxml"),
         PAGO("/org/example/cine/views/compra/Pasarela_de _Pago.fxml"),
         TICKET("/org/example/cine/views/compra/Ticket_de _Compra.fxml"),
+<<<<<<< Updated upstream
 
+=======
+        RECAUDACION("/org/example/cine/views/compra/RecaudacionView.fxml"),
+>>>>>>> Stashed changes
     }
 
     fun changeScene(

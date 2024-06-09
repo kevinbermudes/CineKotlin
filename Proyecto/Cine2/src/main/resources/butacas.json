@@ -8,8 +8,8 @@
         },
         {
             "id": "A2",
-            "estado": "ocupado",
-            "imagen": "ocupado.png",
+            "estado": "libre",
+            "imagen": "libre.png",
             "precio": 7.0
         },
         {
@@ -50,8 +50,8 @@
         },
         {
             "id": "B2",
-            "estado": "ocupado",
-            "imagen": "ocupado.png",
+            "estado": "libre",
+            "imagen": "libre.png",
             "precio": 7.0
         },
         {
@@ -92,8 +92,8 @@
         },
         {
             "id": "C2",
-            "estado": "ocupado",
-            "imagen": "ocupado.png",
+            "estado": "libre",
+            "imagen": "libre.png",
             "precio": 7.0
         },
         {
@@ -152,8 +152,8 @@
         },
         {
             "id": "D5",
-            "estado": "vip",
-            "imagen": "vip.png",
+            "estado": "ocupado",
+            "imagen": "ocupado.png",
             "precio": 15.0
         },
         {
@@ -170,8 +170,8 @@
         },
         {
             "id": "E1",
-            "estado": "libre",
-            "imagen": "libre.png",
+            "estado": "ocupado",
+            "imagen": "ocupado.png",
             "precio": 7.0
         },
         {
@@ -188,8 +188,8 @@
         },
         {
             "id": "E4",
-            "estado": "vip",
-            "imagen": "vip.png",
+            "estado": "ocupado",
+            "imagen": "ocupado.png",
             "precio": 15.0
         },
         {
