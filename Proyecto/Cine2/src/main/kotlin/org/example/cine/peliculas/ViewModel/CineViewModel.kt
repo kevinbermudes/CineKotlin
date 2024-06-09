@@ -9,11 +9,11 @@ import org.example.cine.peliculas.models.Pelicula
 import org.example.cine.peliculas.service.database.PeliculasService
 import org.example.cine.peliculas.service.storage.PeliculasStorage
 import org.example.cine.peliculas.validadores.validate
+import org.example.cine.productos.viewmodels.ProductosViewModel
 import org.example.cine.route.RoutesManager
 import org.lighthousegames.logging.logging
 import java.io.File
 import java.time.LocalDate
-
 
 private val logger = logging()
 
@@ -27,7 +27,7 @@ class CineViewModel(
 
     init {
         logger.debug { "Inicializando PeliculasViewModel" }
-        loadAllPeliculas() // Cargamos los datos de las películas
+        loadAllPeliculas()
     }
 
     fun loadAllPeliculas() {
@@ -42,12 +42,11 @@ class CineViewModel(
         }
     }
 
-
     // Actualiza el estado de la aplicación con los datos de ese instante en el estado
     private fun updateActualState() {
         logger.debug { "Actualizando estado de Aplicacion" }
         val numPeliculas = state.value.peliculas.size.toString()
-        // Solo toca el estado una vez para evitar problemas de concurrencia
+
         state.value = state.value.copy(
             numPeliculas = numPeliculas,
             pelicula = PeliculaFormState()
@@ -57,7 +56,6 @@ class CineViewModel(
     // Filtra la lista de películas en el estado en función del nombre
     fun peliculasFilteredList(nombre: String): List<Pelicula> {
         logger.debug { "Filtrando lista de Películas: $nombre" }
-
         return state.value.peliculas.filter { pelicula ->
             pelicula.nombre.contains(nombre, true)
         }
@@ -71,9 +69,9 @@ class CineViewModel(
     fun loadPeliculasFromJson(file: File): Result<List<Pelicula>, PeliculaError> {
         logger.debug { "Cargando Películas en JSON" }
         return storage.loadDataJson(file).onSuccess {
-            service.deleteAll() // Borramos todos los datos de la BD
+            service.deleteAll()
             service.saveAll(it)
-            loadAllPeliculas() // Actualizamos la lista
+            loadAllPeliculas()
         }
     }
 
@@ -125,10 +123,6 @@ class CineViewModel(
         }
     }
 
-    enum class TipoImagen(val value: String) {
-        SIN_IMAGEN("sin-imagen.png"), EMPTY("")
-    }
-
     // Edita una película en el estado y repositorio
     fun editarPelicula(): Result<Pelicula, PeliculaError> {
         logger.debug { "Editando Película" }
@@ -136,7 +130,7 @@ class CineViewModel(
         var updatedPelicula = state.value.pelicula.toModel()
         return updatedPelicula.validate().andThen {
             updatedPeliculaTemp.fileImage?.let { newFileImage ->
-                if (updatedPelicula.imagen == TipoImagen.SIN_IMAGEN.value || updatedPelicula.imagen == TipoImagen.EMPTY.value) {
+                if (updatedPelicula.imagen == ProductosViewModel.TipoImagen.SIN_IMAGEN.value || updatedPelicula.imagen == ProductosViewModel.TipoImagen.EMPTY.value) {
                     storage.saveImage(newFileImage).onSuccess {
                         updatedPelicula = updatedPelicula.copy(imagen = it.name)
                     }
@@ -167,7 +161,6 @@ class CineViewModel(
             Ok(Unit)
         }
     }
-
 
     // Actualiza la imagen de la película en el estado
     fun updateImagePelicula(fileImage: File) {
@@ -211,7 +204,6 @@ class CineViewModel(
                 pelicula = state.value.pelicula.copy(),
                 tipoOperacion = newValue
             )
-
         } else {
             logger.debug { "Limpiando estado de Película Operacion" }
             state.value = state.value.copy(
@@ -266,5 +258,4 @@ class CineViewModel(
         val fileImage: File? = null,
         val oldFileImage: File? = null
     )
-
 }

@@ -103,6 +103,11 @@ class ProductosViewModel(
         var imagen = Image(RoutesManager.getResourceAsStream("images/sin-imagen.png"))
         var fileImage = File(RoutesManager.getResource("images/sin-imagen.png").toURI())
 
+        // Si tiene imagen, la cargamos
+storage.loadImage(producto.imagen).onSuccess {
+            imagen=Image(it.absoluteFile.toURI().toString())
+            fileImage = it
+        }
 
         // Convertir ID a Long para la comparación
         val productoId = producto.id.toString()
@@ -112,7 +117,7 @@ class ProductosViewModel(
                     id = producto.id.toString(),
                     nombre = producto.nombre,
                     precio = producto.precio.toString(),
-                    stock = producto.stock.toString(), // Añadir stock al estado
+                    stock = producto.stock.toString(),
                     categoria = producto.categoria,
                     imagen = imagen,
                     fileImage = fileImage
@@ -178,7 +183,7 @@ class ProductosViewModel(
     }
 
     // Elimina un producto en el estado y repositorio
-    fun eliminarProducto(): Result<Unit, ProductoError> {
+    fun eliminarProducto(producto: Producto): Result<Unit, ProductoError> {
         logger.debug { "Eliminando Producto" }
         val producto = state.value.producto.copy()
         val myId = producto.id.toLong()

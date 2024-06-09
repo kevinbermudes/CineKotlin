@@ -53,20 +53,7 @@ class ProductosEditarViewController : KoinComponent {
         textoCategoriaProducto.text = producto.categoria.name
         textoPrecioProducto.text = producto.precio.toString()
         textoStockProducto.text = producto.stock.toString()
-
-        val imageUrl = if ((producto.imagen as String).startsWith("http")) {
-            producto.imagen as String
-        } else {
-            javaClass.getResource("/org/example/cine/images/${producto.imagen}")?.toString()
-        }
-
-        if (imageUrl != null) {
-            imagenProductoEditar.image = Image(imageUrl)
-        } else {
-            logger.error { "Error: No se pudo encontrar la imagen para ${producto.imagen}" }
-            imagenProductoEditar.image =
-                Image(javaClass.getResource("/org/example/cine/images/sin-imagen.png").toString())
-        }
+        imagenProductoEditar.image = viewModel.state.value.producto.imagen
     }
 
     @FXML

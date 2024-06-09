@@ -1,5 +1,7 @@
 package org.example.cine.productos.controllers
 
+import com.github.michaelbull.result.onFailure
+import com.github.michaelbull.result.onSuccess
 import javafx.collections.FXCollections
 import javafx.fxml.FXML
 import javafx.scene.control.*
@@ -121,8 +123,9 @@ class ProductosViewAdminController : KoinComponent {
             textoNombreProducto.text = producto.nombre
             textoCategoriaProducto.text = producto.categoria.name
             textoPrecioProducto.text = producto.precio
-            // Si tienes una ImageView para la imagen del producto
-            imagenProductos.image = producto.imagen
+            textoStockProducto.text = producto.stock
+            logger.debug { " cargando imaegn con nombre Imagen: ${newValue.producto.imagen}" }
+            imagenProductos.image = newValue.producto.imagen
         }
     }
 
@@ -168,12 +171,26 @@ class ProductosViewAdminController : KoinComponent {
     }
 
     private fun onBorrarProducto() {
-        logger.debug { "Borrando..." }
-        val productoSeleccionado = tableProductos.selectionModel.selectedItem
-        if (productoSeleccionado != null) {
-            tableProductos.items.remove(productoSeleccionado)
+        val producto = tableProductos.selectionModel.selectedItem
+        if (producto != null) {
+            val alert = Alert(Alert.AlertType.CONFIRMATION)
+            alert.title = "Confirmar eliminación"
+            alert.headerText = null
+            alert.contentText = "¿Estás seguro de que deseas eliminar el producto \"${producto.nombre}\"?"
+            val result = alert.showAndWait()
+
+            if (result.isPresent && result.get() == ButtonType.OK) {
+                viewModel.eliminarProducto(producto)
+                    .onSuccess {
+                        showAlert("Éxito", "Producto eliminado correctamente.")
+                        loadData()  // Volver a cargar los datos después de eliminar el producto
+                    }
+                    .onFailure {
+                        showAlert("Error", "Error al eliminar el producto: ${it.message}")
+                    }
+            }
         } else {
-            showAlert("Error", "Selecciona un producto para borrar.")
+            showAlert("Error", "Por favor, selecciona un producto para eliminar.")
         }
     }
 
