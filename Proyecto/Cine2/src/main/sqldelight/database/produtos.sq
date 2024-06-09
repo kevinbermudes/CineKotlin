@@ -13,10 +13,10 @@ CREATE TABLE IF NOT EXISTS ProductoEntity (
 -- Insertar datos de prueba
 INSERT INTO ProductoEntity (nombre, precio, categoria, imagen, stock, created_at, updated_at)
 VALUES ('Palomitas', 5.0, 'BOTANA', 'palomitas.png', 5, '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
-       ('Refresco', 2.5, 'BEBIDAS', 'refresco.png', 10, '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
+       ('Refresco', 2.5, 'BEBIDAS', 'refresco.jpg', 10, '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
        ('Agua Mineral', 1.5, 'BEBIDAS', 'agua_mineral.png', 1, '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
-       ('Frutos Secos', 3.0, 'FRUTOS_SECOS', 'frutos_secos.png', 12, '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
-       ('Chocolatina', 1.0, 'BOTANA', 'chocolatina.png', 9, '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
+       ('Frutos Secos', 3.0, 'FRUTOS_SECOS', 'frutos_secos.jpg', 12, '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
+       ('Chocolatina', 1.0, 'BOTANA', 'chocolatina.jpg', 9, '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500'),
        ('Jugo de Naranja', 3.0, 'BEBIDAS', 'jugo_naranja.png', 2, '2024-05-19T18:54:47.097563500', '2024-05-19T18:54:47.097563500');
 
 -- Scripts adicionales para manejar el stock

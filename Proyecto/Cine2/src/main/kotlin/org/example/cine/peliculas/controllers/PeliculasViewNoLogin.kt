@@ -4,8 +4,8 @@ import javafx.collections.FXCollections
 import javafx.fxml.FXML
 import javafx.scene.control.*
 import javafx.scene.control.cell.PropertyValueFactory
+import javafx.scene.image.Image
 import javafx.scene.image.ImageView
-import javafx.scene.layout.GridPane
 import org.example.cine.peliculas.ViewModel.CineViewModel
 import org.example.cine.peliculas.models.Pelicula
 import org.example.cine.route.RoutesManager
@@ -73,10 +73,6 @@ class PeliculasViewNoLogin : KoinComponent {
     @FXML
     private lateinit var dataFechaDeEstreno: DatePicker
 
-    // GridPane
-    @FXML
-    private lateinit var gridPane: GridPane
-
     // Método para inicializar
     @FXML
     fun initialize() {
@@ -100,7 +96,6 @@ class PeliculasViewNoLogin : KoinComponent {
         viewModel.loadAllPeliculas()
     }
 
-
     private fun initBindings() {
         logger.debug { "Inicializando bindings" }
 
@@ -117,6 +112,7 @@ class PeliculasViewNoLogin : KoinComponent {
             TextDuracionPelicula.text = newValue.pelicula.duracion
             dataFechaDeEstreno.value = newValue.pelicula.fechaEstreno
             textSinopsisPelicula.text = newValue.pelicula.descripcion
+            logger.debug { "Cargando Imagen con nombre: ${newValue.pelicula.imagen.url}" }
             imagenPelicula.image = newValue.pelicula.imagen
         }
     }
@@ -137,18 +133,17 @@ class PeliculasViewNoLogin : KoinComponent {
     }
 
     private fun onHelpAction() {
-        // Lógica para el botón Help
+
     }
 
     private fun onLoginAction() {
         logger.debug { "Iniciando sesión" }
-        // Lógica para el botón Login
-//RoutesManager.initLoginStage()
+
         RoutesManager.changeScene(view = RoutesManager.View.LOGIN)
     }
 
     private fun onComprarNoLoginAction() {
-        // Lógica para el botón Comprar No Login
+        logger.debug { "Comprando sin login" }
         val alert = Alert(Alert.AlertType.INFORMATION)
         alert.title = "Información"
         alert.headerText = "Acción no permitida"
@@ -157,13 +152,12 @@ class PeliculasViewNoLogin : KoinComponent {
     }
 
     private fun onTablaPeliculasSelected(pelicula: Pelicula) {
-        // Lógica para manejar la selección de una película en la tabla
-        viewModel.updatePeliculaSeleccionada(pelicula)
 
+        viewModel.updatePeliculaSeleccionada(pelicula)
     }
 
     private fun onBuscadorKeyReleased() {
-        // Lógica para manejar la búsqueda de películas
+
         val filteredList = viewModel.peliculasFilteredList(TextBuscadorPeliculas.text)
         TablaPeliculas.items = FXCollections.observableArrayList(filteredList)
     }

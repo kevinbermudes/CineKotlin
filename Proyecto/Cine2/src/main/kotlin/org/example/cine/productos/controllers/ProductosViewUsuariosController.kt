@@ -47,8 +47,8 @@ class ProductosViewUsuariosController : KoinComponent {
     @FXML
     private lateinit var tableColumnCategoria: TableColumn<Producto, String>
 
-    @FXML
-    private lateinit var tableColumnStock: TableColumn<Producto, Double>
+//    @FXML
+//    private lateinit var tableColumnStock: TableColumn<Producto, Double>
 
     @FXML
     private lateinit var imagenProductos: ImageView
@@ -66,7 +66,7 @@ class ProductosViewUsuariosController : KoinComponent {
     private lateinit var textoPrecioProducto: TextField
 
     @FXML
-    private lateinit var textProductosStock:TextField
+    private lateinit var textProductosStock: TextField
 
     @FXML
     private lateinit var textEstadoLogin: Label
@@ -107,7 +107,7 @@ class ProductosViewUsuariosController : KoinComponent {
         tableColumnNombreProducto.cellValueFactory = PropertyValueFactory("nombre")
         tableColumnPrecio.cellValueFactory = PropertyValueFactory("precio")
         tableColumnCategoria.cellValueFactory = PropertyValueFactory("categoria")
-        tableProductos.items = productosObservableList
+    //    tableColumnStock.cellValueFactory = PropertyValueFactory("stock")
     }
 
     private val stateListener = ChangeListener<ProductosViewModel.ProductoState> { _, _, newValue ->
@@ -123,6 +123,7 @@ class ProductosViewUsuariosController : KoinComponent {
         textoCategoriaProducto.text = newValue.producto.categoria.name
         textoPrecioProducto.text = newValue.producto.precio.toString()
         textProductosDisponibles.text = newValue.producto.stock.toString()
+        logger.debug { "Cargando Imagen con nombre: ${newValue.producto.imagen}" }
         imagenProductos.image = newValue.producto.imagen
     }
 
@@ -161,7 +162,6 @@ class ProductosViewUsuariosController : KoinComponent {
                 selectedProduct.reduceStock()
                 viewModel.saveProduct(selectedProduct)
                 carrito.productos.add(selectedProduct)
-                updateProductoDetalles(selectedProduct)
             } else {
                 showAlert("Stock agotado", "No hay suficiente stock de este producto.")
             }
@@ -179,20 +179,7 @@ class ProductosViewUsuariosController : KoinComponent {
     }
 
     private fun onTableProductosSelected(producto: Producto) {
-        // Desactivar el listener de cambios de estado para evitar recursión infinita
-        viewModel.state.removeListener(stateListener)
-        try {
-            viewModel.updateProductoSeleccionado(producto)
-            // Actualizar los campos del formulario manualmente
-            textoNombreProducto.text = producto.nombre
-            textoCategoriaProducto.text = producto.categoria.name
-            textoPrecioProducto.text = producto.precio.toString()
-            textProductosDisponibles.text = producto.stock.toString()
-            imagenProductos.image = loadImageOrDefault(producto.imagen)
-        } finally {
-            // Volver a activar el listener después de la actualización
-            viewModel.state.addListener(stateListener)
-        }
+        viewModel.updateProductoSeleccionado(producto)
     }
 
     private fun onBuscadorKeyReleased() {
@@ -204,7 +191,7 @@ class ProductosViewUsuariosController : KoinComponent {
         textoNombreProducto.clear()
         textoCategoriaProducto.clear()
         textoPrecioProducto.clear()
-        textProductosStock.clear()
+      //  textProductosStock.clear()
     }
 
     private fun ProductosDisponibles() {
@@ -214,23 +201,6 @@ class ProductosViewUsuariosController : KoinComponent {
     private fun clearCarrito() {
         carrito.butacas.clear()
         carrito.productos.clear()
-    }
-
-    private fun loadImageOrDefault(imagePath: String?): Image {
-        return try {
-            val url = if (imagePath != null) javaClass.getResource("/org/example/cine/images/$imagePath") else null
-            if (url != null) Image(url.toString()) else defaultImage
-        } catch (e: Exception) {
-            defaultImage
-        }
-    }
-
-    private fun updateProductoDetalles(producto: Producto) {
-        textoNombreProducto.text = producto.nombre
-        textoCategoriaProducto.text = producto.categoria.name
-        textoPrecioProducto.text = producto.precio.toString()
-        textProductosDisponibles.text = producto.stock.toString()
-        imagenProductos.image = loadImageOrDefault(producto.imagen)
     }
 
     private fun showAlert(title: String, message: String) {

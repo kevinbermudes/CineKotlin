@@ -19,8 +19,6 @@ q
 Asrc/main/kotlin/org/example/cine/peliculas/mapers/ButacaMapper.kt,e\4\e4ab1c48ab437c4d99b34909167e0b784107d5f9
 g
 7src/main/kotlin/org/example/cine/route/RoutesManager.kt,a\5\a5f0c0f5440fd8d57c629dae583d9b9385225581
-{
-Ksrc/main/kotlin/org/example/cine/peliculas/controllers/CarritoController.kt,3\f\3fc155a31f4f561f2c3f58f4fb3df183840cba08
 ‰
 Ysrc/main/kotlin/org/example/cine/productos/controllers/ProductosViewUsuariosController.kt,c\7\c752435b75a4c056dd7b645dcbda0218209a7a37
 v
@@ -79,3 +77,11 @@ Wsrc/main/kotlin/org/example/cine/productos/controllers/ProductosEditarViewContr
 Wsrc/main/kotlin/org/example/cine/productos/controllers/ProductosAnadirViewController.kt,f\c\fca7c04201cc19ad8f3daeae90eb3674ddb28585
 {
 Ksrc/main/kotlin/org/example/cine/productos/validators/ProductosValidator.kt,7\a\7a181fbbd3a0863638c6880f80c2a906b69be4f2
+W
+'src/main/sqldelight/database/usuario.sq,0\0\008f4a6aec2469ae867302eabdfb01c35b70319a
+
+Osrc/main/kotlin/org/example/cine/productos/services/storage/ProductosStorage.kt,a\5\a5fe5519a35c4c34dbf4aeace642fa333f2837e1
+~
+Nsrc/main/kotlin/org/example/cine/peliculas/service/storage/PeliculasStorage.kt,f\f\ff871eaaeaac262a8ef19123b9e6a4707ab2c0d6
+
+Osrc/main/kotlin/org/example/cine/peliculas/service/database/PeliculasService.kt,7\2\722662e8a1496b2b67422240fe533c72141c60a2
