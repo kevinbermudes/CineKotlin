@@ -106,6 +106,8 @@
     "Gradle.ProductosServiceImplTest.test save.executor": "Run",
     "Gradle.ProductosServiceImplTest.test saveAll.executor": "Run",
     "Gradle.ProductosStorageImplTest.executor": "Run",
+    "Gradle.ProductosStorageImplTest.loadDataJson returns Ok when data is successfully read from file.executor": "Run",
+    "Gradle.ProductosStorageImplTest.storeDataJson returns Ok when data is successfully written to file.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.laravel-idea.search-composer-json": "true",
@@ -133,7 +135,7 @@
       <recent name="org.example.cine.pago.controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ProductosStorageImplTest.storeDataJson returns Ok when data is successfully written to file">
+  <component name="RunManager" selected="Gradle.Cine2 [run]">
     <configuration name="Cine2 [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -254,9 +256,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Cine2 [run]" />
         <item itemvalue="Gradle.ProductosStorageImplTest.storeDataJson returns Ok when data is successfully written to file" />
         <item itemvalue="Gradle.ProductosStorageImplTest" />
-        <item itemvalue="Gradle.Cine2 [run]" />
         <item itemvalue="Gradle.ProductosRepositoryTest" />
         <item itemvalue="Gradle.ProductosRepositoryTest.test findAll" />
       </list>
@@ -282,7 +284,7 @@
       <workItem from="1717851404636" duration="1632000" />
       <workItem from="1717932773908" duration="728000" />
       <workItem from="1717934797670" duration="2176000" />
-      <workItem from="1717948085601" duration="4006000" />
+      <workItem from="1717948085601" duration="4352000" />
     </task>
     <servers />
   </component>
