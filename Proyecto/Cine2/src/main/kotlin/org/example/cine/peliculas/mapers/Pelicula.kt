@@ -54,7 +54,7 @@ fun PeliculaEntity.toModel(): Pelicula {
         fechaEstreno = LocalDate.parse(fechaEstreno),
         descripcion = descripcion,
         categoria = Pelicula.Categoria.valueOf(categoria.uppercase()),
-        imagen = "sin-imagen.png",
+        imagen = image,
         createdAt = LocalDateTime.parse(created_at),
         updatedAt = LocalDateTime.parse(updated_at)
     )

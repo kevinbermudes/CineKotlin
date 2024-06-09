@@ -85,3 +85,7 @@ Osrc/main/kotlin/org/example/cine/productos/services/storage/ProductosStorage.kt
 Nsrc/main/kotlin/org/example/cine/peliculas/service/storage/PeliculasStorage.kt,f\f\ff871eaaeaac262a8ef19123b9e6a4707ab2c0d6
 
 Osrc/main/kotlin/org/example/cine/peliculas/service/database/PeliculasService.kt,7\2\722662e8a1496b2b67422240fe533c72141c60a2
+k
+;src/main/kotlin/org/example/cine/peliculas/models/Butaca.kt,0\9\099c41c2440b53e77eb369b91550dd2ba636b6c3
+<
+build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35

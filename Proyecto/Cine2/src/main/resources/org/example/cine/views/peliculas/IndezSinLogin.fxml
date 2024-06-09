@@ -15,51 +15,51 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane  stylesheets="@../../styles/pelicula.css" fx:controller="org.example.cine.peliculas.controllers.PeliculasViewNoLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="900.0" style="-fx-background-color: #376bb5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Line endX="731.3585205078125" layoutX="138.0" layoutY="74.0" startX="-99.13207244873047" />
-      <Button fx:id="butonHelp" layoutX="38.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Help" />
-      <Button fx:id="butonLogin" layoutX="807.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Login" />
-       <TableView fx:id="TablaPeliculas" layoutX="38.0" layoutY="151.0" prefHeight="416.0" prefWidth="511.0">
-           <columns>
-               <TableColumn fx:id="tableColumnId" prefWidth="36.2264404296875" text="ID" />
-               <TableColumn fx:id="tableColumnNombre" prefWidth="225.50948333740234" text="Nombre" />
-               <TableColumn fx:id="tableColumnDuracion" prefWidth="122.26409912109375" text="Duración" />
-               <TableColumn fx:id="tableColumnFecha" prefWidth="121.35855102539062" text="Fecha" />
-           </columns>
-       </TableView>
-
-       <ImageView fx:id="imagenPelicula" fitHeight="150.0" fitWidth="281.0" layoutX="590.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true" />
-      <Line endX="-100.0" endY="-492.5" layoutX="667.0" layoutY="579.0" startX="-100.0" />
-      <Button fx:id="butonComprarNoLogin" layoutX="789.0" layoutY="537.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="81.0" style="-fx-background-radius: 10;" text="Comprar" />
-      <GridPane layoutX="590.0" layoutY="262.0" prefHeight="202.0" prefWidth="281.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.47176041947705" minWidth="10.0" prefWidth="132.13216081010205" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.49058577801347" minWidth="10.0" prefWidth="148.43388709465205" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="90.0" minHeight="0.0" prefHeight="25.415080824540016" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="143.094358037485" minHeight="0.0" prefHeight="25.358469467733485" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="153.90561311802608" minHeight="9.49057280614143" prefHeight="28.07545194697154" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="163.58487337193233" minHeight="10.0" prefHeight="124.98115733477024" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <TextArea fx:id="textSinopsisPelicula" prefHeight="142.0" prefWidth="149.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label prefHeight="18.0" prefWidth="74.0" style="-fx-text-fill: #ffffff;" text="Nombre" />
-            <Label prefHeight="18.0" prefWidth="69.0" style="-fx-text-fill: #ffffff;" text="Duración" GridPane.rowIndex="1" />
-            <Label style="-fx-text-fill: #ffffff;" text="Fecha Estreno" GridPane.rowIndex="2" />
-            <Label prefHeight="18.0" prefWidth="77.0" style="-fx-text-fill: #ffffff;" text="Sinopsis" GridPane.rowIndex="3" />
-            <TextField fx:id="textNombrePelicula" GridPane.columnIndex="1" />
-            <TextField fx:id="TextDuracionPelicula" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <DatePicker fx:id="dataFechaDeEstreno" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-         </children>
-      </GridPane>
-      <Label layoutX="201.0" layoutY="25.0" prefHeight="35.0" prefWidth="300.0" style="-fx-text-fill: #ffffff;" text="Lista de Peliculas">
-         <font>
-            <Font name="Georgia Pro Black" size="30.0" />
-         </font></Label>
-      <Label fx:id="textEstadoLogin" layoutX="690.0" layoutY="27.0" prefHeight="30.0" prefWidth="81.0" style="-fx-text-fill: #ffffff;" />
-      <TextField fx:id="TextBuscadorPeliculas" layoutX="153.0" layoutY="109.0" prefHeight="25.0" prefWidth="396.0" style="-fx-background-color: #ffffff;" />
-      <Label layoutX="38.0" layoutY="113.0" style="-fx-text-fill: #ffffff;" text="Nombre pelicula" />
-   </children>
+<Pane stylesheets="@../../styles/pelicula.css" fx:controller="org.example.cine.peliculas.controllers.PeliculasViewNoLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="900.0" style="-fx-background-color: #376bb5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Line endX="731.3585205078125" layoutX="138.0" layoutY="74.0" startX="-99.13207244873047" />
+        <Button fx:id="butonHelp" layoutX="38.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Help" />
+        <Button fx:id="butonLogin" layoutX="807.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Login" />
+        <TableView fx:id="TablaPeliculas" layoutX="38.0" layoutY="151.0" prefHeight="416.0" prefWidth="511.0">
+            <columns>
+                <TableColumn fx:id="tableColumnId" prefWidth="36.2264404296875" text="ID" />
+                <TableColumn fx:id="tableColumnNombre" prefWidth="225.50948333740234" text="Nombre" />
+                <TableColumn fx:id="tableColumnDuracion" prefWidth="122.26409912109375" text="Duración" />
+                <TableColumn fx:id="tableColumnFecha" prefWidth="121.35855102539062" text="Fecha" />
+            </columns>
+        </TableView>
+        <ImageView fx:id="imagenPelicula" fitHeight="150.0" fitWidth="281.0" layoutX="590.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true" />
+        <Line endX="-100.0" endY="-492.5" layoutX="667.0" layoutY="579.0" startX="-100.0" />
+        <Button fx:id="butonComprarNoLogin" layoutX="789.0" layoutY="537.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="81.0" style="-fx-background-radius: 10;" text="Comprar" />
+        <GridPane layoutX="590.0" layoutY="262.0" prefHeight="202.0" prefWidth="281.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.47176041947705" minWidth="10.0" prefWidth="132.13216081010205" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.49058577801347" minWidth="10.0" prefWidth="148.43388709465205" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="90.0" minHeight="0.0" prefHeight="25.415080824540016" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="143.094358037485" minHeight="0.0" prefHeight="25.358469467733485" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="153.90561311802608" minHeight="9.49057280614143" prefHeight="28.07545194697154" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="163.58487337193233" minHeight="10.0" prefHeight="124.98115733477024" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <TextArea fx:id="textSinopsisPelicula" wrapText="true" prefHeight="142.0" prefWidth="149.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Label prefHeight="18.0" prefWidth="74.0" style="-fx-text-fill: #ffffff;" text="Nombre" />
+                <Label prefHeight="18.0" prefWidth="69.0" style="-fx-text-fill: #ffffff;" text="Duración" GridPane.rowIndex="1" />
+                <Label style="-fx-text-fill: #ffffff;" text="Fecha Estreno" GridPane.rowIndex="2" />
+                <Label prefHeight="18.0" prefWidth="77.0" style="-fx-text-fill: #ffffff;" text="Sinopsis" GridPane.rowIndex="3" />
+                <TextField fx:id="textNombrePelicula" GridPane.columnIndex="1" />
+                <TextField fx:id="TextDuracionPelicula" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <DatePicker fx:id="dataFechaDeEstreno" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            </children>
+        </GridPane>
+        <Label layoutX="201.0" layoutY="25.0" prefHeight="35.0" prefWidth="300.0" style="-fx-text-fill: #ffffff;" text="Lista de Peliculas">
+            <font>
+                <Font name="Georgia Pro Black" size="30.0" />
+            </font>
+        </Label>
+        <Label fx:id="textEstadoLogin" layoutX="690.0" layoutY="27.0" prefHeight="30.0" prefWidth="81.0" style="-fx-text-fill: #ffffff;" />
+        <TextField fx:id="TextBuscadorPeliculas" layoutX="153.0" layoutY="109.0" prefHeight="25.0" prefWidth="396.0" style="-fx-background-color: #ffffff;" />
+        <Label layoutX="38.0" layoutY="113.0" style="-fx-text-fill: #ffffff;" text="Nombre pelicula" />
+    </children>
 </Pane>

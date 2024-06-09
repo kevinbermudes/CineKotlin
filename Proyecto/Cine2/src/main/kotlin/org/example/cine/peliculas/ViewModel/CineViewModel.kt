@@ -82,9 +82,10 @@ class CineViewModel(
         // Datos de la imagen
         var imagen = Image(RoutesManager.getResourceAsStream("images/sin-imagen.png"))
         var fileImage = File(RoutesManager.getResource("images/sin-imagen.png").toURI())
-
+        logger.debug { "Cargando Imagen con nombre: ${pelicula.imagen}" }
         storage.loadImage(pelicula.imagen).onSuccess {
             imagen = Image(it.absoluteFile.toURI().toString())
+            logger.debug { "desde el view model Imagen cargada: $it" }
             fileImage = it
         }
 

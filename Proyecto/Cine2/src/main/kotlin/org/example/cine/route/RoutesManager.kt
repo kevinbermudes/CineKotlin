@@ -37,6 +37,8 @@ object RoutesManager {
     private var scenesMap: HashMap<String, Pane> = HashMap()
     private var acualStyle: Style = Style.DEFAULT
     private var selectedButacaId: String? = null
+    var selectedPelicula: Pelicula? = null
+    var selectedImage: Image? = null
 
 
     // Todas las vistas

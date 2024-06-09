@@ -26,8 +26,8 @@
         },
         {
             "id": "A5",
-            "estado": "libre",
-            "imagen": "libre.png",
+            "estado": "ocupado",
+            "imagen": "ocupado.png",
             "precio": 7.0
         },
         {
@@ -68,8 +68,8 @@
         },
         {
             "id": "B5",
-            "estado": "libre",
-            "imagen": "libre.png",
+            "estado": "ocupado",
+            "imagen": "ocupado.png",
             "precio": 7.0
         },
         {
@@ -98,8 +98,8 @@
         },
         {
             "id": "C3",
-            "estado": "libre",
-            "imagen": "libre.png",
+            "estado": "ocupado",
+            "imagen": "ocupado.png",
             "precio": 7.0
         },
         {
@@ -110,8 +110,8 @@
         },
         {
             "id": "C5",
-            "estado": "libre",
-            "imagen": "libre.png",
+            "estado": "ocupado",
+            "imagen": "ocupado.png",
             "precio": 7.0
         },
         {
@@ -128,8 +128,8 @@
         },
         {
             "id": "D1",
-            "estado": "libre",
-            "imagen": "libre.png",
+            "estado": "ocupado",
+            "imagen": "ocupado.png",
             "precio": 7.0
         },
         {
@@ -164,8 +164,8 @@
         },
         {
             "id": "D7",
-            "estado": "vip",
-            "imagen": "vip.png",
+            "estado": "ocupado",
+            "imagen": "ocupado.png",
             "precio": 30.0
         },
         {
@@ -182,8 +182,8 @@
         },
         {
             "id": "E3",
-            "estado": "libre",
-            "imagen": "libre.png",
+            "estado": "ocupado",
+            "imagen": "ocupado.png",
             "precio": 7.0
         },
         {
@@ -194,14 +194,14 @@
         },
         {
             "id": "E5",
-            "estado": "libre",
-            "imagen": "libre.png",
+            "estado": "ocupado",
+            "imagen": "ocupado.png",
             "precio": 7.0
         },
         {
             "id": "E6",
-            "estado": "libre",
-            "imagen": "libre.png",
+            "estado": "ocupado",
+            "imagen": "ocupado.png",
             "precio": 7.0
         },
         {
