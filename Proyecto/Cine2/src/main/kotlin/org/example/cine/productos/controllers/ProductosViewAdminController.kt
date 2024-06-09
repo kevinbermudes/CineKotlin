@@ -137,7 +137,8 @@ class ProductosViewAdminController : KoinComponent {
 
     private fun onHelp() {
         logger.debug { "Abriendo ventana de ayuda" }
-        RoutesManager.changeScene(view = RoutesManager.View.HELP)
+        // RoutesManager.changeScene(view = RoutesManager.View.HELP)
+        showAlert("Ayuda", "Aquí va la información de ayuda.")
     }
 
     private fun onCerrarSesion() {
