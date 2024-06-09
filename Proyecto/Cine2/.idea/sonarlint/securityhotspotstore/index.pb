@@ -119,3 +119,7 @@ e
 5src/main/kotlin/org/example/cine/pago/mapper/venta.kt,b\e\be7d9a1e86fef4d1bd1b5edf01aa6bbc79af6d02
 |
 Lsrc/main/kotlin/org/example/cine/peliculas/ViewModel/RecaudacionViewModel.kt,f\1\f160f229e4521c7deb3196270b42575e2a494a3e
+o
+?src/test/java/repositories/peliculas/PeliculasRepositoryTest.kt,c\4\c42566f782932d033b452b551f2803d72e9cd9e2
+o
+?src/test/java/repositories/productos/ProductosRepositoryTest.kt,f\3\f3775844812cbd0f4ff4b00ad9e96cd409c41857
