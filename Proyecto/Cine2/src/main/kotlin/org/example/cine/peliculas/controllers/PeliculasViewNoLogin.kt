@@ -20,7 +20,6 @@ class PeliculasViewNoLogin : KoinComponent {
     // Inyectamos nuestro ViewModel
     private val viewModel: CineViewModel by inject()
 
-    // Define las propiedades enlazadas a los elementos del FXML
     // Botones
     @FXML
     private lateinit var butonHelp: Button

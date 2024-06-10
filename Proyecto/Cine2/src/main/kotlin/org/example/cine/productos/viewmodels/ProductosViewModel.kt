@@ -109,7 +109,6 @@ storage.loadImage(producto.imagen).onSuccess {
             fileImage = it
         }
 
-        // Convertir ID a Long para la comparación
         val productoId = producto.id.toString()
         if (state.value.producto.id != productoId) {
             state.value = state.value.copy(

@@ -14,7 +14,6 @@ class CineApplication : Application(), KoinComponent {
         println(LocalDateTime.now().toString())
         // Inicializar Koin
         startKoin {
-            //printLogger() // Logger de Koin
             modules(appModule) // Módulos de Koin
         }
     }
@@ -28,16 +27,8 @@ class CineApplication : Application(), KoinComponent {
             initMainStage(stage)
         }
     }
-
-    // Cuando se para la aplicación (puedes descomentar si es necesario)
-    /*
-    override fun stop() {
-        // No hacemos nada
-    }
-    */
 }
 
 fun main() {
-    // No hagas nada aquí porque abre un hilo de ejecución
     Application.launch(CineApplication::class.java)
 }

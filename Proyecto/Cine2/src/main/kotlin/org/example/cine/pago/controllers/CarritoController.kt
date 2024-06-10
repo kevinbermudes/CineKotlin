@@ -109,7 +109,6 @@ class CarritoController : KoinComponent {
     }
 
     private fun confirmarCompra() {
-        // Lógica para confirmar la compra
         logger.debug { "redirigiendo a carrito de compra" }
         RoutesManager.changeScene(view = RoutesManager.View.PAGO)
     }

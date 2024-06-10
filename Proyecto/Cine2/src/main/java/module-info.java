@@ -15,7 +15,6 @@ module org.example.cine {
     requires org.apache.pdfbox;
     requires javafx.graphics;
     requires openhtmltopdf.pdfbox;
-    //   requires javafx.swing;
 
     // Exportaciones generales
     opens org.example.cine to javafx.fxml;
@@ -68,8 +67,6 @@ module org.example.cine {
     // Controladores de Usuario
     opens org.example.cine.peliculas.controllers.User to javafx.fxml;
     exports org.example.cine.peliculas.controllers.User;
-
-    // Asegúrate de añadir la exportación y apertura del paquete específico
     opens org.example.cine.Usuario.controlador to javafx.fxml;
     exports org.example.cine.Usuario.controlador;
 

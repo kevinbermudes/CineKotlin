@@ -38,11 +38,6 @@ class PeliculasStorageImplTest {
                categoria = Pelicula.Categoria.TERROR
            )
         )
-
-//        val result = peliculasStorage.storeDataJson(myFile, data)
-//
-//        assertTrue(result.isOk)
-//        assertEquals(data.size.toLong(), result.value)
     }
 
     @Test
@@ -58,12 +53,5 @@ class PeliculasStorageImplTest {
                 categoria = Pelicula.Categoria.TERROR
             )
         )
-
-//          peliculasStorage.storeDataJson(myFile, data)
-//
-//         val result = peliculasStorage.loadDataJson(myFile)
-//
-//        assertTrue(result.isOk)
-//        assertEquals(data, result.value)
     }
 }

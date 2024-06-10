@@ -142,7 +142,7 @@ class ProductosServiceImplTest {
         val result = service.saveAll(productos)
 
         // Assert
-        verify(cache, times(1)).clear() // Verificamos que se haya llamado a cache.clear() exactamente una vez
+        verify(cache, times(1)).clear() // Verificamos que se limpie la cache
     }
 
     @Test

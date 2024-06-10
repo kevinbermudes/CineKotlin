@@ -42,7 +42,7 @@ class ProductosRepositoryImpl(
                 precio = producto.precio,
                 imagen = producto.imagen,
                 categoria = producto.categoria.name,
-                stock = producto.stock.toLong(), // Asegúrate de que el stock se maneje correctamente
+                stock = producto.stock.toLong(),
                 created_at = timeStamp,
                 updated_at = timeStamp
             )
@@ -58,7 +58,7 @@ class ProductosRepositoryImpl(
             nombre = producto.nombre,
             precio = producto.precio,
             imagen = producto.imagen,
-            stock = producto.stock.toLong(), // Asegúrate de que el stock se maneje correctamente
+            stock = producto.stock.toLong(),
             categoria = producto.categoria.name,
             updated_at = timeStamp
         )

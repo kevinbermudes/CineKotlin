@@ -9,15 +9,10 @@ private val logger = logging()
 
 private const val CONFIG_FILE_NAME = "application.properties"
 
-/**
- * Voy a poner todo lazy para que vaya leyendo las propiedades a medida que se necesiten
- */
-
 class AppConfig {
 
     val APP_PATH = System.getProperty("user.dir")
 
-    // Al hacerlo con Lazy solo cargo la configuración a medida que se necesite
     val imagesDirectory by lazy {
         val path = readProperty("app.images") ?: "imagenes"
         "$APP_PATH${File.separator}$path/"

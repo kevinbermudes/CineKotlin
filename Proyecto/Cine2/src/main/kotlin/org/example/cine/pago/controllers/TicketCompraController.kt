@@ -111,7 +111,6 @@ class TicketCompraController : KoinComponent {
 
     private fun registrarVenta(total: Double) {
         val venta = Venta(
-           // id = 0L,
             pelicula = textNombrePelicula.text,
             precioEntrada = textoPrecioEntrada.text.toDouble(),
             butacas = textoButacas.text,

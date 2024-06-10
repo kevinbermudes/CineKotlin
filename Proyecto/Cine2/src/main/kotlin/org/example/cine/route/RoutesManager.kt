@@ -46,8 +46,6 @@ object RoutesManager {
         //vista principal sin login siempre cargamos esta
         MAIN("/org/example/cine/views/peliculas/IndezSinLogin.fxml"),
 
-        //vista help
-        // HELP("/org/example/cine/views/Help/HelpView.fxml"),
 
         //vista Login
         LOGIN("/org/example/cine/views/login/Login.fxml"),
@@ -260,26 +258,8 @@ object RoutesManager {
         stage.show()
     }
 
-//    fun initHelp() {
-//        logger.debug { "icializando Help" }
-//
-//        val fxmlLoader = FXMLLoader(getResource(View.HELP.fxml))
-//        val parentRoot = fxmlLoader.load<Pane>()
-//        val scene = Scene(parentRoot, 900.0, 600.0)
-//        val stage = Stage()
-//        stage.icons.add(Image(getResourceAsStream("/org/example/cine/icons/app-icon.png")))
-//        stage.setOnCloseRequest { onAppExit(event = it) }
-//        stage.title = "Cine - Help"
-//        stage.scene = scene
-//        stage.initOwner(mainStage)
-//        stage.initModality(Modality.WINDOW_MODAL)
-//        stage.isResizable = false
-//        closeActiveStage()
-//        _activeStage = stage
-//        stage.show()
-//    }
 
-    //***********************************PRODUTOS***************************************
+    //***********************************PRODUCTOS***************************************
     //index con user
     fun initProductosUsuarios() {
         logger.debug { "Inicializando ProductosUsuarios" }

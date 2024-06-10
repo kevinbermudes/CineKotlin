@@ -21,7 +21,6 @@ class PeliculasViewLogin : KoinComponent {
     private val viewModel: CineViewModel by inject()
     private val peliculasStorageImages: PeliculasStorageImages by inject()
 
-    // Define las propiedades enlazadas a los elementos del FXML
     @FXML
     private lateinit var butonHelp: Button
 
@@ -128,7 +127,7 @@ class PeliculasViewLogin : KoinComponent {
     }
 
     private fun onHelpAction() {
-        // Lógica para el botón Help
+
     }
 
     private fun onCerrarSecionAction() {
@@ -149,12 +148,10 @@ class PeliculasViewLogin : KoinComponent {
     }
 
     private fun onTablaPeliculasSelected(pelicula: Pelicula) {
-        // Lógica para manejar la selección de una película en la tabla
         viewModel.updatePeliculaSeleccionada(pelicula)
     }
 
     private fun onBuscadorKeyReleased() {
-        // Lógica para manejar la búsqueda de películas
         val filteredList = viewModel.peliculasFilteredList(TextBuscadorPeliculas.text)
         TablaPeliculas.items = FXCollections.observableArrayList(filteredList)
     }

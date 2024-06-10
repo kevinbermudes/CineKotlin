@@ -1,9 +1,5 @@
 package org.example.cine.pago.models
 
-
-import java.time.Instant
-import java.time.LocalDateTime
-
 data class Venta(
     val id: Long = NEW_VENTA,
     var pelicula: String,

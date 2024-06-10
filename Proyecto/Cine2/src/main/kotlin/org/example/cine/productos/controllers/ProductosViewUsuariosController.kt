@@ -47,9 +47,6 @@ class ProductosViewUsuariosController : KoinComponent {
     @FXML
     private lateinit var tableColumnCategoria: TableColumn<Producto, String>
 
-//    @FXML
-//    private lateinit var tableColumnStock: TableColumn<Producto, Double>
-
     @FXML
     private lateinit var imagenProductos: ImageView
 
@@ -107,7 +104,6 @@ class ProductosViewUsuariosController : KoinComponent {
         tableColumnNombreProducto.cellValueFactory = PropertyValueFactory("nombre")
         tableColumnPrecio.cellValueFactory = PropertyValueFactory("precio")
         tableColumnCategoria.cellValueFactory = PropertyValueFactory("categoria")
-    //    tableColumnStock.cellValueFactory = PropertyValueFactory("stock")
     }
 
     private val stateListener = ChangeListener<ProductosViewModel.ProductoState> { _, _, newValue ->
@@ -191,7 +187,6 @@ class ProductosViewUsuariosController : KoinComponent {
         textoNombreProducto.clear()
         textoCategoriaProducto.clear()
         textoPrecioProducto.clear()
-      //  textProductosStock.clear()
     }
 
     private fun ProductosDisponibles() {

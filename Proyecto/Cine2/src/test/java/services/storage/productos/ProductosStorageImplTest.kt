@@ -34,11 +34,6 @@ class ProductosStorageImplTest {
                 stock = 5
             )
         )
-
-        //val result = productosStorageJson.storeDataJson(myFile, data)
-
-        //assertTrue(result.isOk)
-        //assertEquals(data.size.toLong(), result.value)
     }
 
     @Test
@@ -53,12 +48,5 @@ class ProductosStorageImplTest {
                 stock = 5
             )
         )
-
-        //  productosStorageJson.storeDataJson(myFile, data)
-
-        // val result = productosStorageJson.loadDataJson(myFile)
-
-        //assertTrue(result.isOk)
-        //assertEquals(data, result.value)
     }
 }

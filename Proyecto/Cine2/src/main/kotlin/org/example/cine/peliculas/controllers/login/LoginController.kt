@@ -15,7 +15,6 @@ import org.koin.core.component.inject
 private val logger = logging()
 
 class LoginController : KoinComponent {
-   // private val usuarioRepository: UsuarioRepository by inject()
 
 
     @FXML

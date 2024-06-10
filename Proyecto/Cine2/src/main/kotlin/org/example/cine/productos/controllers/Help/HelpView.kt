@@ -24,7 +24,6 @@ class HelpView {
     @FXML
     private lateinit var cineImageView: ImageView
 
-    // Este método será llamado cuando se haga clic en el botón
     @FXML
     protected fun handleButtonAction(event: ActionEvent?) {
         // Cerramos la ventana actual
